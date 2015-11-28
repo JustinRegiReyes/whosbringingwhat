@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 	has_secure_password
 	has_many :items
-	has_many :categories
+	has_many :events
 
 	belongs_to :item
 
