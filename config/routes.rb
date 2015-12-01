@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get '/home', to: "users#show"
 
+  post '/sessions', to: "sessions#create"
+
   get 'sessions/destroy'
 
   get 'users/new'

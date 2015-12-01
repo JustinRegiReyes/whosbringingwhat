@@ -1,2 +1,23 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<div class="container">
+	<h1>Login</h1>
+
+	<% if flash[:alert] %>
+	  <p class="alert alert-danger text-center"> <%= flash[:alert] %></p>
+	<% end %>
+
+	<div class="form-container">
+		<%= form_for @user, url: '/sessions', method: "post" do |f| %>
+		<div class="text-center">
+			<%=	f.text_field :username, placeholder: "Username" %>
+		</div>
+		<div class="text-center">
+			<%= f.password_field :password, placeholder: "Password" %>
+		</div>
+		<br>
+		<div class="text-center">
+			<%= f.submit class: "btn btn-default", value: "Login" %>
+		</div>
+
+		<% end %>
+	</div>
+</div>
