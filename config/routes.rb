@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
 
-  get 'sessions/create'
+  get '/', to: "welcome#index"
+
+  get '/login', to: "sessions#new"
+
+  get '/signup', to: "users#new"
+
+  post '/users', to: "users#create"
+
+  get '/home', to: "users#show"
 
   get 'sessions/destroy'
 
@@ -15,5 +22,5 @@ Rails.application.routes.draw do
 
   get 'users/delete'
 
-  get '/', to: "welcome#index"
+  
 end

@@ -5,11 +5,11 @@ class User < ActiveRecord::Base
 
 	belongs_to :item
 
-	validates :email, :username, :password_digest, presence: true
-	validates :email, :username, uniqueness: true
+	validates :username, :password_digest, presence: true
+	validates :username, uniqueness: true
 
 	def self.confirm (params)
-		@user = User.find_by({email: params[:username]})
+		@user = User.find_by_username(params[:username])
 		@user.try(:authenticate, params[:password])
 	end
 end
