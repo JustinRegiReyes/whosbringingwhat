@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     createdUser = User.find_by_id(@user.id)
 
     if createdUser
+      login(@user)
       redirect_to "/home"
     else
       redirect_to "/signup"

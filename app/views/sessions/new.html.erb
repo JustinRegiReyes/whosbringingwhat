@@ -9,8 +9,6 @@
 		<%= form_for @user, url: '/sessions', method: "post" do |f| %>
 		<div class="text-center">
 			<%=	f.text_field :username, placeholder: "Username" %>
-		</div>
-		<div class="text-center">
 			<%= f.password_field :password, placeholder: "Password" %>
 		</div>
 		<br>
