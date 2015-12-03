@@ -1,0 +1,37 @@
+<%= render 'partials/navbar' %>
+
+<div class="container">
+	<h3 class="text-center">Create an event</h3>
+	<div class="form-container">
+		<%= form_for @event, url: '/events/create', method: "post" do |f| %>
+		<div class="text-center">
+			<label>Name of Event</label><br>
+			<%=	f.text_field :title, placeholder: "Derpfest 2015" %>
+			<br><br>
+			<label>Description</label><br>
+			<%= f.text_area :description, placeholder: 'A time to derp... Peben\'s suggestion.' %>
+			<br><br>
+			<label>Where</label><br>
+			<%=	f.text_field :where, placeholder: "Derpfest 2015" %>
+			<br><br>
+			<label>Date</label><br>
+			<%=	f.date_field :date, placeholder: "Name of Event" %>
+			<br><br>
+			<label>Time</label><br>
+			<%=	f.time_field :time, placeholder: "Name of Event" %>
+			<br>
+		</div>
+		<br>
+		<div class="text-center">
+			<%= f.submit class: "btn btn-default", value: "Create Event" %>
+		</div>
+
+		<% end %>
+	</div>
+</div>
+
+<!-- "title"
+"description"
+"date"
+"time"
+"where" -->

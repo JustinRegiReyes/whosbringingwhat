@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   get '/', to: "welcome#index"
 
   get '/login', to: "sessions#new"
@@ -13,10 +14,22 @@ Rails.application.routes.draw do
   post '/sessions', to: "sessions#create"
 
   delete '/sessions', to: "sessions#destroy"
+  
+  get 'events/new', to: "events#new"
 
-  get 'sessions/destroy'
+  get 'events/created', to: "events#created"
 
-  get 'users/new'
+  get 'events/attending', to: "events#attending"
+
+  post 'events/create', to: "events#create"
+
+  get 'events/:id/show', to: "events#show"
+
+  get 'events/edit', to: "events#edit"
+
+  get 'events/index', to: "events#index"
+
+  delete 'events/delete', to: "events#delete"
 
   get 'users/show'
 

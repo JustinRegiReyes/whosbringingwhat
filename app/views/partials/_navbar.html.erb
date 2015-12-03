@@ -17,8 +17,8 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events<span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="/events/new">New Event</a></li>
-              <li><a href="/events/<%=current_user.id%>/created">Created Events</a></li>
-              <li><a href="/events/<%=current_user.id%>/index">My Events</a></li>
+              <li><a href="/events/created">Created Events</a></li>
+              <li><a href="/events/attending">My Events</a></li>
             </ul>
           </li>
           <li><%= link_to "Logout", sessions_path , {method: :delete} %></li> 
