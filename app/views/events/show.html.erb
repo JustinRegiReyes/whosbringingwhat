@@ -2,20 +2,38 @@
 
 <h1><%= @event.title %></h1>
 
+
 <h3>Categories</h3>
 
-<% if @event.categories.length === 0  %>
-	No categories added to "<%= @event.title %>" yet.
-	<br>
-	
-<% end %>
-
-<% @event.categories.each do |category| %>
-
-<% end %>
+<div class="category-wrapper">
+	<div class="container">
+		<% if @event.categories.length === 0  %>
+			No categories added to "<%= @event.title %>" yet.
+		<% else %>
+			<% @event.categories.each do |category| %>
+				<h4><%= category.title %></h4>
+				<div class="container description">
+					<i><%= category.description %></i>
+				</div>
+				<div class="container items">
+					<% if category.items.length === 0 %>
+						No items have been added to this category, yet.
+					<% else %>
+						<h5>Items</h5>
+						<ul>
+							<% category.items.each do |item| %>
+								<li><%= item.title %></li>
+							<% end %>
+						</ul>
+					<% end %>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+</div>
 
 <br><br>
 
 <div class="text-center">
-	<a href="/category/new" class="btn btn-default">Add Category</a>
+	<a href="/events/<%= @event.id %>/categories/new" class="btn btn-default">Add Category</a>
 </div>

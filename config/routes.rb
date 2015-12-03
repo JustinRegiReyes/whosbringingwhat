@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   get '/', to: "welcome#index"
 
   get '/login', to: "sessions#new"
@@ -30,6 +29,18 @@ Rails.application.routes.draw do
   get 'events/index', to: "events#index"
 
   delete 'events/delete', to: "events#delete"
+
+  get '/events/:id/categories/new', to: "categories#new"
+
+  post '/categories/:event_id/create', to: "categories#create"
+
+  get 'categories/show'
+
+  get 'categories/edit'
+
+  get 'categories/index'
+
+  get 'categories/delete'
 
   get 'users/show'
 
