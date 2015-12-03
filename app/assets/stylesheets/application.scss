@@ -12,6 +12,12 @@
  *
  */
 
+ div.container {
+ 	p {
+ 		padding: 0px 15px 
+ 	}
+ }
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "navbar";

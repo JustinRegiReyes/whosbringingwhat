@@ -2,38 +2,59 @@
 
 <h1><%= @event.title %></h1>
 
-
-<h3>Categories</h3>
-
-<div class="category-wrapper">
-	<div class="container">
-		<% if @event.categories.length === 0  %>
-			No categories added to "<%= @event.title %>" yet.
-		<% else %>
-			<% @event.categories.each do |category| %>
-				<h4><%= category.title %></h4>
-				<div class="container description">
-					<i><%= category.description %></i>
-				</div>
-				<div class="container items">
-					<% if category.items.length === 0 %>
-						No items have been added to this category, yet.
-					<% else %>
-						<h5>Items</h5>
-						<ul>
-							<% category.items.each do |item| %>
-								<li><%= item.title %></li>
-							<% end %>
-						</ul>
-					<% end %>
-				</div>
-			<% end %>
+<div class="container">
+	<h3>When</h3>
+		<p><%= @event.date.strftime("%b %d" + ", a " + "%A") %> @ <%=@event.time.strftime("%I:%M %p") %></p> 
+	<h3>Where</h3>
+		<p><%= @event.where %></p>
+	<h3>Guests Attending</h3>
+	<% if @event.attending_event.users.length === 0 %>
+		<p>No guests have confirmed attendance.</p>
+	<% else %>
+		<% @event.attending_event.users.each do |user| %>
+			<p><%= user.username %></p>
 		<% end %>
+	<% end %>
+
+	<h3>Categories</h3>
+
+	<div class="category-wrapper">
+		<div class="container">
+			<% if @event.categories.length === 0  %>
+				No categories added to "<%= @event.title %>" yet.
+			<% else %>
+				<% @event.categories.each do |category| %>
+					<h4><%= category.title %></h4>
+					<div class="container description">
+						<i><%= category.description %></i>
+					</div>
+					<div class="container items">
+						<% if category.items.length === 0 %>
+							No items have been added to this category, yet.
+						<% else %>
+							<h5>Items</h5>
+							<ul>
+								<% category.items.each do |item| %>
+									<li><%= item.title %></li>
+								<% end %>
+							</ul>
+						<% end %>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
 	</div>
 </div>
 
+
 <br><br>
 
+<% if @event.user === current_user %>
 <div class="text-center">
 	<a href="/events/<%= @event.id %>/categories/new" class="btn btn-default">Add Category</a>
 </div>
+<% else %>
+	<div class="text-center">
+		<a href="/events/<%= @event.id %>/categories/new" class="btn btn-default">Add Category</a>
+	</div>
+<% end %>
