@@ -6,7 +6,10 @@ class EventsController < ApplicationController
   def create
     eventParams = params.require(:event).permit(:title, :description, :date, :time, :where)
     event = Event.create(eventParams)
+    attendingEvent = AttendingEvent.create()
+    event.attending_event = attendingEvent
     current_user.events << event
+    
     redirect_to "/events/#{event.id}"
   end
 
@@ -26,9 +29,10 @@ class EventsController < ApplicationController
     eventId = params[:id]
     event = Event.find_by_id(eventId)
     attendingEvent = event.attending_event
+    #only have to push user into attendingEvent
+    #users attending_events get populated as well by doing so
     attendingEvent.users << current_user
-    current_user.attending_events << attendingEvent
-    redirect_to "/home"
+    redirect_to "/events/#{eventId}"
   end
 
   def index

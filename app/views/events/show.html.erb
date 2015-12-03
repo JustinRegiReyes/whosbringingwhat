@@ -11,6 +11,7 @@
 	<% if @event.attending_event.users.length === 0 %>
 		<p>No guests have confirmed attendance.</p>
 	<% else %>
+		<p>There are <%= @event.attending_event.users.length %> people attending.</p>
 		<% @event.attending_event.users.each do |user| %>
 			<p><%= user.username %></p>
 		<% end %>
@@ -49,12 +50,17 @@
 
 <br><br>
 
-<% if @event.user === current_user %>
-<div class="text-center">
-	<a href="/events/<%= @event.id %>/categories/new" class="btn btn-default">Add Category</a>
+<div class="container">
+	<% if @event.user === current_user %>
+		<div class="text-center">
+			<a href="/events/<%= @event.id %>/categories/new" class="btn btn-default">Add Category</a>
+		</div>
+	<% elsif @event.attending_event.users.include?(current_user) %>
+		<h3 class="text-center">You are attending this event</h3>
+	<% else %>
+		<div class="text-center">
+			<a href="/events/<%= @event.id %>/attending" class="btn btn-default">Attend Event</a>
+		</div>
+	<% end %>
+
 </div>
-<% else %>
-	<div class="text-center">
-		<a href="/events/<%= @event.id %>/attending" class="btn btn-default">Attend event</a>
-	</div>
-<% end %>
