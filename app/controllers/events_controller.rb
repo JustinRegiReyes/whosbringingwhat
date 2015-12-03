@@ -23,6 +23,12 @@ class EventsController < ApplicationController
   end
 
   def attending
+    eventId = params[:id]
+    event = Event.find_by_id(eventId)
+    attendingEvent = event.attending_event
+    attendingEvent.users << current_user
+    current_user.attending_events << attendingEvent
+    redirect_to "/home"
   end
 
   def index

@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   get '/', to: "welcome#index"
 
-  get '/login', to: "sessions#new"
+  get 'login', to: "sessions#new"
 
-  get '/signup', to: "users#new"
+  get 'signup', to: "users#new"
 
   post '/users', to: "users#create"
 
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   get 'events/created', to: "events#created"
 
-  get 'events/attending', to: "events#attending"
+  get 'events/:id/attending', to: "events#attending"
 
   post 'events/create', to: "events#create"
 
