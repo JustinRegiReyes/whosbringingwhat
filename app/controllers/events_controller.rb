@@ -7,10 +7,12 @@ class EventsController < ApplicationController
     eventParams = params.require(:event).permit(:title, :description, :date, :time, :where)
     event = Event.create(eventParams)
     current_user.events << event
-    redirect_to "/events/created"
+    redirect_to "/events/#{event.id}"
   end
 
   def show
+    eventId = params[:id]
+    @event = Event.find_by_id(eventId)
   end
 
   def edit

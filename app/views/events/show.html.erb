@@ -1,2 +1,21 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<%= render 'partials/navbar' %>
+
+<h1><%= @event.title %></h1>
+
+<h3>Categories</h3>
+
+<% if @event.categories.length === 0  %>
+	No categories added to "<%= @event.title %>" yet.
+	<br>
+	
+<% end %>
+
+<% @event.categories.each do |category| %>
+
+<% end %>
+
+<br><br>
+
+<div class="text-center">
+	<a href="/category/new" class="btn btn-default">Add Category</a>
+</div>

@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   post 'events/create', to: "events#create"
 
-  get 'events/:id/show', to: "events#show"
+  get 'events/:id', to: "events#show"
 
   get 'events/edit', to: "events#edit"
 
