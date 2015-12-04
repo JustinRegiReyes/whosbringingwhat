@@ -52,5 +52,17 @@ Rails.application.routes.draw do
 
   get 'users/delete'
 
+  get 'items/:event_id/new', to: "items#new"
+
+  post 'items/:event_id/create', to: "items#create"
+
+  get 'items/show'
+
+  get 'items/edit'
+
+  get 'items/bringingIndex'
+
+  get 'items/delete'
+
   
 end

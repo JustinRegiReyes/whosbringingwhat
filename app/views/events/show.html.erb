@@ -11,7 +11,6 @@
 	<% if @event.attending_event.users.length === 0 %>
 		<p>No guests have confirmed attendance.</p>
 	<% else %>
-		<p>There are <%= @event.attending_event.users.length %> people attending.</p>
 		<% @event.attending_event.users.each do |user| %>
 			<p><%= user.username %></p>
 		<% end %>
@@ -32,13 +31,20 @@
 					<div class="container items">
 						<% if category.items.length === 0 %>
 							No items have been added to this category, yet.
+							<br>
+							<a href="/items/<%=@event.id%>/new" class="btn btn-default bring-btn">Bring Something</a>
 						<% else %>
-							<h5>Items</h5>
-							<ul>
+							<h4>Items</h4>
+							<ul class="list-unstyled">
 								<% category.items.each do |item| %>
-									<li><%= item.title %></li>
+									<li>
+										<span><strong><%= item.title %></strong> brought by <%= item.user.username %></span>
+										<br>
+										<p><i><%= item.description %></i></p>
+									</li>
 								<% end %>
 							</ul>
+							<a href="/items/<%= @event.id%>/new" class="btn btn-default">Bring Something</a>
 						<% end %>
 					</div>
 				<% end %>
