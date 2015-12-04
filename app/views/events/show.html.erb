@@ -1,6 +1,6 @@
 <%= render 'partials/navbar' %>
 
-<h1><%= @event.title %></h1>
+<h1><%= @event.title %> <span class="host-username">hosted by <%= @event.user.username %></span></h1>
 
 <div class="container">
 	<h3>When</h3>

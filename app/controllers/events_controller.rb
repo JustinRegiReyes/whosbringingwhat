@@ -35,6 +35,10 @@ class EventsController < ApplicationController
     redirect_to "/events/#{eventId}"
   end
 
+  def attendingIndex
+    @attendingEvents = current_user.attending_events
+  end
+
   def index
   end
 

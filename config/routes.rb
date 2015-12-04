@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   get 'events/:id/attending', to: "events#attending"
 
+  get 'events/my-events', to: "events#attendingIndex"
+
   post 'events/create', to: "events#create"
 
   get 'events/:id', to: "events#show"
