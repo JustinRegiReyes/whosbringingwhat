@@ -3,6 +3,26 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
+  def find
+    eventParams = params.require(:event)
+    title = eventParams[:title]
+    date = eventParams[:date]
+    user = User.find_by_username(eventParams[:username])
+
+  if user 
+    event = Event.find_by(user_id: user.id, title: title, date: date)
+  else
+    return redirect_to :back, alert: "An event does not match those queries."
+  end 
+
+  if event
+    return redirect_to "/events/#{event.id}"
+  else
+    return redirect_to :back, alert: "An event does not match those queries."
+  end
+    # binding.pry
+  end
+
   def create
     eventParams = params.require(:event).permit(:title, :description, :date, :time, :where)
     event = Event.create(eventParams)

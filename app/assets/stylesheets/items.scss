@@ -1,3 +1,14 @@
 // Place all the styles related to the items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+ul.list-unstyled {
+	li {
+		margin-left: 15px;
+	}
+}
+
+.item-event {
+	font-size: 15px;
+	font-weight: 300;
+}

@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
   post 'events/create', to: "events#create"
 
+  post 'events/search', to: "events#find"
+
   get 'events/:id', to: "events#show"
 
   get 'events/edit', to: "events#edit"
@@ -60,7 +62,7 @@ Rails.application.routes.draw do
 
   get 'items/edit'
 
-  get 'items/bringingIndex'
+  get 'items/bringingIndex', to: "items#bringingIndex"
 
   get 'items/delete'
 

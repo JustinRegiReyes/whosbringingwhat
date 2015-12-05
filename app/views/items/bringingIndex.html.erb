@@ -1,2 +1,15 @@
-<h1>Items#bringingIndex</h1>
-<p>Find me in app/views/items/bringingIndex.html.erb</p>
+<%= render "partials/navbar" %>
+<h1>Items you're bringing</h1>
+<div class="container">
+	<% if @items.length === 0 %>
+		<i>You aren't bringing anything to an event yet! Find an event and bring an item! :D</i>
+	<% end %>
+</div>
+
+
+<div class="container">
+	<% @items.each do |item| %>
+		<h3><%= item.title %><span class="item-event"> to <a href="/events/<%= item.category.event.id%>"><%= item.category.event.title%></a></span></h3>
+	<% end %>
+</div>
+

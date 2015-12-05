@@ -23,8 +23,21 @@
  	color: #9d9d9d;
  }
 
+ .tiny {
+ 	font-size: 10px;
+ }
+
+form {
+	div {
+		.search {
+			margin-top: 20px;
+		}
+	}
+}
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "navbar";
 @import "welcome";
 @import "events";
+@import "items";

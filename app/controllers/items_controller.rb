@@ -21,6 +21,7 @@ class ItemsController < ApplicationController
   end
 
   def bringingIndex
+    @items = current_user.items
   end
 
   def delete
