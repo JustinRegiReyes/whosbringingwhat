@@ -18,7 +18,11 @@ class UsersController < ApplicationController
   end
 
   def show
+    if current_user
     render "home.html.erb"
+  else
+    redirect_to "/"
+  end
   end
 
   def edit
