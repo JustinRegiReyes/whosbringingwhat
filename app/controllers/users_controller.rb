@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :logged_in?, only: [:show]
   def new
     @user = User.new
   end
@@ -18,11 +19,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    if current_user
+    
     render "home.html.erb"
-  else
-    redirect_to "/"
-  end
+ 
   end
 
   def edit

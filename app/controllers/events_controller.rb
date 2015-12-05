@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :logged_in?, only: [:new, :show, :created, :attending]
   def new
     @event = Event.new
   end

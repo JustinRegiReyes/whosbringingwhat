@@ -3,6 +3,7 @@
 <h1><%= @event.title %> <span class="host-username">hosted by <%= @event.user.username %></span></h1>
 
 <div class="container">
+	<p><i><%= @event.description %></i></p>
 	<h3>When</h3>
 		<p><%= @event.date.strftime("%b %d" + ", a " + "%A") %> @ <%=@event.time.strftime("%I:%M %p") %></p> 
 	<h3>Where</h3>

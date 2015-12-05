@@ -10,7 +10,7 @@ module SessionsHelper
 
    def logged_in?
       if current_user == nil
-         redirect_to "/sessions/new"
+         redirect_to "/"
       end
    end
 
