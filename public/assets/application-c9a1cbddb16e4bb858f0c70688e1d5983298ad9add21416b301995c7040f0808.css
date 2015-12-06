@@ -1,0 +1,91 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ */
+/* line 16, /Users/Justin/dev/friendsGivingSite/app/assets/stylesheets/application.scss */
+div.container p {
+  padding: 0px 15px;
+}
+
+/* line 21, /Users/Justin/dev/friendsGivingSite/app/assets/stylesheets/application.scss */
+.nav-username {
+  padding: 15px 15px;
+  color: #9d9d9d;
+}
+
+/* line 26, /Users/Justin/dev/friendsGivingSite/app/assets/stylesheets/application.scss */
+.tiny {
+  font-size: 10px;
+}
+
+/* line 32, /Users/Justin/dev/friendsGivingSite/app/assets/stylesheets/application.scss */
+form div .search {
+  margin-top: 20px;
+}
+
+/* line 6, /Users/Justin/dev/friendsGivingSite/app/assets/stylesheets/events.scss */
+#search-wrapper input {
+  width: 350px;
+}
+
+/* line 11, /Users/Justin/dev/friendsGivingSite/app/assets/stylesheets/events.scss */
+.host-username {
+  font-size: 14px;
+}
+
+/* line 15, /Users/Justin/dev/friendsGivingSite/app/assets/stylesheets/events.scss */
+.bring-btn {
+  margin-top: 20px;
+}
+
+/* line 20, /Users/Justin/dev/friendsGivingSite/app/assets/stylesheets/events.scss */
+span strong {
+  font-size: 14px;
+}
+
+/* line 6, /Users/Justin/dev/friendsGivingSite/app/assets/stylesheets/items.scss */
+ul.list-unstyled li {
+  margin-left: 15px;
+}
+
+/* line 11, /Users/Justin/dev/friendsGivingSite/app/assets/stylesheets/items.scss */
+.item-event {
+  font-size: 15px;
+  font-weight: 300;
+}
+
+/* line 1, /Users/Justin/dev/friendsGivingSite/app/assets/stylesheets/navbar.scss */
+.page-container {
+  padding-top: 50px;
+}
+
+/* line 5, /Users/Justin/dev/friendsGivingSite/app/assets/stylesheets/navbar.scss */
+.nav-username {
+  color: white;
+}
+
+/* line 9, /Users/Justin/dev/friendsGivingSite/app/assets/stylesheets/navbar.scss */
+.pre-alpha {
+  color: green;
+  font-size: 12px;
+}
+
+/* line 6, /Users/Justin/dev/friendsGivingSite/app/assets/stylesheets/welcome.scss */
+h1 span {
+  font-size: 10px;
+}
+
+/* line 11, /Users/Justin/dev/friendsGivingSite/app/assets/stylesheets/welcome.scss */
+.login-signup-container {
+  width: 30vw;
+  margin: 0 auto;
+  text-align: center;
+}
