@@ -44,5 +44,11 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # automates various tasks, livereload dependency
+  gem 'guard'
+
+  # To not have to refresh page to see scss changes
+  gem 'guard-livereload', '~> 2.5', require: false
 end
 
