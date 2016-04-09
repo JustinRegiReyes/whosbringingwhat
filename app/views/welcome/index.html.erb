@@ -1,17 +1,22 @@
 <div class="welcome-wrapper">
 	<div class="row">
-		<div class="col-lg-6 col-md-12">
-			<h1 class="text-center">The Deets</h1>
-			<h6 class="text-center">A get together details solution</h6>
+		<div class="col-sm-12 header-container">
+			<h1 class="text-center header">The Deets</h1>
+			<h5 class="text-center sub-header">A get-together details solution</h5>
+			<div class="button-container">
+				<button type="button" class="btn btn-default" data-toggle="modal" data-target="#login-modal">Log In</button>
+				<a href="/signup" class="btn btn-default text-center">Sign Up</a>
+			</div>
 		</div>
 		<div class="col-lg-6 col-md-12">
-			<button type="button" class="btn btn-default" data-toggle="modal" data-target="#login-modal">Log In</button>
-			<%= render "/partials/login" %>
-			<a href="/signup" class="btn btn-default text-center">Sign Up</a>
 		</div>
 	</div>
 </div>
 
+<!-- Modals -->
+<%= render "/partials/login" %>
+
+<!-- Pop modals back up if error -->
 <% if flash[:login_error] %>
 	<script type="text/javascript">
     $(window).load(function(){

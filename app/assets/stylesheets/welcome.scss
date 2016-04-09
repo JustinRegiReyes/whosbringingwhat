@@ -10,4 +10,23 @@ div.welcome-wrapper {
 	height: 100%;
 	width: 100%;
 	padding: 0 15px;
+	div.row {
+		height: 100%;
+		position: relative;
+	}
+	div.header-container {
+		display: block;
+		top: 50%;
+		transform: translateY(-90%);
+	}
+	h1.header {
+		font-size: 90px;
+	}
+	.sub-header {
+		font-size: 1.15em;
+	}
+	div.button-container {
+		text-align: center;
+		margin: 50px 0;
+	}
 }
