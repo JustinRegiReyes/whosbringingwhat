@@ -2,11 +2,20 @@
 	<div class="row">
 		<div class="col-lg-6 col-md-12">
 			<h1 class="text-center">The Deets</h1>
-			<h6 class="text-center">An event's details solution</h6>
+			<h6 class="text-center">A get together details solution</h6>
 		</div>
 		<div class="col-lg-6 col-md-12">
-			<a href="/login" class="btn btn-default text-center">Login</a>
-			<a href="/signup" class="btn btn-default text-center">Signup</a>
+			<button type="button" class="btn btn-default" data-toggle="modal" data-target="#login-modal">Log In</button>
+			<%= render "/partials/login" %>
+			<a href="/signup" class="btn btn-default text-center">Sign Up</a>
 		</div>
 	</div>
 </div>
+
+<% if flash[:login_error] %>
+	<script type="text/javascript">
+    $(window).load(function(){
+        $('#login-modal').modal('show');
+    });
+</script>
+<% end %>

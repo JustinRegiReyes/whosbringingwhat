@@ -1,7 +1,4 @@
 class SessionsController < ApplicationController
-  def new #login page
-  	@user = User.new
-  end
 
   def create #login
   	userParams = params.require(:user).permit(:username, :password)
@@ -10,7 +7,8 @@ class SessionsController < ApplicationController
   		login(@user)
   		redirect_to home_path
   	else
-  		redirect_to "/login", alert: "You have entered the wrong username and/or password."
+      flash[:auth_error] = "An account with that username and password has not been found."
+  		redirect_to :back
   	end
   end
 
