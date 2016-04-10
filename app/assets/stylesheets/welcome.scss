@@ -2,8 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div.welcome-wrapper {
-	// background-color: yellow;
+div.welcome-container {
+	background-color: $periGreen;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -18,15 +18,47 @@ div.welcome-wrapper {
 		display: block;
 		top: 50%;
 		transform: translateY(-90%);
+		position: relative;
+		width: 600px;
+		margin: 0 auto;
+		color: white;
+		// @media screen and (min-width: $break-lg) {
+		// 	width: 500px;
+		// }
+		div.icon-container {
+			margin: 0 auto;
+			width: 102px;
+			height: 102px;
+			position: relative;
+			border-radius: 100%;
+			div.icon {
+				width: 101px;
+				height: 101px;
+				background: white;
+				border-radius: 100%;
+			}
+			@include circularIcon();
+			i {
+				position: absolute;
+				top: 27px;
+    			right: 22px;
+    			color: #4095F8;
+			}
+		}
 	}
 	h1.header {
-		font-size: 90px;
+		font-size: 110px;
+		font-family: $mainHeader;
 	}
 	.sub-header {
 		font-size: 1.15em;
 	}
 	div.button-container {
 		text-align: center;
-		margin: 50px 0;
+		margin: 50px auto;
+		button {
+			width: 175px;
+			margin: 5px 0;
+		}
 	}
 }
