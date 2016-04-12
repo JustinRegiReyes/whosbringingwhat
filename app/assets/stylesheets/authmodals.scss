@@ -15,10 +15,10 @@ div.auth-modal {
 		label {
 			color: $ashyRed
 		}
-		div {
+		& > div {
 			position: relative;
 			margin: 10px auto;
-			div	{
+			& > div.input-icon	{
 				position: absolute;
 				left: 1px;
 				top: 1px;
@@ -40,6 +40,16 @@ div.auth-modal {
 		}
 		input {
 			padding-left: 50px;
+		}
+		div.choose-avi {
+			height: 30px;
+			label {
+				
+			}
+			input {
+				padding: 0;
+				display: hidden;
+			}
 		}
 		.submit {
 			margin-left: auto;

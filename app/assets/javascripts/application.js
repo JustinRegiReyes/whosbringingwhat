@@ -14,3 +14,16 @@
 //= require bootstrap
 //= require jquery_ujs
 //= require turbolinks
+
+// document.ready
+$(document).ready(ready);
+// for turbolink load
+$(document).on('page:load', ready);
+
+function ready() {
+	chooseAvi();
+}
+
+function chooseAvi() {
+	 
+} 

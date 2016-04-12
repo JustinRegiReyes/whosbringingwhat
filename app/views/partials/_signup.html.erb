@@ -16,20 +16,24 @@
         	<% end %>
           <div class="input-container">
             <div>
-              <div>
+              <div class="input-icon">
                 <i class="fa fa-user fa-2x" aria-hidden="true"></i>
               </div>
           	 <%= f.text_field :username, placeholder: "Username e.g. \"jmoriarty\"", class: "form-control" %>
             </div>
+            <div class="choose-avi">
+                <label>Choose Avi: </label>
+                <input class="avi-upload" type="hidden" role="uploadcare-uploader" />
+            </div>
             <div>
-              <div>
+              <div class="input-icon">
                 <i class="fa fa-key" aria-hidden="true"></i>
               </div>
           	   <%= f.password_field :password, placeholder: raw("Password e.g. &bull;&bull;&bull;&bull;&bull;&bull;&bull;"), class: "form-control password-confirm" %>
             </div>
             <label>Confirm password</label>
             <div>
-              <div>
+              <div class="input-icon">
                 <i class="fa fa-key" aria-hidden="true"></i>
               </div>
           	   <%= f.password_field :password, placeholder: "Re-enter password", class: "form-control password-confirm" %>
