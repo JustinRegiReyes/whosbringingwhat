@@ -16,8 +16,8 @@ div.welcome-container {
 	}
 	div.header-container {
 		display: block;
-		top: 50%;
-		transform: translateY(-90%);
+		top: 40%;
+		transform: translateY(-40%);
 		position: relative;
 		width: 600px;
 		margin: 0 auto;
@@ -37,7 +37,6 @@ div.welcome-container {
 				background: white;
 				border-radius: 100%;
 			}
-			@include circularIcon();
 			i {
 				position: absolute;
 				top: 27px;
