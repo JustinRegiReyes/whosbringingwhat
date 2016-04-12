@@ -18,8 +18,17 @@ gem 'coffee-rails', '~> 4.1.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+# Upload images and pdfs
+gem "paperclip", "~> 4.3"
+gem "papercrop"
+
+gem 'aws-sdk', '< 2.0'
+
 # Font Awesome
 gem 'font-awesome-sass'
+
+# Figaro Gem for ENV variables
+gem 'figaro'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
