@@ -59,6 +59,18 @@ div.welcome-container {
 		button {
 			width: 175px;
 			margin: 5px 0;
+			border: none;
+			background-color: white;
+			color: $cobaltBlue;
+			&:hover {
+				background-color: $cloud;
+			}
+			&.login {
+				// background-color: $ashyRed;
+			}
+			&.signup {
+				// background-color: $sandOrange;
+			}
 		}
 	}
 }

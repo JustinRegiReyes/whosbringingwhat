@@ -1,3 +1,57 @@
-div#login-modal {
-
+div.auth-modal {
+	.modal-header {
+		border: none;
+	}
+	.modal-title {
+		text-align: center;
+		$font-family: $mainHeader;
+	}
+	div.modal-dialog {
+		width: 500px;
+	}
+	div.input-container {
+		max-width: 345px;
+		margin: 0 auto;
+		label {
+			color: $ashyRed
+		}
+		div {
+			position: relative;
+			margin: 10px auto;
+			div	{
+				position: absolute;
+				left: 1px;
+				top: 1px;
+				margin: 0;
+				height: 32px;
+				border-top-left-radius: 4px;
+				border-bottom-left-radius: 4px;
+				width: 35px;
+				background-color: $cloud;
+				border-right: 1px solid #B8B8B8;
+				i {
+					position: absolute;
+					left: 9px;
+					top: 5px;
+					font-size: 1.5em;
+					color: $cobaltBlue;
+				}
+			}
+		}
+		input {
+			padding-left: 50px;
+		}
+		.submit {
+			margin-left: auto;
+			margin-top: 25px;
+			margin-bottom: 15px; 
+			display: block;
+			padding-left: 0;
+			text-align: center;
+			width: 125px;
+			border: none;
+			background-color: $periGreen;
+			color: white;
+		}
+	} // input container
 }

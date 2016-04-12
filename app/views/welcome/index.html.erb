@@ -11,17 +11,16 @@
 			<h1 class="text-center header">The Deets</h1>
 			<h5 class="text-center sub-header">A get-together details solution</h5>
 			<div class="button-container">
-				<button type="button" class="btn btn-default" data-toggle="modal" data-target="#login-modal">Log In</button><br>
-				<button type="button" class="btn btn-default" data-toggle="modal" data-target="#login-modal">Sign Up</button>
+				<button type="button" class="login" data-toggle="modal" data-target="#login-modal">Log In</button><br>
+				<button type="button" class="signup" data-toggle="modal" data-target="#signup-modal">Sign Up</button>
 			</div>
-		</div>
-		<div class="col-lg-6 col-md-12">
 		</div>
 	</div>
 </div>
 
 <!-- Modals -->
 <%= render "/partials/login" %>
+<%= render "/partials/signup" %>
 
 <!-- Pop modals back up if error -->
 <% if flash[:login_error] %>
