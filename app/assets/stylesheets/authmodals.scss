@@ -1,10 +1,16 @@
 div.auth-modal {
 	.modal-header {
 		border: none;
+		padding-bottom: none;
 	}
 	.modal-title {
 		text-align: center;
-		$font-family: $mainHeader;
+		font-family: $mainHeader;
+		font-size: 50px;
+		padding: 0 15px;
+	}
+	.signup-modal {
+		min-height: 400px;
 	}
 	div.modal-dialog {
 		width: 500px;
@@ -36,15 +42,46 @@ div.auth-modal {
 					font-size: 1.5em;
 					color: $cobaltBlue;
 				}
+			} //div.input-icon
+			& > div.pass-match-container {
+				position: absolute;
+				right: 1px;
+				top: 1px;
+				margin: 0;
+				height: 32px;
+				width: 35px;
+				font-size: 1.5em;
+				text-align: center;
+				i.pass-nomatch {
+					color: $ashyRed;
+				}
+				i.pass-match {
+					color: $periGreen;
+				}
 			}
 		}
 		input {
 			padding-left: 50px;
 		}
 		div.choose-avi {
-			height: 30px;
-			label {
-				
+			height: 35px;
+			text-align: center;
+			margin: 20px auto 30px;
+			#user_avi {
+				visibility: hidden;
+			}
+			label span {
+				display: block;
+				padding-top: 6px;
+				background-color: white;
+				border: 1px solid $periGreen;
+				color: $periGreen;
+				width: 100px;
+				height: 35px;
+				&:hover {
+					background-color: darken(white, 5);
+					cursor: pointer;
+				}
 			}
 			input {
 				padding: 0;
@@ -62,6 +99,10 @@ div.auth-modal {
 			border: none;
 			background-color: $ashyRed;
 			color: white;
+			&.register {
+				background-color: $periGreen;
+				display: none;
+			}
 		}
 	} // input container
 }

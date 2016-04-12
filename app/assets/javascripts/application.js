@@ -21,9 +21,41 @@ $(document).ready(ready);
 $(document).on('page:load', ready);
 
 function ready() {
-	chooseAvi();
+	passwordConfirm();
+	filename();
 }
 
-function chooseAvi() {
-	 
-} 
+function passwordConfirm() {
+	var $passConfirm = $(".password-confirm");
+	var $passOne = $('.pass-first');
+	var $passTwo = $('.pass-second');
+	var noMatch = '<i class="fa fa-times-circle pass-nomatch" aria-hidden="true"></i>';
+	var match = '<i class="fa fa-check-circle pass-match" aria-hidden="true"></i>'
+	var $passContainer = $(".pass-match-container");
+	var $registerButton = $(".submit.register");
+	var $username = $("#signup-username");
+	if($passConfirm.length > 0) {
+		$(".input-container").on('input', '.password-confirm', function(e) {
+			if ($passOne.val() === $passTwo.val()) {
+				$passContainer.html(match);
+				console.log($username.val());
+				if($username.val().length > 0) {
+					$registerButton.show("fast");
+				}
+			} else {
+				$registerButton.hide("fast");
+				$passContainer.html(noMatch);
+			}
+		})
+	}
+}
+
+function filename() {
+	$("#user_avi").on("change", function(e) {
+		var filePath = $(this).val();
+		var split = filePath.split("\\");
+		var filename = split[split.length - 1];
+		$("#filename").empty();
+		$("#filename").append(filename);
+	});
+}
