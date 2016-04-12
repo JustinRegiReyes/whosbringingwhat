@@ -36,7 +36,7 @@ function passwordConfirm() {
 	var $username = $("#signup-username");
 	if($passConfirm.length > 0) {
 		$(".input-container").on('input', '.password-confirm', function(e) {
-			if ($passOne.val() === $passTwo.val()) {
+			if ($passOne.val() === $passTwo.val() && ($passOne.length > 0)) {
 				$passContainer.html(match);
 				console.log($username.val());
 				if($username.val().length > 0) {
