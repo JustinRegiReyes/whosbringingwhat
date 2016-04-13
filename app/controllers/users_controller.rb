@@ -5,23 +5,24 @@ class UsersController < ApplicationController
   end
 
   def create
-    user_params = params.require(:user).permit(:username, :password)
-    @user = User.create(user_params)
+    @user = User.create(newuser_params)
     createdUser = User.find_by_id(@user.id)
-
     if createdUser
       login(@user)
       redirect_to "/home"
     else
-      redirect_to "/signup"
+      # flash[:notice] = "An account with that username and password has not been found."
+      # redirect_to "/"
+      render "/welcome/index"
     end
 
   end
 
   def show
+  end
+
+  def home
     
-    render "home.html.erb"
- 
   end
 
   def edit
@@ -31,5 +32,11 @@ class UsersController < ApplicationController
   end
 
   def delete
+  end
+
+  private
+
+  def newuser_params
+    params.require(:user).permit(:username, :password, :avi)
   end
 end

@@ -30,3 +30,11 @@
     });
 </script>
 <% end %>
+
+<% if @user.errors.any? %>
+	<script type="text/javascript">
+    $(window).load(function(){
+        $('#signup-modal').modal('show');
+    });
+</script>
+<% end %>

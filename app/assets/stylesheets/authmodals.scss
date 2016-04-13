@@ -88,8 +88,12 @@ div.auth-modal {
 				display: hidden;
 			}
 		}
-		.submit {
+		div.register-container {
+			width: 125px;
+			margin: 0;
 			margin-left: auto;
+		}
+		.submit {
 			margin-top: 25px;
 			margin-bottom: 15px; 
 			display: block;
