@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   post '/sessions', to: 'sessions#create'
 
-  resources :users
+  # users routes
+    resources :users, path: "signup", as: :users, only: [:create]
+    get '/home', to: 'users#home'
 
 end
