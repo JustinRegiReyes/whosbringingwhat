@@ -2,6 +2,32 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+div#stickerContainer {
+	font-family: $sticker;
+	font-size: 180px;
+	position: relative;
+	color: #B83EB8;
+	div {
+		position: absolute;
+		&.one {
+			right: 750px;
+			top: 750px;
+			text-shadow: -4px 6px 3px black;
+		}
+		&.two {
+			right: 1000px;
+			top: 1000px;
+			text-shadow: -4px 6px 3px black;
+		}
+	}
+}
+
+img#sticker {
+	display: block;
+	margin: 200px auto;
+}
+
+
 div.welcome-container {
 	background-color: $periGreen;
 	position: absolute;
