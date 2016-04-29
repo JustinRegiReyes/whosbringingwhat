@@ -18,6 +18,9 @@ gem 'coffee-rails', '~> 4.1.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+gem 'clndr-rails'
+gem 'momentjs-rails', '2.11.1'
+
 # Upload images and pdfs
 gem "paperclip", "~> 4.3"
 gem "papercrop"

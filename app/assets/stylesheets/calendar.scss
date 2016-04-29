@@ -1,0 +1,79 @@
+#calendar-wrapper {
+  font-size: 16px;
+  .clndr-controls {
+    padding: 5px 10px;
+    margin: 0;
+    height: 50px;
+    .clndr-previous-button {
+      width: 30%;
+      float: left;
+      text-align: left;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .month {
+      width: 40%;
+      float: left;
+      text-align: center;
+    }
+    .clndr-next-button {
+      width: 30%;
+      float: left;
+      text-align: right;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  } //clndr-controls
+  .clndr-grid {
+    width: 710px;
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 10px;
+    .days-of-the-week {
+      background-color: $cobaltBlue;
+      width: 700px;
+      height: 30px;
+    }
+    .days {
+    }
+    .header-day { 
+      height: 20px;
+    }
+    .header-day, .day {
+      display: inline-block;
+      width: 100px;
+      margin: 5px 0px !important;
+      float: left;
+      text-align: center;
+    }
+    .day {
+      height: 50px;
+      span.day-number {
+        height: 20px;
+        display: inline-block;        
+        @include vertical-align();
+      }
+    }
+    .prevMonth, .nextMonth {
+      color: red;
+      background-color: #F8F8F8;
+    }
+  } //clndr-grid
+  .events-wrapper {
+    display: inline-block;
+    min-height: 300px;
+    width: 300px;
+    vertical-align: top;
+    .events-header {
+      margin: 5px 0 20px;
+      text-align: center;
+      span {
+      }
+    }
+    .events {
+      padding: 10px;
+    }
+  }
+}

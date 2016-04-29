@@ -16,11 +16,26 @@ nav.navbar-xs {
 	height: 35px;
 	position: relative;
 	width: 100px;
-	span {
+	& > span {
 		position: absolute;
 	    top: 50%;
 	    transform: translateY(-50%);
+	    & > span {
+	    	display: inline-block;
+	    	&.logo {
+	    		background-color: white;
+	    		border-radius: 50%;
+	    		width: 26px;
+	    		height: 26px;
+	    		position: relative;
+			    top: 5px;
+			    font-size: .9em;
+	    	}
+	    }
 	    i {
+	    	position: absolute;
+    		bottom: 4px;
+    		left: 4px;
 	    	color: $cobaltBlue;
 	    }
 	}

@@ -12,6 +12,10 @@
 //
 //= require jquery
 //= require bootstrap
+//= require moment
+//=	require underscore
+//=	require calendar
+//=	require clndr-rails
 //= require jquery_ujs
 //= require turbolinks
 
