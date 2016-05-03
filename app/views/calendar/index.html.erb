@@ -25,9 +25,22 @@
 		</div>
 		<div class="events">
 			<%% _.each(eventsThisMonth, function(event) { %>
+				
               <div class="event-item">
-                <div class="event-item-name"><%%= event.title %></div>
-                <div class="event-item-location"><%%= event.location %></div>
+                <span class="event-title"><%%= event.title %></span>
+                <%% if (event.date != undefined) { %>
+                	<%% var mydate = new Date(event.date); %>
+                	<%% var monthNum = mydate.getMonth() %>
+                	<%% var month = ["January", "February", "March", "April", "May", "June",
+"July", "August", "September", "October", "November", "December"][monthNum]; %>
+					<%% var str = month + ' ' + mydate.getFullYear(); %>
+
+                	<span class="event-date"><%%= str %></span>
+                	<br><br>
+            	<%%} else { %>
+            		<span class="event-date">Multiday <%%= event.startDate %> - <%%= event.endDate %></span>
+            		<br><br>
+            	<%%} %>
               </div>
             <%% }); %>
         </div>

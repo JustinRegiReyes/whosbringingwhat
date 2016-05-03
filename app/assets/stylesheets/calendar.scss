@@ -27,13 +27,13 @@
     }
   } //clndr-controls
   .clndr-grid {
-    width: 710px;
+    width: 600px;
     display: inline-block;
     vertical-align: top;
     padding-left: 10px;
     .days-of-the-week {
       background-color: $cobaltBlue;
-      width: 700px;
+      width: 100%;
       height: 30px;
     }
     .days {
@@ -43,7 +43,7 @@
     }
     .header-day, .day {
       display: inline-block;
-      width: 100px;
+      width: 14.2857%;
       margin: 5px 0px !important;
       float: left;
       text-align: center;
@@ -64,7 +64,7 @@
   .events-wrapper {
     display: inline-block;
     min-height: 300px;
-    width: 300px;
+    width: 290px;
     vertical-align: top;
     .events-header {
       margin: 5px 0 20px;

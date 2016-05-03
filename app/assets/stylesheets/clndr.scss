@@ -27,7 +27,8 @@ html[xmlns] .clearfix {
   -ms-user-select: none;
   /* IE10+ */
 }
-h4 {
+
+h4.calendar {
   width: 75%;
   text-align: center;
   font-family: 'Droid Sans Mono';
@@ -59,7 +60,7 @@ h5 {
 }
 .cal {
   margin: 30px auto;
-  width: 1024px;
+  width: 900px;
   font-family: 'Droid Sans Mono';
   font-size: 14px;
 }

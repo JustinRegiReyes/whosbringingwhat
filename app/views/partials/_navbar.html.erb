@@ -15,7 +15,7 @@
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-right">
       <li class="side-divide">&nbsp;</li>
-      <li><a href="#">$</a></li>
+      <li><a href="/events/new">$</a></li>
       <li class="side-divide">&nbsp;</li>
       <li><a href="#">$</a></li>
       <li class="side-divide">&nbsp;</li>
@@ -30,7 +30,7 @@
           <li class="divider"></li>
           <li><a href="#">Separated link</a></li>
           <li class="divider"></li>
-          <li><a href="#">One more separated link</a></li>
+          <li><%= link_to 'Logout',  "/sessions", method: :delete %></li>
         </ul>
       </li>
       <li class="side-divide">&nbsp;</li>

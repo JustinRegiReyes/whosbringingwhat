@@ -10,18 +10,17 @@ class EventsController < ApplicationController
     date = eventParams[:date]
     user = User.find_by_username(eventParams[:username])
 
-  if user 
-    event = Event.find_by(user_id: user.id, title: title, date: date)
-  else
-    return redirect_to :back, alert: "An event does not match those queries."
-  end 
+    if user 
+      event = Event.find_by(user_id: user.id, title: title, date: date)
+    else
+      return redirect_to :back, alert: "An event does not match those queries."
+    end 
 
-  if event
-    return redirect_to "/events/#{event.id}"
-  else
-    return redirect_to :back, alert: "An event does not match those queries."
-  end
-    # binding.pry
+    if event
+      return redirect_to "/events/#{event.id}"
+    else
+      return redirect_to :back, alert: "An event does not match those queries."
+    end
   end
 
   def create

@@ -1,9 +1,5 @@
 // Call this from the developer console and you can control both instances
 $(document).ready( function() {
-    console.info(
-        'Welcome to the CLNDR demo. Click around on the calendars and' +
-        'the console will log different events that fire.');
-
     // Assuming you've got the appropriate language files,
     // clndr will respect whatever moment's language is set to.
     // moment.locale('ru');
@@ -16,19 +12,20 @@ $(document).ready( function() {
         {
             title: 'Multi-Day Event',
             endDate: thisMonth + '-14',
-            startDate: thisMonth + '-10'
+            startDate: thisMonth + '-10',
+            description: 'description'
         }, {
             endDate: thisMonth + '-23',
             startDate: thisMonth + '-21',
-            title: 'Another Multi-Day Event'
+            title: 'Another Multi-Day Event', description: 'description'
         }, {
             date: thisMonth + '-27',
-            title: 'Single Day Event'
+            title: 'Single Day Event', description: 'description'
         },
-        { date: thisMonth + '-' + '10', title: 'Persian Kitten Auction', location: 'Center for Beautiful Cats' },
-        { date: thisMonth + '-' + '19', title: 'Cat Frisbee', location: 'Jefferson Park' },
-        { date: thisMonth + '-' + '23', title: 'Kitten Demonstration', location: 'Center for Beautiful Cats' },
-        { date: nextMonth + '-' + '07',    title: 'Small Cat Photo Session', location: 'Center for Cat Photography' }
+        { date: thisMonth + '-' + '10', title: 'Persian Kitten Auction', location: 'Center for Beautiful Cats', description: 'description' },
+        { date: thisMonth + '-' + '19', title: 'Cat Frisbee', location: 'Jefferson Park', description: 'description' },
+        { date: thisMonth + '-' + '23', title: 'Kitten Demonstration', location: 'Center for Beautiful Cats', description: 'description' },
+        { date: nextMonth + '-' + '07',    title: 'Small Cat Photo Session', location: 'Center for Cat Photography', description: 'description' }
     ];
 
     // The order of the click handlers is predictable. Direct click action
