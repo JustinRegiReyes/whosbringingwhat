@@ -24,12 +24,9 @@ class EventsController < ApplicationController
   end
 
   def create
-    eventParams = params.require(:event).permit(:title, :description, :date, :time, :where)
-    event = Event.create(eventParams)
-    attendingEvent = AttendingEvent.create()
-    event.attending_event = attendingEvent
-    current_user.events << event
-    
+    event = Event.create(event_params)
+    current_user.created_events << event
+    binding.pry
     redirect_to "/events/#{event.id}"
   end
 
@@ -63,5 +60,11 @@ class EventsController < ApplicationController
   end
 
   def delete
+  end
+
+  private
+
+  def event_params
+      params.require(:event).permit(:photo, :title, :description, :where, :address, :city, :zipcode, :state, :country, :date_start, :date_end, :time_start, :time_end)
   end
 end

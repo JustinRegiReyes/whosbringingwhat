@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160503233504) do
+ActiveRecord::Schema.define(version: 20160504182248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,18 +42,30 @@ ActiveRecord::Schema.define(version: 20160503233504) do
 
   create_table "events", force: :cascade do |t|
     t.string   "title"
+    t.string   "photo"
+    t.string   "banner"
     t.integer  "user_id"
     t.text     "description"
-    t.date     "date"
-    t.time     "time"
+    t.date     "date_start"
+    t.date     "date_end"
+    t.time     "time_start"
+    t.time     "time_end"
     t.string   "address"
     t.string   "city"
     t.string   "zipcode"
     t.string   "state"
     t.string   "country"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
     t.string   "where"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string   "banner_file_name"
+    t.string   "banner_content_type"
+    t.integer  "banner_file_size"
+    t.datetime "banner_updated_at"
   end
 
   create_table "items", force: :cascade do |t|
@@ -68,8 +80,11 @@ ActiveRecord::Schema.define(version: 20160503233504) do
   create_table "users", force: :cascade do |t|
     t.string   "password_digest"
     t.string   "username"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.text     "comment_notifications",    default: [],              array: true
+    t.text     "invitation_notifications", default: [],              array: true
+    t.text     "invitations",              default: [],              array: true
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "avi_file_name"
     t.string   "avi_content_type"
     t.integer  "avi_file_size"

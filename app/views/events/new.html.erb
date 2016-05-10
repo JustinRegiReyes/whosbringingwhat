@@ -3,29 +3,61 @@
 <div class="container">
 	<h3 class="text-center">Create an event</h3>
 	<div class="form-container">
-		<%= form_for @event, url: '/events/create', method: "post" do |f| %>
-		<div class="text-center">
-			<label>Name of Event</label><br>
-			<%=	f.text_field :title, placeholder: "Derpfest 2015" %>
-			<br><br>
-			<label>Description</label><br>
-			<%= f.text_area :description, placeholder: 'A time to derp... Peben\'s suggestion.' %>
-			<br><br>
-			<label>Where</label><br>
-			<%=	f.text_field :where, placeholder: "Derpfest 2015" %>
-			<br><br>
-			<label>Date</label><br>
-			<%=	f.date_field :date, placeholder: "Name of Event" %>
-			<br><br>
-			<label>Time</label><br>
-			<%=	f.time_field :time, placeholder: "Name of Event" %>
-			<br>
-		</div>
-		<br>
-		<div class="text-center">
-			<%= f.submit class: "btn btn-default", value: "Create Event" %>
-		</div>
-
+		<%= form_for @event, url: '/events', method: "post" do |f| %>
+			<div class="text-center">
+				<div>
+					<label for="photo"><span type="button">Upload Photo</span></label><br><span id="filename"></span>
+                 	<%= f.file_field :photo %>
+				</div>
+				<div>
+					<label>Name of Event</label><br>
+					<%=	f.text_field :title, placeholder: "Derpfest 2015" %>
+				</div>
+				<div>
+					<label>Description</label><br>
+					<%= f.text_area :description, placeholder: 'A time to derp... Peben\'s suggestion.' %>
+				</div>
+				<div>
+					<h4>Where</h4>
+					<div>
+						<label>Name of Venue</label><br>
+						<%=	f.text_field :where, placeholder: "The Batcave" %>
+					</div>
+					<div>
+						<label>Address</label><br>
+						<%=	f.text_field :address, placeholder: "The Batcave" %>
+					</div>
+					<div>
+						<label>City</label><br>
+						<%=	f.text_field :city, placeholder: "The Batcave" %>
+					</div>
+					<div>
+						<label>Zipcode</label><br>
+						<%=	f.text_field :zipcode, placeholder: "The Batcave" %>
+					</div>
+					<div>
+						<label>State</label><br>
+						<%=	f.text_field :state, placeholder: "The Batcave" %>
+					</div>
+					<div>
+						<label>Country</label><br>
+						<%=	f.text_field :country, placeholder: "The Batcave" %>
+					</div>
+				</div>
+				<div>
+					<label>Start Date</label><br>
+					<%=	f.date_field :date_start, placeholder: "Name of Event" %>
+					<%=	f.date_field :date_end, placeholder: "Name of Event" %>
+				</div>
+				<div>
+					<label>Time</label><br>
+					<%=	f.time_field :time_start, placeholder: "Name of Event" %>
+					<%=	f.time_field :time_end, placeholder: "Name of Event" %>
+				</div>
+				<div class="text-center">
+					<%= f.submit class: "btn btn-default", value: "Create Event" %>
+				</div>
+			</div>
 		<% end %>
 	</div>
 </div>

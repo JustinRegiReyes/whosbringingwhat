@@ -5,11 +5,13 @@
 <div class="container">
 	<p><i><%= @event.description %></i></p>
 	<h3>When</h3>
-		<p><%= @event.date.strftime("%b %d" + ", a " + "%A") %> @ <%=@event.time.strftime("%I:%M %p") %></p> 
+		<p><%= @event.date_start.strftime("%b %d" + ", a " + "%A") %> @ </p>  
+		<%=@event.time_start.strftime("%I:%M %p") %>
+		<%=@event.time_end.strftime("%I:%M %p") %>
 	<h3>Where</h3>
 		<p><%= @event.where %></p>
 	<h3>Guests Attending</h3>
-	<% if @event.attending_event.users.length === 0 %>
+	<% if @event.attendees.count === 0 %>
 		<p>No guests have confirmed attendance.</p>
 	<% else %>
 		<% @event.attending_event.users.each do |user| %>

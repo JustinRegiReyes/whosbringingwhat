@@ -1,5 +1,5 @@
 class AddAviFileToUsers < ActiveRecord::Migration
-  def up
+  	def up
 		add_attachment :users, :avi
 	end
 
