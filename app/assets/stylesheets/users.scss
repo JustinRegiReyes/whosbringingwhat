@@ -1,3 +1,29 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+div.search-wrapper {
+	margin-top: 50px;
+	margin: 0 auto;
+	height: 250px;
+	width: 80%;
+	div.form-wrapper {
+		@include vertical-align();
+		& > div {
+			margin: 0 auto;
+		}
+		input.search-full {
+			width: 45%;
+		}
+		label {
+			text-align: left;
+			width: 50px;
+		}
+		div.date-wrapper {
+			text-align: left;
+			margin: 0 auto;
+			width: 45%;
+		}
+	}
+}

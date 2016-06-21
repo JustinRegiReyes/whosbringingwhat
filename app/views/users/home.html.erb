@@ -1,27 +1,27 @@
-	<h3 class="text-center">Find an event</h3>
 	<% if flash[:alert] %>
 	  <p class="alert alert-danger text-center"> <%= flash[:alert] %></p>
 	<% end %>
-	<br>
-	<form class="form" method="POST" action="/events/search">
-		<div id="search-wrapper" class="text-center">
-			<label>What is it called?</label>
-			<br>
-			<input type="text" name="event[title]" placeholder='"New Year Big Bash", "Chill and Grill", etc.'>
-			<br>
-			<label>Host</label>
-			<br>
-			<input type="text" name="event[username]" placeholder='Host of event. For example, "Roro"'>
-			<br>
-			<label>What day is it?</label>
-			<br>
-			<input type="date" name="event[date]">
-			<br>
-			<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
-			<button type="submit" class="btn btn-default text-center search">
-				Search
-			</button>
+	<div class="search-wrapper">
+		<div class="form-wrapper">
+			<h3 class="text-center">Event Search</h3>
+			<form class="form" method="POST" action="/events/search">
+				<div class="text-center">
+					<input type="text" class="search-full" name="event[title]" placeholder='Name of Event'>
+					<br>
+					<input type="text" class="search-full" name="event[username]" placeholder='Host username. For example, "Roro"'>
+					<br>
+					<div class="date-wrapper">
+						<label>Date</label>
+						<input type="date" name="event[date]">
+					</div>
+					<br>
+					<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+					<button type="submit" class="btn btn-default text-center search">
+						Search
+					</button>
+				</div>
+			</form>
 		</div>
-	</form>
+	</div>
 
 

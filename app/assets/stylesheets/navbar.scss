@@ -46,6 +46,9 @@ nav.navbar-xs {
 	line-height: 30px;
 	height: 30px;
 	position: relative;
+	& > i.new-event-icon {
+		padding-top: 9px !important;
+	}
 }
 
 li.side-divide {
