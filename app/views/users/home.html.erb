@@ -1,6 +1,24 @@
 	<% if flash[:alert] %>
 	  <p class="alert alert-danger text-center"> <%= flash[:alert] %></p>
 	<% end %>
+	<div id="home-notifications">
+		<div class="notification-wrapper">
+			<div class="icon-wrapper">
+				<i class="fa fa-times-circle-o" aria-hidden="true"></i>
+			</div>
+			<% if @notifications != nil %>
+				<ul>
+					<% @notifications.each do |n| %>
+						<li>something</li>
+					<% end %>
+				</ul>
+			<% else %>
+				<div class="text-center">
+					No new notifications
+				</div>
+			<% end %>
+		</div>
+	</div>
 	<div class="search-wrapper">
 		<div class="form-wrapper">
 			<h3 class="text-center">Event Search</h3>

@@ -33,6 +33,11 @@ body {
 	padding-top: 45px;
 }
 
+div#layout-wrapper {
+	position: relative;
+	height: 100%;
+}
+
 button, input.submit {
 	height: 30px;
 }

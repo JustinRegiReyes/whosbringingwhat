@@ -2,19 +2,48 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+div#home-notifications {
+	position: absolute;
+	right: 100px;
+	top: 10px;
+	border: 1px dotted black;
+	width: 250px;
+	min-height: 50px;
+	max-height: 250px;
+	overflow: visible;
+	padding: 10px;
+	div.notification-wrapper {
+		position: relative;
+		div.icon-wrapper {
+			position: absolute;
+			right: -20px;
+			top: -20px;
+			i {
+				font-size: 1.5em;
+			}
+		}
+	}
+}
 
 div.search-wrapper {
 	margin-top: 50px;
 	margin: 0 auto;
 	height: 250px;
-	width: 80%;
+	width: 400px;
 	div.form-wrapper {
 		@include vertical-align();
+		top: 80%;
 		& > div {
 			margin: 0 auto;
 		}
-		input.search-full {
-			width: 45%;
+		input {
+			border-radius: 15px;
+			border: 1px solid gray;
+			padding: 1px 10px;
+			margin: 5px 0;
+			&.search-full {
+				width: 300px;
+			}
 		}
 		label {
 			text-align: left;
@@ -23,7 +52,7 @@ div.search-wrapper {
 		div.date-wrapper {
 			text-align: left;
 			margin: 0 auto;
-			width: 45%;
+			width: 230px;
 		}
 	}
 }
