@@ -1,0 +1,52 @@
+<div id="calendar-wrapper" class="cal">
+</div>
+
+<script type="text/template" id="full-clndr-template">
+	<div class="clndr-controls">
+	  <div class="clndr-previous-button">prev</div>
+	  <div class="month"><%%= month %> <%%= year %></div>
+	  <div class="clndr-next-button">next</div>
+	</div>
+	<div class="clndr-grid">
+	  <div class="days-of-the-week">
+	    <%% _.each(daysOfTheWeek, function(day) { %>
+	      <div class="header-day"><%%= day %></div>
+	    <%% }); %>
+	  </div>
+	  <div class="days">
+	    <%% _.each(days, function(day) { %>
+	      <div class="<%%= day.classes %>" id="<%%= day.id %>"><span class="day-number"><%%= day.day %></span></div>
+	    <%% }); %>
+	  </div>
+	</div>
+	<div class="events-wrapper">
+		<div class="events-header">
+			<span>Events This Month</span>
+		</div>
+		<div class="events">
+			<%% _.each(eventsThisMonth, function(event) { %>
+				
+              <div class="event-item">
+                <span class="event-title"><%%= event.title %></span>
+                <%% if (event.date != undefined) { %>
+                	<%% var mydate = new Date(event.date); %>
+                	<%% var monthNum = mydate.getMonth() %>
+                	<%% var month = ["January", "February", "March", "April", "May", "June",
+"July", "August", "September", "October", "November", "December"][monthNum]; %>
+					<%% var str = month + ' ' + mydate.getFullYear(); %>
+
+                	<span class="event-date"><%%= str %></span>
+                	<br><br>
+            	<%%} else { %>
+            		<span class="event-date">Multiday <%%= event.startDate %> - <%%= event.endDate %></span>
+            		<br><br>
+            	<%%} %>
+              </div>
+            <%% }); %>
+        </div>
+	</div>
+</script>
+
+<script type="text/javascript">
+	
+</script>
