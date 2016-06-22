@@ -2,6 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+div#home-container {
+	height: 1px;
+	height: 100%;
+	background-color: $cloud;
+	position: inherit;
+}
+
 div#home-notifications {
 	position: absolute;
 	right: 100px;
@@ -12,6 +19,7 @@ div#home-notifications {
 	max-height: 250px;
 	overflow: visible;
 	padding: 10px;
+	background-color: white;
 	div.notification-wrapper {
 		position: relative;
 		div.icon-wrapper {
@@ -26,19 +34,21 @@ div#home-notifications {
 }
 
 div.search-wrapper {
-	margin-top: 50px;
+	padding: 30px;
 	margin: 0 auto;
-	height: 250px;
+	height: 300px;
 	width: 400px;
+	@include vertical-align();
+	top: 40%;
+	border-radius: 3px;
+	background-color: white;
 	div.form-wrapper {
-		@include vertical-align();
-		top: 80%;
 		& > div {
 			margin: 0 auto;
 		}
 		input {
-			border-radius: 15px;
 			border: 1px solid gray;
+			border-radius: 1px;
 			padding: 1px 10px;
 			margin: 5px 0;
 			&.search-full {
