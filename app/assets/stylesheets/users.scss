@@ -40,15 +40,22 @@ div.search-wrapper {
 	height: 300px;
 	width: 400px;
 	@include vertical-align();
+	@include box-shadow();
 	top: 40%;
-	border-radius: 3px;
 	background-color: white;
 	div.form-wrapper {
+		min-height: 190px;
+		height: auto;
+		@include vertical-align();
+		h3 {
+			margin-top: 0;
+			font-family: $hind;
+		}
 		& > div {
 			margin: 0 auto;
 		}
 		input {
-			border: 1px solid gray;
+			border: 1px solid $cloud;
 			border-radius: 1px;
 			padding: 1px 10px;
 			margin: 5px 0;
@@ -59,6 +66,7 @@ div.search-wrapper {
 		label {
 			text-align: left;
 			width: 50px;
+			font-weight: 200;
 		}
 		div.date-wrapper {
 			text-align: left;

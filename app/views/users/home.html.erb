@@ -22,7 +22,7 @@
 	</div>
 	<div class="search-wrapper">
 		<div class="form-wrapper">
-			<h3 class="text-center">Search for an event</h3>
+			<h3 class="text-center">Find an Event</h3>
 			<form class="form" method="POST" action="/events/search">
 				<div class="text-center">
 					<input type="text" class="search-full" name="event[title]" placeholder='Name of Event'>
@@ -31,7 +31,7 @@
 					<br>
 					<div class="date-wrapper">
 						<label>Date</label>
-						<input type="date" name="event[date]">
+						<input type="text" class="span2 medium" name="event[:date_start]" placeholder='<%= Date.today.strftime("%m/%d/%Y") %>' id="dpt1">
 					</div>
 					<br>
 					<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
@@ -43,3 +43,12 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	$(function(){
+	  $('#dpt1').fdatepicker({
+			format: 'mm/dd/yyyy',
+			disableDblClickSelection: true,
+		});
+	});
+</script>
