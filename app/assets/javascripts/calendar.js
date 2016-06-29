@@ -1,5 +1,7 @@
 // Call this from the developer console and you can control both instances
-$(document).ready( function() {
+$(document).ready(calendar);
+$(document).on('page:load', calendar);
+function calendar() {
     // Assuming you've got the appropriate language files,
     // clndr will respect whatever moment's language is set to.
     // moment.locale('ru');
@@ -118,7 +120,7 @@ $(document).ready( function() {
         daysOfTheWeek: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
     });
 
-});
+};
 
 function formatDate(date) {
     var d = new Date(date),
