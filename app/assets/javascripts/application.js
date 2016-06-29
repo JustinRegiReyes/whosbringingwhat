@@ -15,6 +15,8 @@
 //= require moment
 //=	require underscore
 //=	require calendar
+//= require wickedpicker
+//= require foundation-datepicker
 //=	require clndr-rails
 //= require jquery_ujs
 //= require turbolinks
@@ -27,6 +29,7 @@ $(document).on('page:load', ready);
 function ready() {
 	passwordConfirm();
 	filename();
+	timePicker();
 }
 
 function passwordConfirm() {
@@ -62,4 +65,10 @@ function filename() {
 		$("#filename").empty();
 		$("#filename").append(filename);
 	});
+}
+
+function timePicker() {
+	if($('.timepicker')) {
+		$('.timepicker').wickedpicker();
+	}
 }

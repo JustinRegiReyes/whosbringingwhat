@@ -24,20 +24,34 @@
 @import "clndr";
 @import "calendar";
 @import "users";
+@import "events";
+@import "wickedpicker";
+@import "foundation";
 
 body {
 	min-width: 100vw;
 	height: 1px;
 	min-height: 100vh;
 	position: relative;
-	padding-top: 22px;
+	padding-top: 6px;
 }
 
 div#layout-wrapper {
 	position: relative;
 	height: 100%;
+	top: 0;
+}
+
+div.default-container {
+	height: 100%;
+	background-color: $cloud;
+	position: inherit;
 }
 
 button, input.submit {
 	height: 30px;
+}
+
+.textarea {
+	resize: none;
 }
