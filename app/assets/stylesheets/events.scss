@@ -20,7 +20,10 @@ div#new-event-container {
 			width: 80%;
 			margin: 0 auto;
 			& > div {
-				padding: 0 !important;
+				padding: 0;
+			}
+			& > div.col-xs-4 {
+				padding-left: 5px;
 			}
 			& > div.start-end-wrapper {
 				div.col-xs-6 {
@@ -33,8 +36,14 @@ div#new-event-container {
 			}
 		}
 		textarea, input {
-			border: 1px solid silver;
+			border: none;
+			border-bottom: 1px solid $cloud;
 			margin-bottom: 10px;
+			color: $asphalt;
+			padding-bottom: 5px;
+			&:focus {
+				color: black;
+			}
 			&.full {
 				width: 100%;
 			}
@@ -63,6 +72,9 @@ div#new-event-container {
 				height: 125px;
 			}
 		}
+		textarea {
+			border: 1px solid $cloud;
+		}
 		label {
 			font-weight: 200;
 			&.half {
@@ -90,6 +102,14 @@ div#new-event-container {
 						color: $periGreen;
 					}
 				}
+			}
+		}
+		#new-event-submit {
+			color: white;
+			background-color: $periGreen;
+			border-radius: 0;
+			&:hover {
+				background-color: lighten($periGreen, 2%);
 			}
 		}
 	} // div.form-container
