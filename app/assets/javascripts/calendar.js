@@ -21,37 +21,37 @@ function calendar() {
             title: 'Camping',
             date_end: thisMonth + '-14',
             date_start: thisMonth + '-10',
-            description: 'description',
+            description: 'description', id: 1,
             user: {
                 username: "Roro"
             }
         }, {
             date_end: thisMonth + '-23',
             date_start: thisMonth + '-10',
-            title: 'Board Game Night', description: 'description',
+            title: 'Board Game Night', description: 'description', id: 2,
             user: {
                 username: "Roro"
             }
         }, {
             date_start: thisMonth + '-27',
-            title: 'Single Day Event', description: 'description',
+            title: 'Single Day Event', description: 'description', id: 3,
             user: {
                 username: "Roro"
             }
         },
-        { date_start: thisMonth + '-' + '10', title: 'Persian Kitten Auction', location: 'Center for Beautiful Cats', description: 'description',
+        { date_start: thisMonth + '-' + '10', title: 'Persian Kitten Auction', location: 'Center for Beautiful Cats', description: 'description', id: 4,
         user: {
             username: "Roro"
         } },
-        { date_start: thisMonth + '-' + '19', title: 'Cat Frisbee', location: 'Jefferson Park', description: 'description',
+        { date_start: thisMonth + '-' + '19', title: 'Cat Frisbee', location: 'Jefferson Park', description: 'description', id: 5,
         user: {
             username: "Roro"
         } },
-        { date_start: thisMonth + '-' + '23', title: 'Kitten Demonstration', location: 'Center for Beautiful Cats', description: 'description',
+        { date_start: thisMonth + '-' + '23', title: 'Kitten Demonstration', location: 'Center for Beautiful Cats', description: 'description', id: 6,
         user: {
             username: "Roro"
         } },
-        { date_start: nextMonth + '-' + '07',    title: 'Small Cat Photo Session', location: 'Center for Cat Photography', description: 'description',
+        { date_start: nextMonth + '-' + '07',    title: 'Small Cat Photo Session', location: 'Center for Cat Photography', description: 'description', id: 7,
         user: {
             username: "Roro"
         } }
