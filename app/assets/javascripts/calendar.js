@@ -73,7 +73,6 @@ function calendar() {
     var last;
     // groups events on the same date so I can go through them in the view without stating the day repeatedly
     eventArray.forEach(function(e){
-        console.log(e.date_start)
       if(e.date_start && last !== e.date_start) {
         last = e.date_start;
         dates.push(e.date_start);
