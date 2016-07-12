@@ -1,6 +1,12 @@
 // Call this from the developer console and you can control both instances
-$(document).ready(calendar);
-$(document).on('page:load', calendar);
+$(document).ready(clndrPage);
+$(document).on('page:load', clndrPage);
+
+function clndrPage() {
+    calendar();
+    markDates(calendar());
+}
+
 function calendar() {
     // Assuming you've got the appropriate language files,
     // clndr will respect whatever moment's language is set to.
@@ -12,23 +18,68 @@ function calendar() {
     // Events to load into calendar
     var eventArray = [
         {
-            title: 'Multi-Day Event',
-            endDate: thisMonth + '-14',
-            startDate: thisMonth + '-10',
-            description: 'description'
+            title: 'Camping',
+            date_end: thisMonth + '-14',
+            date_start: thisMonth + '-10',
+            description: 'description',
+            user: {
+                username: "Roro"
+            }
         }, {
-            endDate: thisMonth + '-23',
-            startDate: thisMonth + '-21',
-            title: 'Another Multi-Day Event', description: 'description'
+            date_end: thisMonth + '-23',
+            date_start: thisMonth + '-10',
+            title: 'Board Game Night', description: 'description',
+            user: {
+                username: "Roro"
+            }
         }, {
-            date: thisMonth + '-27',
-            title: 'Single Day Event', description: 'description'
+            date_start: thisMonth + '-27',
+            title: 'Single Day Event', description: 'description',
+            user: {
+                username: "Roro"
+            }
         },
-        { date: thisMonth + '-' + '10', title: 'Persian Kitten Auction', location: 'Center for Beautiful Cats', description: 'description' },
-        { date: thisMonth + '-' + '19', title: 'Cat Frisbee', location: 'Jefferson Park', description: 'description' },
-        { date: thisMonth + '-' + '23', title: 'Kitten Demonstration', location: 'Center for Beautiful Cats', description: 'description' },
-        { date: nextMonth + '-' + '07',    title: 'Small Cat Photo Session', location: 'Center for Cat Photography', description: 'description' }
+        { date_start: thisMonth + '-' + '10', title: 'Persian Kitten Auction', location: 'Center for Beautiful Cats', description: 'description',
+        user: {
+            username: "Roro"
+        } },
+        { date_start: thisMonth + '-' + '19', title: 'Cat Frisbee', location: 'Jefferson Park', description: 'description',
+        user: {
+            username: "Roro"
+        } },
+        { date_start: thisMonth + '-' + '23', title: 'Kitten Demonstration', location: 'Center for Beautiful Cats', description: 'description',
+        user: {
+            username: "Roro"
+        } },
+        { date_start: nextMonth + '-' + '07',    title: 'Small Cat Photo Session', location: 'Center for Cat Photography', description: 'description',
+        user: {
+            username: "Roro"
+        } }
     ];
+    // sort the eventArray based on its date_start
+    eventArray.sort(function(a, b){
+      if (a.date_start > b.date_start) {
+        return 1;
+      }
+      if (a.date_start < b.date_start) {
+        return -1;
+      }
+      // a must be equal to b
+      return 0;
+    })
+
+    // declare an empty array to push in dates that are duplicates
+    var dates = [];
+    var last;
+    // groups events on the same date so I can go through them in the view without stating the day repeatedly
+    eventArray.forEach(function(e){
+        console.log(e.date_start)
+      if(e.date_start && last !== e.date_start) {
+        last = e.date_start;
+        dates.push(e.date_start);
+      }
+
+    });
 
     // The order of the click handlers is predictable. Direct click action
     // callbacks come first: click, nextMonth, previousMonth, nextYear,
@@ -40,7 +91,8 @@ function calendar() {
     //     events: eventArray,
     //     forceSixRows: true
     // });
-
+    // put events in window to test w/
+    window.events = eventArray;
     window.clndr = $('.cal').clndr({
         events: eventArray,
         doneRendering: function () {
@@ -108,8 +160,8 @@ function calendar() {
         },
         multiDayEvents: {
             singleDay: 'date',
-            endDate: 'endDate',
-            startDate: 'startDate'
+            date_end: 'date_end',
+            date_start: 'date_start'
         },
         extras: null,
         showAdjacentMonths: true,
@@ -119,7 +171,8 @@ function calendar() {
         forceSixRows: false,
         daysOfTheWeek: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
     });
-
+    
+    return dates;
 };
 
 function formatDate(date) {
@@ -140,4 +193,10 @@ function addPrevMonthClass(elements) {
 
 function addNextMonthClass(elements) {
     elements.addClass('nextMonth');
+}
+
+function markDates(dates) {
+    dates.forEach(function(date) {
+        $('div[class*=' + date + '] span').css({"color": "#4095F8", "cursor": "pointer"});
+    })
 }

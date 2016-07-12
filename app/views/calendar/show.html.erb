@@ -1,50 +1,81 @@
-<div id="calendar-wrapper" class="cal">
+<div id="calendar-container" class="default-container">
+	<div id="calendar-wrapper" class="cal">
+	</div>
 </div>
 
 <script type="text/template" id="full-clndr-template">
 	<div class="clndr-controls">
-	  <div class="clndr-previous-button">prev</div>
+	  <div class="clndr-previous-button"><i class="fa fa-angle-left" aria-hidden="true"></i>
+	  </div>
 	  <div class="month"><%%= month %> <%%= year %></div>
-	  <div class="clndr-next-button">next</div>
-	</div>
+	  <div class="clndr-next-button"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+	</div> <!-- //clndr-controls -->
 	<div class="clndr-grid">
 	  <div class="days-of-the-week">
 	    <%% _.each(daysOfTheWeek, function(day) { %>
 	      <div class="header-day"><%%= day %></div>
 	    <%% }); %>
-	  </div>
+	  </div> <!-- //days-of-the-week -->
 	  <div class="days">
 	    <%% _.each(days, function(day) { %>
 	      <div class="<%%= day.classes %>" id="<%%= day.id %>"><span class="day-number"><%%= day.day %></span></div>
 	    <%% }); %>
-	  </div>
-	</div>
+	  </div> <!-- //days -->
+	</div> <!-- //clndr-grid -->
 	<div class="events-wrapper">
 		<div class="events-header">
-			<span>Events This Month</span>
-		</div>
+			<span><%%= eventsThisMonth.length > 0 ? eventsThisMonth.length + " Events This Month": "" %></span>
+		</div> <!-- //events-header -->
 		<div class="events">
-			<%% _.each(eventsThisMonth, function(event) { %>
-				
-              <div class="event-item">
-                <span class="event-title"><%%= event.title %></span>
-                <%% if (event.date != undefined) { %>
-                	<%% var mydate = new Date(event.date); %>
+			<%% if ((eventsThisMonth != undefined) && (eventsThisMonth.length > 0)) { %>
+				<%% var last; %>
+				<%% _.each(eventsThisMonth, function(event, i, a) { %>
+                	<!-- // variables -->
+                	<%% var mydate = new Date(event.date_start); %>
                 	<%% var monthNum = mydate.getMonth() %>
-                	<%% var month = ["January", "February", "March", "April", "May", "June",
-"July", "August", "September", "October", "November", "December"][monthNum]; %>
-					<%% var str = month + ' ' + mydate.getFullYear(); %>
+                	<%% var dayNum = mydate.getDay() %>
+                	<%% var theDate = mydate.getUTCDate(); %>
+                	<%% var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][monthNum]; %>
+					<%% var day = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][dayNum] %>
+					<%% var eventDate = day + " " + theDate %>
+					<!-- // end variables -->
 
-                	<span class="event-date"><%%= str %></span>
-                	<br><br>
-            	<%%} else { %>
-            		<span class="event-date">Multiday <%%= event.startDate %> - <%%= event.endDate %></span>
-            		<br><br>
-            	<%%} %>
-              </div>
-            <%% }); %>
-        </div>
-	</div>
+					<!-- // if the last date is equal to the current one -->
+					<!-- // put in all events under that date -->
+					<%% if(last !== event.date_start) { %>
+                		<%% last = event.date_start %>
+						<div class="event-group">
+	                		<div class="event-date"><%%= eventDate %></div>
+							<div class="event-item">
+		                		<div class="event-title">
+			                			<%%= event.title %> hosted by <%%= event.user.username %>
+			                			<%% if (event.date_end != undefined) { %>
+			                				<span class="multiday">M</span>
+						            	<%%} %>
+	                			</div>
+	  						</div>
+  						<!-- // if the last date does not equal the upcoming date. Close this div.event-group off -->
+  						<%% if((a[i + 1]) && last !== a[i + 1].date_start) { %>
+							</div>
+						<%% } %>
+            		<%% } else { %>
+                			<div class="event-item">
+                				<div class="event-title">
+                					<%%= event.title %> hosted by <%%= event.user.username %>
+            					</div>
+        					</div>
+    					<!-- // if the last date does not equal the upcoming date. Close this div.event-group off -->
+    					<%% if(last !== a[i + 1].date_start) { %>
+    						</div>
+						<%% } %>
+        			<%% } %>
+	            <%% }); %>
+           <%% } else { %>
+           		<div class="text-center">
+           			<span>No Events Planned This Month</span>
+       			</div>
+           	<%% } %>
+        </div> <!-- // events -->
 </script>
 
 <script type="text/javascript">
