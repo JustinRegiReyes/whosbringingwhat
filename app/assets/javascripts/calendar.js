@@ -195,7 +195,23 @@ function addNextMonthClass(elements) {
 }
 
 function markDates(dates) {
+    var eventDaysContainer = '<div class="event-days-container">test</div>'
     dates.forEach(function(date) {
         $('div[class*=' + date + '] span').css({"color": "#4095F8", "cursor": "pointer"});
+        $('div[class*=' + date + ']').addClass("eventDay");
+        $('div[class*=' + date + ']').append(eventDaysContainer)
+    });
+
+    $('body').on('mouseenter', '.eventDay', function(event) {
+        $(this).children("div.event-days-container").show(100);
     })
+    $('body').on('mouseleave', '.eventDay', function(el) {
+        // console.log($(this).);
+        // $(this, "div.event-days-container").remove();
+        $(this).children("div.event-days-container").hide(100);
+    })
+}
+
+function eventDaysCompiler() {
+
 }
