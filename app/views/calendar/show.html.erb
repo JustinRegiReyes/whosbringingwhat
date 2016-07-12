@@ -48,7 +48,7 @@
 	                		<div class="event-date"><%%= eventDate %></div>
 							<div class="event-item">
 		                		<div class="event-title">
-			                			<%%= event.title %> hosted by <%%= event.user.username %>
+			                			<a href="/events/<%%=event.id%>"><%%= event.title %></a> hosted by <%%= event.user.username %>
 			                			<%% if (event.date_end != undefined) { %>
 			                				<span class="multiday">M</span>
 						            	<%%} %>
@@ -61,7 +61,7 @@
             		<%% } else { %>
                 			<div class="event-item">
                 				<div class="event-title">
-                					<%%= event.title %> hosted by <%%= event.user.username %>
+                					<a href="/events/<%%=event.id%>"><%%= event.title %></a> hosted by <%%= event.user.username %>
             					</div>
         					</div>
     					<!-- // if the last date does not equal the upcoming date. Close this div.event-group off -->
