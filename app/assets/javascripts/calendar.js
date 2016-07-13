@@ -195,20 +195,23 @@ function addNextMonthClass(elements) {
 }
 
 function markDates(dates) {
-    var eventDaysContainer = '<div class="event-days-container">test</div>'
+    var eventDaysContainer = '<div class="event-days-container"><i class="fa fa-times close" aria-hidden="true"></i></div>';
     dates.forEach(function(date) {
         $('div[class*=' + date + '] span').css({"color": "#4095F8", "cursor": "pointer"});
         $('div[class*=' + date + ']').addClass("eventDay");
-        $('div[class*=' + date + ']').append(eventDaysContainer)
+        $('div[class*=' + date + ']').append(eventDaysContainer);
     });
 
-    $('body').on('mouseenter', '.eventDay', function(event) {
-        $(this).children("div.event-days-container").show(100);
+    $('body').on('click', '.eventDay', function(event) {
+        if(event.target === this) {
+            $(this).children("div.event-days-container").fadeIn(100);
+            $(this).css({"border": "none"});
+        }
     })
-    $('body').on('mouseleave', '.eventDay', function(el) {
-        // console.log($(this).);
-        // $(this, "div.event-days-container").remove();
-        $(this).children("div.event-days-container").hide(100);
+    $('body').on('click', '.eventDay .close', function(el) {
+        // console.log('close');
+        // $(this).parent().children("div.event-days-container").fadeOut(100);
+        $(this).parent().fadeOut(100);
     })
 }
 

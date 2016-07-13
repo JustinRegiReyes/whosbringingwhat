@@ -84,13 +84,20 @@ div#calendar-container.default-container {
       }
       .event-days-container {
         display: none;
+        z-index: 1;
         height: 200px;
         width: 150px;
         position: absolute;
-        top: -196px;
-        right: -130px;
+        bottom: -171px;
+        right: -140px;
         background-color: white;
-        border: 1px solid black;
+        @include box-shadow();
+        i.close {
+            top: 2px;
+            position: absolute;
+            right: 2px;
+            font-weight: 100;
+        }
       }
       span.day-number {
         height: 20px;
