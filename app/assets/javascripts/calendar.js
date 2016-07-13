@@ -4,7 +4,6 @@ $(document).on('page:load', clndrPage);
 
 function clndrPage() {
     calendar();
-    markDates(calendar());
 }
 
 function calendar() {
@@ -35,6 +34,13 @@ function calendar() {
         }, {
             date_start: thisMonth + '-27',
             title: 'Single Day Event', description: 'description', id: 3,
+            user: {
+                username: "Roro"
+            }
+        },
+        {
+            date_start: nextMonth + '+17',
+            title: 'Single Day Event', description: 'description', id: 7,
             user: {
                 username: "Roro"
             }
@@ -77,7 +83,6 @@ function calendar() {
         last = e.date_start;
         dates.push(e.date_start);
       }
-
     });
 
     // The order of the click handlers is predictable. Direct click action
@@ -171,7 +176,8 @@ function calendar() {
         daysOfTheWeek: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
     });
     
-    return dates;
+    markDates(dates);
+    eventDaysCompiler(eventArray, dates);
 };
 
 function formatDate(date) {
@@ -197,15 +203,12 @@ function addNextMonthClass(elements) {
 // marks the dates with events on them with colored dates
 // attaches event listeners to every day with events on them
 function markDates(dates) {
-    var eventDaysContainer = '<div class="event-days-container"><i class="fa fa-times close" aria-hidden="true"></i></div>';
-
     // goes through every date and colors the span within it a certain color
     // adds class "eventDay" to every element with the date in the dates array
     // appends a event days container that contains the events on that date
     dates.forEach(function(date) {
         $('div[class*=' + date + '] span').css({"color": "#4095F8", "cursor": "pointer"});
         $('div[class*=' + date + ']').addClass("eventDay");
-        $('div[class*=' + date + ']').append(eventDaysContainer);
     });
 
     // event listener on the child of eventDays and only opens and closes the eventDays container
@@ -227,4 +230,35 @@ function markDates(dates) {
         $(this).closest('.eventDay')[0].open = false;
         $(this).parent().fadeOut(100);
     });
+}
+
+// takes the dates and appends an .event-days-container to display the different events within that date
+function eventDaysCompiler(events, dates) {
+    // html markup for the .event-days-container with some elements inside
+    var eventDaysContainerOpen = '<div class="event-days-container"><i class="fa fa-times close" aria-hidden="true"></i><h5>';
+    var eventDaysContainerClose = '</h5></div>';
+
+    // goes through each date and appends the .event-days-container
+    dates.forEach(function(date) {
+        // variables to take the date out of the date obj
+        var mydate = new Date(date);
+        var monthNum = mydate.getMonth();
+        var dayNum = mydate.getDay();
+        var theDate = mydate.getDate();
+        var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][monthNum];
+        var day = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"][dayNum];
+        var eventDate = day + " " + theDate;
+        console.log(dayNum,'dayNum');
+        console.log(theDate);
+
+        $('div[class*=' + date + ']').append(eventDaysContainerOpen + eventDate + eventDaysContainerClose);
+    });
+
+    events.forEach(function(event) {
+        var title = event.title;
+        var eventTitleEl = '<span class="event-title">' + title + '</span>';
+
+        $('div[class*=' + event.date_start + '] .event-days-container').append(eventTitleEl);
+    });
+
 }
