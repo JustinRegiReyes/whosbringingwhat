@@ -194,25 +194,37 @@ function addNextMonthClass(elements) {
     elements.addClass('nextMonth');
 }
 
+// marks the dates with events on them with colored dates
+// attaches event listeners to every day with events on them
 function markDates(dates) {
     var eventDaysContainer = '<div class="event-days-container"><i class="fa fa-times close" aria-hidden="true"></i></div>';
+
+    // goes through every date and colors the span within it a certain color
+    // adds class "eventDay" to every element with the date in the dates array
+    // appends a event days container that contains the events on that date
     dates.forEach(function(date) {
         $('div[class*=' + date + '] span').css({"color": "#4095F8", "cursor": "pointer"});
         $('div[class*=' + date + ']').addClass("eventDay");
         $('div[class*=' + date + ']').append(eventDaysContainer);
     });
 
+    // event listener on the child of eventDays and only opens and closes the eventDays container
     $('body').on('click', '.eventDay', function(event) {
-        if(event.target === this) {
+        var dayChildEl = $(this).context.firstChild;
+        // if the eventTarget is equal to the child of eventDays or eventDays then it opens or closes
+        if((event.target === this || event.target === dayChildEl) && this.open !== true) {
             $(this).children("div.event-days-container").fadeIn(100);
-            $(this).css({"border": "none"});
+            this.open = true;
+        } else if((event.target === this || event.target === dayChildEl) && this.open === true){
+            this.open = false;
+            $(this).children("div.event-days-container").fadeOut(100);
         }
-    })
+    });
+
+    // an event listener on an icon in the eventDays container
     $('body').on('click', '.eventDay .close', function(el) {
-        // console.log('close');
-        // $(this).parent().children("div.event-days-container").fadeOut(100);
         $(this).parent().fadeOut(100);
-    })
+    });
 }
 
 function eventDaysCompiler() {
