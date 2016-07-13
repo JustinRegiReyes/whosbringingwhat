@@ -86,10 +86,10 @@ div#calendar-container.default-container {
         display: none;
         z-index: 1;
         height: 200px;
-        width: 150px;
+        width: 200px;
         position: absolute;
         bottom: -171px;
-        right: -140px;
+        right: -190px;
         background-color: white;
         @include box-shadow();
         i.close {

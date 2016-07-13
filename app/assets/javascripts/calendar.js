@@ -213,8 +213,8 @@ function markDates(dates) {
         var dayChildEl = $(this).context.firstChild;
         // if the eventTarget is equal to the child of eventDays or eventDays then it opens or closes
         if((event.target === this || event.target === dayChildEl) && this.open !== true) {
-            $(this).children("div.event-days-container").fadeIn(100);
             this.open = true;
+            $(this).children("div.event-days-container").fadeIn(100);
         } else if((event.target === this || event.target === dayChildEl) && this.open === true){
             this.open = false;
             $(this).children("div.event-days-container").fadeOut(100);
@@ -223,10 +223,8 @@ function markDates(dates) {
 
     // an event listener on an icon in the eventDays container
     $('body').on('click', '.eventDay .close', function(el) {
+        // the parent of the appended div.eventDays gets changed to open = false
+        $(this).closest('.eventDay')[0].open = false;
         $(this).parent().fadeOut(100);
     });
-}
-
-function eventDaysCompiler() {
-
 }
