@@ -26,6 +26,8 @@
 			<span><%%= eventsThisMonth.length > 0 ? eventsThisMonth.length + " Events This Month": "" %></span>
 		</div> <!-- //events-header -->
 		<div class="events">
+		    <!-- // eventsThisMonth is a variable used by clndr.js that uses -->
+		    <!-- // logic to differentiate the events of each month from the $(clndr) object -->
 			<%% if ((eventsThisMonth != undefined) && (eventsThisMonth.length > 0)) { %>
 				<%% var last; %>
 				<%% _.each(eventsThisMonth, function(event, i, a) { %>
@@ -54,7 +56,7 @@
 	                			</div>
 	  						</div>
   						<!-- // if the last date does not equal the upcoming date. Close this div.event-group off -->
-  						<%% if((a[i + 1]) && last !== a[i + 1].date_start) { %>
+  						<%% if((a[i + 1] !== undefined) && last !== a[i + 1].date_start) { %>
 							</div>
 						<%% } %>
             		<%% } else { %>
@@ -64,7 +66,7 @@
             					</div>
         					</div>
     					<!-- // if the last date does not equal the upcoming date. Close this div.event-group off -->
-    					<%% if(last !== a[i + 1].date_start) { %>
+    					<%% if((a[i + 1] !== undefined) && last !== a[i + 1].date_start) { %>
     						</div>
 						<%% } %>
         			<%% } %>
