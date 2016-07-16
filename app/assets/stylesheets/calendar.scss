@@ -91,7 +91,16 @@ div#calendar-container.default-container {
         bottom: -171px;
         right: -190px;
         background-color: white;
+        cursor: default;
         @include box-shadow();
+        a {
+          font-size: .8em;
+          color: black;
+          &:hover {
+            color: $cobaltBlue;
+            text-decoration: none;
+          }
+        }
         i.close {
             top: 2px;
             position: absolute;

@@ -19,7 +19,7 @@ function calendar() {
     // Events to load into calendar
     var eventArray = [
         {
-            title: 'Camping',
+            title: 'Camping!!!',
             date_end: thisMonth + '-14',
             date_start: thisMonth + '-10',
             date: thisMonth + '-10',
@@ -185,8 +185,12 @@ function calendar() {
                 console.log('Cal-1 today');
             },
             nextMonth: function () { 
+                markDates(dates);
+                eventDaysCompiler(eventArray, dates);
             },
             previousMonth: function () {
+                markDates(dates);
+                eventDaysCompiler(eventArray, dates);
             },
             onMonthChange: function () {
                 var currentMonth = formatDate(this.month._d);
@@ -196,10 +200,6 @@ function calendar() {
                 var nextMonthDays = $('div[class*=calendar-day-' + nextMonth + ']');
                 addPrevMonthClass(prevMonthDays);
                 addNextMonthClass(nextMonthDays);
-                // console.log('prevMonthDays', prevMonthDays);
-                // console.log('month', currentMonth);
-                // console.log('nextMonth', nextMonth);
-                // console.log('prevMonth', prevMonth);
             },
             nextYear: function () {
                 console.log('Cal-1 next year');
@@ -278,27 +278,31 @@ function markDates(dates) {
     dates.forEach(function(date) {
         $('div[class*=' + date + '] span').css({"color": "#4095F8", "cursor": "pointer"});
         $('div[class*=' + date + ']').addClass("eventDay");
+
+        $("[class*=" + date + "]").unbind( "click" );
+        $('[class*=' + date + '] .close').unbind("click");
+
+        // event listener on the child of eventDays and only opens and closes the eventDays container
+        $('div.clndr-grid').on('click', "[class*=" + date + "]", function(event) {
+            var dayChildEl = $(this).context.firstChild;
+            // if the eventTarget is equal to the child of eventDays or eventDays then it opens or closes
+            if((event.target === this || event.target === dayChildEl) && this.open !== true) {
+                this.open = true;
+                $(this).children("div.event-days-container").fadeIn(100);
+            } else if((event.target === this || event.target === dayChildEl) && this.open === true){
+                this.open = false;
+                $(this).children("div.event-days-container").fadeOut(100);
+            }
+        });
+
+        // an event listener on an icon in the eventDays container
+        $('div.clndr-grid').on('click', '[class*=' + date + '] .close', function(event) {
+            // the parent of the appended div.eventDays gets changed to open = false
+            $(this).closest('.eventDay')[0].open = false;
+            $(this).parent().fadeOut(100);
+        });
     });
 
-    // event listener on the child of eventDays and only opens and closes the eventDays container
-    $('body').on('click', '.eventDay', function(event) {
-        var dayChildEl = $(this).context.firstChild;
-        // if the eventTarget is equal to the child of eventDays or eventDays then it opens or closes
-        if((event.target === this || event.target === dayChildEl) && this.open !== true) {
-            this.open = true;
-            $(this).children("div.event-days-container").fadeIn(100);
-        } else if((event.target === this || event.target === dayChildEl) && this.open === true){
-            this.open = false;
-            $(this).children("div.event-days-container").fadeOut(100);
-        }
-    });
-
-    // an event listener on an icon in the eventDays container
-    $('body').on('click', '.eventDay .close', function(el) {
-        // the parent of the appended div.eventDays gets changed to open = false
-        $(this).closest('.eventDay')[0].open = false;
-        $(this).parent().fadeOut(100);
-    });
 }
 
 // takes the dates and appends an .event-days-container to display the different events within that date
@@ -323,7 +327,7 @@ function eventDaysCompiler(events, dates) {
 
     events.forEach(function(event) {
         var title = event.title;
-        var eventTitleEl = '<span class="event-title">' + title + '</span>';
+        var eventTitleEl = '<a href="/events/' + event.id +  '"><span class="event-title">' + title + '</span></a><br>';
 
         $('div[class*=' + event.date_start + '] .event-days-container').append(eventTitleEl);
     });
