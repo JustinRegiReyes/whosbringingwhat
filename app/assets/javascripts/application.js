@@ -30,6 +30,8 @@ function ready() {
 	passwordConfirm();
 	filename();
 	timePicker();
+
+	calendar();
 }
 
 function passwordConfirm() {

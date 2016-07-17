@@ -1,11 +1,4 @@
 // Call this from the developer console and you can control both instances
-$(document).ready(clndrPage);
-$(document).on('page:load', clndrPage);
-
-function clndrPage() {
-    calendar();
-    window.test = [1, 2]
-}
 
 function calendar() {
     // Assuming you've got the appropriate language files,
@@ -16,121 +9,127 @@ function calendar() {
     var thisMonth    = moment().format('YYYY-MM');
     var nextMonth    = moment().add(1, 'month').format('YYYY-MM');
     var twoMonth    = moment().add(2, 'month').format('YYYY-MM');
+
+    $.get('/calendar/events', undefined, onSuccess);
+};
+
+function onSuccess(data) {
+    var eventArray = data;
     // Events to load into calendar
-    var eventArray = [
-        {
-            title: 'Camping!!!',
-            date_end: thisMonth + '-14',
-            date_start: thisMonth + '-10',
-            date: thisMonth + '-10',
-            description: 'description', id: 1,
-            user: {
-                username: "Roro"
-            }
-        }, {
-            date_end: thisMonth + '-23',
-            date_start: thisMonth + '-10',
-            date: thisMonth + '-10',
-            title: 'Board Game Night', description: 'description', id: 2,
-            user: {
-                username: "Roro"
-            }
-        }, {
-            date_start: thisMonth + '-27',
-            date: thisMonth + '-27',
-            title: 'Single Day Event', description: 'description', id: 3,
-            user: {
-                username: "Roro"
-            }
-        }, {
-            date_start: nextMonth + '-17',
-            date: nextMonth + '-17',
-            title: 'Single Day Event', description: 'description', id: 7,
-            user: {
-                username: "Roro"
-            }
-        }, 
-        {
-            date_start: nextMonth + '-17',
-            date: nextMonth + '-17',
-            title: 'Working Event', description: 'description', id: 7,
-            user: {
-                username: "Roro"
-            }
-        },
-        {
-            date_start: nextMonth + '-18',
-            date: nextMonth + '-18',
-            title: 'Working Event', description: 'description', id: 7,
-            user: {
-                username: "Roro"
-            }
-        },
-        {
-            date_start: nextMonth + '-18',
-            date: nextMonth + '-18',
-            title: 'Working Event', description: 'description', id: 7,
-            user: {
-                username: "Roro"
-            }
-        },
-        {
-            date_start: twoMonth + '-19',
-            date: twoMonth + '-19',
-            title: 'Next Event', description: 'description', id: 7,
-            user: {
-                username: "Roro"
-            }
-        },
-        {
-            date_start: twoMonth + '-19',
-            date: twoMonth + '-19',
-            title: 'Next Event', description: 'description', id: 7,
-            user: {
-                username: "Roro"
-            }
-        }, 
-        {
-            date_start: twoMonth + '-20',
-            date: twoMonth + '-20',
-            title: 'Fish Tacos', description: 'description', id: 7,
-            user: {
-                username: "Roro"
-            }
-        },
-        {
-            date_start: twoMonth + '-20',
-            date: twoMonth + '-20',
-            title: 'Fish Tacos', description: 'description', id: 7,
-            user: {
-                username: "Roro"
-            }
-        },
-        {
-            date_start: twoMonth + '-21',
-            date: twoMonth + '-21',
-            title: 'Fish Tacos', description: 'description', id: 7,
-            user: {
-                username: "Roro"
-            }
-        }, 
-        { date_start: thisMonth + '-10', date: thisMonth + '-10', title: 'Persian Kitten Auction', location: 'Center for Beautiful Cats', description: 'description', id: 4,
-        user: {
-            username: "Roro"
-        } },
-        { date_start: thisMonth + '-19', date: thisMonth + '-19', title: 'Cat Frisbee', location: 'Jefferson Park', description: 'description', id: 5,
-        user: {
-            username: "Roro"
-        } },
-        { date_start: thisMonth + '-23', date: thisMonth + '-19', title: 'Kitten Demonstration', location: 'Center for Beautiful Cats', description: 'description', id: 6,
-        user: {
-            username: "Roro"
-        } },
-        { date_start: nextMonth + '-07', date: nextMonth + '-07', title: 'Small Cat Photo Session', location: 'Center for Cat Photography', description: 'description', id: 7,
-        user: {
-            username: "Roro"
-        } }
-    ];
+    // var eventArray = [
+    //     {
+    //         title: 'Camping!!!',
+    //         date_end: thisMonth + '-14',
+    //         date_start: thisMonth + '-10',
+    //         date: thisMonth + '-10',
+    //         description: 'description', id: 1,
+    //         user: {
+    //             username: "Roro"
+    //         }
+    //     }, {
+    //         date_end: thisMonth + '-23',
+    //         date_start: thisMonth + '-10',
+    //         date: thisMonth + '-10',
+    //         title: 'Board Game Night', description: 'description', id: 2,
+    //         user: {
+    //             username: "Roro"
+    //         }
+    //     }, {
+    //         date_start: thisMonth + '-27',
+    //         date: thisMonth + '-27',
+    //         title: 'Single Day Event', description: 'description', id: 3,
+    //         user: {
+    //             username: "Roro"
+    //         }
+    //     }, {
+    //         date_start: nextMonth + '-17',
+    //         date: nextMonth + '-17',
+    //         title: 'Single Day Event', description: 'description', id: 7,
+    //         user: {
+    //             username: "Roro"
+    //         }
+    //     }, 
+    //     {
+    //         date_start: nextMonth + '-17',
+    //         date: nextMonth + '-17',
+    //         title: 'Working Event', description: 'description', id: 7,
+    //         user: {
+    //             username: "Roro"
+    //         }
+    //     },
+    //     {
+    //         date_start: nextMonth + '-18',
+    //         date: nextMonth + '-18',
+    //         title: 'Working Event', description: 'description', id: 7,
+    //         user: {
+    //             username: "Roro"
+    //         }
+    //     },
+    //     {
+    //         date_start: nextMonth + '-18',
+    //         date: nextMonth + '-18',
+    //         title: 'Working Event', description: 'description', id: 7,
+    //         user: {
+    //             username: "Roro"
+    //         }
+    //     },
+    //     {
+    //         date_start: twoMonth + '-19',
+    //         date: twoMonth + '-19',
+    //         title: 'Next Event', description: 'description', id: 7,
+    //         user: {
+    //             username: "Roro"
+    //         }
+    //     },
+    //     {
+    //         date_start: twoMonth + '-19',
+    //         date: twoMonth + '-19',
+    //         title: 'Next Event', description: 'description', id: 7,
+    //         user: {
+    //             username: "Roro"
+    //         }
+    //     }, 
+    //     {
+    //         date_start: twoMonth + '-20',
+    //         date: twoMonth + '-20',
+    //         title: 'Fish Tacos', description: 'description', id: 7,
+    //         user: {
+    //             username: "Roro"
+    //         }
+    //     },
+    //     {
+    //         date_start: twoMonth + '-20',
+    //         date: twoMonth + '-20',
+    //         title: 'Fish Tacos', description: 'description', id: 7,
+    //         user: {
+    //             username: "Roro"
+    //         }
+    //     },
+    //     {
+    //         date_start: twoMonth + '-21',
+    //         date: twoMonth + '-21',
+    //         title: 'Fish Tacos', description: 'description', id: 7,
+    //         user: {
+    //             username: "Roro"
+    //         }
+    //     }, 
+    //     { date_start: thisMonth + '-10', date: thisMonth + '-10', title: 'Persian Kitten Auction', location: 'Center for Beautiful Cats', description: 'description', id: 4,
+    //     user: {
+    //         username: "Roro"
+    //     } },
+    //     { date_start: thisMonth + '-19', date: thisMonth + '-19', title: 'Cat Frisbee', location: 'Jefferson Park', description: 'description', id: 5,
+    //     user: {
+    //         username: "Roro"
+    //     } },
+    //     { date_start: thisMonth + '-23', date: thisMonth + '-19', title: 'Kitten Demonstration', location: 'Center for Beautiful Cats', description: 'description', id: 6,
+    //     user: {
+    //         username: "Roro"
+    //     } },
+    //     { date_start: nextMonth + '-07', date: nextMonth + '-07', title: 'Small Cat Photo Session', location: 'Center for Cat Photography', description: 'description', id: 7,
+    //     user: {
+    //         username: "Roro"
+    //     } }
+    // ];
     // sort the eventArray based on its date_start
     eventArray.sort(function(a, b){
       if (a.date_start >= b.date_start) {
@@ -247,7 +246,7 @@ function calendar() {
     
     markDates(dates);
     eventDaysCompiler(eventArray, dates);
-};
+}
 
 function formatDate(date) {
     var d = new Date(date),

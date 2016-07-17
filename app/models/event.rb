@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+	attr_accessor :owner, :date
 	has_many :categories
 
 	has_many :attending_events

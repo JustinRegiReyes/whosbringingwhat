@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  get 'calendar/index'
-
   get '/', to: "welcome#index"
 
-  get '/calendar', to: 'calendar#show'
+  get '/calendar', to: 'calendar#index'
+
+  get '/calendar/events', to: 'calendar#events'
 
   # users routes
     resources :users, except: [:create]
