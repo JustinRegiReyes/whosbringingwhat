@@ -40,7 +40,9 @@ div#new-event-container {
 			border-bottom: 1px solid $cloud;
 			margin-bottom: 10px;
 			color: $asphalt;
-			padding-bottom: 5px;
+			padding-top: 3px;
+			padding-bottom: 3px;
+			padding-left: 3px;
 			&:focus {
 				color: black;
 			}
