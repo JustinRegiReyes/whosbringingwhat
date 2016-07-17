@@ -145,7 +145,10 @@ events = [
 	}
 ]
 
-Event.create(events)
+created_events = Event.create(events)
+user.going_tos << created_events.last
+
+user.save
 
 
 
