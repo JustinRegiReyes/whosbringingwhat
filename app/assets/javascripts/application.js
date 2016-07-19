@@ -30,8 +30,9 @@ function ready() {
 	passwordConfirm();
 	filename();
 	timePicker();
-
-	calendar();
+	if(window.location.pathname === "/calendar") {
+		calendar();
+	}
 }
 
 function passwordConfirm() {
