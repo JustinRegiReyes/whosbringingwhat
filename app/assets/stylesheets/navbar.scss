@@ -8,7 +8,7 @@ nav.navbar-xs {
 	border: none;
 	margin-bottom: 0;
 	& li {
-		height: 22px;
+		height: 18px;
 	}
 }
 
@@ -87,10 +87,9 @@ nav.navbar-xs {
 }
 
 li.side-divide {
-	height: 18px;
-    top: 50%;
+    bottom: 0px;
     width: 1px;
-    transform: translateY(-55%);
+    position: relative;
     border-right: 1px solid $asphalt;
 }
 .navbar-right {
