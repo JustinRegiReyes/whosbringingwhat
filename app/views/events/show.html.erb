@@ -1,74 +1,17 @@
 <%= render 'partials/navbar' %>
 
-<h1><%= @event.title %> <span class="host-username">hosted by <%= @event.user.username %></span></h1>
-
-<div class="container">
-	<p><i><%= @event.description %></i></p>
-	<h3>When</h3>
-		<p><%= @event.date_start.strftime("%b %d" + ", a " + "%A") %> @ </p>  
-		<%=@event.time_start.strftime("%I:%M %p") %>
-		<%=@event.time_end.strftime("%I:%M %p") %>
-	<h3>Where</h3>
-		<p><%= @event.where %></p>
-	<h3>Guests Attending</h3>
-	<% if @event.attendees.count === 0 %>
-		<p>No guests have confirmed attendance.</p>
-	<% else %>
-		<% @event.attending_event.users.each do |user| %>
-			<p><%= user.username %></p>
-		<% end %>
-	<% end %>
-
-	<h3>Categories</h3>
-
-	<div class="category-wrapper">
-		<div class="container">
-			<% if @event.categories.length === 0  %>
-				No categories added to "<%= @event.title %>" yet.
-			<% else %>
-				<% @event.categories.each do |category| %>
-					<h4><%= category.title %></h4>
-					<div class="container description">
-						<i><%= category.description %></i>
-					</div>
-					<div class="container items">
-						<% if category.items.length === 0 %>
-							No items have been added to this category, yet.
-							<br>
-						<% else %>
-							<h4>Items</h4>
-							<ul class="list-unstyled">
-								<% category.items.each do |item| %>
-									<li>
-										<span><strong><%= item.title %></strong> brought by <%= item.user.username %></span>
-										<br>
-										<p><i><%= item.description %></i></p>
-									</li>
-								<% end %>
-							</ul>
-						<% end %>
-					</div>
-				<% end %>
-			<% end %>
-			<br>
-			<% if @event.categories.length > 0 %>
-				<a href="/items/<%= @event.id%>/new" class="btn btn-default bring-btn">Bring Something</a>
-			<% end %>
+<div id="event-show-container">
+	<div id="banner-container">
+		<div id="banner-overlay">
 		</div>
 	</div>
-</div>
-<br><br>
-
-<div class="container">
-	<% if @event.user === current_user %>
-		<div class="text-center">
-			<a href="/events/<%= @event.id %>/categories/new" class="btn btn-default">Add Category</a>
+	<div id="information-section">
+		<div id="information" class="col-lg-8 col-md-8 col-sm-8">
 		</div>
-	<% elsif @event.attending_event.users.include?(current_user) %>
-		<h3 class="text-center">You are attending this event</h3>
-	<% else %>
-		<div class="text-center">
-			<a href="/events/<%= @event.id %>/attending" class="btn btn-default">Attend Event</a>
+		<div class="clearfix visible-lg-block"></div>
+		<div id="additional-information" class="col-lg-4 col-md-4 col-sm-4">
 		</div>
-	<% end %>
+	</div>
+	<div id="comment-section">
+	</div>
 </div>

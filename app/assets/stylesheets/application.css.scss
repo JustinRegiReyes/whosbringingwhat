@@ -39,6 +39,9 @@ div#layout-wrapper {
 	position: relative;
 	height: 100%;
 	top: 0;
+	background-color: $cloud;
+	overflow-y: overlay;
+
 }
 
 div.default-container {
@@ -54,3 +57,11 @@ button, input.submit {
 .textarea {
 	resize: none;
 }
+
+// .clearfix {
+// 	clear:both;
+// 	display: block;
+// 	height: 0;
+// }
+
+
