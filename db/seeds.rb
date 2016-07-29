@@ -48,7 +48,7 @@ events = [
 		country: "United States",
 		where: "Roro's house.",
 		highlights: "Try and bring some board games if you can.",
-		date_start: thisMonth + "-16",
+		date_start: thisMonth + "-4",
 		time_start: timeStart,
 		time_end: timeEnd,
 		user_id: user.id
@@ -63,7 +63,7 @@ events = [
 		country: "United States",
 		where: "Cortezu Home Base",
 		highlights: "Bring yall poker faces!",
-		date_start: thisMonth + "-23",
+		date_start: thisMonth + "-13",
 		time_start: timeStart,
 		time_end: timeEnd,
 		user_id: user.id
@@ -78,7 +78,7 @@ events = [
 		country: "United States",
 		where: "Reyes House of Chicken and Wombos",
 		highlights: "Bring yall poker faces!",
-		date_start: thisMonth + "-28",
+		date_start: thisMonth + "-27",
 		time_start: timeStart,
 		time_end: timeEnd,
 		user_id: user.id
@@ -93,7 +93,7 @@ events = [
 		country: "United States",
 		where: "Neils House",
 		highlights: "Bring your own food if you want. Or we can go get something before the night starts.",
-		date_start: nextMonth + "-10",
+		date_start: nextMonth + "-2",
 		time_start: timeStart,
 		time_end: timeEnd,
 		user_id: user.id
