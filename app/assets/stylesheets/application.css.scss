@@ -58,10 +58,18 @@ button, input.submit {
 	resize: none;
 }
 
-// .clearfix {
-// 	clear:both;
-// 	display: block;
-// 	height: 0;
-// }
+.clearfixs:after {
+	 visibility: hidden;
+	 display: block;
+	 font-size: 0;
+	 content: " ";
+	 clear: both;
+	 height: 0;
+}
+.clearfixs { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfixs { height: 1%; }
+.clearfixs { display: block; }
+/* close commented backslash hack */
 
 
