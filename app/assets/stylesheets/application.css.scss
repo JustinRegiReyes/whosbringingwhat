@@ -59,17 +59,14 @@ button, input.submit {
 }
 
 .clearfixs:after {
-	 visibility: hidden;
-	 display: block;
-	 font-size: 0;
-	 content: " ";
-	 clear: both;
-	 height: 0;
-}
-.clearfixs { display: inline-block; }
-/* start commented backslash hack \*/
-* html .clearfixs { height: 1%; }
-.clearfixs { display: block; }
-/* close commented backslash hack */
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+	}
+* html .clearfixs             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfixs { zoom: 1; } /* IE7 */
 
 

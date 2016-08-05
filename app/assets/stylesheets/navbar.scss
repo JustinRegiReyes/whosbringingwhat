@@ -10,6 +10,10 @@ nav.navbar-xs {
 	& li {
 		height: 18px;
 	}
+
+	& > #bs-example-navbar-collapse-1 {
+		overflow-y: visible;
+	}
 }
 
 .navbar-nav > li > .dropdown-menu {
@@ -93,7 +97,24 @@ li.side-divide {
     border-right: 1px solid $asphalt;
 }
 .navbar-right {
-	height: 22px;
 	padding-top: 2px;
-
+	@media screen and (max-width: $break-sm) {
+		    height: 22px;
+		    margin: 0;
+		    text-align: center;
+		& > li {
+			display: inline-block;
+			position: relative;
+			bottom: 16px;
+			&.dropdown {
+				top: 3px;
+			}
+			& > ul.dropdown-menu {
+				position: absolute !important;
+		    	background-color: #fff !important;
+	    	    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175) !important;
+   				box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175) !important;
+			}
+		}
+	}
 }
