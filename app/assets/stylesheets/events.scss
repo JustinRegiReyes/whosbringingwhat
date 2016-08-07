@@ -196,7 +196,7 @@ div#event-show-container {
 				@media screen and (max-width: $break-sm) {
 					height: 115px;
 				}
-				@media screen and (max-width: $break-iphone4) {
+				@media screen and (max-width: $break-iphone6) {
 					&:after {
 						@include contain-float();
 					}
@@ -214,7 +214,7 @@ div#event-show-container {
 					height: 60px;
 					padding: 0;
 					padding-top: 5px;
-					@media screen and (max-width: $break-iphone4) {
+					@media screen and (max-width: $break-iphone6) {
 						width: 50% !important;
 					}
 					div.guests-num {

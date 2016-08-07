@@ -13,6 +13,14 @@ nav.navbar-xs {
 
 	& > #bs-example-navbar-collapse-1 {
 		overflow-y: visible;
+		// height: 25px !important;
+		@media screen and (max-width: $break-sm) {
+		    width: 100vw;
+		    position: fixed;
+		    left: 0px;
+		    background: white;
+		    height: 25px;
+		}
 	}
 }
 
@@ -45,6 +53,9 @@ nav.navbar-xs {
 	    		top: 5px;
 	    		position: relative;
 			    font-size: .9em;
+			    @media screen and (max-width: $break-sm) {
+			    	top: 16px;
+			    }
 	    	}
 	    }
 	    i {
@@ -114,6 +125,19 @@ li.side-divide {
 		    	background-color: #fff !important;
 	    	    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175) !important;
    				box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175) !important;
+   				color: black !important;
+   				& > li {
+   					height: 24px;
+   					&.divider {
+   						height: 1px;
+   					}
+   					& > a {
+   						color: black !important;
+	   					&:hover {
+	   						background-color: #f5f5f5 !important;
+	   					}
+   					}
+   				}
 			}
 		}
 	}

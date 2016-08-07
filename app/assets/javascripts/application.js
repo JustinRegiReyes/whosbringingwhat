@@ -30,6 +30,9 @@ function ready() {
 	passwordConfirm();
 	filename();
 	timePicker();
+	navHamburger();
+	removeButtonDataTarget();
+	navHamburgerToggle();
 	if(window.location.pathname === "/calendar") {
 		calendar();
 	}
@@ -73,5 +76,48 @@ function filename() {
 function timePicker() {
 	if($('.timepicker')) {
 		$('.timepicker').wickedpicker();
+	}
+}
+
+function navHamburger() {
+	$(window).resize(function() {
+		removeButtonDataTarget();
+	})
+}
+
+function navHamburgerToggle() {
+	var el = $('#bs-example-navbar-collapse-1');
+	$('body').on('click', 'button.navbar-toggle', function() {
+		if(el.height() < 25) {
+			el.css({
+				height: "0px",
+			    display: "block"
+			});
+			el.animate({
+			    height: "26px"
+			}, 200);
+		} else {
+			el.css({
+				"overflow-y": 'hidden'
+			});
+			el.animate({
+			    height: "0px"
+			}, 200);
+		}
+	})
+}
+
+function removeButtonDataTarget() {
+	// Fetch an array of all the data
+	var el = $("button.navbar-toggle");
+	var data = el.data(),
+	    i;
+	// Fetch all the key-names
+	var keys = $.map(data , function(value, key) { return key; });
+	// Loop through the keys, remove the attribute if the key contains "lorem".
+	for(i = 0; i < keys.length; i++) {
+	    if (keys[i].indexOf('target') != -1) {
+	        el.removeAttr("data-" + keys[i]);
+	    }
 	}
 }
