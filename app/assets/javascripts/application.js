@@ -91,7 +91,8 @@ function navHamburgerToggle() {
 		if(el.height() < 25) {
 			el.css({
 				height: "0px",
-			    display: "block"
+			    display: "block",
+			    "overflow-y": "visible"
 			});
 			el.animate({
 			    height: "26px"

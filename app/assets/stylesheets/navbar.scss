@@ -22,12 +22,26 @@ nav.navbar-xs {
 		    height: 25px;
 		}
 	}
+
+	& > .navbar-header {
+		& > button.navbar-toggle{
+			&:focus {
+				background-color: white !important;
+			}
+			&:hover {
+				background-color: #ddd;
+			}
+		}
+	}
 }
 
 .navbar-nav > li > .dropdown-menu {
     margin-top: 0;
     border-radius: 0;
     padding-bottom: 9px;
+    @media screen and (max-width: $break-iphone6) {
+    	left: -106px;
+    }
 }
 
 .navbar-xs .navbar-brand { 
