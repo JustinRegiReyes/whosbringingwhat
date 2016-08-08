@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 	before_save :default_values
 
+	has_many :comments
 	has_many :items
 	# renaming has_many :events alias to created_events
 	has_many :created_events, foreign_key: "user_id", class_name: "Event"
@@ -26,7 +27,7 @@ class User < ActiveRecord::Base
 		  		content_type: { content_type: ["image/jpeg", "image/gif", "image/png", "application/pdf"] }
 
 			after_update :reprocess_on_hand_photo, :if => :cropping
-
+	# methods
 	def self.confirm (params)
 		@user = User.find_by_username(params[:username])
 		@user.try(:authenticate, params[:password])
@@ -35,5 +36,9 @@ class User < ActiveRecord::Base
 	def default_values
 		# binding.pry
 		# self.avi.url = "test" unless (self.avi.url != "/avis/original/missing.png")
+	end
+
+	def cropping
+		!crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
 	end
 end
