@@ -3,6 +3,7 @@ class Event < ActiveRecord::Base
 	has_many :categories
 
 	has_many :attending_events
+	has_many :comments
 	belongs_to :user
 
 
