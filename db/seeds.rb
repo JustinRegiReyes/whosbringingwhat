@@ -145,7 +145,19 @@ events = [
 	}
 ]
 
+comments = ["Bacon ipsum dolor amet biltong spare ribs sausage, flank tongue pork hamburger. Landjaeger pork belly spare ribs strip steak corned beef andouille fatback pastrami tenderloin shoulder turducken turkey boudin hamburger. Pork belly tri-tip pork chop, tail shank landjaeger shankle alcatra turducken ball tip frankfurter beef ham hock. Rump t-bone sausage chuck, turkey frankfurter porchetta brisket salami shank meatloaf corned beef filet mignon kielbasa short loin. Ball tip meatloaf cow, meatball hamburger venison flank capicola. Pancetta capicola bacon, venison alcatra drumstick hamburger leberkas beef ribs beef filet mignon ham.", "Bacon ipsum dolor amet biltong spare ribs sausage, flank tongue pork hamburger. Landjaeger pork belly spare ribs strip steak corned beef andouille fatback pastrami tenderloin shoulder turducken turkey boudin hamburger. Pork belly tri-tip pork chop, tail shank landjaeger shankle alcatra turducken ball tip frankfurter beef ham hock. Rump t-bone sausage chuck, turkey frankfurter porchetta brisket salami shank meatloaf corned beef filet mignon kielbasa short loin."]
+
 created_events = Event.create(events)
+created_events.each do |event|
+	comments.each do |comment|
+		c = Comment.create({post: comment})
+		event.comments << c
+		user.comments << c
+	end
+	event.save
+	user.save
+end
+
 user.going_tos << created_events.last
 
 user.save
