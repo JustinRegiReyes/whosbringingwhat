@@ -47,5 +47,19 @@
 		</div>
 	</div>
 	<div id="comment-section">
+		<div id="add-comment-container">
+
+		</div>
+		<% @event.comments.each do |comment| %>
+			<div class="comment-container">
+				<div class="user-avi"></div>
+				<div class="comment-made">
+					by <span class="username"><%=comment.user.username%></span> on <%= comment.created_at.strftime("%b %d") %>
+				</div>
+				<div class="post-container">
+					<p><%= comment.post %></p>
+				</div>
+			</div>
+		<% end %>
 	</div>
 </div>

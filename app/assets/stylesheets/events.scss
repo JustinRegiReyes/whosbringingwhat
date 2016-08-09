@@ -117,6 +117,8 @@ div#new-event-container {
 	} // div.form-container
 }
 
+// ********** event#show **********
+
 div#event-show-container {
 	position: relative;
 	width: 100vw;
@@ -257,5 +259,78 @@ div#event-show-container {
 		min-height: 500px;
 		border: 1px solid red;
 		background-color: #FFF;
+		border: 1px solid yellow;
+		height: auto;
+		padding-top: 50px;
+		div#add-comment-container {
+			min-height: 150px;
+			width: 70%;
+			border: 1px solid green;
+			margin: 0 auto 100px;
+			@media screen and (max-width: $break-sm) {
+				width: 73%;
+			}
+			@media screen and (max-width: $break-iphone6) {
+				width: 98%;
+			}
+		}
+		div.comment-container {
+			height: auto;
+			width: 70%;
+			margin: 90px auto;
+			position: relative;
+			@include box-shadow(0.4);
+			div.user-avi {
+				min-height: 70px;
+			    min-width: 70px;
+			    border-radius: 50%;
+			    position: absolute;
+			    top: -35px;
+			    left: -35px;
+			    background-color: white;
+			    border: 1px solid #bcc;
+			}
+			div.comment-made {
+				min-height: 30px;
+			    // border: 1px solid black;
+			    width: 300px;
+			    position: absolute;
+			    left: 45px;
+			    top: -30px;
+			    padding-top: 8px;
+			    color: #bababa;
+			    font-size: 0.9em;
+			    span.username {
+			    	color: $periGreen;
+			    }
+			}
+			div.post-container {
+				padding: 20px 40px;
+			}
+			@media screen and (max-width: $break-sm) {
+				& {
+					width: 73%;
+				}
+			}
+			@media screen and (max-width: $break-iphone6) {
+				& {
+					width: 98%;
+					margin: 150px auto;
+				}
+				div.user-avi {
+				    min-height: 90px;
+				    min-width: 90px;
+				    top: -100px;
+				    left: 10px;
+				}
+				div.comment-made {
+					left: 94px;
+    				top: -30px;
+				}
+				div.post-container {
+					padding: 10px 20px;
+				}
+			}
+		} // div.comment-container
 	}
-}
+} // event-show-container
