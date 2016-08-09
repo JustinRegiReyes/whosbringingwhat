@@ -103,7 +103,11 @@ function navHamburgerToggle() {
 			});
 			el.animate({
 			    height: "0px"
-			}, 200);
+			}, 200, null, function() {
+				el.css({
+					"display": 'none'
+				});
+			});
 		}
 	})
 }
