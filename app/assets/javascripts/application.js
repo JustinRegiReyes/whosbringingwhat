@@ -33,6 +33,7 @@ function ready() {
 	navHamburger();
 	removeButtonDataTarget();
 	navHamburgerToggle();
+	ajaxForms();
 	if(window.location.pathname === "/calendar") {
 		calendar();
 	}
@@ -124,5 +125,42 @@ function removeButtonDataTarget() {
 	    if (keys[i].indexOf('target') != -1) {
 	        el.removeAttr("data-" + keys[i]);
 	    }
+	}
+}
+
+function ajaxForms() {
+	// use addEventComment for when you want to dynamically add comments. for now page reloads on success
+	// addEventComment();
+}
+
+function addEventComment() {
+	if($("form#add_comment")) {
+		$("form#add_comment").on('submit', function(e) {
+			e.preventDefault();
+			var eventId = $("#event_id").val();
+			var data = {
+				comments: { 
+					post: $("#comment_post").val(),
+					id: eventId
+				}
+			};
+			var url = "/events/" + eventId + "/comments/";
+			$.ajax({
+			  type: "POST",
+			  url: url,
+			  data: data,
+			  success: success,
+			  error: error
+			});
+		});
+
+		function success(res) {
+			// for now just reload page
+			location.reload();
+		}
+
+		function error (res) {
+			console.log(res, "ERROR");
+		}
 	}
 }

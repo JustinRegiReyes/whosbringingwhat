@@ -346,6 +346,11 @@ div#event-show-container {
 			}
 			div.post-container {
 				padding: 20px 40px;
+				& > {
+					p {
+						margin: 0;
+					}
+				}
 			}
 			@media screen and (max-width: $break-sm) {
 				width: 73%;
