@@ -26,7 +26,6 @@ class EventsController < ApplicationController
   def create
     event = Event.create(event_params)
     current_user.created_events << event
-    binding.pry
     redirect_to "/events/#{event.id}"
   end
 
