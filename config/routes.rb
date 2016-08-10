@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   # events routes
   	resources :events
+    post '/events/:id/comments', to: 'comments#create'
+
 
   # sessions routes
 	post '/sessions', to: 'sessions#create'
