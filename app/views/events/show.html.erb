@@ -13,6 +13,7 @@
 
 				Tri-tip ground round shank, kevin boudin sausage spare ribs pork belly turkey fatback tenderloin ham meatloaf. Beef picanha landjaeger spare ribs leberkas cow short ribs turducken pig t-bone. Short loin ground round shoulder short ribs meatloaf. Brisket boudin pork chop, jerky kevin turkey frankfurter ribeye tri-tip short ribs sirloin salami meatball venison. Meatloaf tenderloin alcatra, t-bone corned beef ground round landjaeger tongue frankfurter hamburger pig kielbasa cupim filet mignon strip steak. Boudin bresaola cupim, pancetta prosciutto hamburger chuck meatloaf ground round doner.</div>
 		</div>
+			<!-- div#information -->
 		<div id="additional-information" class="col-lg-4 col-md-4 col-sm-4">
 			<div id="guests" class="info-box">
 				<div id="guests-header">Guests</div>
@@ -45,10 +46,25 @@
 				<% end %>
 			</div>
 		</div>
+			<!-- div#additional-information -->
 	</div>
+		<!-- div#information-section -->
 	<div id="comment-section">
 		<div id="add-comment-container">
-
+			<%= form_tag("/comments", method: "post") do %>
+				<div class="clearfixs">
+					<div class="profile-pic-container">
+						<div class="profile-pic">
+						</div>
+					</div>
+					<div class="textarea-container">
+						<%= text_area(:comment, :post) %>
+					</div>
+					<div class="submit-button-container">
+						<%= submit_tag "Add Comment", class: "btn btn-default" %>
+					</div>
+				</div>
+			<% end %>
 		</div>
 		<% @event.comments.each do |comment| %>
 			<div class="comment-container">
@@ -62,4 +78,5 @@
 			</div>
 		<% end %>
 	</div>
+		<!-- div#comment-section -->
 </div>
