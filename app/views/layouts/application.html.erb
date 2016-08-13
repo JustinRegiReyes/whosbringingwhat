@@ -13,7 +13,9 @@
 </head>
 
 <body>
-<%= render "partials/navbar" %> 
+  <% if current_user %>
+    <%= render "partials/navbar" %> 
+  <% end %>
 <div id="layout-wrapper">
 	<%= yield %>
 </div>
