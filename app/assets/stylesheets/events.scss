@@ -290,8 +290,12 @@ div#event-show-container {
 				float: left;
 				margin-top: 10px;
 				text-align: right;
-				& > button {
-
+				& > input.site-button {
+					background-color: $cobaltBlue;
+					color: white;
+					&:hover {
+						background-color: darken($cobaltBlue, 2%);
+					}
 				}
 			}
 			@media screen and (max-width: $break-sm) {
