@@ -16,6 +16,15 @@
   <% if current_user %>
     <%= render "partials/navbar" %> 
   <% end %>
+  <% if flash %>
+    <div id="flash-message-container">
+      <% flash.each do |key, value| %>
+        <div class="flash<%=key%>">
+          <%=value%>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 <div id="layout-wrapper">
 	<%= yield %>
 </div>
