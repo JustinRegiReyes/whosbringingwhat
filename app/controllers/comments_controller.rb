@@ -10,11 +10,13 @@ class CommentsController < ApplicationController
       current_user.comments << comment
       event.comments << comment
       respond_to do |format|
+        flash[:success] = "Comment added"
         format.html { redirect_to("/events/#{create_params[:event_id]}") }
         format.json { render :json => {comment: comment.post} }
       end
     else
       respond_to do |format|
+        flash[:error] = "Error adding comment"
         format.json { render :json => {comment: comment.post}, status: 422 }
       end
     end
