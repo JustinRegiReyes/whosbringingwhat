@@ -58,6 +58,8 @@ button, input.submit {
 	resize: none;
 }
 
+// *********** clearfix container ************
+
 .clearfixs:after {
 	visibility: hidden;
 	display: block;
@@ -69,4 +71,11 @@ button, input.submit {
 * html .clearfixs             { zoom: 1; } /* IE6 */
 *:first-child+html .clearfixs { zoom: 1; } /* IE7 */
 
+// *********** button styles ************
 
+button.site-button, input[type=submit] {
+	width: 175px;
+	margin: 5px 0;
+	border: none;
+	border-radius: 1px;
+}
