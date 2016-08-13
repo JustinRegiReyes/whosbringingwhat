@@ -34,6 +34,7 @@ function ready() {
 	removeButtonDataTarget();
 	navHamburgerToggle();
 	ajaxForms();
+	flashMessage();
 	if(window.location.pathname === "/calendar") {
 		calendar();
 	}
@@ -162,5 +163,16 @@ function addEventComment() {
 		function error (res) {
 			console.log(res, "ERROR");
 		}
+	}
+}
+
+function flashMessage() {
+	var el = $("div#flash-message-container");
+	if(el) {
+		el.fadeIn(400, function() {
+		    setTimeout(function() { 
+		    	el.fadeOut(400, function() {});
+		    }, 2000);
+		});
 	}
 }

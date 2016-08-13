@@ -82,6 +82,21 @@ button.site-button, input[type=submit] {
 
 // ********** flash message styles ***********
 
-div#flash-message {
-
+div#flash-message-container {
+    z-index: 900;
+    position: absolute;
+    background-color: white;
+    top: 70px;
+    height: 40px;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    text-align: center;
+    display: none; 
+    div.flash-success {
+    	color: $periGreen;
+    }
 }
