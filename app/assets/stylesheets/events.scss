@@ -135,14 +135,67 @@ div#event-show-container {
 		div#banner-overlay {
 			position: absolute;
 			width: 100%;
-			height: 60px;
+			height: 70px;
 			bottom: 0;
 			left: 0;
-			background: rgba(255, 255, 255, 0.9); 
+			padding-left: 20px;
+			// background: rgba(255, 255, 255, 0.9); 
 			// background: -moz-linear-gradient(top, #4c4c4c 0%, #595959 12%, #666666 25%, #474747 43%, #2c2c2c 50%, #000000 51%, #111111 60%, #2b2b2b 76%, #1c1c1c 91%, #131313 100%); /* FF3.6-15 */
 			// background: -webkit-linear-gradient(top, #4c4c4c 0%,#595959 12%,#666666 25%,#474747 43%,#2c2c2c 50%,#000000 51%,#111111 60%,#2b2b2b 76%,#1c1c1c 91%,#131313 100%); /* Chrome10-25,Safari5.1-6 */
 			// background: linear-gradient(to bottom, rgba(0, 0, 0, 0%), rgba(0,0,0, 5%), rgba(0,0,0, 10%), rgba(0,0,0, 15%), rgba(0,0,0, 35%), rgba(0,0,0, 45%), rgba(0,0,0, 60%));
 			// filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313',GradientType=0 ); 
+			div#date-container {
+				width: 60px;
+				height: 60px;
+				top: -10px;
+				position: relative;
+				// border: 2px solid white;
+				background-color: white;
+				text-align: center;
+				float: left;
+				div#date-box {
+					height: 22px;
+					background-color: $cobaltBlue;
+					color: white;
+				}
+				div#date-day {
+					color: black;
+					font-size: 1.5em;
+					position: relative;
+					padding-top: 5px;
+				}
+			} //div#date-container
+			div#title-container {
+				float: left;
+				height: 60px;
+				position: relative;
+				top: -10px;
+				padding-top: 12px;
+				font-size: 1.70em;
+				margin-left: 20px;
+				div#title {
+					color: white;
+					text-shadow: -1px 0px 1px black;
+					span.event-host {
+						font-size: .75em;
+						span.host-name {
+
+						}
+					}
+				}
+				@media screen and(max-width: $break-sm) {
+					font-size: 1.5em;
+					top: -20px;
+					span.event-host {
+						display: block;
+						width: 100%;
+						span.host-name {
+							
+						}
+					}
+				}
+			} //div#title-container
+
 		}
 	}
 	div#information-section {
@@ -290,6 +343,7 @@ div#event-show-container {
 				float: left;
 				resize: none;
 				padding: 2px 6px;
+				border: 1px solid silver;
 				&:focus {
 					outline: none;
 					border: 1px solid $periGreen;
@@ -311,7 +365,7 @@ div#event-show-container {
 			@media screen and (max-width: $break-sm) {
 				width: 73%;
 			}
-			@media screen and (max-width: $break-iphone6) {
+			@media screen and (max-width: $break-iphone6plus) {
 				width: 98%;
 				div.profile-pic-container {
 					width: 100%;
