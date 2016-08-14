@@ -212,6 +212,7 @@ div#event-show-container {
 			background-color: #FFF;
 			margin: 0 auto;
 			padding: 10px;
+			padding-left: 40px;
 			position: relative;
 			@include box-shadow(.3);
 			& >i {
@@ -233,11 +234,15 @@ div#event-show-container {
 				margin-bottom: 5px;
 			}
 			div#highlights {
-				height: 80px;
+				height: auto;
+				max-height: 80px;
 				margin-bottom: 10px;
+				padding-top: 10px;
+				overflow-y: scroll; 
 			}
 			div#description {
 				min-height: 80px;
+				padding-left: 10px;
 				height: auto;
 			}
 		}

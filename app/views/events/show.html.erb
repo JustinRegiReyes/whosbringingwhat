@@ -20,9 +20,21 @@
 	</div>
 	<div id="information-section" class="clearfixs">
 		<div id="information" class="col-lg-8 col-md-8 col-sm-8">
-			<div id="time" class="info-box"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
-			<div id="place" class="info-box"><i class="fa fa-compass" aria-hidden="true"></i></div>
-			<div id="highlights" class="info-box"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
+			<div id="time" class="info-box">
+				<i class="fa fa-clock-o" aria-hidden="true"></i>
+				<%= @event.time_start.strftime("%I:%M%P") %>
+				<% if @event.time_end != nil %>
+					- <%= @event.time_end.strftime("%I:%M%P") %>
+				<% end %>
+			</div>
+			<div id="place" class="info-box">
+				<i class="fa fa-compass" aria-hidden="true"></i>
+				<%= @event.where %>
+			</div>
+			<div id="highlights" class="info-box">
+				<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+				<%= @event.highlights %>
+			</div>
 			<div id="description" class="info-box">
 				Bacon ipsum dolor amet pastrami turducken shank leberkas spare ribs pork belly tenderloin cow. Jowl swine kielbasa porchetta, andouille short ribs turducken brisket boudin pork loin. Fatback tail frankfurter short ribs kielbasa chicken bresaola chuck. Tongue meatball capicola jerky fatback jowl cupim sausage prosciutto tail turducken pork chop ball tip.
 
