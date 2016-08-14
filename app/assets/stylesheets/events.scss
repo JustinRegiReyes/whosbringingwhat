@@ -243,6 +243,11 @@ div#event-show-container {
 					margin-bottom: 2px;
 					font-size: 1.1em;
 					padding-left: 30px;
+					@media screen and(max-width: $break-sm) {
+					    // padding-left: 30%;	
+					    padding-left: 0;
+					    text-align: center;					
+					}
 					div.cat-count {
 
 					}
