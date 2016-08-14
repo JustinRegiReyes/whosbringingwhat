@@ -30,6 +30,9 @@
 			<div id="place" class="info-box">
 				<i class="fa fa-compass" aria-hidden="true"></i>
 				<%= @event.where %>
+				<div id="address-details">
+					<%= @event.address %> <%= @event.city %> <%= @event.zipcode %>, <%= @event.state %>
+				</div>
 			</div>
 			<div id="highlights" class="info-box">
 				<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -104,7 +107,7 @@
 					by <span class="username"><%=comment.user.username%></span> on <%= comment.created_at.strftime("%b %d") %>
 				</div>
 				<div class="post-container">
-					<p><%= comment.id %> <%= comment.post %></p>
+					<p><%= comment.post %></p>
 				</div>
 			</div>
 		<% end %>

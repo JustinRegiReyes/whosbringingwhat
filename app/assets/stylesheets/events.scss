@@ -232,6 +232,11 @@ div#event-show-container {
 			}
 			div#place {
 				margin-bottom: 5px;
+				height: 50px;
+				div#address-details {
+					font-size: .9em;
+					color: $ashyRed;
+				}
 			}
 			div#highlights {
 				height: auto;
@@ -253,6 +258,7 @@ div#event-show-container {
 			div#guests {
 				height: 170px;
 				margin-bottom: 10px;
+				padding-left: 10px;
 				@media screen and (max-width: $break-sm) {
 					height: 115px;
 				}
@@ -289,6 +295,7 @@ div#event-show-container {
 			}
 			div#whos-bringing-what {
 				min-height: 80px;
+				padding-left: 10px;
 				height: auto;
 				div#categories-header {
 					font-size: 1.25em;
