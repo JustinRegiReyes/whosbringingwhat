@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user = User.create({username: "qwe", password: "qwe"})
+user = User.create({username: "Jstn", password: "qwe"})
 
 prevTwoMonth = (Time.now - 2.month).strftime("%Y-%m")
 prevMonth = (Time.now - 1.month).strftime("%Y-%m")
