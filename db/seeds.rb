@@ -190,10 +190,6 @@ items = [
 	{
 		title: "Item 3",
 		description: "Bacon ipsum dolor amet strip steak drumstick fatback, kielbasa boudin t-bone ribeye. Jerky ball tip pork bresaola landjaeger biltong kielbasa jowl doner strip steak. Pork belly capicola cow corned beef tail pastrami venison ribeye salami chicken. Beef ham spare ribs sirloin pig tri-tip bresaola pork chop swine. Prosciutto frankfurter shank filet mignon pork chop hamburger beef ribs t-bone landjaeger pork spare ribs."
-	},
-	{
-		title: "Item 4",
-		description: "Bacon ipsum dolor amet strip steak drumstick fatback, kielbasa boudin t-bone ribeye. Jerky ball tip pork bresaola landjaeger biltong kielbasa jowl doner strip steak. Pork belly capicola cow corned beef tail pastrami venison ribeye salami chicken. Beef ham spare ribs sirloin pig tri-tip bresaola pork chop swine. Prosciutto frankfurter shank filet mignon pork chop hamburger beef ribs t-bone landjaeger pork spare ribs."
 	}
 ]
 
@@ -208,7 +204,7 @@ created_events.each do |event|
 		user.comments << c
 	end
 	categories.each do |category|
-		c = Category.create({title: category[:title], description: category[:description]})
+		c = Category.create({title: category[:title], description: category[:description], needed: category[:needed]})
 		event.categories << c
 		items.each do |item|
 			i = Item.create({title: item[:title], description: item[:description]})
