@@ -6,7 +6,20 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# Users
 user = User.create({username: "Jstn", password: "qwe"})
+
+user1 = User.create({username: "Ro", password: "qwe"})
+
+user2 = User.create({username: "Ender", password: "qwe"})
+
+user3 = User.create({username: "Rocky", password: "qwe"})
+
+user4 = User.create({username: "Bulbasaur", password: "qwe"})
+
+########## events ##########
+
+ # event dates and times
 
 prevTwoMonth = (Time.now - 2.month).strftime("%Y-%m")
 prevMonth = (Time.now - 1.month).strftime("%Y-%m")
@@ -198,20 +211,33 @@ comments = ["Bacon ipsum dolor amet biltong spare ribs sausage, flank tongue por
 created_events = Event.create(events)
 
 created_events.each do |event|
+	# post comments to event
 	comments.each do |comment|
 		c = Comment.create({post: comment})
 		event.comments << c
 		user.comments << c
 	end
+	# add categories to event
 	categories.each do |category|
 		c = Category.create({title: category[:title], description: category[:description], needed: category[:needed]})
 		event.categories << c
+		# add items to category
 		items.each do |item|
 			i = Item.create({title: item[:title], description: item[:description]})
 			c.items << i
 			user.items << i
 		end
 	end
+
+	# add users to event with different attending_events
+	aeGoing1 = AttendingEvent.create({going: true, user_id: user1.id})
+	aeGoing2 = AttendingEvent.create({going: true, user_id: user2.id})
+	aeDeclined = AttendingEvent.create({declined: true, user_id: user3.id})
+	aeMaybe = AttendingEvent.create({maybe: true, user_id: user4.id})
+	event.attending_events << aeGoing1
+	event.attending_events << aeGoing2
+	event.attending_events << aeDeclined
+	event.attending_events << aeMaybe
 end
 
 user.going_tos << created_events.last
