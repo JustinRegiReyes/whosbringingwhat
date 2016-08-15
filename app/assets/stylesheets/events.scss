@@ -262,7 +262,7 @@ div#event-show-container {
 				@media screen and (max-width: $break-sm) {
 					height: 115px;
 				}
-				@media screen and (max-width: $break-iphone6) {
+				@media screen and (max-width: $break-iphone6plus) {
 					&:after {
 						@include contain-float();
 					}
@@ -280,7 +280,7 @@ div#event-show-container {
 					height: 60px;
 					padding: 0;
 					padding-top: 5px;
-					@media screen and (max-width: $break-iphone6) {
+					@media screen and (max-width: $break-iphone6plus) {
 						width: 50% !important;
 					}
 					div.guests-num {
