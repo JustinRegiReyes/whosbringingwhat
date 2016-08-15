@@ -49,19 +49,19 @@
 			<div id="guests" class="info-box">
 				<div id="guests-header">Guests</div>
 				<div class="guests-info col-sm-6 col-xs-3">
-					<div class="guests-num">0</div>
+					<div class="guests-num"><%= @event.attending_events.where({going: true}).count %></div>
 					<div class="guests-cat">Attending</div>
 				</div>
 				<div class="guests-info col-sm-6 col-xs-3">
-					<div class="guests-num">0</div>
+					<div class="guests-num"><%= @event.attending_events.where({declined: true}).count %></div>
 					<div class="guests-cat">Declined</div>
 				</div>
 				<div class="guests-info col-sm-6 col-xs-3">
-					<div class="guests-num">0</div>
+					<div class="guests-num"><%= @event.attending_events.where({maybe: true}).count %></div>
 					<div class="guests-cat">Maybe</div>
 				</div>
 				<div class="guests-info col-sm-6 col-xs-3">
-					<div class="guests-num">0</div>
+					<div class="guests-num"><%= @event.attending_events.count %></div>
 					<div class="guests-cat">Invited</div>
 				</div>
 			</div>
