@@ -145,22 +145,80 @@ events = [
 	}
 ]
 
+categories = [
+	{
+		title: "Utensils",
+		description: "Utensils for food",
+		needed: 3
+	},
+	{
+		title: "Snacks",
+		description: "Chips. Drinks. Cookies. Dranks.",
+		needed: 6
+	},
+	{
+		title: "Games",
+		description: "Board games, laptop for steam? Anything really.",
+		needed: 2
+	},
+	{
+		title: "Misc",
+		description: "Anything you think we might need",
+		needed: 2
+	},
+	{
+		title: "Food",
+		description: "More fulfilling things to eat.",
+		needed: 4
+	},
+	{
+		title: "Just Pitching In",
+		description: "If you cant bring anything and just want to pitch in let me know. So I can make extra food for your pitch in.",
+		needed: 0
+	}
+]
+
+items = [
+	{
+		title: "Item 1",
+		description: "Bacon ipsum dolor amet strip steak drumstick fatback, kielbasa boudin t-bone ribeye. Jerky ball tip pork bresaola landjaeger biltong kielbasa jowl doner strip steak. Pork belly capicola cow corned beef tail pastrami venison ribeye salami chicken. Beef ham spare ribs sirloin pig tri-tip bresaola pork chop swine. Prosciutto frankfurter shank filet mignon pork chop hamburger beef ribs t-bone landjaeger pork spare ribs."
+	},
+	{
+		title: "Item 2",
+		description: "Bacon ipsum dolor amet strip steak drumstick fatback, kielbasa boudin t-bone ribeye. Jerky ball tip pork bresaola landjaeger biltong kielbasa jowl doner strip steak. Pork belly capicola cow corned beef tail pastrami venison ribeye salami chicken. Beef ham spare ribs sirloin pig tri-tip bresaola pork chop swine. Prosciutto frankfurter shank filet mignon pork chop hamburger beef ribs t-bone landjaeger pork spare ribs."
+	},
+	{
+		title: "Item 3",
+		description: "Bacon ipsum dolor amet strip steak drumstick fatback, kielbasa boudin t-bone ribeye. Jerky ball tip pork bresaola landjaeger biltong kielbasa jowl doner strip steak. Pork belly capicola cow corned beef tail pastrami venison ribeye salami chicken. Beef ham spare ribs sirloin pig tri-tip bresaola pork chop swine. Prosciutto frankfurter shank filet mignon pork chop hamburger beef ribs t-bone landjaeger pork spare ribs."
+	},
+	{
+		title: "Item 4",
+		description: "Bacon ipsum dolor amet strip steak drumstick fatback, kielbasa boudin t-bone ribeye. Jerky ball tip pork bresaola landjaeger biltong kielbasa jowl doner strip steak. Pork belly capicola cow corned beef tail pastrami venison ribeye salami chicken. Beef ham spare ribs sirloin pig tri-tip bresaola pork chop swine. Prosciutto frankfurter shank filet mignon pork chop hamburger beef ribs t-bone landjaeger pork spare ribs."
+	}
+]
+
 comments = ["Bacon ipsum dolor amet biltong spare ribs sausage, flank tongue pork hamburger. Landjaeger pork belly spare ribs strip steak corned beef andouille fatback pastrami tenderloin shoulder turducken turkey boudin hamburger. Pork belly tri-tip pork chop, tail shank landjaeger shankle alcatra turducken ball tip frankfurter beef ham hock. Rump t-bone sausage chuck, turkey frankfurter porchetta brisket salami shank meatloaf corned beef filet mignon kielbasa short loin. Ball tip meatloaf cow, meatball hamburger venison flank capicola. Pancetta capicola bacon, venison alcatra drumstick hamburger leberkas beef ribs beef filet mignon ham.", "Bacon ipsum dolor amet biltong spare ribs sausage, flank tongue pork hamburger. Landjaeger pork belly spare ribs strip steak corned beef andouille fatback pastrami tenderloin shoulder turducken turkey boudin hamburger. Pork belly tri-tip pork chop, tail shank landjaeger shankle alcatra turducken ball tip frankfurter beef ham hock. Rump t-bone sausage chuck, turkey frankfurter porchetta brisket salami shank meatloaf corned beef filet mignon kielbasa short loin.", "Bacon ipsum dolor amet landjaeger pancetta shankle meatloaf, chuck sausage porchetta turducken pork loin capicola beef sirloin. Pastrami beef pork short ribs jerky andouille pork chop shank turducken. Jerky meatball ham hock picanha ground round pork belly meatloaf.", "Bacon ipsum dolor amet landjaeger pancetta shankle meatloaf, chuck sausage porchetta turducken pork loin capicola beef sirloin. Pastrami beef pork short ribs jerky andouille pork chop shank turducken. Jerky meatball ham hock picanha ground round pork belly meatloaf. Hamburger capicola jerky turducken shank boudin shoulder prosciutto ribeye bacon spare ribs tail pancetta tri-tip. Strip steak doner venison, kevin chicken jerky bresaola tri-tip leberkas jowl cow tail spare ribs short ribs. Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!"]
 
 created_events = Event.create(events)
+
 created_events.each do |event|
 	comments.each do |comment|
 		c = Comment.create({post: comment})
 		event.comments << c
 		user.comments << c
 	end
-	event.save
-	user.save
+	categories.each do |category|
+		c = Category.create({title: category[:title], description: category[:description]})
+		event.categories << c
+		items.each do |item|
+			i = Item.create({title: item[:title], description: item[:description]})
+			c.items << i
+			user.items << i
+		end
+	end
 end
 
 user.going_tos << created_events.last
-
-user.save
 
 
 
