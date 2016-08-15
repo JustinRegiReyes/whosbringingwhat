@@ -308,16 +308,35 @@ div#event-show-container {
 					margin-bottom: 2px;
 					font-size: 1.1em;
 					padding-left: 30px;
+					span.cat-count {
+						color: $ashyRed;
+						font-size: .85em;
+						&.enough {
+							color: $periGreen;
+						}
+					}
+					span.cat-name {
+						a {
+							color: black;
+							&:hover {
+								text-decoration: none;
+								border-bottom: 1px solid black;
+							}
+						}
+					}
 					@media screen and(max-width: $break-sm) {
 					    // padding-left: 30%;	
 					    padding-left: 0;
-					    text-align: center;					
-					}
-					div.cat-count {
-
-					}
-					div.cat-name {
-
+					    text-align: center;	
+					    span.cat-name {
+							a {
+								color: #337ab7;
+								&:hover {
+									text-decoration: none;
+									border-bottom: none;
+								}
+							}
+						}				
 					}
 				}
 			}

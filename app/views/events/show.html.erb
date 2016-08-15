@@ -18,6 +18,7 @@
 				<!-- div#title-container -->
 		</div>
 	</div>
+		<!-- div#banner-container -->
 	<div id="information-section" class="clearfixs">
 		<div id="information" class="col-lg-8 col-md-8 col-sm-8">
 			<div id="time" class="info-box">
@@ -68,10 +69,10 @@
 				<div id="categories-header">
 					Who's Bringing What?
 				</div>
-				<% 7.times do %>
+				<% @event.categories.each do |category|%>
 					<div class="category">
-						<span class="cat-count">3/4<span>
-						<span class="cat-name">Dranks</span>
+						<span class="cat-count <%= 'enough' unless category.enough_items? === false %> "><%= category.items.length %>/<%= category.needed %></span>
+						<span class="cat-name"> <a href="/events/<%= @event.id %>/categories/<%= category.id %>"><%= category.title %></a></span>
 					</div>
 				<% end %>
 			</div>
