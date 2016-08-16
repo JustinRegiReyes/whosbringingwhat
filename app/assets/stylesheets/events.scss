@@ -232,12 +232,27 @@ div#event-show-container {
 			}
 			div#place {
 				margin-bottom: 5px;
-				height: 50px;
+				height: auto;
+				span#event-address {
+					width: 100%;
+					display: inline-block;
+				}
 				div#address-details {
 					font-size: .9em;
 					color: $ashyRed;
 				}
-			}
+				span#city-zip-container {
+					width: 100%;	
+					display: inline-block;
+					span#event-city, span#event-zipcode {
+						display: inline-block;
+					} 
+				}
+				span#event-state {
+					width: 100%;
+					display: inline-block;
+				}
+			} // div#place
 			div#highlights {
 				height: auto;
 				max-height: 80px;
@@ -249,6 +264,8 @@ div#event-show-container {
 				min-height: 80px;
 				padding-left: 10px;
 				height: auto;
+			}
+			@media screen and(max-width: $break-sm) {
 			}
 		}
 		div#additional-information {

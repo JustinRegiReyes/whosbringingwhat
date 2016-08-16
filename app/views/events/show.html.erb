@@ -32,7 +32,7 @@
 				<i class="fa fa-compass" aria-hidden="true"></i>
 				<%= @event.where %>
 				<div id="address-details">
-					<%= @event.address %> <%= @event.city %> <%= @event.zipcode %>, <%= @event.state %>
+					<span id="event-address"><%= @event.address %></span>  <span id="city-zip-container"><span id="event-city"><%= @event.city %> <span id="event-zipcode"><%= @event.zipcode %>,</span></span></span> <span id="event-state"><%= @event.state %></span>
 				</div>
 			</div>
 			<div id="highlights" class="info-box">
