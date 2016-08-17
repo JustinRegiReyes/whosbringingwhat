@@ -61,9 +61,28 @@ class EventsController < ApplicationController
   def delete
   end
 
+  def guests
+    guests = get_guests
+    respond_to do |format|
+        format.json { render :json => {guests: guests}, status: 200 }
+    end
+  end
+
   private
 
   def event_params
       params.require(:event).permit(:photo, :title, :description, :where, :address, :city, :zipcode, :state, :country, :date_start, :date_end, :time_start, :time_end)
+  end
+
+  def get_guests
+    eventId = params[:id]
+    type = params[:type]
+    if type == "invited"
+      guests =  User.joins(:attending_events).where({attending_events: {event_id: eventId, }}).as_json(:only => [:id,:username], methods: [:avi_url])
+    else
+      guests =  User.joins(:attending_events).where({attending_events: {event_id: eventId, "#{type}": true}}).as_json(:only => [:id,:username], methods: [:avi_url])
+    end
+
+    return guests
   end
 end
