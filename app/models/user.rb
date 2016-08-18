@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 	before_save :default_values
+	attr_accessor :event_target
 
 	has_many :comments
 	has_many :items
@@ -44,5 +45,11 @@ class User < ActiveRecord::Base
 
 	def avi_url
         self.avi.url(:medium)
+    end
+
+    def attendance_status
+    	# hunts down the key in the attending_event assigned
+    	# in the all_guests method in the events controller
+    	self.event_target.attributes.key(true)
     end
 end

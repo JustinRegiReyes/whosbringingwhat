@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :logged_in?, only: [:new, :show, :created, :attending]
+
   def new
     @event = Event.new
   end
@@ -62,9 +63,8 @@ class EventsController < ApplicationController
   end
 
   def guests
-    guests = get_guests
     respond_to do |format|
-        format.json { render :json => {guests: guests}, status: 200 }
+        format.json { render :json => {specific_guests: specific_guests, all_guests: all_guests}, status: 200 }
     end
   end
 
@@ -74,15 +74,28 @@ class EventsController < ApplicationController
       params.require(:event).permit(:photo, :title, :description, :where, :address, :city, :zipcode, :state, :country, :date_start, :date_end, :time_start, :time_end)
   end
 
-  def get_guests
+  def specific_guests
     eventId = params[:id]
     type = params[:type]
     if type == "invited"
-      guests =  User.joins(:attending_events).where({attending_events: {event_id: eventId, }}).as_json(:only => [:id,:username], methods: [:avi_url])
+      guests =  User.joins(:attending_events).where({attending_events: {event_id: eventId}}).as_json(:only => [:id,:username], methods: [:avi_url])
     else
       guests =  User.joins(:attending_events).where({attending_events: {event_id: eventId, "#{type}": true}}).as_json(:only => [:id,:username], methods: [:avi_url])
     end
 
     return guests
+  end
+
+  def all_guests
+    eventId = params[:id]
+    guests = User.joins(:attending_events).where({attending_events: {event_id: eventId }})
+    # goes through each guest and assigns it an attending_event related to the event asking for the guests
+    # the attending_event is then set to the users :event_target virtual attr
+    guests.each do |guest|
+      guest.event_target = guest.attending_events.find_by({event_id: eventId, user_id: guest.id})
+    end
+
+    # returns the guests as json objects in an array with only certain attrs and methods
+    return guests.as_json(:only => [:id,:username], methods: [:avi_url, :attendance_status])
   end
 end
