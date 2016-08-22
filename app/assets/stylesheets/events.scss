@@ -3,8 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 div#new-event-container {
-	height: 660px;
-	width: 500px;
+	height: auto;
+	max-width: 500px;
 	margin: 0 auto;
 	top: 50px;
 	position: relative;
@@ -79,9 +79,6 @@ div#new-event-container {
 		}
 		label {
 			font-weight: 200;
-			&.half {
-				width: 49%;
-			}
 		}
 		div.file-label {
 			height: 40px;
@@ -105,7 +102,7 @@ div#new-event-container {
 					}
 				}
 			}
-		}
+		}// div.file-label
 		#new-event-submit {
 			color: white;
 			background-color: $periGreen;
