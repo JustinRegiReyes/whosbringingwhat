@@ -1,3 +1,8 @@
+<!-- guests attending modals -->
+<%= render "partials/guestsmodal" %>
+
+
+<!--  -->
 <div id="event-show-container">
 	<div id="banner-container">
 		<div id="banner-overlay" class="clearfixs">
@@ -48,19 +53,19 @@
 		<div id="additional-information" class="col-lg-4 col-md-4 col-sm-4">
 			<div id="guests" class="info-box">
 				<div id="guests-header">Guests</div>
-				<div class="guests-info col-sm-6 col-xs-3">
+				<div id="going-guests" class="guests-info col-sm-6 col-xs-3">
 					<div class="guests-num"><%= @event.attending_events.where({going: true}).count %></div>
 					<div class="guests-cat">Attending</div>
 				</div>
-				<div class="guests-info col-sm-6 col-xs-3">
+				<div id="declined-guests" class="guests-info col-sm-6 col-xs-3">
 					<div class="guests-num"><%= @event.attending_events.where({declined: true}).count %></div>
 					<div class="guests-cat">Declined</div>
 				</div>
-				<div class="guests-info col-sm-6 col-xs-3">
+				<div id="maybe-guests" class="guests-info col-sm-6 col-xs-3">
 					<div class="guests-num"><%= @event.attending_events.where({maybe: true}).count %></div>
 					<div class="guests-cat">Maybe</div>
 				</div>
-				<div class="guests-info col-sm-6 col-xs-3">
+				<div id="invited-guests" class="guests-info col-sm-6 col-xs-3">
 					<div class="guests-num"><%= @event.attending_events.count %></div>
 					<div class="guests-cat">Invited</div>
 				</div>
@@ -115,4 +120,10 @@
 		<% end %>
 	</div>
 		<!-- div#comment-section -->
+</div>
+
+<div class="guest">
+	<div class="img-circle">
+		<img src=""/>
+	</div>
 </div>

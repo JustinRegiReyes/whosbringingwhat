@@ -1,0 +1,35 @@
+<div id="guests-modal" class="site-modal guests-modal modal fade" tabindex="-1" role="dialog" aria-labelledby="myMediumModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body clearfixs">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= image_tag(image_path("loading.gif"), class: "loading") %>
+        <div id="guests-list-container">
+            <div id="attendance-labels-container">
+              <select id="attendance-label-select" class="selectpicker">
+                <option value="going" selected>Attending</option> 
+                <option value="declined">Declined</option>
+                <option value="maybe">Maybe</option>
+                <option value="invited">Invited</option>
+              </select>
+              <div id="attending-label" label-type="going" class="attendance-label label-selected">
+                <span>Attending</span>
+              </div>
+              <div id="declined-label" label-type="declined" class="attendance-label">
+                <span>Declined</span>
+              </div>
+              <div id="maybe-label" label-type="maybe" class="attendance-label">
+                <span>Maybe</span>
+              </div>
+              <div id="invited-label" label-type="invited" class="attendance-label">
+                <span>Invited</span>
+              </div>
+            </div>
+              <!-- div#attendance-label-container -->
+            <div id="guests-list">
+            </div>
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div>
+</div>

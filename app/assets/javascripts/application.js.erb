@@ -1,0 +1,365 @@
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// compiled file.
+//
+// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
+// about supported directives.
+//
+//= require jquery
+//= require bootstrap
+//= require moment
+//=	require underscore
+//=	require calendar
+//= require wickedpicker
+//= require foundation-datepicker
+//=	require clndr-rails
+//= require jquery_ujs
+//= require turbolinks
+
+// document.ready
+$(document).ready(ready);
+// for turbolink load
+$(document).on('page:load', ready);
+
+function ready() {
+	passwordConfirm();
+	filename();
+	timePicker();
+	navHamburger();
+	removeButtonDataTarget();
+	navHamburgerToggle();
+	ajaxForms();
+	flashMessage();
+	eventGuestBoxes();
+	attendanceLabelListeners();
+	buttonAttendanceLabelListener();
+	if(window.location.pathname === "/calendar") {
+		calendar();
+	}
+}
+
+function passwordConfirm() {
+	var $passConfirm = $(".password-confirm");
+	var $passOne = $('.pass-first');
+	var $passTwo = $('.pass-second');
+	var noMatch = '<i class="fa fa-times-circle pass-nomatch" aria-hidden="true"></i>';
+	var match = '<i class="fa fa-check-circle pass-match" aria-hidden="true"></i>'
+	var $passContainer = $(".pass-match-container");
+	var $registerButton = $(".submit.register");
+	var $username = $("#signup-username");
+	if($passConfirm.length > 0) {
+		$(".input-container").on('input', '.password-confirm', function(e) {
+			if ($passOne.val() === $passTwo.val() && ($passOne.length > 0)) {
+				$passContainer.html(match);
+				console.log($username.val());
+				if($username.val().length > 0) {
+					$registerButton.show("fast");
+				}
+			} else {
+				$registerButton.hide("fast");
+				$passContainer.html(noMatch);
+			}
+		})
+	}
+}
+
+function filename() {
+	$("#user_avi").on("change", function(e) {
+		var filePath = $(this).val();
+		var split = filePath.split("\\");
+		var filename = split[split.length - 1];
+		$("#filename").empty();
+		$("#filename").append(filename);
+	});
+}
+
+function timePicker() {
+	if($('.timepicker')) {
+		$('.timepicker').wickedpicker();
+	}
+}
+
+function navHamburger() {
+	$(window).resize(function() {
+		removeButtonDataTarget();
+	})
+}
+
+function navHamburgerToggle() {
+	var el = $('#bs-example-navbar-collapse-1');
+	$('body').on('click', 'button.navbar-toggle', function() {
+		if(el.height() < 25) {
+			el.css({
+				height: "0px",
+			    display: "block",
+			    "overflow-y": "visible"
+			});
+			el.animate({
+			    height: "26px"
+			}, 200);
+		} else {
+			el.css({
+				"overflow-y": 'hidden'
+			});
+			el.animate({
+			    height: "0px"
+			}, 200, null, function() {
+				el.css({
+					"display": 'none'
+				});
+			});
+		}
+	})
+}
+
+function removeButtonDataTarget() {
+	// Fetch an array of all the data
+	var el = $("button.navbar-toggle");
+	var data = el.data(),
+	    i;
+	// Fetch all the key-names
+	var keys = $.map(data , function(value, key) { return key; });
+	// Loop through the keys, remove the attribute if the key contains "lorem".
+	for(i = 0; i < keys.length; i++) {
+	    if (keys[i].indexOf('target') != -1) {
+	        el.removeAttr("data-" + keys[i]);
+	    }
+	}
+}
+
+function ajaxForms() {
+	// use addEventComment for when you want to dynamically add comments. for now page reloads on success
+	// addEventComment();
+}
+
+function addEventComment() {
+	if($("form#add_comment")) {
+		$("form#add_comment").on('submit', function(e) {
+			e.preventDefault();
+			var eventId = $("#event_id").val();
+			var data = {
+				comments: { 
+					post: $("#comment_post").val(),
+					id: eventId
+				}
+			};
+			var url = "/events/" + eventId + "/comments/";
+			$.ajax({
+			  type: "POST",
+			  url: url,
+			  data: data,
+			  success: success,
+			  error: error
+			});
+		});
+
+		function success(res) {
+			// for now just reload page
+			location.reload();
+		}
+
+		function error (res) {
+			console.log(res, "ERROR");
+		}
+	}
+}
+
+function flashMessage() {
+	var el = $("div#flash-message-container");
+	if(el.length > 0) {
+		el.fadeIn(400, function() {
+		    setTimeout(function() { 
+		    	el.fadeOut(400, function() {});
+		    }, 2000);
+		});
+	}
+}
+
+function eventGuestBoxes() {
+	var el = $("div#guests-modal");
+	if(el.length > 0) {
+		var goingBox = "div#going-guests";
+		var declinedBox = "div#declined-guests";
+		var maybeBox = "div#maybe-guests";
+		var invitedBox = "div#invited-guests";
+
+		var guestBoxs =[ goingBox, declinedBox, maybeBox, invitedBox];
+
+		guestBoxs.forEach(function(box) {
+			var re = new RegExp(/^(.*?)\-guests/);
+			$(document).on('click', box, function() {
+				el.modal('toggle');
+				var id = $(this).attr("id");
+				var typeOfGuest = id.match(re)[1];
+				getTypeOfGuests(typeOfGuest, el);
+			})
+		});
+	}
+}
+
+function getTypeOfGuests(type, modal) {
+	var re = new RegExp("events/\(.*\)");
+	var loc = window.location.pathname;
+	var eventId = loc.match(re)[1];
+	$.get('/events/' +  eventId + '/guests/' + type)
+		.success(success)
+		.error(error)
+
+	function success(data) {
+		var content = $('div.modal-content');
+		var body = $('div.modal-body');
+		var guestsListCon = $("div#guests-list-container");
+		var guestsList = $("div#guests-list");
+		var img = $('img.loading');
+
+		// setting all guests to the window for use in organization in menu
+		window.all_guests = data.all_guests
+		window.test = 1;
+
+		modal.on('hidden.bs.modal', function () {
+			guestsList.empty();
+			img.css({
+				display: "block"
+			});
+			content.css({
+				height: "80px"
+			})
+			guestsListCon.css({
+				display: "none"
+			});
+		})
+
+		setTimeout(appendGuests, 500);
+
+		function appendGuests() {
+			img.fadeOut(100, function() {
+				data.specific_guests.forEach(function(guest, i) {
+					// calls guestAviUrl to discern if photo is default or upload
+					var aviUrl = guestAviUrl(guest.avi_url);
+					guestsList.append(guestsListTemplate(aviUrl, guest.username));
+				});
+				if(type.length > 1) {
+					toggleLabels(type);
+				}
+				content.animate({
+					height: "400px"
+				}, 300, function() {
+					guestsListCon.fadeIn(500);
+				});
+			});
+			
+		}
+	}
+
+	function error() {
+
+	}
+} // function getTypeOfGuests
+
+function attendanceLabelListeners() {
+	var $container = $("div#guests-list-container");
+	if($container.length > 0) {
+		// on click on an attendance label discern what guests need to be shown
+		$(document).on('click', 'div.attendance-label', function() {
+			// calls getAllGuests to snatch all guests attending saved into the window
+			var labelType = $(this).attr("label-type");
+			// empties then hides $guestsList to append guests one by one without being seen
+			
+			changeGuestsList(labelType);
+			toggleLabels(labelType);
+		});
+	}
+}
+
+// ********** guestsList functions **********
+
+function getAllGuests() {
+	if(window.all_guests == undefined) {
+		window.all_guests = [];
+	}
+	return window.all_guests;
+}
+
+function guestAviUrl(url) {
+	if (url == "images/aviplaceholder.png") {
+		var aviUrl = "<%= asset_path('aviplaceholder.png')%>";
+	} else {
+		var aviUrl = avi_url;
+	}
+
+	return aviUrl;
+}
+
+function changeGuestsList(labelType, guests) {
+	var $guestsList = $("div#guests-list");
+	var guests = getAllGuests();
+
+	$guestsList.empty();
+	$guestsList.css({
+		visibility: "hidden"
+	});
+	// goes through each guest and discerns if they will be appended
+	guests.forEach(function(guest) {
+		// calls guestAviUrl to discern if photo is default or upload
+		var aviUrl = guestAviUrl(guest.avi_url);
+		// guests are appeneded if the attendance_status is the same as labelType
+		// if the labelType is "invited" then all guests are appended
+		if(labelType === guest.attendance_status) {
+			$guestsList.append(guestsListTemplate(aviUrl, guest.username));
+		} else if(labelType === "invited") {
+			$guestsList.append(guestsListTemplate(aviUrl, guest.username));
+		}
+	});
+	// shows $guestsList once everything is appended
+	$guestsList.css({
+		visibility: "visible"
+	});
+}
+
+function guestsListTemplate(imgUrl, guestUsername) {
+	var template =
+	"<div class='guest'>" + 
+		"<img src='" + imgUrl + "' class='guest-img'/>" + 
+		"<div class='guest-username'>" + 
+			guestUsername + 
+		"</div>" +
+	"</div>";
+
+	return template;
+}
+
+function buttonAttendanceLabelListener() {
+	var $el = $("button[data-id=attendance-label-select]");
+	
+	$('body').on('DOMSubtreeModified', 'span.filter-option.pull-left', function() {
+		var labelType = $(this).text() === "Attending" ? "going" : $(this).text();
+		if(labelType.length > 1) {
+			changeGuestsList(labelType.toLowerCase());
+		}
+	});
+}
+
+function toggleLabels(labelType) {
+	var $labelsContainer = $("div#attendance-labels-container");
+	// handling .attendance-labels
+	var $prevLabel = $labelsContainer.find(".label-selected");
+ 	$prevLabel.removeClass('label-selected');
+ 	var $currentLabel = $('div[label-type=' + labelType + ']');
+ 	$currentLabel.addClass('label-selected');
+
+ 	var $dropdownLabel = $('span.filter-option.pull-left');
+ 	var label = labelType;
+ 	if (labelType === "going") {
+ 		label = "Attending";
+ 	}
+ 	var upperCaseLabel = label.charAt(0).toUpperCase() + label.slice(1);
+ 	$dropdownLabel.text(upperCaseLabel);
+}
+
+
+// ****************************************

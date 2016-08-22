@@ -297,16 +297,20 @@ div#event-show-container {
 					height: 60px;
 					padding: 0;
 					padding-top: 5px;
-					@media screen and (max-width: $break-iphone6plus) {
-						width: 50% !important;
+					&:hover {
+						color: $cobaltBlue;
+						cursor: pointer;
 					}
 					div.guests-num {
 						font-size: 1.25em;
 						text-align: center;
 					}
 					div.guests-cat {
-						font-size: 1.25em;
+						font-size: 1.1em;
 						text-align: center;
+					}
+					@media screen and (max-width: $break-iphone6plus) {
+						width: 50% !important;
 					}
 				}
 			}
