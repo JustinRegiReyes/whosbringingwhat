@@ -32,7 +32,18 @@ div#home-notifications {
 			}
 		}
 	}
-}
+	@media screen and(max-width: $break-sm) {
+		top: 65px;
+	}
+	@media screen and(max-width: $break-iphone6plus) {
+		margin-right: auto;
+		margin-left: auto;
+		right: 0;
+		left: 0;
+		top: 100px;
+		z-index: 100;
+	}
+} //div#home-notifications
 
 div.search-wrapper {
 	padding: 30px;
