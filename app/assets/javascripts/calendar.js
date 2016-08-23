@@ -316,7 +316,7 @@ function eventDaysCompiler(events, dates) {
         var mydate = new Date(date);
         var monthNum = mydate.getMonth();
         var dayNum = mydate.getDay();
-        var theDate = mydate.getDate();
+        var theDate = mydate.getUTCDate();
         var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][monthNum];
         var day = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"][dayNum];
         var eventDate = day + " " + theDate;
@@ -326,7 +326,7 @@ function eventDaysCompiler(events, dates) {
 
     events.forEach(function(event) {
         var title = event.title;
-        var eventTitleEl = '<a href="/events/' + event.id +  '"><span class="event-title">' + title + '</span></a><br>';
+        var eventTitleEl = '<div class="event-title-container"><a href="/events/' + event.id +  '"><span class="event-title">' + title + '</span></a></div>';
 
         $('div[class*=' + event.date_start + '] .event-days-container').append(eventTitleEl);
     });
