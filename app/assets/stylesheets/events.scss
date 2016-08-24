@@ -548,7 +548,7 @@ div#search-results-container {
 				@include box-shadow();
 				div#event-banner {
 					height: 100%;
-					background-color: red;
+					background-color: gray;
 					display: inline-block;
 					float: left;
 				} //div#event-banner
@@ -556,6 +556,17 @@ div#search-results-container {
 					padding: 5px 20px;
 					height: 100%;
 					overflow-y: scroll;
+					position: relative;
+					div#event-guests {
+						top: 3px;
+						right: 10px;
+						position: absolute;
+						font-size: .9em;
+						i {
+							top: -1px;
+							position: relative;
+						}
+					}
 					div.event-when {
 						color: gray;
 						font-size: .9em;

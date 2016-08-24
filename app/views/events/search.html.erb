@@ -26,6 +26,9 @@
 					<div id="event-banner" class="col-xs-5">
 					</div>
 					<div id="event-information" class="col-xs-7">
+						<div id="event-guests">
+							<i class="fa fa-users" aria-hidden="true"></i> <%= event.attending_events.count %>
+						</div>
 						<div class="event-when">
 							<%= event.date_start.strftime('%a %b %-d') %> at <%= event.time_start.strftime('%l:%M%P')%>
 						</div>
