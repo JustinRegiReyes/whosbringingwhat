@@ -18,7 +18,7 @@ class Event < ActiveRecord::Base
 				styles: { profile: "600x600" , banner: "200x200>", thumb: "100x100>" },
 				:default_url => 'images/bannerplaceholder.png',
 				processors: [:papercrop]
-			crop_attached_file :banner, :aspect => "3:4"
+			crop_attached_file :banner, :aspect => "4:3"
 		  	# validates_attachment :banner, presence: true
 		  	validates_attachment :banner,
 		  		content_type: { content_type: ["image/jpeg", "image/gif", "image/png", "application/pdf"] }

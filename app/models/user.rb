@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
 				styles: { profile: "600x600" , avi: "200x200>", thumb: "100x100>" },
 				:default_url => 'images/aviplaceholder.png',
 				processors: [:papercrop]
-			crop_attached_file :avi, :aspect => "3:4"
+			crop_attached_file :avi, :aspect => "1:1"
 		  	# validates_attachment :avi, presence: true
 		  	validates_attachment :avi,
 		  		content_type: { content_type: ["image/jpeg", "image/gif", "image/png", "application/pdf"] }
