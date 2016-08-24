@@ -18,7 +18,7 @@
 @import "mixins";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-// @import "guestsmodal";
+@import "guestsmodal";
 @import "navbar";
 @import "welcome";
 @import "authmodals";
@@ -43,7 +43,10 @@ div#layout-wrapper {
 	top: 0;
 	background-color: $cloud;
 	overflow-y: overlay;
-
+	padding-top: 40px;
+	@media screen and(max-width: $break-sm) {
+		padding-top: 50px;
+	}
 }
 
 div.default-container {
@@ -106,183 +109,3 @@ div#flash-message-container {
 
 // **********************
 
-div.guests-modal {
-	& > div.modal-dialog {
-		width: 80%;
-		max-width: 700px;
-		@media screen and (max-width: $break-sm) {
-		    margin: 0 auto;
-    		top: 20px;
-		}
-		@media screen and (max-width: $break-iphone6plus) {
-		    margin: 0 auto;
-		    width: 100%;
-		}
-		& > div.modal-content {
-			border-radius: 0;
-			border: none;
-			position: relative;
-			height: 80px;
-			& > button {
-				position: absolute;
-			}
-			& > div.modal-body {
-				height: 100%;
-				padding: 0;
-				button.close {
-				    position: absolute;
-				    right: 25px;
-				    top: 8px;
-				    z-index: 1000;
-					span {
-					}
-				}
-				img.loading {
-					width: 50px;
-					height: 50px;
-				    margin: 0 auto;
-				    @include vertical-align();
-				    position: relative;
-				    display: block;
-				}
-				div#guests-list-container {
-					height: 100%;
-					display: none;
-					position: relative;
-					div#attendance-labels-container {
-						height: 125px;
-						border-right: 1px solid $cloud;
-						border-bottom: 1px solid $cloud;
-						position: absolute;
-						width: 100px;
-						font-size: 1em;
-						top: 0;
-						right: 0;
-						left: 1px;
-						div.bootstrap-select {
-							width: 100%;
-							display: none;
-							button[data-id=attendance-label-select] {
-								width: 100%;
-								border-radius: 0;
-								border: 1px solid $periGreen;
-								color: white;
-								background-color: $periGreen;
-								&:focus {
-									outline: none !important;
-								}
-							}
-							div.dropdown-menu {
-								border-radius: 0;
-							    top: 28px !important;
-								ul {
-									li {
-										outline: none !important;
-										&:focus {
-											outline: none !important;
-										}
-									}
-								}
-							}
-							@media screen and(max-width: $break-iphone6plus) {
-								display: block;
-							}
-						} //div.bootstrap-select
-						div#attending-label {
-							&.label-selected {
-								border-bottom: 1px solid $periGreen;
-							}
-							&:hover {
-								border-bottom: 1px solid $periGreen;
-							}
-						}
-						div#declined-label {
-							&.label-selected {
-								border-bottom: 1px solid $ashyRed;
-							}
-							&:hover {
-								border-bottom: 1px solid $ashyRed;
-							}
-						}
-						div#maybe-label {
-							&.label-selected {
-								border-bottom: 1px solid yellow;
-							}
-							&:hover {
-								border-bottom: 1px solid yellow;
-							}
-						}
-						div#invited-label {
-							&.label-selected {
-								border-bottom: 1px solid black;
-							}
-							&:hover {
-								border-bottom: 1px solid black;
-							}
-						}
-						div.attendance-label {
-							margin: 0 auto;
-							padding: 5px;
-							border-bottom: 1px solid white;
-							&:hover {
-								cursor: pointer;
-								background-color: $cloud;
-							}
-							&.label-selected {
-								background-color: #f9f9f9;
-							}
-							@media screen and (max-width: $break-iphone6plus) { 
-								display: none;
-							}
-						}
-						@media screen and (max-width: $break-iphone6plus) { 
-							width: 200px;
-							height: 50px;
-							margin: 10px auto;
-							border: none;
-						}
-					} // div#attendance-labels-container
-					div#guests-list {
-						height: 100%;
-						overflow-y: scroll;
-						padding: 20px 20px 0px 100px;
-						div.guest {
-							float: left;
-							img.guest-img {
-							    width: 80px;
-							    height: 80px;
-							    display: block;
-							    margin: 0 auto;
-							    border-radius: 100%;
-							    border: 1px solid #e5e5e5;
-							}
-							div.guest-username {
-								width: 120px;
-								text-align: center;
-								margin: 5px auto;
-							}
-						}
-						@media screen and (max-width: $break-sm) {
-							padding: 20px 20px 0px 100px;
-						}
-						@media screen and (max-width: $break-iphone6plus) {
-							width: 240px;
-							margin: 0 auto;
-							padding: 20px 0px 0px;
-						}
-					} // div#guests-list
-					@media screen and (max-width: $break-iphone6plus) {
-						padding-top: 50px;
-					}
-				} //div#guests-list-container
-			} // div.modal-body
-			@media screen and (max-width: $break-iphone6plus) {
-				height: 100vh !important;
-				top: 0;
-			}
-		} //div.modal-content
-		@media screen and (max-width: $break-iphone6plus) {
-			top: 0;
-		}
-	} // div.modal-dialog
-}
