@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
 		  	validates_attachment :avi,
 		  		content_type: { content_type: ["image/jpeg", "image/gif", "image/png", "application/pdf"] }
 
-			after_update :reprocess_on_hand_photo, :if => :cropping
+			after_update :reprocess_avi, :if => :cropping
 	# methods
 	def self.confirm (params)
 		@user = User.find_by_username(params[:username])
@@ -52,4 +52,10 @@ class User < ActiveRecord::Base
     	# in the all_guests method in the events controller
     	self.event_target.attributes.key(true)
     end
+
+    private
+		# runs paperclips reprocess method for crop
+		def reprocess_avi
+			avi.reprocess!
+		end
 end
