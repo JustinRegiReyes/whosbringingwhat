@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get '/home', to: 'users#home'
 
   # events routes
+    get '/events/search', to: 'events#search'
     resources :events
     post '/events/:id/comments', to: 'comments#create'
     get '/events/:id/guests/:type', to: 'events#guests'

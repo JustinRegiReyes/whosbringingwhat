@@ -42,6 +42,10 @@ class EventsController < ApplicationController
     @events = current_user.events
   end
 
+  def search
+    @events = Event.all
+  end
+
   def attending
     eventId = params[:id]
     event = Event.find_by_id(eventId)
