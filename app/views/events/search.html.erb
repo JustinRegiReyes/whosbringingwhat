@@ -23,7 +23,7 @@
 			</div>
 			<% @events.each do |event| %>
 				<div class="event-box clearfixs">
-					<div id="event-banner" class="col-xs-5">
+					<div id="event-banner" class="col-xs-5" style="background: url('<%= image_path("#{event.banner.url(:medium)}")%>') no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;" >
 					</div>
 					<div id="event-information" class="col-xs-7">
 						<div id="event-guests">
