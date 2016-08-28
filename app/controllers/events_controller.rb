@@ -43,7 +43,13 @@ class EventsController < ApplicationController
   end
 
   def search
-    @events = Event.all
+    eventQuery = params[:event]
+    user = User.where("username ILIKE ?", eventQuery[:username]).first
+    if(user != nil)
+      @events = user.created_events.where("title ILIKE ?", "#{eventQuery[:title]}")
+    end
+    @username = user != nil ? user.username : eventQuery[:username]
+    @title = eventQuery[:title]
   end
 
   def attending
