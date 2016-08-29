@@ -20,12 +20,13 @@
 			<% if @events != nil %>
 				<% if @events.length > 0 %>
 					<div id="results-count">
-						<span><%= @events.count %> events found hosted by <%= @username %></span>
+						<span><%= @events.count %> event(s) found hosted by <%= @username %></span>
 					</div>
 					<% @events.each do |event| %>
 						<div class="event-box clearfixs">
-							<div id="event-banner" class="col-xs-5" style="background: url('<%= image_path("#{event.banner.url(:medium)}")%>') no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;" >
-							</div>
+							<a href="/events/<%= event.id%>">
+								<div id="event-banner" class="col-xs-5" style="background: url('<%= image_path("#{event.banner.url(:medium)}")%>') no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;" ></div>
+							</a>
 							<div id="event-information" class="col-xs-7">
 								<div id="event-guests">
 									<i class="fa fa-users" aria-hidden="true"></i> <%= event.attending_events.count %>
@@ -33,7 +34,7 @@
 								<div class="event-when">
 									<%= event.date_start.strftime('%a %b %-d') %> at <%= event.time_start.strftime('%l:%M%P')%>
 								</div>
-								<div id="event-title"><%= event.title %></div>
+								<div id="event-title"><a href="/events/<%=event.id%>"><%= event.title %></a></div>
 								<div id="event-where"><%= event.where %></div>
 								<div id="event-highlights">
 									<%= event.highlights %>
@@ -45,7 +46,7 @@
 						<!-- @events.each -->
 				<% else %>
 					<div id="results-count">
-							<span><%= @events.count %> events found hosted by <%= @username %></span>
+							<span><%= @events.count %> event(s) found hosted by <%= @username %></span>
 					</div>
 				<% end %>
 					<!-- if @events.length > 0 -->
