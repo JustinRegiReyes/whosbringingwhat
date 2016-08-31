@@ -3,27 +3,8 @@
 
 
 <!--  -->
-<div id="event-show-container">
-	<div id="banner-container">
-		<div id="banner-overlay" class="clearfixs">
-			<div id="date-container">
-				<div id="date-box">
-					<div id="date-mon">
-						<%= @event.date_start.strftime("%b") %>
-					</div>
-					<div id="date-day">
-						<%= @event.date_start.strftime("%d") %>
-					</div>
-				</div>
-			</div>
-				<!-- div#date-container -->
-			<div id="title-container">
-				<div id="title"><%= @event.title %> <span class="event-host"> hosted by <span class="host-name"><%= @event.user.username %></span></span></div>
-			</div>
-				<!-- div#title-container -->
-		</div>
-	</div>
-		<!-- div#banner-container -->
+<div id="event-show-container" class="default-container">
+	<%= render "partials/bannercontainer" %>
 	<div id="information-section" class="clearfixs">
 		<div id="information" class="col-lg-8 col-md-8 col-sm-8">
 			<div id="time" class="info-box">
