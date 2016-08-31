@@ -120,18 +120,27 @@
 				div#title {
 					color: white;
 					text-shadow: -1px 0px 1px black;
-					span.event-host {
-						font-size: .75em;
-						span.host-name {
+					a {
+						color: white;
+						text-decoration: none;
+						&:hover {
+							span.title {
+								padding-bottom: 2px;
+								border-bottom: 1px solid white;
+							}
+						}
+						span.event-host {
+							font-size: .75em;
+							span.host-name {
 
+							}
 						}
 					}
-				}
+				} //div#title
 			} //div#title-container
 		}
-		// ********** div#banner-container **********
+		// ********** div#banner-container max-width: $break-sm **********
 		@media screen and(max-width: $break-sm) {
-			height: 225px;
 			div#title-container {
 				font-size: 1.3em;
 				top: -20px;
@@ -143,6 +152,10 @@
 					}
 				}
 			}
+		}
+		// ********** div#banner-container max-width: $break-iphone6plus **********
+		@media screen and(max-width: $break-iphone6plus) {
+			height: 225px;
 		}
 	} // div#banner-container
 }

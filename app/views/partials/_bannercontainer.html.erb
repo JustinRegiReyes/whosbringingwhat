@@ -12,7 +12,7 @@
 		</div>
 			<!-- div#date-container -->
 		<div id="title-container">
-			<div id="title"><%= @event.title %> <span class="event-host"> hosted by <span class="host-name"><%= @event.user.username %></span></span></div>
+			<div id="title"><a href="/events/<%= @event.id %>"><span class="title"><%= @event.title %></span>  <span class="event-host"> hosted by <span class="host-name"><%= @event.user.username %></span></span></a></div>
 		</div>
 			<!-- div#title-container -->
 	</div>
