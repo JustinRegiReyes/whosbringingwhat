@@ -17,7 +17,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    
+    @category = Category.find_by_id(params[:category_id])
+    @event = @category.event
   end
 
   def edit

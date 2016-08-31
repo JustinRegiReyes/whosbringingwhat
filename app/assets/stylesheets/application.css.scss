@@ -44,7 +44,6 @@ div#layout-wrapper {
 	top: 0;
 	background-color: $cloud;
 	overflow-y: overlay;
-	padding-top: 40px;
 	@media screen and(max-width: $break-sm) {
 		padding-top: 50px;
 	}
@@ -54,6 +53,7 @@ div.default-container {
 	height: 100%;
 	background-color: $cloud;
 	position: inherit;
+	padding-top: 40px;
 }
 
 button, input.submit {

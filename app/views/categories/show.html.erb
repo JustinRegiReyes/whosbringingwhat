@@ -1,3 +1,53 @@
+<% eventId = @category.event.id %>
 <div id="categories-show-container" class="default-container">
-	
+	<%= render "partials/bannercontainer" %>
+	<div id="information-section" class="clearfixs">
+		<div id="overview-container" class="col-lg-4 col-md-4 col-sm-4">
+			<div id="categories-container" class="info-box">
+				<div id="categories-header">
+					Who's Bringing What?
+				</div>
+				<% @category.event.categories.each do |category| %>
+					<div class="category">
+						<span class="cat-count <%= 'enough' unless category.enough_items? === false %> "><%= category.items.count %>/<%= category.needed %></span>
+						<span class="cat-name"> <a href="/events/<%= @event.id %>/categories/<%= category.id %>"><%= category.title %></a></span>
+					</div>
+				<% end %>
+			</div>
+				<!-- div#categories-container -->
+			<div id="items-container" class="info-box">
+				<div id="items-header"><%= @category.title %> registered</div>
+				<% @category.items.each do |item| %>
+					<div class="item">
+						<a href="/events/<%= eventId %>/categories/<%= @category.id%>/items/<%= item.id %>">
+							<span id="<%=item.title%>" class="item-title"><%= item.title %></span>
+						</a>
+					</div>
+				<% end %>
+			</div>
+				<!-- div#items-container -->
+		</div>
+		<div id="category-container" class="col-lg-8 col-md-8 col-sm-8">
+			<div id="category" class="info-box">
+				<div id="category-header">
+					<%= @category.title %>
+				</div>
+				<div id="items-count-container">
+					<span>
+						Signed up: <span class="cat-count"><%= @category.items.count %></span>
+					</span>
+					<br>
+					<span>
+						Requested: <span class="cat-count"><%= @category.needed %></span>
+					</span>
+				</div>
+				<div id="description">
+					<p><%= @category.description %></p>
+				</div> 
+			</div>
+			<button class="btn btn-default site-button"> 
+				Add Item
+			</button>
+		</div>
+	</div> 
 </div>
