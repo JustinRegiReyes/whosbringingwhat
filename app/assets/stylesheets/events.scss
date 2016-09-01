@@ -244,39 +244,7 @@ div#event-show-container {
 					}
 				}
 			} // div#guests
-			div#whos-bringing-what {
-				min-height: 80px;
-				padding-left: 10px;
-				height: auto;
-				div#categories-header {
-					font-size: 1.25em;
-    				text-align: center;
-    				font-family: $hind;
-    				font-weight: bold;
-    				margin-bottom: 5px;
-				}
-				div.category {
-					margin-bottom: 2px;
-					font-size: 1.1em;
-					padding-left: 30px;
-					span.cat-count {
-						color: $ashyRed;
-						font-size: .85em;
-						&.enough {
-							color: $periGreen;
-						}
-					}
-					span.cat-name {
-						a {
-							color: black;
-							&:hover {
-								text-decoration: none;
-								border-bottom: 1px solid black;
-							}
-						}
-					}
-				} // div.category
-			}
+			@include categories-container();
 			// ********** div#additional-information max-width: $break-sm **********
 			@media screen and (max-width: $break-sm) {
 				padding-left: 5px;

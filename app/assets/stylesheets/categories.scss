@@ -62,54 +62,7 @@ div#categories-show-container {
 					}
 				}
 			}
-			div#categories-container {
-				height: auto;
-				width: 100%;
-				margin: 0 auto 10px;
-				background-color: #FFF;
-				padding: 10px;
-				div#categories-header {
-					font-size: 1.25em;
-    				text-align: center;
-    				font-family: $hind;
-    				font-weight: bold;
-    				margin-bottom: 5px;
-				}
-				div.category {
-					margin-bottom: 2px;
-					font-size: 1.1em;
-					padding-left: 40px;
-					span.cat-count {
-						color: $ashyRed;
-						font-size: .85em;
-						&.enough {
-							color: $periGreen;
-						}
-					}
-					span.cat-name {
-						a {
-							color: black;
-							&:hover {
-								text-decoration: none;
-								border-bottom: 1px solid black;
-							}
-						}
-					}
-					@media screen and(max-width: $break-sm) {	
-					    padding-left: 0;
-					    text-align: center;	
-					    span.cat-name {
-							a {
-								color: #337ab7;
-								&:hover {
-									text-decoration: none;
-									border-bottom: none;
-								}
-							}
-						}				
-					}
-				} //div.category
-			}
+			@include categories-container();
 		} //div#overview-container
 		div#category-container {
 			height: 500px;
@@ -149,5 +102,42 @@ div#categories-show-container {
 				color: #FFF;
 			}
 		} //div#category-container
+		// ********** div#information-section max-width: $break-sm **********
+		@media screen and(max-width: $break-sm) {
+			div#overview-container {
+				padding: 0;
+				width: 98%;
+				margin: 0 auto;
+				div#items-container {
+					div.item {
+						width: 50%;
+						margin: 0 auto;
+					}
+				} //div#items-container
+			} //div#overview-container
+			div#category-container {
+				padding: 0;
+				width: 98%;
+				margin: 0 auto;
+			}
+		} // media screen max-width: $break-sm
+		// ********** div#information-section max-width: $break-iphone6plus **********
+		@media screen and(max-width: $break-iphone6plus) {
+			div#overview-container {
+				div#categories-container {
+					padding: 0;
+				}
+				div#items-container {
+					div.item {
+						padding: 0;
+					}
+				} //div#items-container
+			} //div#overview-container
+			div#category-container {
+				div#category {
+					
+				}
+			} //div#category-container
+		}
 	} //div#information-section
 }
