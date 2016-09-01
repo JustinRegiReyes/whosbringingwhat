@@ -49,16 +49,12 @@ div#categories-show-container {
 					height: 25px;
 					font-family: $hind;
 				}
-				div.item {
-					margin: 3px auto;
-					padding-left: 50px;
-					text-align: left;
-					a {
-						color: inherit;
-						text-decoration: none;
-						&:hover {
-							text-decoration: underline;
-						}
+				& > a {
+					div.item {
+						margin: 3px auto;
+						padding-left: 50px;
+						text-align: left;
+						position: relative;
 					}
 				}
 			}
@@ -109,9 +105,11 @@ div#categories-show-container {
 				width: 98%;
 				margin: 0 auto;
 				div#items-container {
-					div.item {
-						width: 50%;
-						margin: 0 auto;
+					& > a {
+						div.item {
+							width: 50%;
+							margin: 0 auto;
+						}
 					}
 				} //div#items-container
 			} //div#overview-container
@@ -124,65 +122,63 @@ div#categories-show-container {
 		// ********** div#information-section max-width: $break-iphone6plus **********
 		@media screen and(max-width: $break-iphone6plus) {
 			padding-top: 0; 
+			background-color: white;
 			div#overview-container {
 				width: 100%;
 				box-shadow: none;
 				div#categories-container {
+					border-top: 2px solid $cloud;
+					border-bottom: 2px solid $cloud;
+				}
+				div#items-container {
 					height: 60px;
 					padding: 0;
 					position: relative;
+					width: 100vw;
+					margin: 0;
+					border-bottom: 2px solid $cloud;
 					@include hori-scroll-wrapper();
-					@include box-shadow(0);
-					div#categories-header {
+					div#items-header {
 						display: none;
 					}
-					div.category {
-						width: auto;
-						font-size: 1.1em;
-						color: black;
-						height: 60px;
-						display: inline-block;
-						padding: 0 20px 0;
-						text-align: center;
-						border-right: 1px solid $cloud;
-						cursor: pointer;
-						&.selected {
-							border-bottom: 2px solid $ashyRed;
+					& > a {
+						&:hover {
+							text-decoration: none;
 						}
-						span.cat-count {
-							width: 100%;
-							position: absolute;
-							margin-left: auto;
-							margin-left: auto;
-							left: 0;
-							right: 0;
-							top: 2px;
-							font-size: .65em;
+						div.item {
+							width: auto;
+							font-size: 1.1em;
+							color: black;
+							height: 60px;
+							display: inline-block;
+							padding: 0 20px 0;
+							text-align: center;
+							border-right: 1px solid $cloud;
+							margin-right: -4px;
+							cursor: pointer;
+							position: relative;
+							span.item-title {
+								display: block;
+								@include vertical-align();
+							}
 						}
-						span.cat-name {
-							display: block;
-							width: 100%;
-							@include vertical-align();
-							// -webkit-transform: translateY(-100%);
-						 //    -ms-transform: translateY(-100%);
-						 //    transform: translateY(-100%);
-						}
-						i {
-							display: none;
-						}
-					}
-				}
-				div#items-container {
-					div.item {
-						padding: 0;
 					}
 				} //div#items-container
 			} //div#overview-container
 			div#category-container {
+				width: 100%;
 				div#category {
-					
+					box-shadow: none;
+				}
+				button.site-button {
+					width: 98%;
+					position: relative;
+					left: 1px;
 				}
 			} //div#category-container
 		}
 	} //div#information-section
+	@media screen and (max-width: $break-iphone6plus) {
+		padding-top: 0;
+	}
 }

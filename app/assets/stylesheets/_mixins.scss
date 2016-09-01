@@ -76,6 +76,14 @@
 		height: 300px;
 		background-color: silver;
 		position: relative;
+		background-image: linear-gradient(to right, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), url('http://www.lifeofasteward.com/wp-content/uploads/2010/11/BoardGame.jpg');
+	    -webkit-background-size: cover;
+	    -moz-background-size: cover;
+	    -o-background-size: cover;
+	    background-size: cover;
+	    background: -moz-linear-gradient(to right, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0)), -webkit-gradient(to right, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0)), -ms-linear-gradient(to right, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0)), linear-gradient(to right, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0));
+	    background-repeat: no-repeat, no-repeat, no-repeat;
+	    background-position: center;
 		div#banner-overlay {
 			position: absolute;
 			width: 100%;
@@ -99,7 +107,7 @@
 				float: left;
 				div#date-box {
 					height: 22px;
-					background-color: $cobaltBlue;
+					background-color: $ashyRed;
 					color: white;
 				}
 				div#date-day {
@@ -174,94 +182,113 @@
 			font-weight: bold;
 			margin-bottom: 5px;
 		}
-		div.category {
-			margin-bottom: 2px;
-			font-size: 1.1em;
-			padding: 3px 0;
-			padding-left: 40px;
-			position: relative;
-			i {
-				@include vertical-align(absolute);
-				-webkit-transform: translateY(-40%);
-			    -ms-transform: translateY(-40%);
-			    transform: translateY(-40%);
-			    font-size: .7em;
-				left: 20px;
-				color: $ashyRed;
+		& > a {
+			&:hover {
+				text-decoration: none;
 			}
-			span.cat-count {
-				color: $ashyRed;
-				font-size: .85em;
-				&.enough {
-					color: $periGreen;
-				}
-			}
-			span.cat-name {
-				a {
-					color: black;
-					&:hover {
-						text-decoration: none;
-						border-bottom: 1px solid black;
-					}
-				}
-			}
-		} //div.category
-		@media screen and (max-width: $break-sm) {
 			div.category {
-				width: 50%;
-				margin: 0 auto;
-				span.cat-name {
-					&:hover {
-						text-decoration: none;
+				margin-bottom: 2px;
+				font-size: 1.1em;
+				padding: 3px 0;
+				padding-left: 40px;
+				position: relative;
+				&:hover {
+					background-color: #fdfdfd;
+				}
+				i {
+					@include vertical-align(absolute);
+					-webkit-transform: translateY(-40%);
+				    -ms-transform: translateY(-40%);
+				    transform: translateY(-40%);
+				    font-size: .7em;
+					left: 20px;
+					color: $ashyRed;
+				}
+				span.cat-count {
+					color: $ashyRed;
+					font-size: .85em;
+					&.enough {
+						color: $periGreen;
 					}
 				}
-			}
+				span.cat-name {
+					a {
+						color: black;
+						&:hover {
+							text-decoration: none;
+							border-bottom: 1px solid black;
+						}
+					}
+				}
+			} //div.category
+		} // & > a
+		@media screen and (max-width: $break-sm) {
+			& > a {
+				div.category {
+					width: 50%;
+					margin: 0 auto;
+					span.cat-name {
+						&:hover {
+							text-decoration: none;
+						}
+					}
+				}
+			} // & > a
 		}
-		// @media screen and (max-width: $break-iphone6plus) {
-		// 	height: 60px;
-		// 	padding: 0;
-		// 	position: relative;
-		// 	width: 100vw;
-		// 	@include hori-scroll-wrapper();
-		// 	@include box-shadow(0);
-		// 	div#categories-header {
-		// 		display: none;
-		// 	}
-		// 	div.category {
-		// 		width: auto;
-		// 		font-size: 1.1em;
-		// 		color: black;
-		// 		height: 60px;
-		// 		display: inline-block;
-		// 		padding: 0 20px 0;
-		// 		text-align: center;
-		// 		border-right: 1px solid $cloud;
-		// 		margin-right: -4px;
-		// 		cursor: pointer;
-		// 		position: relative;
-		// 		&.selected {
-		// 			border-bottom: 2px solid $ashyRed;
-		// 		}
-		// 		span.cat-count {
-		// 			width: 100%;
-		// 			position: absolute;
-		// 			margin-left: auto;
-		// 			margin-left: auto;
-		// 			left: 0;
-		// 			right: 0;
-		// 			top: 2px;
-		// 			font-size: .65em;
-		// 		}
-		// 		span.cat-name {
-		// 			display: block;
-		// 			width: 100%;
-		// 			@include vertical-align();
-		// 		}
-		// 		i {
-		// 			display: none;
-		// 		}
-		// 	}
-		// }
+		@media screen and (max-width: $break-iphone6plus) {
+			height: 60px;
+			padding: 0;
+			position: relative;
+			width: 100vw;
+			margin: 0;
+			@include hori-scroll-wrapper();
+			@include box-shadow(0);
+			div#categories-header {
+				display: none;
+			}
+			& > a {
+				div.category {
+					width: auto;
+					font-size: 1.1em;
+					color: black;
+					height: 60px;
+					display: inline-block;
+					padding: 0 20px 0;
+					text-align: center;
+					border-right: 1px solid $cloud;
+					margin-right: -4px;
+					cursor: pointer;
+					position: relative;
+					&.selected {
+						background-color: $cobaltBlue;
+						span.cat-count {
+							color: white;
+						}
+						span.cat-name {
+							color: white;
+						}
+					}
+					span.cat-count {
+						width: 100%;
+						position: absolute;
+						margin-left: auto;
+						margin-left: auto;
+						left: 0;
+						right: 0;
+						top: 2px;
+						font-size: .65em;
+					}
+					span.cat-name {
+						display: block;
+						width: 100%;
+						@include vertical-align();
+					}
+					i {
+						display: none;
+					}
+				} //div.category
+			} // & > a
+		}
 	} //div#categories-container
 }
 

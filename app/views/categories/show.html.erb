@@ -7,22 +7,49 @@
 				<div id="categories-header">
 					Who's Bringing What?
 				</div>
-				<% @category.event.categories.each do |category| %>
-					<div id="<%= category.title.gsub(/\s+/, '') %>" class="category">
-						<span class="cat-count <%= 'enough' unless category.enough_items? === false %> "><%= category.items.count %>/<%= category.needed %></span>
-						<span class="cat-name"> <a href="/events/<%= @event.id %>/categories/<%= category.id %>"><%= category.title %></a></span>
-					</div>
+				<% if @category.event.categories.count <= 4 %>
+					<% 2.times do %> 
+						<% @category.event.categories.each do |category| %>
+							<a href="/events/<%= @event.id %>/categories/<%= category.id %>">
+								<div id="<%= category.title.gsub(/\s+/, '') %>" class="category">
+									<span class="cat-count <%= 'enough' unless category.enough_items? === false %> "><%= category.items.count %>/<%= category.needed %></span>
+									<span class="cat-name"> <%= category.title %></span>
+								</div>
+							</a>
+						<% end %>
+					<% end %>
+				<% else %>
+					<% @category.event.categories.each do |category| %>
+						<a href="/events/<%= @event.id %>/categories/<%= category.id %>">
+							<div id="<%= category.title.gsub(/\s+/, '') %>" class="category">
+								<span class="cat-count <%= 'enough' unless category.enough_items? === false %> "><%= category.items.count %>/<%= category.needed %></span>
+								<span class="cat-name"> <%= category.title %></span>
+							</div>
+						</a>
+					<% end %>
 				<% end %>
 			</div>
 				<!-- div#categories-container -->
 			<div id="items-container" class="info-box">
 				<div id="items-header"><%= @category.title %> registered</div>
-				<% @category.items.each do |item| %>
-					<div class="item">
+				<% if @category.items.count <= 4 %>
+					<% 2.times do %> 
+						<% @category.items.each do |item| %>
+							<a href="/events/<%= eventId %>/categories/<%= @category.id%>/items/<%= item.id %>">
+								<div class="item">
+									<span id="<%=item.title%>" class="item-title"><%= item.title %></span>
+								</div>
+							</a>
+						<% end %>
+					<% end %>
+				<% else %>
+					<% @category.items.each do |item| %>
 						<a href="/events/<%= eventId %>/categories/<%= @category.id%>/items/<%= item.id %>">
-							<span id="<%=item.title%>" class="item-title"><%= item.title %></span>
+							<div class="item">
+								<span id="<%=item.title%>" class="item-title"><%= item.title %></span>
+							</div>
 						</a>
-					</div>
+					<% end %>
 				<% end %>
 			</div>
 				<!-- div#items-container -->
@@ -46,7 +73,7 @@
 				</div> 
 			</div>
 			<button class="btn btn-default site-button"> 
-				Add Item
+				Bring Item
 			</button>
 		</div>
 	</div> 
