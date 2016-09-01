@@ -8,7 +8,7 @@
 					Who's Bringing What?
 				</div>
 				<% @category.event.categories.each do |category| %>
-					<div class="category">
+					<div id="<%= category.title.gsub(/\s+/, '') %>" class="category">
 						<span class="cat-count <%= 'enough' unless category.enough_items? === false %> "><%= category.items.count %>/<%= category.needed %></span>
 						<span class="cat-name"> <a href="/events/<%= @event.id %>/categories/<%= category.id %>"><%= category.title %></a></span>
 					</div>
@@ -51,3 +51,8 @@
 		</div>
 	</div> 
 </div>
+	<!-- div#categories-show-container -->
+
+<script type="text/javascript">
+	var category = '<%= raw(@category.to_json) %>';
+</script>
