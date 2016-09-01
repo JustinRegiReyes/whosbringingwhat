@@ -55,6 +55,9 @@ div#categories-show-container {
 						padding-left: 50px;
 						text-align: left;
 						position: relative;
+						&.additional {
+							display: none;
+						}
 					}
 				}
 			}
@@ -157,6 +160,9 @@ div#categories-show-container {
 							margin-right: -4px;
 							cursor: pointer;
 							position: relative;
+							&.additional {
+								display: inline-block;
+							}
 							span.item-title {
 								display: block;
 								@include vertical-align();

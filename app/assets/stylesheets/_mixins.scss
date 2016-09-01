@@ -192,6 +192,9 @@
 				padding: 3px 0;
 				padding-left: 40px;
 				position: relative;
+				&.additional {
+					display: none;
+				}
 				&:hover {
 					background-color: #fdfdfd;
 				}
@@ -259,6 +262,9 @@
 					margin-right: -4px;
 					cursor: pointer;
 					position: relative;
+					&.additional {
+						display: inline-block;
+					}
 					&.selected {
 						background-color: $cobaltBlue;
 						span.cat-count {
