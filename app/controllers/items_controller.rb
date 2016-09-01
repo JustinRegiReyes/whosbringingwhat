@@ -25,6 +25,10 @@ class ItemsController < ApplicationController
     @items = current_user.items
   end
 
+  def event_show
+    
+  end
+
   def delete
   end
 end

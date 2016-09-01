@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   # categories routes
     get '/events/:event_id/categories/:category_id', to: 'categories#show'
+    get '/events/:event_id/categories/:category_id/items/:item_id', to: 'items#event_show'
 
 
   # sessions routes
