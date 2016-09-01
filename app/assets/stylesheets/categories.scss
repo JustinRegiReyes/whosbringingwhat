@@ -123,9 +123,54 @@ div#categories-show-container {
 		} // media screen max-width: $break-sm
 		// ********** div#information-section max-width: $break-iphone6plus **********
 		@media screen and(max-width: $break-iphone6plus) {
+			padding-top: 0; 
 			div#overview-container {
+				width: 100%;
+				box-shadow: none;
 				div#categories-container {
+					height: 60px;
 					padding: 0;
+					position: relative;
+					@include hori-scroll-wrapper();
+					@include box-shadow(0);
+					div#categories-header {
+						display: none;
+					}
+					div.category {
+						width: auto;
+						font-size: 1.1em;
+						color: black;
+						height: 60px;
+						display: inline-block;
+						padding: 0 20px 0;
+						text-align: center;
+						border-right: 1px solid $cloud;
+						cursor: pointer;
+						&.selected {
+							border-bottom: 2px solid $ashyRed;
+						}
+						span.cat-count {
+							width: 100%;
+							position: absolute;
+							margin-left: auto;
+							margin-left: auto;
+							left: 0;
+							right: 0;
+							top: 2px;
+							font-size: .65em;
+						}
+						span.cat-name {
+							display: block;
+							width: 100%;
+							@include vertical-align();
+							// -webkit-transform: translateY(-100%);
+						 //    -ms-transform: translateY(-100%);
+						 //    transform: translateY(-100%);
+						}
+						i {
+							display: none;
+						}
+					}
 				}
 				div#items-container {
 					div.item {

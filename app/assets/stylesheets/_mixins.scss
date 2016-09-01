@@ -211,15 +211,67 @@
 				width: 50%;
 				margin: 0 auto;
 				span.cat-name {
-					a {
-						color: #337ab7;
-						&:hover {
-							text-decoration: none;
-							border-bottom: none;
-						}
+					&:hover {
+						text-decoration: none;
 					}
 				}
 			}
 		}
+		// @media screen and (max-width: $break-iphone6plus) {
+		// 	height: 60px;
+		// 	padding: 0;
+		// 	position: relative;
+		// 	width: 100vw;
+		// 	@include hori-scroll-wrapper();
+		// 	@include box-shadow(0);
+		// 	div#categories-header {
+		// 		display: none;
+		// 	}
+		// 	div.category {
+		// 		width: auto;
+		// 		font-size: 1.1em;
+		// 		color: black;
+		// 		height: 60px;
+		// 		display: inline-block;
+		// 		padding: 0 20px 0;
+		// 		text-align: center;
+		// 		border-right: 1px solid $cloud;
+		// 		margin-right: -4px;
+		// 		cursor: pointer;
+		// 		position: relative;
+		// 		&.selected {
+		// 			border-bottom: 2px solid $ashyRed;
+		// 		}
+		// 		span.cat-count {
+		// 			width: 100%;
+		// 			position: absolute;
+		// 			margin-left: auto;
+		// 			margin-left: auto;
+		// 			left: 0;
+		// 			right: 0;
+		// 			top: 2px;
+		// 			font-size: .65em;
+		// 		}
+		// 		span.cat-name {
+		// 			display: block;
+		// 			width: 100%;
+		// 			@include vertical-align();
+		// 		}
+		// 		i {
+		// 			display: none;
+		// 		}
+		// 	}
+		// }
 	} //div#categories-container
+}
+
+@mixin hori-scroll-wrapper() {
+	white-space: nowrap;
+	overflow-y: hidden;
+	overflow-x: scroll;
+	-webkit-overflow-scrolling: touch;
+	// Toggle this depending upon whether you want to see the scrollbar
+	&::-webkit-scrollbar {
+	    display: none;
+	}
 }
