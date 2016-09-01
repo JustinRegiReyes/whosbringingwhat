@@ -51,13 +51,13 @@
 					<div class="guests-cat">Invited</div>
 				</div>
 			</div>
-			<div id="whos-bringing-what" class="info-box">
+			<div id="categories-container" class="info-box">
 				<div id="categories-header">
 					Who's Bringing What?
 				</div>
 				<% @event.categories.each do |category|%>
-					<div class="category">
-						<span class="cat-count <%= 'enough' unless category.enough_items? === false %> "><%= category.items.length %>/<%= category.needed %></span>
+					<div id="<%= category.title.gsub(/\s+/, '') %>" class="category">
+						<span class="cat-count <%= 'enough' unless category.enough_items? === false %> "><%= category.items.count %>/<%= category.needed %></span>
 						<span class="cat-name"> <a href="/events/<%= @event.id %>/categories/<%= category.id %>"><%= category.title %></a></span>
 					</div>
 				<% end %>
