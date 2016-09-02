@@ -2,3 +2,204 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// Place all the styles related to the items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// ********** items#show **********
+
+div#items-show-container {
+	width: 100vw;
+	max-width: 785px;
+	margin: 0 auto;
+	height: auto;
+	@include banner-overlay();
+	div#information-section {
+		position: relative;
+		height: auto;
+		width: 100%;
+		background-color: $cloud;
+		overflow: visible;
+		padding: 20px 0;
+		div.info-box {
+			background-color: #FFF;
+			margin: 0 auto;
+			position: relative;
+			@include box-shadow(.3);
+			& >i {
+				color: $periGreen;
+				font-size: 18px;
+				position: absolute;
+				left: 15px;
+			}
+		}
+		div#overview-container {
+			height: 500px;
+			height: auto;
+			padding-left: 0;
+			padding-right: 5px;
+			div#items-container {
+				height: auto;
+				width: 100%;
+				margin: 0 auto 10px;
+				background-color: #FFF;
+				text-align: center;
+				padding: 10px;
+				div#items-header {
+					margin: 0 0 10px 0;
+					text-align: center;
+					font-weight: bold;
+					font-size: 1.25em;
+					height: 25px;
+					font-family: $hind;
+				}
+				& > a {
+					div.item {
+						margin: 3px auto;
+						padding-left: 50px;
+						text-align: left;
+						position: relative;
+						&.additional {
+							display: none;
+						}
+					}
+				}
+			}
+			@include categories-container();
+		} //div#overview-container
+		div#item-container {
+			height: 500px;
+			padding-left: 5px;
+			padding-right: 0;
+			div#item {
+				height: auto;
+				width: 100%;
+				margin: 0 auto;
+				background-color: #FFF;
+				padding: 10px;
+				div#item-header {
+					font-size: 1.75em;
+    				text-align: center;
+    				font-family: $hind;
+    				font-weight: bold;
+    				margin-bottom: 5px;
+    				text-align: left;
+    				padding-left: 10px;
+    				span.brought-by {
+    					font-size: .60em;
+    					// font-style: italic;
+    					// font-weight: normal;
+    				}
+				}
+				div#item-description {
+					padding-left: 10px;
+					margin-bottom: 20px;
+					font-size: .9em;
+					span {
+
+					}
+				}
+			}
+			button.site-button {
+				width: 100%;
+				margin: 10px auto;
+				display: block;
+				background-color: $periGreen;
+				text-align: center;
+				color: #FFF;
+			}
+		} //div#category-container
+		// ********** div#information-section max-width: $break-sm **********
+		@media screen and(max-width: $break-sm) {
+			div#overview-container {
+				padding: 0;
+				width: 98%;
+				margin: 0 auto;
+				div#items-container {
+					& > a {
+						div.item {
+							width: 50%;
+							margin: 0 auto;
+						}
+					}
+				} //div#items-container
+			} //div#overview-container
+			div#item-container {
+				padding: 0;
+				width: 98%;
+				margin: 0 auto;
+			}
+		} // media screen max-width: $break-sm
+		// ********** div#information-section max-width: $break-iphone6plus **********
+		@media screen and(max-width: $break-iphone6plus) {
+			padding-top: 0; 
+			background-color: white;
+			div#overview-container {
+				width: 100%;
+				box-shadow: none;
+				div#categories-container {
+					border-top: 2px solid $cloud;
+					border-bottom: 2px solid $cloud;
+				}
+				div#items-container {
+					height: 60px;
+					padding: 0;
+					position: relative;
+					width: 100vw;
+					margin: 0;
+					border-bottom: 2px solid $cloud;
+					@include hori-scroll-wrapper();
+					div#items-header {
+						display: none;
+					}
+					& > a {
+						&:hover {
+							text-decoration: none;
+						}
+						div.item {
+							width: auto;
+							font-size: 1.1em;
+							color: black;
+							height: 60px;
+							display: inline-block;
+							padding: 0 20px 0;
+							text-align: center;
+							border-right: 1px solid $cloud;
+							margin-right: -4px;
+							cursor: pointer;
+							position: relative;
+							i {
+								display: none;
+							}
+							&.selected {
+								background-color: $cobaltBlue;
+								color: white;
+							}
+							&.additional {
+								display: inline-block;
+							}
+							span.item-title {
+								display: block;
+								@include vertical-align();
+							}
+						}
+					}
+				} //div#items-container
+			} //div#overview-container
+			div#item-container {
+				width: 100%;
+				div#item {
+					box-shadow: none;
+				}
+				button.site-button {
+					width: 98%;
+					position: relative;
+					left: 1px;
+				}
+			} //div#item-container
+		}
+	} //div#information-section
+	@media screen and (max-width: $break-iphone6plus) {
+		padding-top: 0;
+	}
+}

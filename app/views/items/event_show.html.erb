@@ -1,5 +1,5 @@
-<% eventId = @category.event.id %>
-<div id="categories-show-container" class="default-container">
+<% eventId = @item.category.event.id %>
+<div id="items-show-container" class="default-container">
 	<%= render "partials/bannercontainer" %>
 	<div id="information-section" class="clearfixs">
 		<div id="overview-container" class="col-lg-4 col-md-4 col-sm-4">
@@ -7,9 +7,9 @@
 				<div id="categories-header">
 					Who's Bringing What?
 				</div>
-				<% if @category.event.categories.count <= 4 %>
+				<% if @item.category.event.categories.count <= 4 %>
 					<% 2.times do %> 
-						<% @category.event.categories.each do |category| %>
+						<% @item.category.event.categories.each do |category| %>
 							<a href="/events/<%= @event.id %>/categories/<%= category.id %>">
 								<div id="" class="<%= category.title.gsub(/\s+/, '') %> category">
 									<span class="cat-count <%= 'enough' unless category.enough_items? === false %> "><%= category.items.count %>/<%= category.needed %></span>
@@ -18,9 +18,9 @@
 							</a>
 						<% end %>
 					<% end %>
-				<% elsif @category.event.categories.count <= 2 %>
+				<% elsif @item.category.event.categories.count <= 2 %>
 					<% 3.times do %> 
-						<% @category.event.categories.each do |category| %>
+						<% @item.category.event.categories.each do |category| %>
 							<a href="/events/<%= @event.id %>/categories/<%= category.id %>">
 								<div id="" class="<%= category.title.gsub(/\s+/, '') %> category">
 									<span class="cat-count <%= 'enough' unless category.enough_items? === false %> "><%= category.items.count %>/<%= category.needed %></span>
@@ -30,7 +30,7 @@
 						<% end %>
 					<% end %>
 				<% end %>
-				<% @category.event.categories.each do |category| %>
+				<% @item.category.event.categories.each do |category| %>
 					<a href="/events/<%= @event.id %>/categories/<%= category.id %>">
 						<div id="" class="<%= category.title.gsub(/\s+/, '') %> category">
 							<span class="cat-count <%= 'enough' unless category.enough_items? === false %> "><%= category.items.count %>/<%= category.needed %></span>
@@ -41,56 +41,47 @@
 			</div>
 				<!-- div#categories-container -->
 			<div id="items-container" class="info-box">
-				<div id="items-header"><%= @category.title %> registered</div>
-				<% if @category.items.count <= 4 %>
+				<div id="items-header"><%= @item.category.title %> registered</div>
+				<% if @item.category.items.count <= 4 %>
 					<% 2.times do %> 
-						<% @category.items.each do |item| %>
-							<a href="/events/<%= eventId %>/categories/<%= @category.id%>/items/<%= item.id %>">
-								<div class="item additional">
-									<span id="<%=item.title%>" class="item-title"><%= item.title %></span>
+						<% @item.category.items.each do |item| %>
+							<a href="/events/<%= eventId %>/categories/<%= @item.category.id%>/items/<%= item.id %>">
+								<div id="" class="<%= item.title.gsub(/\s+/, '') %> item additional">
+									<span class="item-title"><%= item.title %></span>
 								</div>
 							</a>
 						<% end %>
 					<% end %>
-				<% elsif @category.items.count <= 2 %>
+				<% elsif @item.category.items.count <= 2 %>
 					<% 3.times do %> 
-						<% @category.items.each do |item| %>
-							<a href="/events/<%= eventId %>/categories/<%= @category.id%>/items/<%= item.id %>">
-								<div class="item additional">
-									<span id="<%=item.title%>" class="item-title"><%= item.title %></span>
+						<% @item.category.items.each do |item| %>
+							<a href="/events/<%= eventId %>/categories/<%= @item.category.id%>/items/<%= item.id %>">
+								<div id="" class="<%= item.title.gsub(/\s+/, '') %> item additional">
+									<span class="item-title"><%= item.title %></span>
 								</div>
 							</a>
 						<% end %>
 					<% end %>
 				<% else %>
 				<% end %>
-				<% @category.items.each do |item| %>
-					<a href="/events/<%= eventId %>/categories/<%= @category.id%>/items/<%= item.id %>">
-						<div class="item">
-							<span id="<%=item.title%>" class="item-title"><%= item.title %></span>
+				<% @item.category.items.each do |item| %>
+					<a href="/events/<%= eventId %>/categories/<%= @item.category.id%>/items/<%= item.id %>">
+						<div id="" class="<%= item.title.gsub(/\s+/, '') %> item">
+							<span class="item-title"><%= item.title %></span>
 						</div>
 					</a>
 				<% end %>
 			</div>
 				<!-- div#items-container -->
 		</div>
-		<div id="category-container" class="col-lg-8 col-md-8 col-sm-8">
-			<div id="category" class="info-box">
-				<div id="category-header">
-					<%= @category.title %>
+		<div id="item-container" class="col-lg-8 col-md-8 col-sm-8">
+			<div id="item" class="info-box">
+				<div id="item-header">
+					<%= @item.title %> <span class="brought-by">brought by <%= @item.user.username %></span>
 				</div>
-				<div id="items-count-container">
-					<span>
-						Signed up: <span class="cat-count"><%= @category.items.count %></span>
-					</span>
-					<br>
-					<span>
-						Requested: <span class="cat-count"><%= @category.needed %></span>
-					</span>
+				<div id="item-description">
+					<%= @item.description %>
 				</div>
-				<div id="description">
-					<p><%= @category.description %></p>
-				</div> 
 			</div>
 			<button class="btn btn-default site-button"> 
 				Bring Item
@@ -101,5 +92,6 @@
 	<!-- div#categories-show-container -->
 
 <script type="text/javascript">
-	var category = '<%= raw(@category.to_json) %>';
+	var category = '<%= raw(@item.category.to_json) %>';
+	var item = '<%= raw(@item.to_json) %>';
 </script>

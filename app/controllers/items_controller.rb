@@ -26,7 +26,8 @@ class ItemsController < ApplicationController
   end
 
   def event_show
-    
+    @item = Item.find_by_id(params[:item_id])
+    @event = Event.find_by_id(params[:event_id])
   end
 
   def delete

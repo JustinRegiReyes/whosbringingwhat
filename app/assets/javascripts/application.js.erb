@@ -39,6 +39,7 @@ function ready() {
 	attendanceLabelListeners();
 	buttonAttendanceLabelListener();
 	categorySelector();
+	itemSelector();
 	if(window.location.pathname === "/calendar") {
 		calendar();
 	}
@@ -371,9 +372,21 @@ function toggleLabels(labelType) {
 		if($category.length > 0) {
 			if ((typeof category) !== 'undefined') {
 				var categoryObj = JSON.parse(category);
-				var $categoryTarget = $('#' + categoryObj.title.replace(/ /g, ''));
+				var $categoryTarget = $('.' + categoryObj.title.replace(/ /g, ''));
 				$categoryTarget.addClass('selected');
 				$categoryTarget.prepend('<i class="fa fa-chevron-right" aria-hidden="true"></i>');
+			}
+		}
+	}
+
+	function itemSelector() {
+		$item = $('#items-container');
+		if($item.length > 0) {
+			if ((typeof item) !== 'undefined') {
+				var itemObj = JSON.parse(item);
+				var $itemTarget = $('.' + itemObj.title.replace(/ /g, ''));
+				$itemTarget.addClass('selected');
+				$itemTarget.prepend('<i class="fa fa-chevron-right" aria-hidden="true"></i>');
 			}
 		}
 	}
