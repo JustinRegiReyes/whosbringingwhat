@@ -51,15 +51,43 @@
 					<div class="guests-cat">Invited</div>
 				</div>
 			</div>
+			<div id="mobile-category">
+				Categories
+			</div>
 			<div id="categories-container" class="info-box">
 				<div id="categories-header">
 					Who's Bringing What?
 				</div>
-				<% @event.categories.each do |category|%>
-					<div id="<%= category.title.gsub(/\s+/, '') %>" class="category">
-						<span class="cat-count <%= 'enough' unless category.enough_items? === false %> "><%= category.items.count %>/<%= category.needed %></span>
-						<span class="cat-name"> <a href="/events/<%= @event.id %>/categories/<%= category.id %>"><%= category.title %></a></span>
-					</div>
+				<% if @event.categories.count <= 4 %>
+					<% 2.times do %> 
+						<% @event.categories.each do |category| %>
+							<a href="/events/<%= @event.id %>/categories/<%= category.id %>">
+								<div id="" class="<%= category.title.gsub(/\s+/, '') %> category">
+									<span class="cat-count <%= 'enough' unless category.enough_items? === false %> "><%= category.items.count %>/<%= category.needed %></span>
+									<span class="cat-name"> <%= category.title %></span>
+								</div>
+							</a>
+						<% end %>
+					<% end %>
+				<% elsif @event.categories.count <= 2 %>
+					<% 3.times do %> 
+						<% @event.categories.each do |category| %>
+							<a href="/events/<%= @event.id %>/categories/<%= category.id %>">
+								<div id="" class="<%= category.title.gsub(/\s+/, '') %> category">
+									<span class="cat-count <%= 'enough' unless category.enough_items? === false %> "><%= category.items.count %>/<%= category.needed %></span>
+									<span class="cat-name"> <%= category.title %></span>
+								</div>
+							</a>
+						<% end %>
+					<% end %>
+				<% end %>
+				<% @event.categories.each do |category| %>
+					<a href="/events/<%= @event.id %>/categories/<%= category.id %>">
+						<div id="" class="<%= category.title.gsub(/\s+/, '') %> category">
+							<span class="cat-count <%= 'enough' unless category.enough_items? === false %> "><%= category.items.count %>/<%= category.needed %></span>
+							<span class="cat-name"> <%= category.title %></span>
+						</div>
+					</a>
 				<% end %>
 					<!-- categories.each -->
 			</div>
