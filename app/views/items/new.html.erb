@@ -1,29 +1,16 @@
-<h1>Create an item</h1>
-
-<div class="form-container">
-		<%= form_for @item, url: 
-		"/items/#{@event.id}/create", method: "post" do |f| %>
-			<div class="text-center">
-				<label>Name of Item</label><br>
-				<%=	f.text_field :title, placeholder: '"Spoons", "Lasagna", "", etc.' %>
-				<br><br>
-				<label>Description</label>
-				<br>
-				<%= f.text_area :description, placeholder: 'Homemade lasagna that has 8~ servings :D' %>
-				<br>
-				<label>Choose a category the item is for</label>
-				<br>
-				<select name="categories">
-					<option value="">Please select</option>
-					<%= @event.categories.each do |category| %>
-						<option value="<%= category.id %>"><%= category.title %></option>
-					<% end %>
-				</select>
-			</div>
-			<br>
-			<div class="text-center">
-				<%= f.submit class: "btn btn-default", value: "Bring Item" %>
-			</div>
-
-		<% end %>
+<%= rando_item %>
+<div id="new-item-container" class="default-container">
+	<div class="clearfixs">
+		<div class="form-container">
+			<%= form_for @item, url: '/events', method: "post" do |f| %>
+				<div class="input-box">
+					<%=	f.text_field :title, class: "full", placeholder: ""  %>
+				</div>
+			<% end %> 
+		</div>
+	</div>
 </div>
+
+<script>
+	
+</script>
