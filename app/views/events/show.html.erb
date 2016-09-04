@@ -104,7 +104,7 @@
 						</div>
 					</div>
 					<div class="textarea-container">
-						<%= text_area(:comments, :post, id: "comment_post") %>
+						<%= text_area(:comments, :post, id: "comment_post", required: true) %>
 					</div>
 					<div class="submit-button-container">
 						<% if current_user == nil %>

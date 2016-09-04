@@ -394,18 +394,42 @@ div#event-show-container {
 					box-shadow: none;
 					border-bottom: 1px solid $cloud;
 				}
+				div#description {
+					border-bottom: none;
+				}
 			} //div#information
 			div#additional-information {
 				padding: 0;
 				div#guests {
 					box-shadow: none;
+					padding: 10px 0;
+					div#guests-header {
+						padding-bottom: 10px;
+						height: auto;
+					}
+					div#going-guests {
+						border-right: 1.5px solid $cloud;
+						border-top: 1.5px solid $cloud;
+					}
+					div#declined-guests {
+						border-top: 1.5px solid $cloud;
+					}
+					div#maybe-guests {
+						border-right: 1.5px solid $cloud;
+						border-bottom: 1.5px solid $cloud;
+						border-top: 1.5px solid $cloud;
+					}
+					div#invited-guests {
+						border-top: 1.5px solid $cloud;
+						border-bottom: 1.5px solid $cloud;
+					}
 				}
 				div#mobile-category {
 					font-size: 20px;
 					text-align: center;
 					background-color: white;
 					font-family: "Hind", Helvetica, sans-serif;
-					padding-bottom: 5px;
+					padding-bottom: 10px;
 				}
 				div#categories-container {
 					border-top: 1px solid $cloud;
