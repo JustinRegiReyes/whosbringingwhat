@@ -18,9 +18,10 @@ div#new-event-container {
 	div.form-container {
 		& > form > div {
 			width: 80%;
-			margin: 0 auto;
+			margin: 10px auto;
 			& > div {
 				padding: 0;
+				margin: 10px auto;
 			}
 			& > div.col-xs-4 {
 				padding-left: 5px;
