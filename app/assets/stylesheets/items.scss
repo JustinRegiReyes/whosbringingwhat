@@ -100,13 +100,19 @@ div#items-show-container {
 					}
 				}
 			}
-			button.site-button {
-				width: 100%;
-				margin: 10px auto;
-				display: block;
-				background-color: $periGreen;
-				text-align: center;
-				color: #FFF;
+			a#bring-item {
+				&:hover {
+					text-decoration: none;
+					
+				}
+				button.site-button {
+					width: 100%;
+					margin: 10px auto;
+					display: block;
+					background-color: $periGreen;
+					text-align: center;
+					color: #FFF;
+				}
 			}
 		} //div#category-container
 		// ********** div#information-section max-width: $break-sm **********

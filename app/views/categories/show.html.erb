@@ -92,9 +92,11 @@
 					<p><%= @category.description %></p>
 				</div> 
 			</div>
-			<button class="btn btn-default site-button"> 
-				Bring Item
-			</button>
+			<a href="/events/<%= eventId%>/categories/<%=@category.id %>/items/new" id="bring-item">
+				<button class="btn btn-default site-button"> 
+					Bring Item
+				</button>
+			</a>
 		</div>
 	</div> 
 </div>
