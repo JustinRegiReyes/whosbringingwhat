@@ -1,11 +1,24 @@
-<%= rando_item %>
+<% item_example = rando_item  %>
 <div id="new-item-container" class="default-container">
 	<div class="clearfixs">
-		<div class="form-container">
+		<div id="form-container">
+			<div id="item-for">
+				Item for <%= @event.title %>
+			</div>
+				<!-- div#item-for -->
 			<%= form_for @item, url: '/events', method: "post" do |f| %>
-				<div class="input-box">
-					<%=	f.text_field :title, class: "full", placeholder: ""  %>
+				<div id="input-container" class="clearfixs">
+					<div class="input-box col-sm-12">
+						<label>Name</label><br>
+						<%=	f.text_field :title, class: "full", placeholder: "#{item_example[:title]}"  %>
+					</div>
+					<div class="input-box col-sm-12">
+						<label>Description</label><br>
+						<%=	f.text_area :description, class: "full textarea", placeholder: "#{item_example[:description]}"  %>
+					</div>
+					<%= f.submit "Bring", class: "site-button" %>
 				</div>
+					<!-- div#input-container -->
 			<% end %> 
 		</div>
 	</div>

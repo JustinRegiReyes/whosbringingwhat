@@ -209,3 +209,59 @@ div#items-show-container {
 		padding-top: 0;
 	}
 }
+
+// ********** items#new **********
+div#new-item-container {
+	width: 100vw;
+	max-width: 500px;
+	margin: 10px auto;
+	div#item-for {
+		font-size: 1.5em;
+		margin: 0px auto 10px;
+		font-family: $hind;
+		width: 80%;
+	}
+	div#form-container {
+		@include box-shadow(.3);
+		width: 100%;
+		height: auto;
+		background-color: white;
+		padding: 20px 10px;
+		div#input-container {
+			width: 80%;
+			margin: 0 auto;
+			text-align: center;
+			div.input-box {
+				text-align: left;
+				label {
+					font-weight: 200;
+				}
+				textarea, input {
+					border: none;
+					border-bottom: 1px solid $cloud;
+					margin-bottom: 10px;
+					color: $asphalt;
+					padding-top: 3px;
+					padding-bottom: 3px;
+					padding-left: 3px;
+					width: 100%;
+					&:focus {
+						color: black;
+					}
+					&.textarea {
+						border: 1px solid $cloud;
+						padding: 10px;
+					}
+				}
+			} //div.input-box
+			.site-button {
+				color: white;
+				background-color: $periGreen;
+				border-radius: 0;
+				&:hover {
+					background-color: lighten($periGreen, 2%);
+				}
+			}
+		} // div#input-container
+	} //div#form-container
+}
