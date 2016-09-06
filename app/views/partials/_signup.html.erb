@@ -4,7 +4,7 @@
       <%= form_for @user, url: "/signup", method: :post do |f| %>
       <div class="modal-body signup-modal">
          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-         <h1 class="modal-title">Signup</h1>
+         <!-- <h1 class="modal-title">Signup</h1> -->
             <div class="errors-container">
             	<% if flash[:auth_error] %>
             		<% flash.each do |key, value| %>
@@ -52,7 +52,7 @@
             	   <%= f.password_field :password, placeholder: "Re-enter password", class: "form-control password-confirm pass-second" %>
               </div>
               <div class="register-container">
-                <%= f.submit "Register", class: "submit register"%>
+                <%= f.submit "Submit", class: "submit register"%>
               </div>
             </div>
               <!-- div.input-container -->

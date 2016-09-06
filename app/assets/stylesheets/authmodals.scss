@@ -1,4 +1,5 @@
 div.auth-modal {
+	position: relative;
 	.modal-header {
 		border: none;
 		padding-bottom: none;
@@ -10,7 +11,7 @@ div.auth-modal {
 		padding: 0 15px;
 	}
 	.signup-modal {
-		min-height: 400px;
+		min-height: 325px;
 	}
 	div.modal-dialog {
 		width: 500px;
@@ -101,8 +102,9 @@ div.auth-modal {
 			text-align: center;
 			width: 125px;
 			border: none;
-			background-color: $ashyRed;
+			background-color: $periGreen;
 			color: white;
+			margin-left: auto;
 			&.register {
 				background-color: $periGreen;
 				display: none;

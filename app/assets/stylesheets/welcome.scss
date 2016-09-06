@@ -29,7 +29,7 @@ img#sticker {
 
 
 div.welcome-container {
-	background-color: $periGreen;
+	background-color: white;
 	position: absolute;
 	// top: -45px;
 	right: 0;
@@ -74,9 +74,11 @@ div.welcome-container {
 	h1.header {
 		font-size: 110px;
 		font-family: $mainHeader;
+		color: $asphalt;
 	}
 	.sub-header {
 		font-size: 1.15em;
+		color: $asphalt;
 	}
 	div.button-container {
 		text-align: center;
@@ -84,12 +86,14 @@ div.welcome-container {
 		button {
 			width: 175px;
 			margin: 5px 0;
+			// border: 2px solid darken($periGreen, 2%);
 			border: none;
+			border-bottom: 2px solid darken($periGreen, 5%);
 			border-radius: 1px;
-			background-color: white;
-			color: $cobaltBlue;
+			background-color: $periGreen;
+			color: white;
 			&:hover {
-				background-color: $cloud;
+				background-color: darken($periGreen, 3%);
 			}
 			&.login {
 				// background-color: $ashyRed;
