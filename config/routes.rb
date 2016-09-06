@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :events
     post '/events/:id/comments', to: 'comments#create'
     get '/events/:id/guests/:type', to: 'events#guests'
+    get '/myevents', to: 'events#my_events'
 
   # categories routes
     get '/events/:event_id/categories/:category_id', to: 'categories#show'
