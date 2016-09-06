@@ -275,7 +275,7 @@ function markDates(dates) {
     // adds class "eventDay" to every element with the date in the dates array
     // appends a event days container that contains the events on that date
     dates.forEach(function(date) {
-        $('div[class*=' + date + '] span').css({"color": "#4095F8", "cursor": "pointer"});
+        $('div[class*=' + date + '] span').css({"cursor": "pointer"});
         $('div[class*=' + date + ']').addClass("eventDay");
 
         $("[class*=" + date + "]").unbind( "click" );
@@ -331,4 +331,5 @@ function eventDaysCompiler(events, dates) {
         $('div[class*=' + event.date_start + '] .event-days-container').append(eventTitleEl);
     });
 
+    $('.eventDay').append('<i class="fa fa-circle" aria-hidden="true"></i>')
 }
