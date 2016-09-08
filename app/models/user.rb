@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 	# renaming has_many :events alias to created_events
 	has_many :created_events, foreign_key: "user_id", class_name: "Event"
 	has_many :attending_events
+	has_many :notifications
 
 	# renaming has_many :events throgh: :attending_events alias to going_tos
 	has_many :going_tos, foreign_key: "user_id", through: :attending_events, source: :event

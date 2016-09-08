@@ -4,6 +4,7 @@ class CreateNotifications < ActiveRecord::Migration
       t.integer :event_id
       t.integer :comment_id
       t.integer :friendship_id
+      t.integer :user_id
 
       t.timestamps null: false
     end
