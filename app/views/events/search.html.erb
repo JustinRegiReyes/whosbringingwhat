@@ -31,17 +31,18 @@
 								<div id="event-guests">
 									<i class="fa fa-users" aria-hidden="true"></i> <%= event.attending_events.count %>
 								</div>
+								<div id="event-title"><a href="/events/<%=event.id%>"><%=truncate("#{event.title}", length: 25) %></a></div>
 								<div class="event-when">
 									<%= event.date_start.strftime('%a %b %-d') %> at <%= event.time_start.strftime('%l:%M%P')%>
 								</div>
-								<div id="event-title"><a href="/events/<%=event.id%>"><%= event.title %></a></div>
-								<div id="event-where"><%= event.where %></div>
+								<div id="event-where"><i class="fa fa-map-marker" aria-hidden="true"></i> <%= event.where %></div>
 								<div id="event-highlights">
 									<%= event.highlights %>
 								</div>
 							</div>
 						</div>
 							<!-- div.event-box -->
+							<hr>
 					<% end %>
 						<!-- @events.each -->
 				<% else %>

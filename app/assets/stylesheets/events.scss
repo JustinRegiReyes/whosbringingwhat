@@ -457,6 +457,8 @@ div#search-results-container {
 	height: auto;
 	overflow-y: auto;
 	div#search-container {
+		position: relative;
+		z-index: 1;
 		div#search-box {
 			width: 240px; 
 			height: 210px;
@@ -469,11 +471,15 @@ div#search-results-container {
 			& > div {
 				h4 {
 					margin-bottom: 20px;
+					font-family: "Hind", Helvetica, sans-serif;
+    				font-size: 20px;
 				}
 				input {
 					margin: 5px auto;
 					width: 175px;
 					padding-left: 5px;
+					border: none;
+					border-bottom: 1px solid $cloud;
 				}
 				button.site-button {
 					margin-top: 30px;
@@ -490,7 +496,7 @@ div#search-results-container {
 			div#results-count {
 				text-align: center;
 				span {
-					color: $ashyRed;
+					color: $asphalt;
 				}
 			}
 			div.event-box {
@@ -526,12 +532,8 @@ div#search-results-container {
 							position: relative;
 						}
 					}
-					div.event-when {
-						color: gray;
-						font-size: .9em;
-					}
 					div#event-title {
-						font-size: 1.5em;
+						font-size: 1.25em;
 						margin: 5px 0;
 						a {
 							text-decoration: none;
@@ -541,18 +543,26 @@ div#search-results-container {
 							}
 						}
 					}
+					div.event-when {
+						font-size: .9em;
+					}
 					div#event-where {
-						font-size: 1em;
+						font-size: .9em;
 						margin: 5px 0;
 						min-height: 40px;
+						i {
+							color: $ashyRed;
+						}
 					}
 					div#event-highlights {
 						font-size: .85em;
 						margin: 20px 0 0;
-						font-style: italic;
 					}
 				} //div#event-information
 			} //div.event-box
+			hr {
+				display: none;
+			}
 		} //div#search-results
 	} //div#search-results-container
 	@media screen and (max-width: $break-sm) {
@@ -578,6 +588,7 @@ div#search-results-container {
 							position: relative;
 							top: 1px;
 							height: 30px;
+							width: 100%;
 						}
 						button {
 							margin: 0;
@@ -593,12 +604,20 @@ div#search-results-container {
 	} // ********** max-width: $break-sm
 	@media screen and (max-width: $break-iphone6plus) {
 		padding: 0;
-		padding-top: 20px;
 		width: 100vw;
+		background-color: white;
+		overflow-y: visible;
+		height: auto;
+		min-height: 100vh;
 		div#search-container {
+			height: 170px;
+			position: relative;
 			div#search-box {
-				width: 98%;
+				width: 100%;
 				margin: 0 auto;
+				box-shadow: none;
+				position: fixed;
+				height: auto;
 				form {
 					& > div {
 						input {
@@ -611,6 +630,43 @@ div#search-results-container {
 				}
 			} //div#search-box
 		} //div#search-container
+		div#events-results-container {
+			margin: 0;
+			div#search-results {
+				div.event-box {
+					height: auto;
+					width: 100%;
+					box-shadow: none;
+					overflow-y: visible;
+					position: relative;
+					max-height: inherit;
+					padding: 10px 0;
+					a {
+						display: block;
+						height: auto;
+						float: none;
+						width: 250px;
+						margin: 0 auto;
+						div#event-banner {
+							width: 250px;
+							height: 250px;
+							margin: 0 auto;
+							float: none !important;
+						}
+					}
+					div#event-information {
+						padding: 0;
+						width: 250px;
+						height: auto;
+						margin: 0 auto;
+						float: none !important;
+					}
+				} //div.event-box
+				hr {
+					display: block;
+				}
+			}
+		}
 	}
 } //div#search-results-container
 
