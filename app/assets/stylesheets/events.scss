@@ -203,6 +203,9 @@ div#event-show-container {
 			padding-left: 5px;
 			padding-top: 10px;
 			height: auto;
+			div#mobile-category {
+				display: none;
+			}
 			div#guests {
 				height: 170px;
 				margin-bottom: 10px;
@@ -431,6 +434,7 @@ div#event-show-container {
 					background-color: white;
 					font-family: "Hind", Helvetica, sans-serif;
 					padding-bottom: 10px;
+					display: block;
 				}
 				div#categories-container {
 					border-top: 1px solid $cloud;
@@ -609,3 +613,169 @@ div#search-results-container {
 		} //div#search-container
 	}
 } //div#search-results-container
+
+// ********** END event#search **********
+
+// ********** event#my_events **********
+	div#my-events-container {
+		max-width: 990px;
+		min-height: 200px;
+		height: auto;
+		margin: 0 auto;
+		div#events-container {
+			width: 100%;
+			min-height: 200px;
+			padding: 10px;
+			div.myevents-navigation {
+				margin: 10px auto;
+				width: 940px;
+				background-color: white;
+				padding: 10px;
+				@include box-shadow(.3);
+				div.header {
+					font-family: $hind;
+					font-size: 24px;
+					text-align: center;
+				}
+			}
+			div.event-box {
+				height: 200px;
+				width: 455px;
+				padding: 10px;
+				margin: 10px 15px;
+				@include box-shadow(.3);
+				background-color: white;
+				float: left;
+				position: relative;
+				a#delete-icon {
+					position: absolute;
+					right: 10px;
+					top: 0px;
+					color: $ashyRed;
+					z-index: 1;
+					&:hover {
+						text-decoration: none;
+					}
+				}
+				div.img {
+					width: 180px;
+					height: 180px;
+					margin-right: 10px;
+					float: left;
+				}
+				div.information {
+					position: relative;
+					float: left;
+					width: 245px;
+					height: 180px;
+					div.event-title {
+						font-size: 1.25em;
+						margin-bottom: 2px;
+					}
+					div.event-date {
+						font-size: .85em;
+						margin-bottom: 2px;
+					}
+					div.event-attending {
+						font-size: .85em;
+						margin-bottom: 15px;
+						font-style: italic;
+					}
+					div.event-description {
+						font-size: .85em;
+					}
+					div.button-wrapper {
+						position: absolute;
+						width: 205px;
+						bottom: -5px;
+						button.site-button {
+							height: 22px;
+							font-size: .9em;
+							width: 100px;
+							background-color: white;
+							border: 1px solid silver;
+							padding-bottom: 4px;
+							color: black;
+							&:hover {
+								// background-color: $periGreen;
+								// color: white;
+								// border: 1px solid $periGreen;
+
+								border: 1px solid $periGreen;
+								color: $periGreen;
+							}
+							// &.invite {
+							// 	background-color: $cobaltBlue;
+							// }
+							// &.edit {
+							// 	background-color: $periGreen;
+							// }
+						}
+					}
+				} //div.information
+			} //div.event-box
+			hr {
+				display: none;
+			}
+		} 
+		@media screen and(max-width: $break-md) {
+			div#events-container {
+				div.myevents-navigation {
+					width: 455px;
+				}
+				div.event-box {
+					float: none;
+					margin: 10px auto;
+				}
+			}
+		} // @media screen and(max-width: $break-md)
+		@media screen and(max-width: $break-iphone6plus) {
+			div#events-container {
+				background-color: white;
+				width: 100vw;
+				div.myevents-navigation {
+					width: 100%;
+					box-shadow: none;
+				}
+				div.event-box {
+					width: 100%;
+					height: auto;
+					box-shadow: none;
+					div.img {
+						width: 250px;
+						height: 250px;
+						margin: 0 auto 10px;
+						display: block;
+						float: none;
+					}
+					div.information {
+						width: 250px;
+						margin: 0 auto;
+						float: none;
+						height: auto;
+						padding-bottom: 65px;
+						div.description {
+							margin-bottom: 10px;
+						}
+						div.button-wrapper {
+							width: 100%;
+							button.site-button {
+								width: 100%;
+								border: none;
+								margin: 0;
+								height: 30px;
+								&.invite {
+									border-top: 1px solid $cloud;
+									border-bottom: 1px solid $cloud;
+								}
+								&.edit {
+									border-bottom: 1px solid $cloud;
+								}
+							}
+						}
+					}
+				}
+			}
+		} // @media screen and(max-width: $break-iphone6plus)
+	} //div#my-events-container
+// ********** END event#my_events **********

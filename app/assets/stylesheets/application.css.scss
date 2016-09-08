@@ -55,6 +55,9 @@ div.default-container {
 	background-color: $cloud;
 	position: inherit;
 	padding-top: 40px;
+	@media screen and(max-width: $break-iphone6plus) {
+		padding-top: 0;
+	}
 }
 
 button, input.submit {

@@ -33,6 +33,11 @@ nav.navbar-xs {
 			}
 		}
 	}
+	@media screen and (max-width: $break-sm) {
+		& li {
+			height: 18px;
+		}
+	}
 }
 
 .navbar-nav > li > .dropdown-menu {

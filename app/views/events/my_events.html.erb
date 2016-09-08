@@ -1,1 +1,27 @@
-myevents.html.erb
+<div id="my-events-container" class="default-container">
+	<div id="events-container" class="clearfixs">
+		<div class="myevents-navigation">
+			<div class="header">
+				My Events
+			</div>
+		</div>
+		<% @events.each do |event| %>
+			<div class="event-box clearfixs">
+				<div class="img" style="background: url('<%= image_path("#{event.banner.url(:medium)}")%>') no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;"></div>
+				<div class="information">
+					<a href="#" id="delete-icon"><i class="fa fa-trash" aria-hidden="true"></i></a>
+					<div class="event-title"><%= truncate("#{event.title}",length: 25) %></div>
+					<div class="event-date"><%= event.date_start.strftime('%b %-d') %> at <%= event.time_start.strftime('%l:%M%P')%></div>
+					<div class="event-attending"><%= event.attending_guests.count%> attending</div>
+					<div class="event-description"><%= truncate("#{event.description}", length: 140) %></div>
+					<div class="button-wrapper">
+						<button class="site-button invite">Invite</button>
+						<button class="site-button edit">Edit</button>
+					</div>
+				</div>
+			</div>
+			<hr>
+		<% end %>
+	</div>
+</div>
+	<!-- div#my-events-container -->

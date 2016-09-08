@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :logged_in?, only: [:new, :show, :created, :attending]
+  before_action :logged_in?, only: [:new, :show, :created, :attending, :my_events]
 
   def new
     @event = Event.new
@@ -79,7 +79,7 @@ class EventsController < ApplicationController
   end
 
   def my_events
-    
+    @events = current_user.created_events
   end
 
   private
