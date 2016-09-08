@@ -27,6 +27,10 @@ class Event < ActiveRecord::Base
 		!crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
 	end
 
+	def attending_guests
+		self.attending_events.where({going: true})
+	end
+
 	private
 		# runs paperclips reprocess method for crop
 		def reprocess_banner
