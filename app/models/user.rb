@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 	# renaming has_many :events throgh: :attending_events alias to going_tos
 	has_many :going_tos, foreign_key: "user_id", through: :attending_events, source: :event
 	has_many :friendships
-	has_many :friends, :through => :friendships
+	has_many :friends, -> {where(friendships: {accepted: true})}, :through => :friendships
 	has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
 	has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
