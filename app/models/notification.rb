@@ -7,7 +7,7 @@ class Notification < ActiveRecord::Base
 		User.find_by_id(self.guest_id)
 	end
 
-	def friend
+	def friendship
 		User.find_by_id(self.friendship_id)
 	end
 
