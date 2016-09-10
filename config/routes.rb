@@ -26,6 +26,10 @@ Rails.application.routes.draw do
     get '/events/:event_id/categories/:category_id/items/new', to: 'items#new'
     get '/events/:event_id/categories/:category_id/items/:item_id', to: 'items#event_show'
 
+  #friendship routes
+    post '/friendships/:friend_id/friend_request', to: 'friendships#friend_request'
+    patch '/friendships/:friend_id/friend_accept', to: 'friendships#friend_accept'
+
   # sessions routes
 	post '/sessions', to: 'sessions#create'
 	delete '/sessions', to: 'sessions#destroy'
