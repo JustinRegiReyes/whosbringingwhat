@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160909061250) do
+ActiveRecord::Schema.define(version: 20160910195524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 20160909061250) do
     t.string   "crop_y"
     t.string   "crop_w"
     t.string   "crop_h"
+    t.string   "email"
   end
 
 end
