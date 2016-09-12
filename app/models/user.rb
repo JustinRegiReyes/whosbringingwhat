@@ -58,8 +58,18 @@ class User < ActiveRecord::Base
     	self.event_target.attributes.key(true)
     end
 
-    def is_friend(friend)
-    	if self.friendships.find_by_friend_id(friend.id) != nil
+    def is_friend?(friend)
+    	friendship = self.friendships.find_by_friend_id(friend.id)
+    	if  friendship.accepted == true
+    		return true
+    	else
+    		return false
+    	end
+    end
+
+    def friendship_pending?(friend)
+    	friendship = self.friendships.find_by_friend_id(friend.id)
+    	if friendship.pending == true
     		return true
     	else
     		return false
