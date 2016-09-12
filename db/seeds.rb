@@ -7,15 +7,15 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # Users
-user = User.create({username: "Jstn", password: "qwe"})
+user = User.create({username: "Jstn", password: "qwe", from: "Bay Area", bio: "I am cool. Add me as a friend."})
 
-user1 = User.create({username: "Ro", password: "qwe"})
+user1 = User.create({username: "Ro", password: "qwe", from: "Bay Area", bio: "I am cool. Add me as a friend."})
 
-user2 = User.create({username: "Ender", password: "qwe"})
+user2 = User.create({username: "Ender", password: "qwe", from: "Bay Area", bio: "I am cool. Add me as a friend."})
 
-user3 = User.create({username: "Rocky", password: "qwe"})
+user3 = User.create({username: "Rocky", password: "qwe", from: "Bay Area", bio: "I am cool. Add me as a friend."})
 
-user4 = User.create({username: "Bulbasaur", password: "qwe"})
+user4 = User.create({username: "Bulbasaur", password: "qwe", from: "Bay Area", bio: "I am cool. Add me as a friend."})
 
 ########## events ##########
 
