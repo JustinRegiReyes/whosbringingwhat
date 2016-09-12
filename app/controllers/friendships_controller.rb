@@ -18,7 +18,9 @@ class FriendshipsController < ApplicationController
 	end
 
 	def friend_request
-
+		binding.pry
+		flash[:notice] = "Friend request sent"
+		redirect_to :back
 	end
 
 	def friend_accept

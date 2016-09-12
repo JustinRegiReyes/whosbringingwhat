@@ -45,53 +45,116 @@ div#home-notifications {
 	}
 } //div#home-notifications
 
-div.search-wrapper {
-	padding: 30px;
-	margin: 0 auto;
-	height: 300px;
-	width: 400px;
-	@include vertical-align();
-	@include box-shadow();
-	top: 40%;
-	background-color: white;
-	div.form-wrapper {
-		min-height: 190px;
-		height: auto;
-		@include vertical-align();
-		h3 {
-			margin-top: 0;
-			font-family: $hind;
+// ********** event#search **********
+div#user-search-container {
+	div#search-container {
+		position: relative;
+		z-index: 1;
+		div#search-box {
+			width: 240px; 
+			height: 210px;
+			background-color: white;
+			padding: 10px 0;
+			position: fixed;
+			@include box-shadow();
 		}
-		& > div {
-			margin: 0 auto;
-		}
-		input {
-			border: 1px solid $cloud;
-			border-radius: 1px;
-			padding: 1px 10px;
-			margin: 5px 0;
-			&.search-full {
-				width: 300px;
+		form {
+			& > div {
+				h4 {
+					margin-bottom: 20px;
+					font-family: "Hind", Helvetica, sans-serif;
+    				font-size: 20px;
+				}
+				input {
+					margin: 5px auto;
+					width: 175px;
+					padding-left: 5px;
+					border: none;
+					border-bottom: 1px solid $cloud;
+				}
+				button.site-button {
+					margin-top: 30px;
+					background-color: $periGreen;
+					color: white;
+				}
 			}
-		}
-		label {
-			text-align: left;
-			width: 50px;
-			font-weight: 200;
-		}
-		div.date-wrapper {
-			text-align: left;
-			margin: 0 auto;
-			width: 230px;
-		}
-		button.search {
-			color: white;
-			background-color: $periGreen;
-			border-radius: 0;
-			border: none;
-			&:hover {
-				background-color: lighten($periGreen, 2%);
+		} //form
+	} //div#search-container
+	div#users-results-container {
+		div#search-results {
+			min-height: 300px;
+			padding: 0px 0px 20px;
+			padding-top: 10px;
+			div#results-count {
+				text-align: center;
+				width: 400px;
+				background-color: white;
+				margin: 0 auto 10px;
+				padding: 15px;
+				font-size: 1.1em;
+				span {
+					color: $asphalt;
+				}
 			}
-		}
-	}
-}
+			div.user-box {
+				height: auto;
+				// width: 100%;
+				background-color: white;
+				margin: 0 auto;
+				border-bottom: 1px solid $cloud;
+				width: 400px;
+				padding: 10px;
+				img.avi {
+				    width: 120px;
+				    height: 120px;
+				    display: block;
+				    margin: 0;
+				    border-radius: 100%;
+				    border: 1px solid #e5e5e5;
+				    float: left;
+				} //img.avi
+				div.content {
+					height: 120px;
+					margin-left: 20px;
+					width: 240px;
+					float: left;
+					position: relative;
+					span {
+						display: inline-block;
+					}
+					span.username {
+						font-size: 1.25em;
+					}
+					span.from {
+						font-size: .9em;
+					}
+					span.bio {
+						margin-top: 15px;
+						font-size: .9em;
+					}
+					button.site-button {
+						background-color: #FFF;
+						height: 25px;
+						width: 80px;
+						margin: 0;
+						font-size: .85em;
+						color: $periGreen;
+						border: 1px solid $cloud;
+						position: absolute;
+						top: 0px;
+						right: 1px;
+						&:hover {
+							background-color: $periGreen;
+							color: white;
+							border: 1px solid #FFF;
+						}
+					}
+				}
+			} //div.user-box
+			hr {
+				display: none;
+			}
+		} //div#search-results
+	} //div#users-results-container
+} //div#user-search-container
+// ********** event#search END **********

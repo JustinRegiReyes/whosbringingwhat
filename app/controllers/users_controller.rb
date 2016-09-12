@@ -33,6 +33,10 @@ class UsersController < ApplicationController
   def delete
   end
 
+  def search
+    @users = User.all
+  end
+
   private
 
   def newuser_params
