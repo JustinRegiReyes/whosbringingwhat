@@ -18,9 +18,20 @@ class FriendshipsController < ApplicationController
 	end
 
 	def friend_request
-		binding.pry
-		flash[:notice] = "Friend request sent"
-		redirect_to :back
+		friendship = Friendship.where({user_id: current_user.id, friend_id: params[:friend_id]}).first
+		if friendship != nil
+			friend_request_notification(friendship)
+		elsif friendship == nil
+			friendship = Friendship.new({user_id: current_user.id, friend_id: params[:friend_id]})
+			if friendship.save
+				flash[:success] = "Friend request sent"
+				friend_request_notification(friendship)
+				redirect_to :back
+			else
+				flash[:error] = "Friend request error"
+				redirect_to :back
+			end
+		end
 	end
 
 	def friend_accept

@@ -34,8 +34,10 @@
 								<br>
 								<span class="bio"><%= user.bio %></span>
 								<br>
-								<% if current_user.is_friend(user) %>
-									<div class="is-friends"><i class="fa fa-check" aria-hidden="true"></i> Friend</div>
+								<% if current_user.is_friend?(user) %>
+									<div class="friendship is-friends"><i class="fa fa-check" aria-hidden="true"></i> Friend</div>
+								<% elsif current_user.friendship_pending?(user) %>
+									<div class="friendship friendship-pending"><i class="fa fa-ellipsis-h" aria-hidden="true"></i> Pending</div>
 								<% else %>
 									<%= link_to '<button class="site-button"><i class="fa fa-user-plus" aria-hidden="true"></i> Friend</button>'.html_safe, "/friendships/#{user.id}/friend_request", method: :post %>
 								<% end %>	
