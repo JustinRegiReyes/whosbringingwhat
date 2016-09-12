@@ -51,6 +51,22 @@ nav.navbar-xs {
 			padding-left: 13px;
 		}
 	}
+	&.notifications {
+		position: relative;
+		span.notification-count {
+			position: absolute;
+			display: inline-block;
+			font-size: .8em;
+			border-radius: 100%;
+			background-color: $ashyRed;
+			top: 2px;
+			right: 12px;
+			color: white;
+			min-width: 7px;
+			min-height: 7px;
+			text-align: center;
+		}
+	}
  	& > .dropdown-menu {
 	    margin-top: 0;
 	    border-radius: 0;
@@ -116,6 +132,9 @@ nav.navbar-xs {
 		& i.fa-caret-down {
 			color: $asphalt !important;
 		}
+		& i.has-notifications {
+			color: $ashyRed !important;
+		}
 	}
 	& i {
 		&#new-event-icon {
@@ -130,6 +149,9 @@ nav.navbar-xs {
 		}
 		&.fa-caret-down {
 			color: $asphalt;
+		}
+		&.has-notifications {
+			color: $ashyRed !important;
 		}
 	}
 }

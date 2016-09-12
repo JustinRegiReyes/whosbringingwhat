@@ -23,4 +23,8 @@ module NotificationsHelper
 	def friend_request_notification(friendship)
 		Notification.create({user_id: friendship.friend_id, friendship_id: friendship.id, what_kind: "friend_request"})
 	end
+
+	def notification_count
+		current_user.notifications.count
+	end
 end
