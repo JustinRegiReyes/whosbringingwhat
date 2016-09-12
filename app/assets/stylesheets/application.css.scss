@@ -96,7 +96,7 @@ div#flash-message-container {
     z-index: 900;
     position: absolute;
     background-color: white;
-    top: 70px;
+    top: 40px;
     height: 40px;
     max-width: 300px;
     margin-left: auto;
@@ -106,6 +106,7 @@ div#flash-message-container {
     padding: 10px;
     text-align: center;
     display: none; 
+    @include box-shadow(.4);
     div.flash-success {
     	color: $periGreen;
     }
