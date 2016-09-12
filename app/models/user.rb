@@ -60,8 +60,10 @@ class User < ActiveRecord::Base
 
     def is_friend?(friend)
     	friendship = self.friendships.find_by_friend_id(friend.id)
-    	if  friendship.accepted == true
-    		return true
+    	if friendship == nil
+    		return false
+		elsif friendship.accepted == true
+			return true
     	else
     		return false
     	end
@@ -69,7 +71,9 @@ class User < ActiveRecord::Base
 
     def friendship_pending?(friend)
     	friendship = self.friendships.find_by_friend_id(friend.id)
-    	if friendship.pending == true
+    	if friendship == nil
+    		return false
+    	elsif friendship.pending == true
     		return true
     	else
     		return false
