@@ -47,6 +47,11 @@ div#home-notifications {
 
 // ********** event#search **********
 div#user-search-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 20px 20px;
+    height: auto;
+    overflow-y: auto;
 	div#search-container {
 		position: relative;
 		z-index: 1;
@@ -56,6 +61,7 @@ div#user-search-container {
 			background-color: white;
 			padding: 10px 0;
 			position: fixed;
+			margin: 0 auto;
 			@include box-shadow();
 		}
 		form {
@@ -87,7 +93,7 @@ div#user-search-container {
 			padding-top: 10px;
 			div#results-count {
 				text-align: center;
-				width: 400px;
+				width: 500px;
 				background-color: white;
 				margin: 0 auto 10px;
 				padding: 15px;
@@ -102,11 +108,11 @@ div#user-search-container {
 				background-color: white;
 				margin: 0 auto;
 				border-bottom: 1px solid $cloud;
-				width: 400px;
+				width: 500px;
 				padding: 10px;
 				img.avi {
-				    width: 120px;
-				    height: 120px;
+				    width: 130px;
+				    height: 130px;
 				    display: block;
 				    margin: 0;
 				    border-radius: 100%;
@@ -116,14 +122,14 @@ div#user-search-container {
 				div.content {
 					height: 120px;
 					margin-left: 20px;
-					width: 240px;
+					width: 300px;
 					float: left;
 					position: relative;
 					span {
 						display: inline-block;
 					}
 					span.username {
-						font-size: 1.25em;
+						font-size: 1.30em;
 					}
 					span.from {
 						font-size: .9em;
