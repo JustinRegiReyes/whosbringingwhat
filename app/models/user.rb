@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
 		# :on_hand_photo
 			has_attached_file :avi, 
 				styles: { profile: "600x600" , avi: "200x200>", thumb: "100x100>" },
-				:default_url => 'images/aviplaceholder.png',
+				:default_url => 'aviplaceholder.png',
 				processors: [:papercrop]
 			crop_attached_file :avi, :aspect => "1:1"
 		  	# validates_attachment :avi, presence: true
@@ -56,6 +56,14 @@ class User < ActiveRecord::Base
     	# hunts down the key in the attending_event assigned
     	# in the all_guests method in the events controller
     	self.event_target.attributes.key(true)
+    end
+
+    def is_friend(friend)
+    	if self.friendships.find_by_friend_id(friend.id) != nil
+    		return true
+    	else
+    		return false
+    	end
     end
 
     private
