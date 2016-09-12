@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
 
   # users routes
+    get '/users/search', to: 'users#search'
     resources :users, except: [:create]
     post "/signup", to: 'users#create'
     get '/home', to: 'users#home'

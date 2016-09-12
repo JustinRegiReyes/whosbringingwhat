@@ -14,10 +14,18 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="/events/new"><i id="new-event-icon" class="fa fa-list-alt"></i><i id="" class="fa fa-plus plus-icon" aria-hidden="true"></i>
+      <li class="side-divide">&nbsp;</li>
+      <li class="new-event-icon"><a href="/events/new"><i id="new-event-icon" class="fa fa-list-alt"></i><i id="" class="fa fa-plus plus-icon" aria-hidden="true"></i>
 </a></li>
       <li class="side-divide">&nbsp;</li>
-      <li><a href="/home"><i class="fa fa-search" aria-hidden="true"></i>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i> </a>&nbsp;
+        <ul class="dropdown-menu">
+          <li><a href="/home">Events</a></li>
+          <li class="divider"></li>
+          <li><a href="/users/search">Users</a></li>
+        </ul>
+      </li>
 </a></li>
       <li class="side-divide">&nbsp;</li>
       <li><a href="/calendar"><i class="fa fa-calendar" aria-hidden="true"></i></a></li>
@@ -29,6 +37,7 @@
         <ul class="dropdown-menu">
           <li><a href="/myevents">My Events</a></li>
           <li><a href="#">My Items</a></li>
+          <li><a href="#">My Friends</a></li>
           <li class="divider"></li>
           <li><a href="#">Edit Profile</a></li>
           <li class="divider"></li>
