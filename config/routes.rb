@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     post '/friendships/:friend_id/friend_request', to: 'friendships#friend_request'
     patch '/friendships/:friend_id/friend_accept', to: 'friendships#friend_accept'
 
+  #notification routes
+    get '/notifications', to: 'notifications#my_notifications'
   # sessions routes
 	post '/sessions', to: 'sessions#create'
 	delete '/sessions', to: 'sessions#destroy'
