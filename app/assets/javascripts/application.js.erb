@@ -41,6 +41,7 @@ function ready() {
 	categorySelector();
 	itemSelector();
 	notificationBoxAction();
+	dismissMarked();
 	if(window.location.pathname === "/calendar") {
 		calendar();
 	}
@@ -415,8 +416,30 @@ function toggleLabels(labelType) {
 		}
 	}
 
-	function notification_action (id, kind, action) {
+	function notification_action(id, kind, action) {
 		console.log(id, kind, action);
+	}
+
+	function dismissMarked() {
+		$dismissMarked = $('button.dismiss-marked');
+		if($dismissMarked.length > 0) {
+			$dismissMarked.click(function() {
+				var notificationIds = getCheckedIds();
+			});
+		}
+	}
+
+	function getCheckedIds() {
+		$input = $('input.notification-checkbox');
+		if($input.length > 0) {
+			$input.each(function() {
+				$checkbox = $(this);
+				var checked = $checkbox.prop('checked');
+				if (checked) {
+					console.log($checkbox.val());
+				}
+			})
+		}
 	}
 // ****************************************
 

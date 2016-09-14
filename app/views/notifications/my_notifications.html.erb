@@ -3,7 +3,7 @@
 		<div id="notifications-header">
 			Notifications
 			<div id="notifications-options">
-				<button class="default-option btn-default">
+				<button class="default-option btn-default dismiss-marked" data-action="dissmiss-marked">
 					Dismiss Marked
 				</button>
 				<div class="dropdown">
@@ -21,7 +21,7 @@
 		<% @notifications.each do |notification| %>
 			<div class="notification-box clearfixs">
 				<div class="mark-box">
-					<input type="checkbox" id="<%= notification.id %>" value="<%= notification.id %>">
+					<input type="checkbox" class="notification-checkbox" id="<%= notification.id %>" value="<%= notification.id %>">
 				</div>
 				<div class="information clearfixs">
 					<div class="img" style="background: url('<%= image_path(notification_image(notification))%>') no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;"></div>
