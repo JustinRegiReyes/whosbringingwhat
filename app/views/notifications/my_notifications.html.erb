@@ -35,7 +35,7 @@
 						<!-- div.notification-icon -->
 					<div class="notification-action-wrapper">
 						<div class="<%= notification.what_kind %> action-wrapper clearfixs">
-							<button class="notification-action"><%= notification_default_action(notification) %></button>
+							<button data-notification-id="<%= notification.id %>" data-notification-action="Accept" data-notification-kind="<%= notification.what_kind%>" class="notification-action"><%= notification_default_action(notification) %></button>
 							<div class="dropdown">
 								<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							    	<i class="fa fa-caret-down" aria-hidden="true"></i>

@@ -48,7 +48,7 @@ module NotificationsHelper
 
 	def notification_options(notification)
 		if notification.what_kind == "friend_request"
-			["<a class='dropdown-item' href='#'>Decline</a>"]
+			["<a class='dropdown-item' href='' data-notification-id='#{notification.id}' data-notification-action='Decline' data-notification-kind='#{notification.what_kind}'>Decline</a>"]
 		end
 	end
 

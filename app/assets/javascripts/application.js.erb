@@ -396,11 +396,27 @@ function toggleLabels(labelType) {
 // ********** notification functions **********
 	function notificationBoxAction() {
 		$action = $('.notification-action');
+		$actionDDown = $('a.dropdown-item');
 		if($action.length > 0) {
 			$action.click(function() {
-				console.log($(this).text());
-			})
+				var $noti = $(this);
+				var notificationId = $noti.data('notification-id');
+				var notificationKind = $noti.data('notification-kind');
+				var notificationAction = $noti.data('notification-action');
+				notification_action(notificationId, notificationKind, notificationAction);
+			});
+			$actionDDown.click(function() {
+				var $noti = $(this);
+				var notificationId = $noti.data('notification-id');
+				var notificationKind = $noti.data('notification-kind');
+				var notificationAction = $noti.data('notification-action');
+				notification_action(notificationId, notificationKind, notificationAction);
+			});
 		}
+	}
+
+	function notification_action (id, kind, action) {
+		console.log(id, kind, action);
 	}
 // ****************************************
 
