@@ -51,4 +51,10 @@ module NotificationsHelper
 			["<a class='dropdown-item' href='#'>Decline</a>"]
 		end
 	end
+
+	def notification_default_action(notification)
+		if notification.what_kind == "friend_request"
+			"Accept"
+		end
+	end
 end
