@@ -27,4 +27,28 @@ module NotificationsHelper
 	def notification_count
 		current_user.notifications.count
 	end
+
+	def notification_icon(notification)
+		if notification.what_kind == "friend_request"
+			"<i class='fa fa-user-plus' aria-hidden='true'></i>".html_safe
+		end
+	end
+
+	def notification_action(notification)
+		if notification.what_kind == "friend_request"
+			''.html_safe
+		end
+	end
+
+	def notification_image(notification)
+		if notification.what_kind == "friend_request"
+			notification.friendship.friend.avi
+		end
+	end
+
+	def notification_options(notification)
+		if notification.what_kind == "friend_request"
+			["<a class='dropdown-item' href='#'>Decline</a>"]
+		end
+	end
 end

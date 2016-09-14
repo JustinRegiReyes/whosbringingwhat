@@ -1,1 +1,64 @@
-<h1>my_notifications.html.erb</h1>
+<div id="my-notifications-container" class="default-container">
+	<div id="notifications-container" class="clearfixs">
+		<div id="notifications-header">
+			Notifications
+			<div id="notifications-options">
+				<button class="default-option btn-default">
+					Dismiss Marked
+				</button>
+				<div class="dropdown">
+				  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				    <i class="fa fa-caret-down" aria-hidden="true"></i>
+				  </button>
+				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				    <a class="dropdown-item" href="#">Dismiss All</a>
+				  </div>
+				</div>
+					<!-- div.dropdown -->
+			</div>
+				<!-- div#notifcations-options -->
+		</div>
+		<% @notifications.each do |notification| %>
+			<div class="notification-box clearfixs">
+				<div class="mark-box">
+					<input type="checkbox" id="<%= notification.id %>" value="<%= notification.id %>">
+				</div>
+				<div class="information clearfixs">
+					<div class="img" style="background: url('<%= image_path(notification_image(notification))%>') no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;"></div>
+					<div class="notification-message">
+						<%= the_update(notification) %>
+					</div>
+						<!-- div.notification-message -->
+					<div class="notification-icon <%= notification.what_kind %>">
+						<%= notification_icon(notification) %>
+					</div>
+						<!-- div.notification-icon -->
+					<div class="notification-action-wrapper">
+						<div class="<%= notification.what_kind %> action-wrapper clearfixs">
+							<button class="notification-action">Accept</button>
+							<div class="dropdown">
+								<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							    	<i class="fa fa-caret-down" aria-hidden="true"></i>
+							    </button>
+								<div class="dropdown-menu <%= notification.what_kind %>" aria-labelledby="dropdownMenuButton">
+									<% notification_options(notification).each do |option| %>
+										<%= option.html_safe %>
+									<% end %>
+								</div>
+							</div>
+							<div class="friend-request-options">
+
+							</div>
+						</div>
+							<!-- div.%= notification.what_kind %> -->
+					</div>
+						<!-- div.notification-icon -->
+				</div>
+					<!-- div.information -->
+			</div>
+				<!-- div.notification-box -->
+		<% end %>
+	</div>
+		<!-- div#notifications-container -->
+</div>
+	<!-- div#my-notifications-container -->

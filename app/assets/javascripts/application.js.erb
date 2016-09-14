@@ -40,6 +40,7 @@ function ready() {
 	buttonAttendanceLabelListener();
 	categorySelector();
 	itemSelector();
+	notificationBoxAction();
 	if(window.location.pathname === "/calendar") {
 		calendar();
 	}
@@ -388,6 +389,17 @@ function toggleLabels(labelType) {
 				$itemTarget.addClass('selected');
 				$itemTarget.prepend('<i class="fa fa-chevron-right" aria-hidden="true"></i>');
 			}
+		}
+	}
+// ****************************************
+
+// ********** notification functions **********
+	function notificationBoxAction() {
+		$action = $('.notification-action');
+		if($action.length > 0) {
+			$action.click(function() {
+				console.log($(this).text());
+			})
 		}
 	}
 // ****************************************

@@ -1,0 +1,235 @@
+// ********** notification#my_notifications **********
+	div#my-notifications-container {
+		max-width: 700px;
+		min-height: 200px;
+		height: auto;
+		margin: 0 auto;
+		div#notifications-container {
+			width: 100%;
+			min-height: 200px;
+			padding: 10px;
+			background-color: white;
+			height: auto;
+			position: relative;
+			div#notifications-header {
+				width: 600px;
+				padding: 10px;
+				padding-left: 10px;
+				margin: 0 auto 30px;
+				font-family: $hind;
+				font-size: 1.25em;
+				background-color: white;
+				position: relative;
+				div#notifications-options {
+					display: inline-block;
+					position: absolute;
+					right: 0;
+					border: 1px solid darken($cloud, 10%);
+					font-size: .80rem;
+					font-family: Helvetica;
+					height: 28px;
+					&:hover {
+					}
+					button.default-option {
+						display: inline-block;
+						float: left;
+						border: none;
+						border-right: 1px solid darken($cloud, 10%);
+						padding: 2px 8px;
+						height: 100%;
+						background-color: darken($cloud, 2%);
+						&:hover {
+							background-color: lighten($cloud, 1%);
+						}
+						&:focus {
+							outline: none;
+						}
+					}
+					div.dropdown {
+						float: left;
+						display: inline-block;
+						height: 100%;
+						button {
+							height: 100%;
+							padding: 2px 8px !important;
+							border-radius: 0 !important;
+							border: none;
+							font-size: .8rem;
+							background-color: darken($cloud, 2%) !important;
+							&:hover {
+								background-color: lighten($cloud, 1%) !important;
+							}
+							&:focus {
+								background-color: lighten($cloud, 1%) !important;
+								outline: none;
+							}
+						}
+						div.dropdown-menu {
+							left: -109px;
+						}
+					} //div.dropdown
+				} //div#notifications-options
+			} //div#notifications-header
+			div.notification-box {
+				height: 115px;
+				width: 600px;
+				padding: 0px;
+				margin: 5px auto;
+				background-color: white;
+				position: relative;
+				div.mark-box {
+					float: left;
+					width: 50px;
+					height: 100%;
+					position: relative;
+					input {
+						width: 30px;
+						height: 30px;
+						@include vertical-align();
+						margin: 0 auto;
+						display: block;
+						&:hover {
+							cursor: pointer;
+						}
+					}
+				}
+				div.information {
+					position: relative;
+					float: left;
+					width: 525px;
+					height: 100%;
+					border-bottom: 1px solid darken($cloud, 5%);
+					div.img {
+						width: 80px;
+						height: 80px;
+						margin-right: 10px;
+						border-radius: 100%;
+						border: 1px solid $cloud;
+						float: left;
+						@include vertical-align();
+					} //div.img
+					div.notification-message {
+						float: left;
+						position: relative;
+						font-size: .85em;
+						@include vertical-align();
+					}
+					div.notification-icon {
+						right: 5px;
+						top: 5px;
+						position: absolute;
+						&.friend_request {
+							color: $cobaltBlue;
+						}
+						&.friend_accepted {
+							color: $periGreen;
+						}
+					} //div.notification-icon
+					div.notification-action-wrapper {
+						div.action-wrapper {
+							display: inline-block;
+							background-color: darken($cloud, 5%);
+							border: 1px solid darken($cloud, 10%);
+							font-size: .8em;
+							padding: 0;
+							position: absolute;
+							right: 1px;
+							bottom: 5px;
+							height: 23px;
+							&:hover {
+								cursor: pointer;
+							}
+							button.notification-action {
+								border: none;
+								border-right: 1px solid darken($cloud, 10%);
+								height: 100%;
+								display: inline-block;
+								padding: 2px 8px;
+								float: left;
+								background-color: darken($cloud, 2%) !important;
+								&:hover {
+									background-color: lighten($cloud, 1%) !important;
+								}
+								&:active {
+									@include button-shadow();
+								}
+								&:focus {
+									background-color: lighten($cloud, 1%) !important;
+									outline: none;
+								}
+							}
+							div.dropdown {
+								float: left;
+								display: inline-block;
+								height: 100%;
+								button {
+									background-color: darken($cloud, 2%) !important;
+									border-radius: 0% !important;
+									border: none;
+									display: inline-block;
+									padding: 2px 8px;
+									font-size: .85em;
+									height: 100%;
+									&:hover {
+										background-color: lighten($cloud, 1%) !important;
+									}
+									&:focus {
+										background-color: lighten($cloud, 1%) !important;
+										outline: none;
+									}
+								}
+								div.dropdown-menu {
+									min-width: 120px !important;
+									width: 120px !important;
+									&.friend_request {
+										left: -61px;
+									}
+								}
+							} //div.dropdown
+						}
+					}
+				} //div.information
+			} //div.event-box
+			hr {
+				display: none;
+			}
+		} 
+		@media screen and(max-width: $break-md) {
+			div#notifications-container {
+				div.notification-box {
+					float: none;
+					margin: 10px auto;
+				}
+			}
+		} // @media screen and(max-width: $break-md)
+		@media screen and(max-width: $break-iphone6plus) {
+			div#notifications-container {
+				background-color: white;
+				width: 100vw;
+				div.notification-box {
+					width: 100%;
+					height: auto;
+					box-shadow: none;
+					div.img {
+						width: 250px;
+						height: 250px;
+						margin: 0 auto 10px;
+						display: block;
+						float: none;
+					}
+					div.information {
+						width: 250px;
+						margin: 0 auto;
+						float: none;
+						height: auto;
+						padding-bottom: 65px;
+					}
+				} //div.notification-box
+				hr {
+					display: block;
+					border-top: 1px solid $asphalt;
+				}
+			}
+		} // @media screen and(max-width: $break-iphone6plus)
+	} //div#my-notifications-container
+// ********** END notification#my_notifications **********

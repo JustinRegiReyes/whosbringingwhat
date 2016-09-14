@@ -69,6 +69,19 @@ button, input.submit {
 	resize: none;
 }
 
+.dropdown-toggle {
+	&:after {
+		display: none !important;
+	}
+}
+
+div.dropdown {
+	div.dropdown-menu {
+		border-radius: 0% !important;
+		font-size: inherit !important;
+	}
+}
+
 // *********** clearfix container ************
 
 .clearfixs:after {
