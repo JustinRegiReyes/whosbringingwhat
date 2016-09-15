@@ -154,6 +154,13 @@ div#user-search-container {
 							color: white;
 							border: 1px solid #FFF;
 						}
+						&.is-friends {
+							&:hover {
+								background-color: white;
+								color: $periGreen;
+								border: 1px solid darken($cloud, 5%);
+							}
+						}
 					}
 					div.friendship {
 						text-align: center;
