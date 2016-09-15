@@ -401,23 +401,39 @@ function toggleLabels(labelType) {
 		if($action.length > 0) {
 			$action.click(function() {
 				var $noti = $(this);
-				var notificationId = $noti.data('notification-id');
-				var notificationKind = $noti.data('notification-kind');
-				var notificationAction = $noti.data('notification-action');
-				notification_action(notificationId, notificationKind, notificationAction);
+				notification_action($noti);
 			});
 			$actionDDown.click(function() {
 				var $noti = $(this);
-				var notificationId = $noti.data('notification-id');
-				var notificationKind = $noti.data('notification-kind');
-				var notificationAction = $noti.data('notification-action');
-				notification_action(notificationId, notificationKind, notificationAction);
+				notification_action($noti);
 			});
 		}
 	}
 
-	function notification_action(id, kind, action) {
-		console.log(id, kind, action);
+	function notification_action($notiEle) {
+		var id = $notiEle.data('notification-id');
+		var kind = $notiEle.data('notification-kind');
+		var action = $notiEle.data('notification-action').toLowerCase();
+		var friendshipId = $notiEle.data('friendship-id');
+		var eventId = $notiEle.data('event-id');
+		if(action === "accept") {
+			friendRequestResponse(friendshipId, id, action);
+		}
+	}
+
+	function friendRequestResponse(friendshipId, notificationId, action) {
+		var url = "/friendships/" + friendshipId + "/friend_" + action;
+		$.ajax({
+			url: url,
+			method: 'patch',
+			data: {notification_id: notificationId},
+			dataType: 'json',
+			success: success
+		});
+
+		function success(res) {
+			location.reload();
+		}
 	}
 
 	function dismissMarked() {

@@ -25,7 +25,7 @@ module NotificationsHelper
 	end
 
 	def notification_count
-		current_user.notifications.count
+		current_user.notifications.where({read: false}).count
 	end
 
 	def notification_icon(notification)
@@ -46,15 +46,31 @@ module NotificationsHelper
 		end
 	end
 
-	def notification_options(notification)
+	def notification_default_action(notification)
 		if notification.what_kind == "friend_request"
-			["<a class='dropdown-item' href='' data-notification-id='#{notification.id}' data-notification-action='Decline' data-notification-kind='#{notification.what_kind}'>Decline</a>"]
+			"<button data-notification-id='#{notification.id}' data-friendship-id='#{notification.friendship_id}' data-notification-action='Accept' data-notification-kind='#{notification.what_kind}' class='notification-action'>Accept</button>".html_safe
+		elsif notification.what_kind == "friend_accepted"
+			
 		end
 	end
 
-	def notification_default_action(notification)
+	def notification_options(notification)
 		if notification.what_kind == "friend_request"
-			"Accept"
+			["<a class='dropdown-item' href='' data-notification-id='#{notification.id}' data-friendship-id='#{notification.friendship_id}' data-notification-action='Decline' data-notification-kind='#{notification.what_kind}'>Decline</a>"]
+		elsif notification.what_kind == "friend_accepted"
+			[""]
 		end
+	end
+
+	def notification_update(id, what_kind)
+		notification = Notification.find_by_id(id)
+		if what_kind == "friend_accepted"
+			notification.update({read: true})
+		end
+	end
+
+	def notification_friend_accepted(friendship_id)
+		friendship = Friendship.find_by_id(friendship_id)
+		Notification.create({what_kind: "friend_accepted", user_id: friendship.user_id, friendship_id: friendship.id})
 	end
 end

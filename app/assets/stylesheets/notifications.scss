@@ -6,7 +6,7 @@
 		margin: 0 auto;
 		div#notifications-container {
 			width: 100%;
-			min-height: 200px;
+			height: auto;
 			padding: 10px;
 			background-color: white;
 			height: auto;
@@ -73,6 +73,9 @@
 					} //div.dropdown
 				} //div#notifications-options
 			} //div#notifications-header
+			div.notifications-empty {
+				text-align: center;
+			}
 			div.notification-box {
 				height: 115px;
 				width: 600px;

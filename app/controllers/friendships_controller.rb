@@ -35,12 +35,38 @@ class FriendshipsController < ApplicationController
 	end
 
 	def friend_accept
-		
+		if targetFriendship.update_attributes(accepted: true, pending: false)
+			notification_update(notification_id, "friend_accepted")
+			respond_to do |format|
+				flash[:success] = "Friend Accepted"
+				format.html { render layout: false }
+				format.json { render :json => {data: {friendshipId: friendship_id} }, status: 200 }
+			end
+			notification_friend_accepted(friendship_id)
+	    else
+	      	respond_to do |format|
+				flash[:error] = "Error"
+				format.html { render layout: false }
+				format.json { render :json => {data: {friendshipId: friendship_id} }, status: 200 }
+			end
+	    end
 	end
 
 	private
 
 	def friend_params
 		params.require(:test)
+	end
+
+	def friendship_id
+		params[:friendship_id]
+	end
+
+	def notification_id
+		params[:notification_id]
+	end
+
+	def targetFriendship
+		Friendship.find_by_id(friendship_id)
 	end
 end

@@ -29,7 +29,8 @@ Rails.application.routes.draw do
 
   #friendship routes
     post '/friendships/:friend_id/friend_request', to: 'friendships#friend_request'
-    patch '/friendships/:friend_id/friend_accept', to: 'friendships#friend_accept'
+    patch '/friendships/:friendship_id/friend_accept', to: 'friendships#friend_accept'
+    patch '/friendships/:friendship_id/friend_decline', to: 'friendships#friend_decline'
 
   #notification routes
     get '/notifications', to: 'notifications#my_notifications'
