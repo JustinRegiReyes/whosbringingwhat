@@ -41,7 +41,7 @@ function ready() {
 	categorySelector();
 	itemSelector();
 	notificationBoxAction();
-	dismissMarked();
+	dismissListener();
 	if(window.location.pathname === "/calendar") {
 		calendar();
 	}
@@ -397,7 +397,7 @@ function toggleLabels(labelType) {
 // ********** notification functions **********
 	function notificationBoxAction() {
 		$action = $('.notification-action');
-		$actionDDown = $('a.dropdown-item');
+		$actionDDown = $('div.friend_request a.dropdown-item');
 		if($action.length > 0) {
 			$action.click(function() {
 				var $noti = $(this);
@@ -418,6 +418,8 @@ function toggleLabels(labelType) {
 		var eventId = $notiEle.data('event-id');
 		if(action === "accept") {
 			friendRequestResponse(friendshipId, id, action);
+		} else if(action === "decline") {
+			friendRequestResponse(friendshipId, id, action);
 		}
 	}
 
@@ -436,7 +438,7 @@ function toggleLabels(labelType) {
 		}
 	}
 
-	function dismissMarked() {
+	function dismissListener() {
 		$dismissMarked = $('button.dismiss-marked');
 		if($dismissMarked.length > 0) {
 			$dismissMarked.click(function() {
@@ -448,13 +450,32 @@ function toggleLabels(labelType) {
 	function getCheckedIds() {
 		$input = $('input.notification-checkbox');
 		if($input.length > 0) {
+			var checked = [];
 			$input.each(function() {
 				$checkbox = $(this);
-				var checked = $checkbox.prop('checked');
-				if (checked) {
-					console.log($checkbox.val());
+				var isChecked = $checkbox.prop('checked');
+				if (isChecked) {
+					checked.push($checkbox.val());
 				}
-			})
+			});
+			if(checked.length > 0) {
+				dismissMarked(checked);
+			}
+		}
+	}
+
+	function dismissMarked(checkedNotifications) {
+		var url = "/notifications/dismiss";
+		$.ajax({
+			url: url,
+			method: 'patch',
+			data: {checkedNotifications: checkedNotifications},
+			dataType: 'json',
+			success: success
+		});
+
+		function success() {
+			location.reload();
 		}
 	}
 // ****************************************

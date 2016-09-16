@@ -4,6 +4,9 @@
 		min-height: 200px;
 		height: auto;
 		margin: 0 auto;
+		&.no-notifications {
+			max-width: 300px !important;
+		}
 		div#notifications-container {
 			width: 100%;
 			height: auto;

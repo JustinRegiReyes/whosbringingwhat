@@ -52,6 +52,10 @@ class FriendshipsController < ApplicationController
 	    end
 	end
 
+	def friend_decline
+		binding.pry
+	end
+
 	private
 
 	def friend_params

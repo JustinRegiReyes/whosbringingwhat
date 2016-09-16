@@ -34,6 +34,8 @@ Rails.application.routes.draw do
 
   #notification routes
     get '/notifications', to: 'notifications#my_notifications'
+    patch '/notifications/dismiss', to: 'notifications#dismiss'
+    patch '/notifications/dismiss_all', to: 'notifications#dismiss_all'
   # sessions routes
 	post '/sessions', to: 'sessions#create'
 	delete '/sessions', to: 'sessions#destroy'
