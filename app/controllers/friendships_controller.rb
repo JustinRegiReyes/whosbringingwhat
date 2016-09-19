@@ -20,7 +20,13 @@ class FriendshipsController < ApplicationController
 	def friend_request
 		friendship = Friendship.where({user_id: current_user.id, friend_id: params[:friend_id]}).first
 		if friendship != nil
-			friend_request_notification(friendship)
+			if friendship.update_attributes({pending: true})
+				friend_request_notification(friendship)
+				flash[:success] = "Friend request sent"
+				redirect_to :back
+			else 
+				flash[:error] = "Error with last request"
+			end
 		elsif friendship == nil
 			friendship = Friendship.new({user_id: current_user.id, friend_id: params[:friend_id]})
 			if friendship.save
