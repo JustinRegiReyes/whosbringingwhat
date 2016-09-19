@@ -727,20 +727,20 @@ div#search-results-container {
 					width: 245px;
 					height: 180px;
 					div.event-title {
-						font-size: 1.25em;
+						font-size: 1.12em;
 						margin-bottom: 2px;
 					}
 					div.event-date {
-						font-size: .85em;
+						font-size: .80em;
 						margin-bottom: 2px;
 					}
 					div.event-attending {
-						font-size: .85em;
+						font-size: .80em;
 						margin-bottom: 15px;
 						font-style: italic;
 					}
 					div.event-description {
-						font-size: .85em;
+						font-size: .80em;
 					}
 					div.button-wrapper {
 						position: absolute;
@@ -748,17 +748,13 @@ div#search-results-container {
 						bottom: -5px;
 						button.site-button {
 							height: 22px;
-							font-size: .9em;
+							font-size: 12px;
 							width: 100px;
 							background-color: white;
 							border: 1px solid silver;
 							padding-bottom: 4px;
 							color: black;
 							&:hover {
-								// background-color: $periGreen;
-								// color: white;
-								// border: 1px solid $periGreen;
-
 								border: 1px solid $periGreen;
 								color: $periGreen;
 							}
