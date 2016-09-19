@@ -102,6 +102,13 @@ button.site-button, input[type=submit] {
 	margin: 5px 0;
 	border: none;
 	border-radius: 1px;
+	&:focus {
+		outline: none !important;
+	}
+	&:active {
+		@include button-shadow();
+		outline: none !important;
+	}
 }
 
 // ********** flash message styles ***********
