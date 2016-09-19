@@ -117,12 +117,11 @@ nav.navbar-xs {
 	}
 } 
 .navbar-xs .navbar-nav > li > a { 
-	padding-top: 4px; 
-	padding-bottom: 2px; 
 	line-height: 14px;
 	height: 100%;
 	position: relative;
 	color: $cobaltBlue;
+	padding: 4px 8px 2px;
 	&:hover {
 		// color: $periGreen !important;
 		// border-bottom: 1px solid $cobaltBlue;
@@ -143,7 +142,7 @@ nav.navbar-xs {
 		&.plus-icon {
 			position: absolute;
 		    font-size: .6em;
-		    right: 7px;
+		    right: 0px;
 		    top: 0px;
 		    color: $ashyRed;
 		}
@@ -161,6 +160,7 @@ li.side-divide {
     width: 1px;
     position: relative;
     border-right: 1px solid $asphalt;
+    display: none;
 }
 .navbar-right {
 	padding-top: 2px;
