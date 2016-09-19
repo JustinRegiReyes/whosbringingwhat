@@ -440,14 +440,25 @@ function toggleLabels(labelType) {
 
 	function dismissListener() {
 		$dismissMarked = $('button.dismiss-marked');
+		$dismissAll = $('a.dismiss-all');
 		if($dismissMarked.length > 0) {
 			$dismissMarked.click(function() {
-				var notificationIds = getCheckedIds();
+				var notificationIds = getCheckedNotificationIds();
+				if(notificationIds.length > 0) {
+					dismissNotifications(notificationIds);
+				}
+			});
+		}
+		if($dismissAll.length > 0) {
+			$dismissAll.click(function(e) {
+				e.preventDefault();
+				var notificationIds = getAllNotificationIds();
+				dismissNotifications(notificationIds);
 			});
 		}
 	}
 
-	function getCheckedIds() {
+	function getCheckedNotificationIds() {
 		$input = $('input.notification-checkbox');
 		if($input.length > 0) {
 			var checked = [];
@@ -458,13 +469,21 @@ function toggleLabels(labelType) {
 					checked.push($checkbox.val());
 				}
 			});
-			if(checked.length > 0) {
-				dismissMarked(checked);
-			}
+			return checked;
 		}
 	}
 
-	function dismissMarked(checkedNotifications) {
+	function getAllNotificationIds() {
+		$input = $('input.notification-checkbox');
+		var notificationIds = [];
+		$input.each(function() {
+			$checkbox = $(this);
+			notificationIds.push($checkbox.val());
+		});
+		return notificationIds;
+	}
+
+	function dismissNotifications(checkedNotifications) {
 		var url = "/notifications/dismiss";
 		$.ajax({
 			url: url,
