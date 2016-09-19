@@ -53,7 +53,20 @@ class FriendshipsController < ApplicationController
 	end
 
 	def friend_decline
-		binding.pry
+		if targetFriendship.update_attributes(pending: false)
+			notification_update(notification_id, "friend_declined")
+			respond_to do |format|
+				flash[:success] = "Friend Declined"
+				format.html { render layout: false }
+				format.json { render :json => {data: {friendshipId: friendship_id} }, status: 200 }
+			end
+	    else
+	      	respond_to do |format|
+				flash[:error] = "Error"
+				format.html { render layout: false }
+				format.json { render :json => {data: {friendshipId: friendship_id} }, status: 200 }
+			end
+	    end
 	end
 
 	private

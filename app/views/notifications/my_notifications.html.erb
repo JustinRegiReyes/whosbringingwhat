@@ -39,7 +39,7 @@
 								<%= notification_icon(notification) %>
 							</div>
 								<!-- div.notification-icon -->
-							<% if notification.what_kind != "friend_accepted" %>
+							<% if notification.what_kind != "friend_accepted" && notification.what_kind != "friend_declined" %>
 								<div class="notification-action-wrapper">
 									<div class="<%= notification.what_kind %> action-wrapper clearfixs">
 										<%= notification_default_action(notification) %>

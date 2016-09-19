@@ -59,6 +59,8 @@ module NotificationsHelper
 			["<a class='dropdown-item' href='' data-notification-id='#{notification.id}' data-friendship-id='#{notification.friendship_id}' data-notification-action='Decline' data-notification-kind='#{notification.what_kind}'>Decline</a>"]
 		elsif notification.what_kind == "friend_accepted"
 			[""]
+		elsif notification.what_kind == "friend_declined"
+			[""]
 		end
 	end
 
@@ -66,11 +68,18 @@ module NotificationsHelper
 		notification = Notification.find_by_id(id)
 		if what_kind == "friend_accepted"
 			notification.update({read: true})
+		elsif what_kind == "friend_declined"
+			notification.update({read: true})
 		end
 	end
 
-	def notification_friend_accepted(friendship_id)
+	def notification_friend_status(friendship_id, what_kind)
 		friendship = Friendship.find_by_id(friendship_id)
-		Notification.create({what_kind: "friend_accepted", user_id: friendship.user_id, friendship_id: friendship.id})
+		if what_kind == "friend_accepted"
+			Notification.create({what_kind: "friend_accepted", user_id: friendship.user_id, friendship_id: friendship.id})
+		elsif "friend_declined"
+			Notification.create({what_kind: "friend_declined", user_id: friendship.user_id, friendship_id: friendship.id})
+		end
+				
 	end
 end
