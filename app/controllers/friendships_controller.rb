@@ -48,7 +48,7 @@ class FriendshipsController < ApplicationController
 				format.html { render layout: false }
 				format.json { render :json => {data: {friendshipId: friendship_id} }, status: 200 }
 			end
-			notification_friend_accepted(friendship_id)
+			notification_friend_status(friendship_id, "friend_accepted")
 	    else
 	      	respond_to do |format|
 				flash[:error] = "Error"
@@ -75,6 +75,15 @@ class FriendshipsController < ApplicationController
 	    end
 	end
 
+	def invite_friends
+		# queries users that is not have been invited at all to the event and has an accepted friendship with the current_user
+		friends = User.includes(:attending_events, :friendships).where(attending_events: { event_id: nil}, friendships: {friend_id: current_user.id, accepted: true} ).as_json(:only => [:id,:username], methods: [:avi_url])
+		respond_to do |format|
+			format.html { render layout: false }
+			format.json { render :json => {data: {friends: friends} }, status: 200 }
+		end
+	end
+
 	private
 
 	def friend_params
@@ -91,5 +100,9 @@ class FriendshipsController < ApplicationController
 
 	def targetFriendship
 		Friendship.find_by_id(friendship_id)
+	end
+
+	def event_id
+		params[:event_id]
 	end
 end

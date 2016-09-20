@@ -42,6 +42,7 @@ function ready() {
 	itemSelector();
 	notificationBoxAction();
 	dismissListener();
+	inviteButtonListener();
 	if(window.location.pathname === "/calendar") {
 		calendar();
 	}
@@ -365,8 +366,7 @@ function toggleLabels(labelType) {
  	$dropdownLabel.text(upperCaseLabel);
 }
 
-
-// ****************************************
+// ******************* guest list functions END *********************
 
 // ********** event functions **********
 	function categorySelector() {
@@ -392,7 +392,7 @@ function toggleLabels(labelType) {
 			}
 		}
 	}
-// ****************************************
+// ******************* event functions END *********************
 
 // ********** notification functions **********
 	function notificationBoxAction() {
@@ -497,5 +497,34 @@ function toggleLabels(labelType) {
 			location.reload();
 		}
 	}
-// ****************************************
+// ******************* notification functions END *********************
 
+// ********** invite guests functions **********
+
+	function inviteButtonListener() {
+		var $inviteButton = $('button#invite-guests')
+		if($inviteButton.length > 0) {
+			var $modal = $('div#invite-modal');
+			$inviteButton.click(function(e) {
+				$modal.modal('toggle');
+				inviteGetFriends();
+			})
+		}
+	}
+
+	function inviteGetFriends() {
+		var eventId = location.pathname.split("/events/")[1];
+		var url = "/friends/invite/events/" + eventId;
+		$.ajax({
+			url: url,
+			method: 'get',
+			dataType: 'json',
+			success: success
+		});
+
+		function success(res) {
+			console.log(res);
+		}
+	}
+
+// ******************* notification functions END *********************

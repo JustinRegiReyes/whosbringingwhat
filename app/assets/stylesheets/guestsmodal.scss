@@ -1,4 +1,7 @@
-div.guests-modal {
+// this was the source css for guests-modal in application.css.scss
+// this needs to be cleaned up to be dry from the css being used already
+// TODO: Make sure all uses in this are specifically for this modal only
+div#guests-modal {
 	& > div.modal-dialog {
 		width: 80%;
 		max-width: 700px;
@@ -47,7 +50,7 @@ div.guests-modal {
 						border-bottom: 1px solid $cloud;
 						position: absolute;
 						width: 100px;
-						font-size: 1em;
+						font-size: .85em;
 						top: 0;
 						right: 0;
 						left: 1px;
