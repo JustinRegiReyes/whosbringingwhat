@@ -220,7 +220,7 @@ function getTypeOfGuests(type, modal) {
 		var body = $('div.modal-body');
 		var guestsListCon = $("div#guests-list-container");
 		var guestsList = $("div#guests-list");
-		var img = $('img.loading');
+		var img = $('img#guests-modal-loading');
 
 		// setting all guests to the window for use in organization in menu
 		window.all_guests = data.all_guests
@@ -523,8 +523,41 @@ function toggleLabels(labelType) {
 		});
 
 		function success(res) {
-			console.log(res);
+			var friends = res.data.friends;
+			setTimeout(function() {
+				renderInviteFriends(friends)
+			}, 500);
 		}
+	}
+
+	function inviteFriendsTemplate(friend) {
+		var aviUrl = guestAviUrl(friend.avi_url);
+		var template =
+			"<div class='guest'>" + 
+				"<img src='" + aviUrl + "' class='guest-img'/>" + 
+				"<div class='guest-username'>" + 
+					friend.username + 
+				"</div>" +
+			"</div>";
+
+		return template;
+	}
+
+	function renderInviteFriends(friends) {
+		var $loadingGif = $('img#invite-modal-loading');
+		var $inviteFriendsList = $('div#invite-friends-list');
+		var $content = $('div.modal-content');
+		var $inviteListCon = $('div#invite-list-container');
+		friends.forEach(function(friend) {
+			$inviteFriendsList.append(inviteFriendsTemplate(friend));
+		});
+		$loadingGif.fadeOut(100, function() {
+			$content.animate({
+				height: "400px"
+			}, 300, function() {
+				$inviteListCon.fadeIn(500);
+			});
+		});
 	}
 
 // ******************* notification functions END *********************
