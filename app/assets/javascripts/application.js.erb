@@ -43,6 +43,7 @@ function ready() {
 	notificationBoxAction();
 	dismissListener();
 	inviteButtonListener();
+	inviteCheckboxListener();
 	if(window.location.pathname === "/calendar") {
 		calendar();
 	}
@@ -534,7 +535,10 @@ function toggleLabels(labelType) {
 		var aviUrl = guestAviUrl(friend.avi_url);
 		var template =
 			"<div class='guest'>" + 
-				"<img src='" + aviUrl + "' class='guest-img'/>" + 
+				"<img src='" + aviUrl + "' class='guest-img'/>" +
+				"<input type='checkbox' class='invite-checkbox'" + 
+					"value='" + friend.id + "'" + 
+					"data-username='" + friend.username + "'/>" + 
 				"<div class='guest-username'>" + 
 					friend.username + 
 				"</div>" +
@@ -560,4 +564,41 @@ function toggleLabels(labelType) {
 		});
 	}
 
-// ******************* notification functions END *********************
+	function inviteCheckboxListener() {
+		var invitedFriends = [];
+		var $inviteListCon = $('div#invite-list-container');
+		if($inviteListCon.length > 0) {
+			$(document).on('click', 'input.invite-checkbox', function() {
+				var $checkBox = $(this);
+				var isChecked = $checkBox.is(':checked');
+				var friendUsername = $checkBox.data('username');
+				var friendId = $checkBox.val();
+				if(isChecked) {
+					invitedFriends = addFriendToInvited(friendId, friendUsername, invitedFriends);
+					console.log(invitedFriends);
+				} else if(isChecked === false) {
+					invitedFriends = removeFriendFromInvited(friendId, friendUsername, invitedFriends);
+					console.log(invitedFriends);
+				}
+			});
+		}
+	}
+
+	function addFriendToInvited(friendId, friendUsername, invitedArray) {
+		friend = {
+			friendId: friendId,
+			friendUsername: friendUsername
+		};
+		invitedArray.push(friend);
+		return invitedArray;
+	}
+
+	function removeFriendFromInvited(friendId, friendUsername, invitedArray) {
+		invitedArray = $.grep(invitedArray, function(e){ 
+		     return ((e.friendId !== friendId) && (e.friendUsername !== friendUsername));
+		});
+		return invitedArray;
+	}
+
+
+// ******************* invite guests functions END *********************

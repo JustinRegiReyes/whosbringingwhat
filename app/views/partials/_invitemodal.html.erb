@@ -4,7 +4,11 @@
       <div class="modal-body clearfixs">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <%= image_tag(image_path("loading.gif"), id: "invite-modal-loading" , class: "loading") %>
-        <div id="invite-list-container">
+        <div id="invite-list-container" class="clearfixs">
+        	<div id="invite-search">
+        	</div>
+        	<div id="selected-list">
+        	</div>
             <div id="invite-friends-list">
             </div>
         </div>
