@@ -729,6 +729,13 @@ div#search-results-container {
 					div.event-title {
 						font-size: 1.12em;
 						margin-bottom: 2px;
+						a.event-link {
+							color: black;
+							&:hover {
+								text-decoration: none;
+								color: $cobaltBlue;
+							}
+						}
 					}
 					div.event-date {
 						font-size: .80em;
