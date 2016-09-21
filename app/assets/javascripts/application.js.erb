@@ -43,6 +43,7 @@ function ready() {
 	notificationBoxAction();
 	dismissListener();
 	inviteButtonListener();
+	guestCheckboxListener();
 	inviteCheckboxListener();
 	if(window.location.pathname === "/calendar") {
 		calendar();
@@ -534,7 +535,8 @@ function toggleLabels(labelType) {
 	function inviteFriendsTemplate(friend) {
 		var aviUrl = guestAviUrl(friend.avi_url);
 		var template =
-			"<div class='guest'>" + 
+			"<div class='guest invite'>" + 
+				"<div class='guest-overlay'></div>" +
 				"<img src='" + aviUrl + "' class='guest-img'/>" +
 				"<input type='checkbox' class='invite-checkbox'" + 
 					"value='" + friend.id + "'" + 
@@ -568,7 +570,7 @@ function toggleLabels(labelType) {
 		var invitedFriends = [];
 		var $inviteListCon = $('div#invite-list-container');
 		if($inviteListCon.length > 0) {
-			$(document).on('click', 'input.invite-checkbox', function() {
+			$(document).on('change', 'input.invite-checkbox', function() {
 				var $checkBox = $(this);
 				var isChecked = $checkBox.is(':checked');
 				var friendUsername = $checkBox.data('username');
@@ -583,6 +585,19 @@ function toggleLabels(labelType) {
 				adjustListCount(invitedFriends);
 			});
 		}
+	}
+
+	function guestCheckboxListener() {
+		$inviteListCon = $("div#invite-list-container");
+		if($inviteListCon.length > 0) {
+			$(document).on('click', 'div.guest.invite div.guest-overlay', function() {
+				$guestOverlay = $(this);
+				$checkBox = $guestOverlay.siblings('input.invite-checkbox');
+				var isChecked = $checkBox.is(':checked');
+				$checkBox.click();
+			});
+		}
+		
 	}
 
 	function addFriendToInvited(friendId, friendUsername, invitedFriends) {
