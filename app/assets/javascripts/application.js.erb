@@ -575,29 +575,49 @@ function toggleLabels(labelType) {
 				var friendId = $checkBox.val();
 				if(isChecked) {
 					invitedFriends = addFriendToInvited(friendId, friendUsername, invitedFriends);
-					console.log(invitedFriends);
+					appendFriendToList(friendId, friendUsername);
 				} else if(isChecked === false) {
 					invitedFriends = removeFriendFromInvited(friendId, friendUsername, invitedFriends);
-					console.log(invitedFriends);
+					removeFriendFromList(friendId, friendUsername);
 				}
+				adjustListCount(invitedFriends);
 			});
 		}
 	}
 
-	function addFriendToInvited(friendId, friendUsername, invitedArray) {
+	function addFriendToInvited(friendId, friendUsername, invitedFriends) {
 		friend = {
 			friendId: friendId,
 			friendUsername: friendUsername
 		};
-		invitedArray.push(friend);
-		return invitedArray;
+		invitedFriends.push(friend);
+		return invitedFriends;
 	}
 
-	function removeFriendFromInvited(friendId, friendUsername, invitedArray) {
-		invitedArray = $.grep(invitedArray, function(e){ 
+	function removeFriendFromInvited(friendId, friendUsername, invitedFriends) {
+		invitedFriends = $.grep(invitedFriends, function(e){ 
 		     return ((e.friendId !== friendId) && (e.friendUsername !== friendUsername));
 		});
-		return invitedArray;
+		return invitedFriends;
+	}
+
+	function appendFriendToList(friendId, friendUsername) {
+		$selectedList = $('div#selected-list ul');
+		var template = "<li data-friendId='" + friendId + "'" + 
+		"data-friendUsername='" + friendUsername +  "'>" + 
+		friendUsername + "</li>";
+		$selectedList.append(template);
+	}
+
+	function removeFriendFromList(friendId, friendUsername) {
+		$target = $("li[data-friendId='" + friendId +"'][data-friendUsername='" + friendUsername +"']");
+		$target.remove();
+	}
+
+	function adjustListCount(invitedFriends) {
+		$listCount = $('span.list-count');
+		var count = invitedFriends.length;
+		$listCount.text(count);
 	}
 
 
