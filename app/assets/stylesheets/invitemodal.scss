@@ -3,18 +3,74 @@ div#invite-modal {
 		width: 500px;
 		margin: 0 auto;
 	}
+	div.modal-body {
+		padding-top: 35px;
+		position: relative;
+		width: 100%;
+		div#modal-header {
+			height: 35px;
+			padding: 5px 10px;
+			background-color: $cloud;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+		}
+		button.close {
+			top: 0;
+		}
+	}
 	div#invite-list-container {
 		height: 100%;
 		display: none;
 		position: relative;
-		padding-top: 70px;
+		padding-top: 50px;
 		div#invite-search {
-			height: 70px;
+			height: 50px;
 			width: 100%;
 			border-bottom: 1px solid $cloud;
 			position: absolute;
 			top: 0;
 			left: 0;
+			div#search-friends-container {
+				position: relative;
+				height: 25px;
+				@include vertical-align();
+				border: .5px solid silver;
+				width: 475px;
+				margin: 0 auto;
+				div#search-icon-wrapper {
+					float: left;
+					width: 30px;
+					height: 100%;
+					border-right: .5px solid silver;
+					text-align: center;
+					background-color: $cloud;
+					position: relative;
+					i {
+						position: absolute;
+						bottom: 5px;
+						left: 0;
+						right: 0;
+						margin-right: auto;
+						margin-left: auto;
+						font-size: .8em;
+					}
+				} //div#search-icon-wrapper
+				input[type=text] {
+					font-size: .8em;
+					height: auto;
+					margin: 0 auto;
+					display: block;
+					float: left;
+					border: none;
+					width: 443px;
+					padding-left: 5px;
+					&:focus {
+						outline: none;
+					}
+				} 
+			} //div#search-friends-container
 		}
 		div#selected-list {
 			width: 150px;

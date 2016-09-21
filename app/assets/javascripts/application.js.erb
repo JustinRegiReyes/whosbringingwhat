@@ -45,7 +45,8 @@ function ready() {
 	inviteButtonListener();
 	guestCheckboxListener();
 	inviteCheckboxListener();
-	removeFromListIconListener()
+	removeFromListIconListener();
+	searchBorderListener();
 	if(window.location.pathname === "/calendar") {
 		calendar();
 	}
@@ -648,6 +649,21 @@ function toggleLabels(labelType) {
 				// instead of coding logic to remove this li and then uncheck the target checkbox
 				// simply clicking the target checkbox would have the same effect
 				$targetCheckbox.click();
+			});
+		}
+	}
+
+	function searchBorderListener() {
+		$inviteListCon = $("div#invite-list-container");
+		if($inviteListCon.length > 0) {
+			var $searchBox = $('input#search-box');
+			$searchBox.on('focus', function() {
+				var $searchFriendsCon =  $(this).parent();
+				$searchFriendsCon.css({"border": ".5px solid #4095F8"});
+			});
+			$searchBox.on('focusout', function() {
+				var $searchFriendsCon =  $(this).parent();
+				$searchFriendsCon.css({"border": ".5px solid silver"});
 			});
 		}
 	}

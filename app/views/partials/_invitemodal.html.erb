@@ -2,16 +2,23 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body clearfixs">
+      	<div id="modal-header">Invite Friends</div>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <%= image_tag(image_path("loading.gif"), id: "invite-modal-loading" , class: "loading") %>
         <div id="invite-list-container" class="clearfixs">
         	<div id="invite-search">
+        		<div id="search-friends-container" class="clearfixs">
+        			<div id="search-icon-wrapper">
+        				<i class="fa fa-search" aria-hidden="true"></i>
+        			</div>
+        			<input id="search-box" type="text" placeholder="Search for friends">
+        		</div>
         	</div>
         	<div id="selected-list">
         		<div id="list-header">List <span class="list-count">0</span></div>
         		<ul class="list-unstyled"></ul>
         		<div id="invite-button-container">
-        			<button id="invite-submit" class="site-button">Invite</button>
+        			<button id="invite-submit" class="site-button">Send</button>
         		</div>
         	</div>
             <div id="invite-friends-list">
