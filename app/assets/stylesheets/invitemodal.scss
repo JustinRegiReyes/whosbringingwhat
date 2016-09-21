@@ -40,6 +40,25 @@ div#invite-modal {
 				li {
 					padding: 5px 10px;
 					font-size: .8em;
+					position: relative;
+					&:hover {
+						background-color: darken($cloud, 2%);
+						i.remove-friend {
+							display: inline;
+						}
+					}
+					i.remove-friend {
+						font-size: .9em;
+						position: absolute;
+						right: 5px;
+						top: 10px;
+						display: none;
+						color: $ashyRed;
+						&:hover {
+							color: lighten(black, 25%);
+							cursor: pointer;
+						}
+					}
 				}
 			} //ul
 			div#invite-button-container {

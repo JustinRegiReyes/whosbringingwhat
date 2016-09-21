@@ -45,6 +45,7 @@ function ready() {
 	inviteButtonListener();
 	guestCheckboxListener();
 	inviteCheckboxListener();
+	removeFromListIconListener()
 	if(window.location.pathname === "/calendar") {
 		calendar();
 	}
@@ -597,7 +598,6 @@ function toggleLabels(labelType) {
 				$checkBox.click();
 			});
 		}
-		
 	}
 
 	function addFriendToInvited(friendId, friendUsername, invitedFriends) {
@@ -617,22 +617,39 @@ function toggleLabels(labelType) {
 	}
 
 	function appendFriendToList(friendId, friendUsername) {
-		$selectedList = $('div#selected-list ul');
-		var template = "<li data-friendId='" + friendId + "'" + 
-		"data-friendUsername='" + friendUsername +  "'>" + 
-		friendUsername + "</li>";
+		var $selectedList = $('div#selected-list ul');
+		var template = "<li data-friend-id='" + friendId + "'" + 
+		"data-friend-username='" + friendUsername +  "'>" + 
+		friendUsername + 
+		"<i class='fa fa-times-circle remove-friend' aria-hidden='true'></i>" +
+		"</li>";
 		$selectedList.append(template);
 	}
 
 	function removeFriendFromList(friendId, friendUsername) {
-		$target = $("li[data-friendId='" + friendId +"'][data-friendUsername='" + friendUsername +"']");
+		var $target = $("li[data-friend-id='" + friendId +"'][data-friend-username='" + friendUsername +"']");
 		$target.remove();
 	}
 
 	function adjustListCount(invitedFriends) {
-		$listCount = $('span.list-count');
+		var $listCount = $('span.list-count');
 		var count = invitedFriends.length;
 		$listCount.text(count);
+	}
+
+	function removeFromListIconListener() {
+		$inviteListCon = $("div#invite-list-container");
+		if($inviteListCon.length > 0) {
+			$(document).on('click', 'i.remove-friend', function() {
+				var $listedFriend = $(this).parent();
+				var friendId = $listedFriend.data('friend-id');
+				var friendUsername = $listedFriend.data('friend-username');
+				var $targetCheckbox = $("input[type=checkbox][value=" + friendId + "][data-username=" + friendUsername + "]");
+				// instead of coding logic to remove this li and then uncheck the target checkbox
+				// simply clicking the target checkbox would have the same effect
+				$targetCheckbox.click();
+			});
+		}
 	}
 
 
