@@ -220,7 +220,7 @@ function getTypeOfGuests(type, modal) {
 		.error(error)
 
 	function success(data) {
-		var content = $('div.modal-content');
+		var $content = $('div#guests-modal-content');
 		var body = $('div.modal-body');
 		var guestsListCon = $("div#guests-list-container");
 		var guestsList = $("div#guests-list");
@@ -232,16 +232,17 @@ function getTypeOfGuests(type, modal) {
 
 		modal.on('hidden.bs.modal', function () {
 			guestsList.empty();
+			console.log('test');
 			img.css({
 				display: "block"
 			});
-			content.css({
+			$content.css({
 				height: "80px"
 			})
 			guestsListCon.css({
 				display: "none"
 			});
-		})
+		});
 
 		setTimeout(appendGuests, 500);
 
@@ -255,7 +256,7 @@ function getTypeOfGuests(type, modal) {
 				if(type.length > 1) {
 					toggleLabels(type);
 				}
-				content.animate({
+				$content.animate({
 					height: "400px"
 				}, 300, function() {
 					guestsListCon.fadeIn(500);
@@ -531,6 +532,8 @@ function toggleLabels(labelType) {
 			setTimeout(function() {
 				renderInviteFriends(friends)
 			}, 500);
+			var $modal = $('div#invite-modal');
+			emptyInviteFriendsListListener($modal);
 		}
 	}
 
@@ -542,7 +545,8 @@ function toggleLabels(labelType) {
 				"<img src='" + aviUrl + "' class='guest-img'/>" +
 				"<input type='checkbox' class='invite-checkbox'" + 
 					"value='" + friend.id + "'" + 
-					"data-username='" + friend.username + "'/>" + 
+					"data-username='" + friend.username + "'" + 
+					"/>" + 
 				"<div class='guest-username'>" + 
 					friend.username + 
 				"</div>" +
@@ -554,8 +558,9 @@ function toggleLabels(labelType) {
 	function renderInviteFriends(friends) {
 		var $loadingGif = $('img#invite-modal-loading');
 		var $inviteFriendsList = $('div#invite-friends-list');
-		var $content = $('div.modal-content');
+		var $content = $('div#invite-modal-content');
 		var $inviteListCon = $('div#invite-list-container');
+		var $modal = $("div#invite-modal");
 		friends.forEach(function(friend) {
 			$inviteFriendsList.append(inviteFriendsTemplate(friend));
 		});
@@ -568,9 +573,34 @@ function toggleLabels(labelType) {
 		});
 	}
 
+	function emptyInviteFriendsListListener($modal) {
+		$modal.on('hidden.bs.modal', function () {
+			var $inviteFriendsList = $("div#invite-friends-list");
+			var $img = $('img#invite-modal-loading');
+			var $inviteListCon = $('div#invite-list-container');
+			var $content = $('div#invite-modal-content');
+
+			$inviteFriendsList.empty();
+			$img.css({
+				display: "block"
+			});
+			$content.css({
+				height: "100px"
+			})
+			$inviteListCon.css({
+				display: "none"
+			});
+		});
+	}
+
+	function reCheckInvitedFriends(friend) {
+		console.log(friend);
+	}
+
 	function inviteCheckboxListener() {
 		var invitedFriends = [];
 		var $inviteListCon = $('div#invite-list-container');
+		var $modal = $("div#invite-modal");
 		if($inviteListCon.length > 0) {
 			$(document).on('change', 'input.invite-checkbox', function() {
 				var $checkBox = $(this);
@@ -587,6 +617,15 @@ function toggleLabels(labelType) {
 				adjustListCount(invitedFriends);
 			});
 		}
+
+		$modal.on('hidden.bs.modal', function () {
+			invitedFriends = [];
+			$liSelected = $('li.selected');
+			$liSelected.each(function() {
+				$(this).remove();
+			});
+			adjustListCount(invitedFriends);
+		});
 	}
 
 	function guestCheckboxListener() {
@@ -619,7 +658,7 @@ function toggleLabels(labelType) {
 
 	function appendFriendToList(friendId, friendUsername) {
 		var $selectedList = $('div#selected-list ul');
-		var template = "<li data-friend-id='" + friendId + "'" + 
+		var template = "<li class='selected' data-friend-id='" + friendId + "'" + 
 		"data-friend-username='" + friendUsername +  "'>" + 
 		friendUsername + 
 		"<i class='fa fa-times-circle remove-friend' aria-hidden='true'></i>" +
