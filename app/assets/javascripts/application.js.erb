@@ -529,9 +529,11 @@ function toggleLabels(labelType) {
 
 		function success(res) {
 			var friends = res.data.friends;
+			window.inviteFriends = friends;
 			setTimeout(function() {
 				renderInviteFriends(friends)
 			}, 500);
+			inviteSearchFriendsListener(friends);
 			var $modal = $('div#invite-modal');
 			emptyInviteFriendsListListener($modal);
 		}
@@ -696,15 +698,91 @@ function toggleLabels(labelType) {
 		$inviteListCon = $("div#invite-list-container");
 		if($inviteListCon.length > 0) {
 			var $searchBox = $('input#search-box');
+			var $matchedFriendsList = $("div#matched-friends-list");
+
 			$searchBox.on('focus', function() {
 				var $searchFriendsCon =  $(this).parent();
 				$searchFriendsCon.css({"border": ".5px solid #4095F8"});
+				if($searchBox.val().length > 0) {
+					var friends = window.inviteFriends;
+					var query = $searchBox.val();
+					var matchedFriends = sortMatchedFriends(query, friends);
+					renderMatchedFriends(matchedFriends);
+				}
 			});
 			$searchBox.on('focusout', function() {
 				var $searchFriendsCon =  $(this).parent();
 				$searchFriendsCon.css({"border": ".5px solid silver"});
+				$matchedFriendsList.css({
+					"display": "none"
+				});
+				emptyMatchedFriendsList();
 			});
 		}
+	}
+
+	function inviteSearchFriendsListener(friendsArray) {
+		var friends = friendsArray;
+		var $matchedFriendsList = $("div#matched-friends-list");
+		$("input#search-box").on('keyup paste', function() {
+			$input = $(this);
+			var value = $input.val();
+			var matchedFriends = sortMatchedFriends(value, friendsArray);
+
+			if(value.length > 0) {
+				renderMatchedFriends(matchedFriends);
+				$matchedFriendsList.css({
+					"display": "block"
+				});
+			} else {
+				$matchedFriendsList.css({
+					"display": "none"
+				});
+			}
+		});
+	}
+
+	function sortMatchedFriends(query, friendsArray) {
+		var regex = new RegExp('^' + query, 'i');
+		matchedFriends = $.grep(friendsArray, function(e){ 
+		     return regex.test(e.username)
+		});
+		return matchedFriends;
+	}
+
+	function renderMatchedFriends(matchedFriends) {
+		var $matchedFriendsList = $("div#matched-friends-list");
+
+		$matchedFriendsList.css({
+			"display": "none"
+		});
+
+		$matchedFriendsList.empty();
+		matchedFriends.forEach(function(friend) {
+			var aviUrl = guestAviUrl(friend.avi_url);
+			var template = 
+				"<div class='searched-friend clearfixs'" + "data-friend-id='" + friend.id + "'" +"data-friend-username='" + friend.username + "'>" +
+					"<img class='searched-avi' src='" + aviUrl + "'/>" + 
+					"<div class='searched-info'>" + 
+						"<span class='searched-username'>" + 
+							friend.username +
+						"</span>" + 
+						"<span class='searched-from'>" + 
+							friend.from +
+						"</span>" + 
+					"</div>" +
+				"</div>";
+			$matchedFriendsList.append(template);
+			$matchedFriendsList.append(template);
+		});
+		$matchedFriendsList.css({
+			"display": "block"
+		});
+	}
+
+	function emptyMatchedFriendsList() {
+		$matchedFriendsList = $("div#matched-friends-list");
+		$matchedFriendsList.empty();
 	}
 
 

@@ -77,6 +77,58 @@ div#invite-modal {
 					}
 				} 
 			} //div#search-friends-container
+			div#matched-friends-list {
+				width: 445px;
+				min-height: 65px;
+				max-height: 150px;
+				overflow-y: scroll;
+				background-color: #FFF;
+				border: 1px solid darken($cloud, 5%);
+				position: absolute;
+				top: 38px;
+				left: 30px;
+				right: 0px;
+				margin-left: auto;
+				margin-right: auto;
+				z-index: 2;
+				display: none;
+				&:hover {
+					cursor: pointer;
+				}
+				div.searched-friend {
+					height: 50px;
+					width: 100%;
+					padding: 5px 10px;
+					margin: 5px auto;
+					position: relative;
+					border-bottom: 2px solid white;
+					img.searched-avi {
+						height: 40px;
+						width: 40px;
+						float: left;
+						margin-right: 10px;
+					}
+					div.searched-info {
+						float: left;
+						color: $asphalt;
+						@include vertical-align();
+						span.searched-username {
+							font-size: .8em;
+							width: 100%;
+							display: block;
+						}
+						span.searched-from {
+							font-size: .65em;
+							width: 100%;
+							display: block;
+						}
+					} //div.searched-info
+					&:hover {
+						background-color: $cloud;
+						border-bottom: 2px solid $cobaltBlue;
+					}
+				} //div.searched-friend
+			} //div#matched-friends-list
 		}
 		div#selected-list {
 			width: 150px;
