@@ -82,6 +82,10 @@ class EventsController < ApplicationController
     @events = current_user.created_events
   end
 
+  def send_invites
+      binding.pry
+  end
+
   private
 
   def event_params

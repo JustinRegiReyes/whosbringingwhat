@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   # events routes
     get '/events/search', to: 'events#search'
+    post '/wtf', to: 'events#send_invites'
     resources :events
     post '/events/:id/comments', to: 'comments#create'
     get '/events/:id/guests/:type', to: 'events#guests'

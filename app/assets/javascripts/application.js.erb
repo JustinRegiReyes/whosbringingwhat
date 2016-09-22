@@ -48,6 +48,7 @@ function ready() {
 	removeFromListIconListener();
 	searchBorderListener();
 	searchedFriendClickListener();
+	submitInvites();
 	if(window.location.pathname === "/calendar") {
 		calendar();
 	}
@@ -530,7 +531,7 @@ function toggleLabels(labelType) {
 
 		function success(res) {
 			var friends = res.data.friends;
-			window.inviteFriends = friends;
+			window.friendsToInvite = friends;
 			setTimeout(function() {
 				renderInviteFriends(friends)
 			}, 500);
@@ -649,6 +650,7 @@ function toggleLabels(labelType) {
 			friendUsername: friendUsername
 		};
 		invitedFriends.push(friend);
+		window.invitedFriends = invitedFriends;
 		return invitedFriends;
 	}
 
@@ -656,6 +658,7 @@ function toggleLabels(labelType) {
 		invitedFriends = $.grep(invitedFriends, function(e){ 
 		     return ((e.friendId !== friendId) && (e.friendUsername !== friendUsername));
 		});
+		window.invitedFriends = invitedFriends;
 		return invitedFriends;
 	}
 
@@ -705,7 +708,7 @@ function toggleLabels(labelType) {
 				var $searchFriendsCon =  $(this).parent();
 				$searchFriendsCon.css({"border": ".5px solid #4095F8"});
 				if($searchBox.val().length > 0) {
-					var friends = window.inviteFriends;
+					var friends = window.friendsToInvite;
 					var query = $searchBox.val();
 					var matchedFriends = sortMatchedFriends(query, friends);
 					renderMatchedFriends(matchedFriends);
@@ -808,6 +811,28 @@ function toggleLabels(labelType) {
 			"display": "none"
 		});
 		emptyMatchedFriendsList();
+	}
+
+	function submitInvites() {
+		$inviteButton = $("button#invite-submit");
+		if($inviteButton.length > 0) {
+			$inviteButton.click(function() {
+				var invitedFriends = window.invitedFriends;
+				if((invitedFriends != undefined) && (invitedFriends.length > 0)) {
+					var data = {guests: invitedFriends};
+					// $.post("/wtf", 
+					// 	{ 
+					// 		guests: invitedFriends
+					// 	}
+					// );
+					$.ajax({
+						type: "POST",
+						url: "/wtf",
+						data: data
+					})
+				}
+			})
+		}
 	}
 
 
