@@ -772,7 +772,6 @@ function toggleLabels(labelType) {
 					"</div>" +
 				"</div>";
 			$matchedFriendsList.append(template);
-			$matchedFriendsList.append(template);
 		});
 		$matchedFriendsList.css({
 			"display": "block"
@@ -789,10 +788,12 @@ function toggleLabels(labelType) {
 		if($inviteListCon.length > 0) {
 			var $searchBox = $("input#search-box");
 			$(document).on('click', 'div.searched-friend', function() {
-				console.log('test');
 				var $friend = $(this);
 				var friendId = $friend.data('friend-id');
 				var friendUsername = $friend.data('friend-username');
+
+				var $targetCheckbox = $("input.invite-checkbox:input[value='" + friendId + "'][data-username='" + friendUsername +"']");
+				$targetCheckbox.click();
 				unrenderMatchedFriendsList();
 			});
 		}
