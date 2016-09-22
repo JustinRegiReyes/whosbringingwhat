@@ -47,6 +47,7 @@ function ready() {
 	inviteCheckboxListener();
 	removeFromListIconListener();
 	searchBorderListener();
+	searchedFriendClickListener();
 	if(window.location.pathname === "/calendar") {
 		calendar();
 	}
@@ -711,12 +712,10 @@ function toggleLabels(labelType) {
 				}
 			});
 			$searchBox.on('focusout', function() {
-				var $searchFriendsCon =  $(this).parent();
-				$searchFriendsCon.css({"border": ".5px solid silver"});
-				$matchedFriendsList.css({
-					"display": "none"
-				});
-				emptyMatchedFriendsList();
+				var hoveringResults = $('div#matched-friends-list').is(":hover");
+				if(hoveringResults === false) {
+					unrenderMatchedFriendsList();
+				}
 			});
 		}
 	}
@@ -783,6 +782,31 @@ function toggleLabels(labelType) {
 	function emptyMatchedFriendsList() {
 		$matchedFriendsList = $("div#matched-friends-list");
 		$matchedFriendsList.empty();
+	}
+
+	function searchedFriendClickListener() {
+		var $inviteListCon = $("div#invite-list-container");
+		if($inviteListCon.length > 0) {
+			var $searchBox = $("input#search-box");
+			$(document).on('click', 'div.searched-friend', function() {
+				console.log('test');
+				var $friend = $(this);
+				var friendId = $friend.data('friend-id');
+				var friendUsername = $friend.data('friend-username');
+				unrenderMatchedFriendsList();
+			});
+		}
+	}
+
+	function unrenderMatchedFriendsList() {
+		var $searchFriendsCon = $("div#search-friends-container");
+		var $matchedFriendsList = $("div#matched-friends-list");
+		$searchFriendsCon.css({"border": ".5px solid silver"});
+
+		$matchedFriendsList.css({
+			"display": "none"
+		});
+		emptyMatchedFriendsList();
 	}
 
 
