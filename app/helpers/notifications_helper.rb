@@ -15,13 +15,19 @@ module NotificationsHelper
 			notification.friendship.user.username + " wants to be your friend."
 		elsif notification.what_kind == "comment"
 			notification.comment.user.username + " has commented in " + notification.comment.event.title
-		elsif notification.what_kind == "invitation"
+		elsif notification.what_kind == "invitation_request"
 			notification.invited_by.username + " has invited you to " + notification.event.title
 		end
 	end
 
 	def friend_request_notification(friendship)
 		Notification.create({user_id: friendship.friend_id, friendship_id: friendship.id, what_kind: "friend_request"})
+	end
+
+	def invitation_notifications(attending_events)
+		attending_events.each do |attending_event|
+			Notification.create({user_id: attending_event.user.id, invited_by_id: current_user.id, attending_event_id: attending_event.id, event_id: attending_event.event.id, what_kind: "invitation_request"})
+		end
 	end
 
 	def notification_count
@@ -42,7 +48,11 @@ module NotificationsHelper
 
 	def notification_image(notification)
 		if notification.what_kind == "friend_request"
-			notification.friendship.friend.avi
+			notification.friendship.user.avi
+		elsif notification.what_kind == "friend_accepted"
+			notification.friendship.friend.avi(:thumb)
+		elsif notification.what_kind == "invitation_request"
+			notification.event.photo(:thumb)
 		end
 	end
 
@@ -60,6 +70,8 @@ module NotificationsHelper
 		elsif notification.what_kind == "friend_accepted"
 			[""]
 		elsif notification.what_kind == "friend_declined"
+			[""]
+		elsif notification.what_kind == "invitation_request"
 			[""]
 		end
 	end

@@ -83,7 +83,19 @@ class EventsController < ApplicationController
   end
 
   def send_invites
-      binding.pry
+    invites = send_invites_to_users(invited_guests, event_id)
+    if invites
+      respond_to do |format|
+          flash[:success] = "Invitations sent"
+          format.json { render :json => {data: "success"}, status: 200 }
+      end
+      invitation_notifications(invites)
+    else
+      respond_to do |format|
+          flash[:error] = "Invitations not sent"
+          format.json { render :json => {data: "error"}, status: 422 }
+      end
+    end
   end
 
   private
@@ -115,5 +127,13 @@ class EventsController < ApplicationController
 
     # returns the guests as json objects in an array with only certain attrs and methods
     return guests.as_json(:only => [:id,:username], methods: [:avi_url, :attendance_status])
+  end
+
+  def invited_guests
+    params[:invitedGuests]
+  end
+
+  def event_id
+      params[:id]
   end
 end

@@ -8,4 +8,5 @@ class ApplicationController < ActionController::Base
   include ItemsHelper
   include NotificationsHelper
   include FriendshipsHelper
+  include EventsHelper
 end

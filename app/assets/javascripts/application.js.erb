@@ -67,7 +67,6 @@ function passwordConfirm() {
 		$(".input-container").on('input', '.password-confirm', function(e) {
 			if ($passOne.val() === $passTwo.val() && ($passOne.length > 0)) {
 				$passContainer.html(match);
-				console.log($username.val());
 				if($username.val().length > 0) {
 					$registerButton.show("fast");
 				}
@@ -234,7 +233,6 @@ function getTypeOfGuests(type, modal) {
 
 		modal.on('hidden.bs.modal', function () {
 			guestsList.empty();
-			console.log('test');
 			img.css({
 				display: "block"
 			});
@@ -819,19 +817,25 @@ function toggleLabels(labelType) {
 			$inviteButton.click(function() {
 				var invitedFriends = window.invitedFriends;
 				if((invitedFriends != undefined) && (invitedFriends.length > 0)) {
-					var data = {guests: invitedFriends};
-					// $.post("/wtf", 
-					// 	{ 
-					// 		guests: invitedFriends
-					// 	}
-					// );
+					var data = {invitedGuests: invitedFriends};
+					var eventId = $("input#event-id").val();
 					$.ajax({
 						type: "POST",
-						url: "/wtf",
-						data: data
+						url: "/events/" + eventId + "/guests/invite",
+						dataType: 'json',
+						contentType: 'application/json',
+						data: JSON.stringify(data),
+						success: success,
+						error: error
 					})
 				}
 			})
+		}
+		function success() {
+			window.location.reload();
+		}
+		function error() {
+			// window.location.reload();	
 		}
 	}
 
