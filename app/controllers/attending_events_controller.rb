@@ -15,7 +15,7 @@ class AttendingEventsController < ApplicationController
   def declined
   	respond_to do |format|
 	  	ae = AttendingEvent.find_by_id(params[:id])
-	  	ae.update({going: true, undecided: false})
+	  	ae.update({declined: true, undecided: false})
 	  	what_kind = ae.as_json.key(true)
 	  	notification_invitation_status(ae.id, what_kind)
 		flash[:success] = "Declined invitation"
@@ -28,7 +28,7 @@ class AttendingEventsController < ApplicationController
   def maybe
   	respond_to do |format|
 	  	ae = AttendingEvent.find_by_id(params[:id])
-	  	ae.update({going: true, undecided: false})
+	  	ae.update({maybe: true, undecided: false})
 	  	what_kind = ae.as_json.key(true)
 	  	notification_invitation_status(ae.id, what_kind)
 		flash[:success] = "Marked maybe"
