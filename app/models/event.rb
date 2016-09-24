@@ -23,6 +23,16 @@ class Event < ActiveRecord::Base
 		  	validates_attachment :banner,
 		  		content_type: { content_type: ["image/jpeg", "image/gif", "image/png", "application/pdf"] }
 
+  		# :photo
+			has_attached_file :photo, 
+				styles: { profile: "600x600" , photo: "200x200>", thumb: "100x100>" },
+				:default_url => 'bannerplaceholder.svg',
+				processors: [:papercrop]
+			crop_attached_file :photo, :aspect => "4:3"
+		  	# validates_attachment :photo, presence: true
+		  	validates_attachment :photo,
+		  		content_type: { content_type: ["image/jpeg", "image/gif", "image/png", "application/pdf"] }
+
 	def cropping
 		!crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
 	end
