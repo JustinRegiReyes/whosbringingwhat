@@ -98,6 +98,11 @@ class EventsController < ApplicationController
     end
   end
 
+  def invitation_response
+    ae = AttendingEvent.find_by_id(attending_event_id)
+    update_attending_event(ae)
+  end
+
   private
 
   def event_params
@@ -135,5 +140,9 @@ class EventsController < ApplicationController
 
   def event_id
       params[:id]
+  end
+
+  def attending_event_id
+    params[:attending_event_id]
   end
 end

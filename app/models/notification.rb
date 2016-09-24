@@ -23,6 +23,10 @@ class Notification < ActiveRecord::Base
 		User.find_by_id(self.invited_by_id)
 	end
 
+	def attending_event
+		AttendingEvent.find_by_id(self.attending_event_id)
+	end
+
 	# def reference
 	# 	if self.type == "guest"
 	# 		self.guest

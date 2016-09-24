@@ -1,7 +1,7 @@
 module NotificationsHelper
 	def the_update(notification)
-		if notification.what_kind == "guest"
-			status = attending_events.where(event_id: notification.event_id).as_json.key(true)
+		if notification.what_kind == "invitation_update"
+			status = notification.attending_event.as_json.key(true)
 			if status == 'going'
 				notification.guest.username + " is attending " + notification.event.title
 			elsif status == 'maybe'
@@ -61,6 +61,8 @@ module NotificationsHelper
 			"<button data-notification-id='#{notification.id}' data-friendship-id='#{notification.friendship_id}' data-notification-action='Accept' data-notification-kind='#{notification.what_kind}' class='notification-action'>Accept</button>".html_safe
 		elsif notification.what_kind == "friend_accepted"
 			
+		elsif notification.what_kind == "invitation_request"
+			"<button data-notification-id='#{notification.id}' data-attending-event-id='#{notification.attending_event_id}' data-notification-action='Accept' data-notification-kind='#{notification.what_kind}' class='notification-action'>Accept</button>".html_safe
 		end
 	end
 
@@ -72,17 +74,16 @@ module NotificationsHelper
 		elsif notification.what_kind == "friend_declined"
 			[""]
 		elsif notification.what_kind == "invitation_request"
-			[""]
+			[
+				"<a class='dropdown-item' href='' data-notification-id='#{notification.id}' data-attending-event-id='#{notification.event_id}' data-notification-action='Maybe' data-notification-kind='#{notification.what_kind}'>Maybe</a>",
+				"<a class='dropdown-item' href='' data-notification-id='#{notification.id}' data-attending-event-id='#{notification.attending_event_id}' data-notification-action='Decline' data-notification-kind='#{notification.what_kind}'>Decline</a>"
+			]
 		end
 	end
 
-	def notification_update(id, what_kind)
+	def mark_notification_read(id)
 		notification = Notification.find_by_id(id)
-		if what_kind == "friend_accepted"
-			notification.update({read: true})
-		elsif what_kind == "friend_declined"
-			notification.update({read: true})
-		end
+		notification.update({read: true})
 	end
 
 	def notification_friend_status(friendship_id, what_kind)
@@ -91,7 +92,11 @@ module NotificationsHelper
 			Notification.create({what_kind: "friend_accepted", user_id: friendship.user_id, friendship_id: friendship.id})
 		elsif "friend_declined"
 			Notification.create({what_kind: "friend_declined", user_id: friendship.user_id, friendship_id: friendship.id})
-		end
-				
+		end		
+	end
+
+	def notification_invitation_status(attending_event_id, what_kind)
+		binding.pry
+		# Notification.create({attending_event_id: attending_event_id, what_kind: what_kind})
 	end
 end

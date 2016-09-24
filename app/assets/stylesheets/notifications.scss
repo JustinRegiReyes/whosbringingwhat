@@ -190,8 +190,9 @@
 								div.dropdown-menu {
 									min-width: 120px !important;
 									width: 120px !important;
-									&.friend_request {
-										left: -61px;
+									&.friend_request,
+									&.invitation_request {
+										left: -59px;
 									}
 								}
 							} //div.dropdown

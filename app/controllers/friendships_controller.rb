@@ -42,7 +42,7 @@ class FriendshipsController < ApplicationController
 
 	def friend_accept
 		if targetFriendship.update_attributes(accepted: true, pending: false)
-			notification_update(notification_id, "friend_accepted")
+			mark_notification_read(notification_id)
 			respond_to do |format|
 				flash[:success] = "Friend Accepted"
 				format.html { render layout: false }
@@ -60,7 +60,7 @@ class FriendshipsController < ApplicationController
 
 	def friend_decline
 		if targetFriendship.update_attributes(pending: false)
-			notification_update(notification_id, "friend_declined")
+			mark_notification_read(notification_id)
 			respond_to do |format|
 				flash[:success] = "Friend Declined"
 				format.html { render layout: false }

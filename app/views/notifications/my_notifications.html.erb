@@ -47,7 +47,7 @@
 											<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										    	<i class="fa fa-caret-down" aria-hidden="true"></i>
 										    </button>
-											<div class="dropdown-menu <%= notification.what_kind %>" aria-labelledby="dropdownMenuButton">
+											<div class="dropdown-menu <%= notification.what_kind %> options" aria-labelledby="dropdownMenuButton">
 												<% notification_options(notification).each do |option| %>
 													<%= option.html_safe %>
 												<% end %>

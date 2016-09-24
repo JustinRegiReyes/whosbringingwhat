@@ -402,7 +402,7 @@ function toggleLabels(labelType) {
 // ********** notification functions **********
 	function notificationBoxAction() {
 		$action = $('.notification-action');
-		$actionDDown = $('div.friend_request a.dropdown-item');
+		$actionDDown = $('div.dropdown-menu.options a.dropdown-item');
 		if($action.length > 0) {
 			$action.click(function() {
 				var $noti = $(this);
@@ -421,15 +421,31 @@ function toggleLabels(labelType) {
 		var action = $notiEle.data('notification-action').toLowerCase();
 		var friendshipId = $notiEle.data('friendship-id');
 		var eventId = $notiEle.data('event-id');
-		if(action === "accept") {
+		var attendingEventId = $notiEle.data('attending-event-id');
+		if(kind === "friend_request") {
 			friendRequestResponse(friendshipId, id, action);
-		} else if(action === "decline") {
-			friendRequestResponse(friendshipId, id, action);
+		} else if(kind === "invitation_request") {
+			invitationRequestResponse(attendingEventId, id, action);
 		}
 	}
 
 	function friendRequestResponse(friendshipId, notificationId, action) {
 		var url = "/friendships/" + friendshipId + "/friend_" + action;
+		$.ajax({
+			url: url,
+			method: 'patch',
+			data: {notification_id: notificationId},
+			dataType: 'json',
+			success: success
+		});
+
+		function success(res) {
+			location.reload();
+		}
+	}
+
+	function invitationRequestResponse(attendingEventId, notificationId, action) {
+		var url = "/attending_events/" + attendingEventId + "/" + action;
 		$.ajax({
 			url: url,
 			method: 'patch',
