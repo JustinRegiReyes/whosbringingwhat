@@ -31,7 +31,6 @@ img#sticker {
 div.welcome-container {
 	background-color: white;
 	position: absolute;
-	// top: -45px;
 	right: 0;
 	height: 100vh;
 	width: 100%;
@@ -102,5 +101,18 @@ div.welcome-container {
 				// background-color: $sandOrange;
 			}
 		}
+	} //button-container
+	@media screen and (max-width: $break-iphone6plus) {
+		width: 100vw;
+		div.header-container {
+			width: 100%;
+			// font-size: 90px;
+			h1.header {
+				font-size: 95px;
+			}
+			h5.sub-header {
+				font-size: 18px;
+			}
+		}
 	}
-}
+} // div.welcome-container
