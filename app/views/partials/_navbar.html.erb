@@ -44,6 +44,17 @@
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i></a>
         <ul class="dropdown-menu">
+          <li id="logged-in-as">
+            <div id='nav-current-user' class="clearfixs">
+              <div class="logged-in">
+                  Logged in:
+              </div>
+              <img src="<%= image_path(current_user.avi(:thumb)) %>">
+              <div class="current-user-username">
+                  <%= current_user.username %>
+              </div> 
+            </div>
+          </li>
           <li><a href="/myevents">My Events</a></li>
           <li><a href="#">My Items</a></li>
           <li><a href="#">My Friends</a></li>
