@@ -197,7 +197,7 @@
 								}
 							} //div.dropdown
 						}
-					}
+					} //div.notification-action-wrapper
 				} //div.information
 			} //div.event-box
 			hr {
@@ -213,32 +213,71 @@
 			}
 		} // @media screen and(max-width: $break-md)
 		@media screen and(max-width: $break-iphone6plus) {
+			margin: 0;
+			width: 100vw;
+			&.no-notifications {
+				max-width: 100vw !important;
+			}
 			div#notifications-container {
 				background-color: white;
 				width: 100vw;
+				div#notifications-header {
+					width: 100%;
+				}
 				div.notification-box {
 					width: 100%;
-					height: auto;
+					height: 175px;
 					box-shadow: none;
-					div.img {
-						width: 250px;
-						height: 250px;
-						margin: 0 auto 10px;
-						display: block;
-						float: none;
+					position: relative;
+					div.mark-box {
+						width: 30px;
+						height: 100%;
+						input {
+							width: 15px;
+							height: 15px;
+						}
 					}
 					div.information {
-						width: 250px;
+						width: auto;
 						margin: 0 auto;
 						float: none;
-						height: auto;
-						padding-bottom: 65px;
-					}
+						height: 100%;
+						padding: 30px 0;
+						div.img {
+							width: 80px;
+							height: 80px;
+							display: block;
+							margin: 0 10px;
+							float: left;
+						}
+						div.notification-message {
+							float: none;
+							width: auto;
+							overflow: hidden;
+							height: auto;
+							max-height: 100%;
+						}
+						div.notification-action-wrapper {
+						div.action-wrapper {
+							button.notification-action {
+							}
+							div.dropdown {
+								position: static;
+								button {
+								}
+								div.dropdown-menu {
+									min-width: 120px !important;
+									width: 120px !important;
+									&.friend_request,
+									&.invitation_request {
+										left: -60px;
+									}
+								}
+							} //div.dropdown
+						}
+					} //div.notification-action-wrapper
+					} //div.information
 				} //div.notification-box
-				hr {
-					display: block;
-					border-top: 1px solid $asphalt;
-				}
 			}
 		} // @media screen and(max-width: $break-iphone6plus)
 	} //div#my-notifications-container
