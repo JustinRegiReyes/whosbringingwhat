@@ -244,6 +244,8 @@ div#event-show-container {
 					}
 					@media screen and (max-width: $break-iphone6plus) {
 						width: 50% !important;
+						padding: 10px 0;
+						height: auto;
 					}
 				}
 			} // div#guests
