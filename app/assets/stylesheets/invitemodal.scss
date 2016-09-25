@@ -63,19 +63,22 @@ div#invite-modal {
 						font-size: .8em;
 					}
 				} //div#search-icon-wrapper
-				input[type=text] {
-					font-size: .8em;
-					height: auto;
-					margin: 0 auto;
-					display: block;
-					float: left;
-					border: none;
+				div#search-box-container {
 					width: 443px;
-					padding-left: 5px;
-					&:focus {
-						outline: none;
-					}
-				} 
+					float: left;
+					margin: 0;
+					input#search-box {
+						display: block;
+						font-size: .8em;
+						height: auto;
+						border: none;
+						width: 100%;
+						padding-left: 5px;
+						&:focus {
+							outline: none;
+						}
+					} //input#search-box
+				} //div#search-box-container
 			} //div#search-friends-container
 			div#matched-friends-list {
 				width: 445px;
@@ -198,6 +201,11 @@ div#invite-modal {
 			padding: 20px;
 			width: 350px;
 			float: left;
+			text-align: center;
+			span.empty-friends {
+				font-size: .8em;
+				margin: 0 auto;
+			}
 			div.guest {
 				float: left;
 				position: relative;
@@ -244,4 +252,64 @@ div#invite-modal {
 			} //div.guest
 		} //div#invite-friends-list
 	} //div#invite-list-container
-}
+	@media screen and(max-width: $break-iphone6plus) {
+		div.modal-content {
+			width: 100vw;
+			overflow: hidden;
+		} //div.modal-content
+		div#invite-list-container {
+			width: 100%;
+			div#invite-search {
+				width: 98vw;
+				margin-left: auto;
+				margin-right: auto;
+				left: 0;
+				right: 0;
+				div#search-friends-container {
+					width: 100%;
+					div#search-box-container {
+						overflow: hidden;
+						float: none;
+						position: relative;
+						width: auto;
+						input[type=text] {
+							width: 100%;
+						}
+					} //div#search-box-container
+				}
+				div#matched-friends-list {
+					width: 100%;
+					left: 0px;
+				} //div#matched-friends-list
+			} //div#invite-search
+			div#selected-list {
+
+			} //div#selected-list
+			div#invite-friends-list {
+				float: none;
+				overflow: hidden;
+				width: auto;
+				padding: 0;
+				span.empty-friends {
+					margin-top: 10px;
+					display: inline-block;
+					padding: 0 10px;
+				}
+				div.guest {
+					margin: 0 auto;
+					padding: 10px 0;
+					height: auto;
+					float: none;
+					width: 100%;
+				}
+			} //div#invite-friends-list
+		} //div#invite-friends-list 
+	} // media screen and (max-width: $break-iphone6plus)
+	@media screen and(max-width: $break-iphone6plus) {
+		div#invite-list-container {
+			div#selected-list {
+				width: 120px;
+			}
+		} //div#invite-list-container
+	} // media screen and (max-width: $break-iphone6plus)
+} //div#invite-modal

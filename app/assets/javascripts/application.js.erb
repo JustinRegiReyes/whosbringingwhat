@@ -579,9 +579,13 @@ function toggleLabels(labelType) {
 		var $content = $('div#invite-modal-content');
 		var $inviteListCon = $('div#invite-list-container');
 		var $modal = $("div#invite-modal");
-		friends.forEach(function(friend) {
-			$inviteFriendsList.append(inviteFriendsTemplate(friend));
-		});
+		if(friends.length > 0) {
+			friends.forEach(function(friend) {
+				$inviteFriendsList.append(inviteFriendsTemplate(friend));
+			});
+		} else {
+			$inviteFriendsList.append('<span class="empty-friends">All your friends have already been invited!');
+		}
 		$loadingGif.fadeOut(100, function() {
 			$content.animate({
 				height: "400px"
@@ -719,7 +723,7 @@ function toggleLabels(labelType) {
 			var $matchedFriendsList = $("div#matched-friends-list");
 
 			$searchBox.on('focus', function() {
-				var $searchFriendsCon =  $(this).parent();
+				var $searchFriendsCon =  $(this).parent().parent();
 				$searchFriendsCon.css({"border": ".5px solid #4095F8"});
 				if($searchBox.val().length > 0) {
 					var friends = window.friendsToInvite;
