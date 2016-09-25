@@ -133,6 +133,9 @@
 						&.friend_accepted {
 							color: $periGreen;
 						}
+						&.invitation_request {
+							color: $asphalt;
+						} //invitation_request
 					} //div.notification-icon
 					div.notification-action-wrapper {
 						div.action-wrapper {
@@ -223,7 +226,14 @@
 				width: 100vw;
 				div#notifications-header {
 					width: 100%;
-				}
+					div#notifications-options {
+						div.dropdown {
+							div.dropdown-menu {
+								left: -136px;
+							} //div.dropdown-menu
+						}
+					} //div#notifications-options
+				} //div#notifcations-header
 				div.notification-box {
 					width: 100%;
 					height: 175px;

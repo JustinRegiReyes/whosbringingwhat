@@ -37,6 +37,10 @@ module NotificationsHelper
 	def notification_icon(notification)
 		if notification.what_kind == "friend_request"
 			"<i class='fa fa-user-plus' aria-hidden='true'></i>".html_safe
+		elsif notification.what_kind == "friend_accepted"
+			"<i class='fa fa-user-plus accepted' aria-hidden='true'></i>".html_safe
+		elsif notification.what_kind == "invitation_request"
+			"<i class='fa fa-list-alt' aria-hidden='true'></i>".html_safe
 		end
 	end
 

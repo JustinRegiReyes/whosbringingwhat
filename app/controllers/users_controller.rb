@@ -35,6 +35,7 @@ class UsersController < ApplicationController
 
   def search
     @users = User.all
+    binding.pry
   end
 
   private
