@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     get '/events/:event_id/categories/:category_id/items/:item_id', to: 'items#event_show'
 
   #friendship routes
+  get '/friend_requests', to: 'friendships#my_friend_requests'
     get '/friends/invite/events/:event_id', to: 'friendships#invite_friends'
     post '/friendships/:friend_id/friend_request', to: 'friendships#friend_request'
     patch '/friendships/:friendship_id/friend_accept', to: 'friendships#friend_accept'

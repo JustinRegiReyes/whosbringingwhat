@@ -1,3 +1,70 @@
 // Place all the styles related to the friendships controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// ********** friendships#my_friend_requests **********
+div#my-friend-requests {
+	div#friend-requests-container {
+		width: 500px;
+		background-color: white;
+		margin: 0 auto;
+		div.friend-request-box {
+			height: 100px;
+			width: 100%;
+			border-bottom: 1px solid $cloud;
+			padding: 10px 90px 10px 20px;
+			position: relative;
+			img {
+				width: 80px;
+				height: 80px;
+				float: left;
+				margin-right: 10px;
+				border-radius: 100%;
+			}
+			div.information {
+				float: left;
+				padding-top: 8px;
+				span {
+					display: block;
+					&.username {
+
+					}
+					&.from {
+						font-size: .75em;
+						color: darken($cloud, 40%);
+					}
+					&.email {
+						font-size: .8em;
+					}
+				}
+			} //div.information
+			div#button-container {
+				position: absolute;
+				width: 80px;
+				height: auto;
+				right: 10px;
+				top: 10px;
+				button.site-button {
+					width: 80px;
+					height: 30px;
+					font-size: .85em;
+					&.accept {
+						background-color: $periGreen;
+						color: white;
+						&:hover {
+							background-color: darken($periGreen, 2%);
+						}
+					}
+					&.delete {
+						background-color: darken($cloud, 5%);
+						color: $asphalt;
+						&:hover {
+							background-color: darken($cloud, 7%);
+						}
+					}
+				} //button.site-button
+			} //div#button-container
+		} //div.friend-request-box
+	} //div#friend-requests-container
+} //div#my-friend-requests
+// ********** END friendships#my_friend_requests **********
