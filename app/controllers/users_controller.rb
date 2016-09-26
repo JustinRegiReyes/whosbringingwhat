@@ -36,8 +36,8 @@ class UsersController < ApplicationController
   def search
     if user_search_params
       @users = User.by_username(user_search_params[:username]).by_email(user_search_params[:email])
+      @user_search_params = user_search_params
     end
-    @user_search_params = user_search_params
   end
 
   private
@@ -47,6 +47,8 @@ class UsersController < ApplicationController
   end
 
   def user_search_params
+    if params.has_key?(:user)
       params.require(:user)
+    end
   end
 end

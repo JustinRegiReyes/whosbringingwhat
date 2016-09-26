@@ -81,14 +81,14 @@ class User < ActiveRecord::Base
 
     def self.by_username(username)
     	return where("") unless username.present?
-
-		return where(username: username)
+			
+		return where("lower(username) = ?", username.downcase)
     end
 
      def self.by_email(email)
     	return where("") unless email.present?
 
-		return where(email: email)
+		return where("lower(email) = ?", email.downcase)
     end
 
     private

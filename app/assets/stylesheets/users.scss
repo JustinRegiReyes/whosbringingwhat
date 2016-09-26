@@ -77,11 +77,16 @@ div#user-search-container {
 					padding-left: 5px;
 					border: none;
 					border-bottom: 1px solid $cloud;
+					&:focus {
+						outline: none;
+						border-bottom: 1px solid $cobaltBlue;
+					}
 				}
 				button.site-button {
 					margin-top: 30px;
 					background-color: $periGreen;
 					color: white;
+					padding: 5px 16px;
 				}
 			}
 		} //form
@@ -183,4 +188,4 @@ div#user-search-container {
 		} //div#search-results
 	} //div#users-results-container
 } //div#user-search-container
-// ********** event#search END **********
+// ********** user#search END **********

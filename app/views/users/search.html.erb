@@ -4,8 +4,8 @@
 			<form class="form" method="get" action="/users/search">
 				<div class="text-center">
 					<h4>Find a friend</h4>
-					<input type="text" class="search-full" name="user[username]" placeholder='Username' value='<%= @user != nil ? @user.username : ""%>'> 
-					<input type="text" class="search-full" name="user[email]" placeholder='Email' value='<%= @user != nil ? @user.email : ""%>'> 
+					<input type="text" class="search-full" name="user[username]" placeholder='Username' value='<%= @user_search_params != nil ? @user_search_params[:username] : ""%>'> 
+					<input type="text" class="search-full" name="user[email]" placeholder='Email' value='<%= @user_search_params != nil ? @user_search_params[:email] : ""%>'> 
 
 					<button type="submit" class="btn btn-default site-button">
 						Search
