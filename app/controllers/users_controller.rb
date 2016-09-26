@@ -34,13 +34,19 @@ class UsersController < ApplicationController
   end
 
   def search
-    @users = User.all
-    binding.pry
+    if user_search_params
+      @users = User.by_username(user_search_params[:username]).by_email(user_search_params[:email])
+    end
+    @user_search_params = user_search_params
   end
 
   private
 
   def newuser_params
     params.require(:user).permit(:username, :password, :avi)
+  end
+
+  def user_search_params
+      params.require(:user)
   end
 end

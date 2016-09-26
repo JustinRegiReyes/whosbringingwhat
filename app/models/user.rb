@@ -79,6 +79,18 @@ class User < ActiveRecord::Base
     	end
     end
 
+    def self.by_username(username)
+    	return where("") unless username.present?
+
+		return where(username: username)
+    end
+
+     def self.by_email(email)
+    	return where("") unless email.present?
+
+		return where(email: email)
+    end
+
     private
 		# runs paperclips reprocess method for crop
 		def reprocess_avi

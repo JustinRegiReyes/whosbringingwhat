@@ -1,7 +1,7 @@
 <div id="user-search-container" class="clearfixs default-container">
 	<div id="search-container" class="col-sm-4">
 		<div id="search-box">
-			<form class="form" method="get" action="/events/search">
+			<form class="form" method="get" action="/users/search">
 				<div class="text-center">
 					<h4>Find a friend</h4>
 					<input type="text" class="search-full" name="user[username]" placeholder='Username' value='<%= @user != nil ? @user.username : ""%>'> 
@@ -54,12 +54,20 @@
 					</div>
 				<% end %>
 					<!-- if @events.length > 0 -->
+			<% elsif @users == nil %>
+				<div id="results-count">
+					<span> Search for a user </span>
+				</div>
 			<% elsif @users.length == 0 %>
 				<div id="results-count">
-					<% if @username.length > 0 %>
-						<span> No user found with the name <%= @username %> </span>
+					<% if (@user_search_params[:username].length > 0) && (@user_search_params[:email].length > 0) %>
+						<span> No user found with the username name <%= @user_search_params[:username] %>, or email <%= @user_search_params[:email] %> </span>
+					<% elsif @user_search_params[:username].length > 0 %>
+						<span> No user found with the username name <%= @user_search_params[:username] %></span>
+					<% elsif @user_search_params[:email].length > 0 %>
+						<span> No user found with the username name <%= @user_search_params[:email] %></span>
 					<% else %>
-						<span> Please enter a host username </span>
+						<span> Please enter a host username or email </span>
 					<% end %>
 				</div>
 			<% end %>
