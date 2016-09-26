@@ -17,11 +17,11 @@
               <div class="input-icon">
                 <i class="fa fa-user fa-2x" aria-hidden="true"></i>
               </div>
-          	 <%= f.text_field :username, placeholder: "Username e.g. \"jmoriarty\"", class: "form-control" %>
+          	 <%= f.email_field :email, placeholder: "mailbox@domain.com", class: "form-control" %>
             </div>
             <div>
               <div class="input-icon">
-                <i class="fa fa-key" aria-hidden="true"></i>
+                 <i class="fa fa-lock" aria-hidden="true"></i>
               </div>
           	   <%= f.password_field :password, placeholder: raw("Password e.g. &bull;&bull;&bull;&bull;&bull;&bull;&bull;"), class: "form-control" %>
             </div>

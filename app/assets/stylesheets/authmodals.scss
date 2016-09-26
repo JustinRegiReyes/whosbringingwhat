@@ -17,6 +17,25 @@ div.auth-modal {
 	div.modal-dialog {
 		width: 500px;
 		div.modal-content {
+			form#new_user {
+				div.errors-container {
+					div#error-explanation {
+						i {
+							display: block;
+							margin: 0 auto;
+							width: 30px;
+							color: $ashyRed;
+							font-size: 1.50em;
+						}
+						ul.list-unstyled {
+							li {
+								width: 220px;
+								margin: 0 auto;
+							}
+						}
+					}
+				}
+			}
 			button.close {
 				top: -15px;
 				right: -10px;
@@ -46,10 +65,20 @@ div.auth-modal {
 				border-right: 1px solid #B8B8B8;
 				i {
 					position: absolute;
-					left: 9px;
+					left: 0px;
+					right: 0px;
+					margin-right: auto;
+					margin-left: auto;
 					top: 5px;
 					font-size: 1.5em;
 					color: $cobaltBlue;
+					width: 20px;
+					&.fa-envelope {
+						font-size: 1.20em;
+					}
+					&.fa-lock {
+						width: 16px;
+					}
 				}
 			} //div.input-icon
 			& > div.pass-match-container {

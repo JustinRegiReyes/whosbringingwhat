@@ -14,9 +14,8 @@
       				  <% end %>
             	<% end %>
               <% if @user.errors.any? %>
-                <div id="error_explanation" class="text-center">
-                  <i class="fa fa-exclamation-circle fa-2x"></i>
-                  <h4><%= pluralize(@user.errors.count, "error") %> with account creation.</h4>
+                <div id="error-explanation" class="text-center">
+                  <i class="fa fa-exclamation-circle"></i>
                   <ul class="list-unstyled">
                   <% @user.errors.full_messages.each do |msg| %>
                     <li><%= msg %></li>
@@ -32,19 +31,25 @@
               </div>
               <div>
                 <div class="input-icon">
-                  <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+                  <i class="fa fa-user" aria-hidden="true"></i>
                 </div>
                <%= f.text_field :username, placeholder: "Username e.g. \"jmoriarty\"", class: "form-control", id: "signup-username" %>
               </div>
               <div>
                 <div class="input-icon">
-                  <i class="fa fa-key" aria-hidden="true"></i>
+                 <i class="fa fa-envelope" aria-hidden="true"></i>
+                </div>
+               <%= f.email_field :email, placeholder: "Email e.g. \"mailbox@domain.com\"", class: "form-control", id: "email-username" %>
+              </div>
+              <div>
+                <div class="input-icon">
+                   <i class="fa fa-lock" aria-hidden="true"></i>
                 </div>
             	   <%= f.password_field :password, placeholder: raw("Password e.g. &bull;&bull;&bull;&bull;&bull;&bull;&bull;"), class: "form-control password-confirm pass-first" %>
               </div>
               <div>
                 <div class="input-icon">
-                  <i class="fa fa-lock 2x" aria-hidden="true"></i>
+                  <i class="fa fa-lock" aria-hidden="true"></i>
                 </div>
                 <div class="pass-match-container">
                   <i class="fa fa-times-circle pass-nomatch" aria-hidden="true"></i>

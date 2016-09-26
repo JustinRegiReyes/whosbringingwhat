@@ -17,8 +17,8 @@ class User < ActiveRecord::Base
 	has_many :inverse_friends, -> {where(friendships: {accepted: true})}, :through => :inverse_friendships, :source => :user
 
 	has_secure_password
-	validates :username, :password_digest, presence: true
-	validates :username, uniqueness: true
+	validates :username, :password_digest, :email, presence: true
+	validates_uniqueness_of :email, :case_sensitive => false
 
 	# paperclip
 
@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
 			after_update :reprocess_avi, :if => :cropping
 	# methods
 	def self.confirm (params)
-		@user = User.find_by_username(params[:username])
+		@user = User.find_by_email(params[:email])
 		@user.try(:authenticate, params[:password])
 	end
 
