@@ -84,7 +84,7 @@ div#user-search-container {
 				}
 				button.site-button {
 					margin-top: 30px;
-					background-color: $periGreen;
+					background-color: $cobaltBlue;
 					color: white;
 					padding: 5px 16px;
 				}
@@ -144,22 +144,23 @@ div#user-search-container {
 						font-size: .9em;
 					}
 					div.friendship, button.site-button {
-						background-color: #FFF;
+						background-color: $periGreen;
 						height: 25px;
 						width: 80px;
 						margin: 0;
 						font-size: .85em;
-						color: $periGreen;
-						border: 1px solid darken($cloud, 5%);
+						color: white;
 						position: absolute;
 						top: 0px;
 						right: 1px;
 						&:hover {
-							background-color: $periGreen;
+							background-color: darken($periGreen, 2%);
 							color: white;
-							border: 1px solid #FFF;
 						}
 						&.is-friends {
+							border: 1px solid darken($cloud, 5%);
+							background-color: white;
+							color: $periGreen;
 							&:hover {
 								background-color: white;
 								color: $periGreen;

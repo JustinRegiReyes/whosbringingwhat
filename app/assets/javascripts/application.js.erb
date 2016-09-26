@@ -49,6 +49,8 @@ function ready() {
 	searchBorderListener();
 	searchedFriendClickListener();
 	submitInvites();
+	acceptFriendRequestButton();
+	declineFriendRequestButton();
 	if(window.location.pathname === "/calendar") {
 		calendar();
 	}
@@ -861,3 +863,57 @@ function toggleLabels(labelType) {
 
 
 // ******************* invite guests functions END *********************
+
+// ********** my_friend_request functions **********
+		function acceptFriendRequestButton() {
+			var $acceptButton = $('button#accept-friend-request');
+			if($acceptButton.length > 0) {
+				$acceptButton.click(function() {
+					var $button = $(this);
+					var id = $button.data("friendship-id");
+					$.ajax({
+						type: "PATCH",
+						url: "/friendships/" + id + "/friend_accept",
+						dataType: 'json',
+						contentType: 'application/json',
+						success: success,
+						error: error
+					});
+				});
+
+				function success(res) {
+					window.location.reload();
+				}
+
+				function error(res) {
+
+				}
+			}
+		}
+
+		function declineFriendRequestButton() {
+			var $declineButton = $('button#decline-friend-request');
+			if($declineButton.length > 0) {
+				$declineButton.click(function() {
+					var $button = $(this);
+					var id = $button.data("friendship-id");
+					$.ajax({
+						type: "PATCH",
+						url: "/friendships/" + id + "/friend_decline",
+						dataType: 'json',
+						contentType: 'application/json',
+						success: success,
+						error: error
+					});
+				});
+
+				function success(res) {
+					window.location.reload();
+				}
+
+				function error(res) {
+
+				}
+			}
+		}
+// ******************* my_friend_request functions END *********************
