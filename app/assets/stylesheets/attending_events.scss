@@ -1,0 +1,114 @@
+div#my-invitations {
+	div#my-invitations-container {
+		width: 500px;
+		margin: 0 auto;
+		height: auto;
+		padding-top: 20px;
+		div.no-invitations {
+			width: 100%;
+			height: 40px;
+			padding-top: 8px;
+			font-size: .9em;
+			text-align: center;
+			background-color: white;
+		}
+		div.invitation-box {
+			height: 170px;
+			width: 100%;
+			background-color: white;
+			padding: 10px;
+			border-bottom: 1px solid $cloud;
+			div#event-photo {
+				width: 150px;
+				height: 100%;
+				float: left;
+				margin-right: 10px;
+			} //div#event-photo
+			div#event-information {
+				height: 100%;
+				position: relative;
+				padding-top: 10px;
+				float: left;
+				width: 320px;
+				div#event-guests {
+					position: absolute;
+					right: 5px;
+					top: 5px;
+					font-size: .9em;
+				} //div#event-guests
+				div#event-title {
+					font-size: 1.15em;
+					a {
+						&:hover {
+							text-decoration: none;
+						}
+					}
+				} //div#event-title
+				div#event-when {
+					font-size: .85em;
+					color: darken($cloud, 40%);
+				} //div#event-when
+				div#event-where {
+					font-size: .85em;
+					i {
+						color: $ashyRed;
+					}
+				} //div#event-where
+				div#event-highlights {
+					font-size: .85em;
+					margin-top: 10px;
+					width: 60%;
+				} //div#event-highlights
+				div.invitation-action-wrapper {
+					position: absolute;
+					width: 82px;
+					right: 0;
+					bottom: 0;
+					div.action-wrapper {
+						width: 100%;
+						border: 1px solid darken($cloud, 10%);
+						height: 25px;
+						button.invitation-action {
+							width: 60px;
+							height: 100%;
+							float: left;
+							font-size: .8em;
+							border: none;
+							margin: 0;
+							border-right: 1px solid darken($cloud, 10%);
+							background-color: darken($cloud, 2%);
+						} //button.invitation-action
+						div.dropdown {
+							width: 20px;
+							height: 100%;
+							float: left;
+							padding: 0;
+							font-size: .8em;
+							button.dropdown-toggle {
+								font-size: inherit;
+								width: 100%;
+								height: 100%;
+								border-radius: 0;
+								padding: 0;
+								border: none;
+								background-color: darken($cloud, 2%);
+								position: relative;
+								&:active, &:focus {
+									outline: none;
+								}
+							} //button.dropdown-toggle
+							div.dropdown-menu {
+								min-width: 120px;
+								width: 120px;
+								left: -61px;
+							} //div.dropdown-menu
+						} //div.dropdown
+					} //div.action-wrapper
+				} //div.invitation-action-wrapper
+			} //div.event-information
+		} //div.invitation-box
+		hr {
+			display: none;
+		}
+	} //div#my-invitations-container
+} //div#myinvitations

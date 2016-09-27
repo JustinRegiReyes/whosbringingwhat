@@ -51,6 +51,7 @@ function ready() {
 	submitInvites();
 	acceptFriendRequestButton();
 	declineFriendRequestButton();
+	acceptEventInvitation();
 	if(window.location.pathname === "/calendar") {
 		calendar();
 	}
@@ -917,3 +918,32 @@ function toggleLabels(labelType) {
 			}
 		}
 // ******************* my_friend_request functions END *********************
+
+// ********** my_invitations functions **********
+		function acceptEventInvitation() {
+			var $invitationButton = $('.event-invitation-action');
+			if($invitationButton.length > 0) {
+				$invitationButton.click(function() {
+					var $button = $(this);
+					var action = $(this).data("invitation-action");
+					var id = $button.data("invitation-id");
+					$.ajax({
+						type: "PATCH",
+						url: "/attending_events/" + id + "/" + action,
+						dataType: 'json',
+						contentType: 'application/json',
+						success: success,
+						error: error
+					});
+				});
+
+				function success(res) {
+					window.location.reload();
+				}
+
+				function error(res) {
+
+				}
+			}
+		}
+// ******************* my_invitations functions END *********************

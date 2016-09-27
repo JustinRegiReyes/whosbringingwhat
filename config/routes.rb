@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     get '/myevents', to: 'events#my_events'
 
   # attending_event routes
+    get '/invitations', to: 'attending_events#my_invitations'
     patch '/attending_events/:id/accept', to: 'attending_events#accept'
     patch '/attending_events/:id/decline', to: 'attending_events#decline'
     patch '/attending_events/:id/maybe', to: 'attending_events#maybe'

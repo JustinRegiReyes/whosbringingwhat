@@ -99,8 +99,8 @@ module NotificationsHelper
 		end		
 	end
 
-	def notification_invitation_status(attending_event_id, what_kind)
-		binding.pry
+	# supposed to update owner of event on the status of the current_users answer to the invitation
+	def notification_update_invitation_status(attending_event_id, what_kind)
 		# Notification.create({attending_event_id: attending_event_id, what_kind: what_kind})
 	end
 end

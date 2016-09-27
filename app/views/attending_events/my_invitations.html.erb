@@ -1,0 +1,57 @@
+<div id="my-invitations" class="default-container">
+	<div id="my-invitations-container">
+		<% if @invitations.count < 1 %>
+			<div class="no-invitations">
+				No pending invitations
+			</div>
+				<!-- div.no-friend-requests -->
+		<% else %>
+			<% @invitations.each do |invitation| %>
+				<% 3.times do %>
+				<% event = invitation.event %>
+				<div class="invitation-box clearfixs">
+					<a href="/events/<%= invitation.event.id%>">
+						<div id="event-photo" style="background: url('<%= image_path("#{event.photo.url(:medium)}")%>') no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;" ></div>
+					</a>
+					<div id="event-information">
+						<div id="event-guests">
+							<i class="fa fa-users" aria-hidden="true"></i> <%= event.attending_events.count %>
+						</div>
+						<div id="event-title"><a href="/events/<%=event.id%>"><%=truncate("#{event.title}", length: 25) %></a></div>
+						<div id="event-when">
+							<%= event.date_start.strftime('%a %b %-d') %> at <%= event.time_start.strftime('%l:%M%P')%>
+						</div>
+						<div id="event-where"><i class="fa fa-map-marker" aria-hidden="true"></i> <%= event.where %></div>
+						<div id="event-highlights">
+							<%= truncate("#{event.highlights}", length: 50) %>
+						</div>
+						<div class="invitation-action-wrapper">
+							<div class="action-wrapper clearfixs">
+								<button class='invitation-action site-button event-invitation-action' data-invitation-id='<%= invitation.id %>' data-invitation-action='accept'>Accept</button>
+								<div class="dropdown">
+									<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								    	<i class="fa fa-caret-down" aria-hidden="true"></i>
+								    </button>
+									<div class="dropdown-menu options" aria-labelledby="dropdownMenuButton">
+										<a class='dropdown-item event-invitation-action' href='' data-invitation-id='<%= invitation.id %>' data-invitation-action='maybe'>Maybe</a>
+										<a class='dropdown-item event-invitation-action' href='' data-invitation-id='<%= invitation.id %>' data-invitation-action='decline'>Decline</a>
+									</div>
+								</div>
+									<!-- div.dropdown -->
+							</div>
+								<!-- div.action-wrapper -->
+						</div>
+							<!-- div.notification-action-wrapper -->
+					</div>
+						<!-- div#event-information -->
+				</div>
+					<!-- div.event-box -->
+					<hr>
+			<% end %>
+			<% end %>
+				<!-- @invitations.each -->
+		<% end %>
+	</div>
+		<!-- div#my-invitations-container -->
+</div>
+	<!-- div#my-invitations -->
