@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div#new-event-container {
+div.event-form-container {
 	height: auto;
 	max-width: 500px;
 	margin: 0 auto;
@@ -10,7 +10,7 @@ div#new-event-container {
 	position: relative;
 	@include box-shadow();
 	padding: 20px 10px;
-	background: white;
+	background-color: white !important;
 	h3 {
 		margin: 0;
 		color: gray;
@@ -124,7 +124,14 @@ div#new-event-container {
 			}
 		}
 	} // div.form-container
-}
+} //div.event-form-container 
+// ********** END event#new and event#edit **********
+
+// ********** event#edit **********
+	div#event-edit-container {
+		height: auto;
+	}
+// ********** event#edit **********
 
 // ********** event#show **********
 
@@ -817,6 +824,12 @@ div#search-results-container {
 						position: absolute;
 						width: 245px;
 						bottom: -5px;
+						a {
+							text-decoration: none;
+							&:hover {
+								color: inherit;
+							}
+						}
 						button.site-button {
 							height: 22px;
 							font-size: 12px;

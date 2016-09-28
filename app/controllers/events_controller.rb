@@ -31,11 +31,17 @@ class EventsController < ApplicationController
   end
 
   def show
-    eventId = params[:id]
-    @event = Event.find_by_id(eventId)
+    @event = Event.find_by_id(event_id)
   end
 
   def edit
+    @event = Event.find_by_id(event_id)
+  end
+
+  def update
+    event = Event.find_by_id(event_id)
+    event.update(update_params)
+    redirect_to "/events/#{event.id}/edit"
   end
 
   def created
@@ -105,8 +111,15 @@ class EventsController < ApplicationController
 
   private
 
+  def update_params
+    updated_params = params.require(:event).permit(:photo, :title, :description, :where, :address, :city, :zipcode, :state, :country, :date_start, :date_end, :time_start, :time_end, :search_key)
+    updated_params[:date_start] = Date.strptime(updated_params[:date_start], '%m/%d/%Y')
+    updated_params[:date_end] = Date.strptime(updated_params[:date_end], '%m/%d/%Y')
+    return updated_params
+  end
+
   def event_params
-      params.require(:event).permit(:photo, :title, :description, :where, :address, :city, :zipcode, :state, :country, :date_start, :date_end, :time_start, :time_end)
+      params.require(:event).permit(:photo, :title, :description, :where, :address, :city, :zipcode, :state, :country, :date_start, :date_end, :time_start, :time_end, :search_key)
   end
 
   def specific_guests

@@ -19,7 +19,7 @@
 					<div class="event-description"><%= truncate("#{event.description}", length: 140) %></div>
 					<div class="button-wrapper">
 						<button class="site-button invite" data-event-id="<%= event.id %>">Invite</button>
-						<button class="site-button edit">Edit</button>
+						<a href="/events/<%= event.id%>/edit"><button class="site-button edit">Edit</button></a>
 					</div>
 				</div>
 			</div>

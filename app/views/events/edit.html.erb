@@ -1,2 +1,90 @@
-<h1>Events#edit</h1>
-<p>Find me in app/views/events/edit.html.erb</p>
+<div id="event-edit-container" class="clearfixs default-container event-form-container">
+	<!-- <h3 class="text-center">Create an event</h3> -->
+	<div class="form-container">
+		<%= form_for @event, url: "/events/#{@event.id}", method: "patch" do |f| %>
+			<div>
+				<div>
+					<label>Name of Event</label><br>
+					<%=	f.text_field :title, class: "full", placeholder: "Sci-Fi Saturday"  %>
+				</div>
+				<div>
+					<label>Search Key</label><br>
+					<%=	f.text_field :search_key, class: "full", placeholder: "movie night"  %>
+				</div>
+				<div>
+					<label for="photo">Upload Picture(s)</label><br><span id="filename"></span>
+					<label for="event_photo" class="col-xs-12 col-sm-6">
+						<div class="file-label">
+							<div class="button">
+								<div><i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Photo</div>
+							</div>
+						</div>
+					</label>
+					<label for="event_banner" class="col-xs-12 col-sm-6">
+						<div class="file-label">
+							<div class="button">
+								<div><i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Banner</div>
+							</div>
+						</div>
+					</label>
+                 	<%= f.file_field :photo, class: "photos medium" %>
+                 	<%= f.file_field :banner, class: "photos medium" %>
+				</div>
+				<div>
+					<label>Address/Name of Venue</label><br>
+					<%=	f.text_field :where, class: "full", placeholder: "The Batcave"  %>
+				</div>
+				<div class="col-xs-8">
+					<label>City</label><br>
+					<%=	f.text_field :city, class: "full", placeholder: "Gotham"  %>
+				</div>
+				<div class="col-sm-4 col-xs-12">
+					<label>State</label><br>
+					<%=	f.text_field :state, class: "full", placeholder: "New Jersey"  %>
+				</div>
+				<div class="col-xs-12">
+					<label>Highlights/Btw's</label><br>
+					<%=	f.text_area :highlights, class: "full textarea highlights", placeholder: "Don't tell anyone the whereabouts of The Batcave. No pets allowed in The Batcave. ESPECIALLY BATS"  %>
+				</div>
+				<div class="col-xs-12">
+					<label>Description</label><br>
+					<%= f.text_area :description, class: "full textarea description", placeholder: "Movie Night! This Saturday we're gonna go for sci-fi movies. So everyone bring your best sci-fi movie and we'll take a group vote! Oh, and bring drinks and snacks! We'll order pizza if we end up really hungry. See you guys there!" %>
+				</div>
+				<div class="start-end-wrapper col-xs-12 clearfixs">
+					<div class="col-sm-6 col-xs-12 start">
+						<label>Start</label><br>
+						<input type="text" class="span2 medium" name="event[date_start]" placeholder='<%= Date.today.strftime("%m/%d/%Y") %>' id="dpt1" value="<%= @event.date_start != nil ? @event.date_start.strftime("%m/%d/%Y") : Date.today.strftime("%m/%d/%Y") %>">
+						<%=	f.text_field :time_start, class: "timepicker medium", placeholder: "#{@event.time_start.strftime('%I : %M %p')}", value: "#{@event.time_start != nil ? @event.time_start.strftime('%I : %M %p') : Time.now.strftime('%I : %M %p')}"%>
+					</div>
+					<div class="col-sm-6 col-xs-12 end">
+						<label>End</label><br>
+						<input type="text" class="span2 medium" name="event[date_end]" placeholder='<%= Date.today.strftime("%m/%d/%Y") %>' id="dpt2" value="<%= @event.date_end != nil ? @event.date_end.strftime("%m/%d/%Y") : Date.today.strftime("%m/%d/%Y") %>">
+						<%=	f.text_field :time_end, class: "timepicker medium", placeholder: "#{@event.time_end.strftime('%I : %M %p')}", value: "#{@event.time_end != nil ? @event.time_end.strftime('%I : %M %p') : Time.now.strftime('%I : %M %p')}"%>
+					</div>
+				</div>
+				<div class="text-center">
+					<%= f.submit id:"event-edit-submit", class: "btn btn-default", value: "Save Changes" %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+<script>
+	$(function(){
+	  $('#dpt1').fdatepicker({
+			format: 'mm/dd/yyyy',
+			disableDblClickSelection: true,
+		});
+	  $('#dpt2').fdatepicker({
+			format: 'mm/dd/yyyy',
+			disableDblClickSelection: true,
+		});
+	});
+</script>
+
+<!-- "title"
+"description"
+"date"
+"time"
+"where" -->
