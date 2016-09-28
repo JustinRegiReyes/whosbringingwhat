@@ -107,11 +107,12 @@ function navHamburger() {
 function navHamburgerToggle() {
 	var el = $('#bs-example-navbar-collapse-1');
 	$('body').on('click', 'button.navbar-toggle', function() {
-		if(el.height() < 25) {
+		if(el.height() < 24) {
 			el.css({
 				height: "0px",
 			    display: "block",
-			    "overflow-y": "visible"
+			    "overflow-y": "visible",
+			    "border-bottom": "1px solid #bebebe"
 			});
 			el.animate({
 			    height: "26px"
@@ -121,7 +122,8 @@ function navHamburgerToggle() {
 				"overflow-y": 'hidden'
 			});
 			el.animate({
-			    height: "0px"
+			    height: "0px",
+			    "border-bottom": "0px"
 			}, 200, null, function() {
 				el.css({
 					"display": 'none'

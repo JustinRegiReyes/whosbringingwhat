@@ -12,8 +12,8 @@ nav.navbar-xs {
 
 	& > #bs-example-navbar-collapse-1 {
 		overflow-y: visible;
-		// height: 25px !important;
 		@media screen and (max-width: $break-sm) {
+			border-bottom: 1px solid darken($cloud, 20%);
 		    width: 100vw;
 		    position: fixed;
 		    left: 0px;
