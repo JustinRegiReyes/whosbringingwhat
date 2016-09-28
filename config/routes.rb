@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     post '/events/:id/comments', to: 'comments#create'
     post '/events/:id/guests/invite', to: 'events#send_invites'
     get '/events/:id/guests/:type', to: 'events#guests'
-    get '/myevents', to: 'events#my_events'
+    get '/my_events', to: 'events#my_events'
 
   # attending_event routes
     get '/invitations', to: 'attending_events#my_invitations'

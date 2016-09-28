@@ -1,3 +1,6 @@
+<!-- invite modal -->
+<%= render "partials/invitemodal" %>
+
 <div id="my-events-container" class="default-container">
 	<div id="events-container" class="clearfixs">
 		<div class="myevents-navigation">
@@ -15,7 +18,7 @@
 					<div class="event-attending"><%= event.attending_guests.count%> attending</div>
 					<div class="event-description"><%= truncate("#{event.description}", length: 140) %></div>
 					<div class="button-wrapper">
-						<button class="site-button invite">Invite</button>
+						<button class="site-button invite" data-event-id="<%= event.id %>">Invite</button>
 						<button class="site-button edit">Edit</button>
 					</div>
 				</div>

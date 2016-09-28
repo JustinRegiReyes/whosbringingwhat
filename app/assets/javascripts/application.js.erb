@@ -52,6 +52,7 @@ function ready() {
 	acceptFriendRequestButton();
 	declineFriendRequestButton();
 	acceptEventInvitation();
+	myEventsInviteButton();
 	if(window.location.pathname === "/calendar") {
 		calendar();
 	}
@@ -302,7 +303,7 @@ function guestAviUrl(url) {
 if (url == "aviplaceholder.png") {
 		var aviUrl = "<%= asset_path('aviplaceholder.png')%>";
 	} else {
-		var aviUrl = avi_url;
+		var aviUrl = url;
 	}
 
 	return aviUrl;
@@ -530,14 +531,14 @@ function toggleLabels(labelType) {
 		if($inviteButton.length > 0) {
 			var $modal = $('div#invite-modal');
 			$inviteButton.click(function(e) {
+			var eventId = location.pathname.split("/events/")[1];
 				$modal.modal('toggle');
-				inviteGetFriends();
+				inviteGetFriends(eventId);
 			})
 		}
 	}
 
-	function inviteGetFriends() {
-		var eventId = location.pathname.split("/events/")[1];
+	function inviteGetFriends(eventId) {
 		var url = "/friends/invite/events/" + eventId;
 		$.ajax({
 			url: url,
@@ -947,3 +948,20 @@ function toggleLabels(labelType) {
 			}
 		}
 // ******************* my_invitations functions END *********************
+
+// ********** my_event functions **********
+	function myEventsInviteButton() {
+		var $inviteButton = $('button.site-button.invite');
+		if($inviteButton.length > 0) {
+			$inviteButton.click(function() {
+				$button = $(this);
+				var eventId = $button.data("event-id");
+				// submit button uses a hidden input value that contains the event id. this changes the value
+				$('input#event-id').val(eventId);
+				var $modal = $('div#invite-modal');
+				$modal.modal('toggle');
+				inviteGetFriends(eventId);
+			});
+		}
+	}
+// ******************* my_event functions END *********************

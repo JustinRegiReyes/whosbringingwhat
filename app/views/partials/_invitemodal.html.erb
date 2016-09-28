@@ -14,7 +14,7 @@
                     <div id="search-box-container">
                         <input id="search-box" type="text" placeholder="Search for friends">
                     </div>
-        			<input id="event-id" type="hidden" value="<%= @event.id %>">
+        			<input id="event-id" type="hidden" value="<%=  @event != nil ? @event.id : "" %>">
         		</div>
         		<div id="matched-friends-list"></div>
         	</div>

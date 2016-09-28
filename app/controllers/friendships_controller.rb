@@ -85,10 +85,11 @@ class FriendshipsController < ApplicationController
 
 	def invite_friends
 		# queries users that is not have been invited at all to the event and has an accepted friendship with the current_user
-		friends = User.includes(:attending_events, :friendships).where(attending_events: { event_id: nil}, friendships: {friend_id: current_user.id, accepted: true} ).as_json(:only => [:id,:username, :from], methods: [:avi_url])
+		friends = User.includes(:friendships).where(friendships: {friend_id: current_user.id, accepted: true} ).uniq
+		invitableFriends = sort_invitable_friends(friends, event_id)
 		respond_to do |format|
 			format.html { render layout: false }
-			format.json { render :json => {data: {friends: friends} }, status: 200 }
+			format.json { render :json => {data: {friends: invitableFriends} }, status: 200 }
 		end
 	end
 

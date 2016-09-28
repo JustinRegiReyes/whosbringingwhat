@@ -7,7 +7,6 @@
 				<!-- div.no-friend-requests -->
 		<% else %>
 			<% @invitations.each do |invitation| %>
-				<% 3.times do %>
 				<% event = invitation.event %>
 				<div class="invitation-box clearfixs">
 					<a href="/events/<%= invitation.event.id%>">
@@ -47,7 +46,6 @@
 				</div>
 					<!-- div.event-box -->
 					<hr>
-			<% end %>
 			<% end %>
 				<!-- @invitations.each -->
 		<% end %>
