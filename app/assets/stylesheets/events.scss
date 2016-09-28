@@ -27,6 +27,11 @@ div#new-event-container {
 				padding-left: 5px;
 			}
 			& > div.start-end-wrapper {
+				div.start, div.end {
+					padding-left: 0;
+					padding-right: 0;
+					padding: 0;
+				}
 				div.col-xs-6 {
 					padding: 0 !important;
 					&.end {
@@ -38,14 +43,18 @@ div#new-event-container {
 		}
 		textarea, input {
 			border: none;
-			border-bottom: 1px solid $cloud;
+			border: 1px solid white;
+			border-bottom: 1px solid darken($cloud, 20%);
 			margin-bottom: 10px;
 			color: $asphalt;
 			padding-top: 3px;
 			padding-bottom: 3px;
 			padding-left: 3px;
+			font-size: .9em;
 			&:focus {
 				color: black;
+				outline: none;
+				border: 1px solid $cobaltBlue;
 			}
 			&.full {
 				width: 100%;
@@ -79,7 +88,7 @@ div#new-event-container {
 			border: 1px solid $cloud;
 		}
 		label {
-			font-weight: 200;
+			font-weight: 300;
 		}
 		div.file-label {
 			height: 40px;
@@ -108,6 +117,8 @@ div#new-event-container {
 			color: white;
 			background-color: $periGreen;
 			border-radius: 0;
+			padding: 5px 10px;
+			width: 130px;
 			&:hover {
 				background-color: lighten($periGreen, 2%);
 			}
