@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922195530) do
+ActiveRecord::Schema.define(version: 20160928043827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20160922195530) do
     t.integer  "banner_file_size"
     t.datetime "banner_updated_at"
     t.string   "highlights"
+    t.string   "search_key"
   end
 
   create_table "friendships", force: :cascade do |t|
