@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :logged_in?, only: [:new, :show, :created, :attending, :my_events]
+  before_action :logged_in?, except: [:show]
 
   def new
     @event = Event.new
@@ -46,10 +46,10 @@ class EventsController < ApplicationController
     eventQuery = params[:event]
     user = User.where("username ILIKE ?", eventQuery[:username]).first
     if(user != nil)
-      @events = user.created_events.where("title ILIKE ?", "#{eventQuery[:title]}")
+      @events = user.created_events.where("search_key ILIKE ?", "#{eventQuery[:search_key]}")
     end
     @username = user != nil ? user.username : eventQuery[:username]
-    @title = eventQuery[:title]
+    @search_key = eventQuery[:search_key]
   end
 
   def attending

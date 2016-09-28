@@ -472,6 +472,10 @@ div#search-results-container {
 	div#search-container {
 		position: relative;
 		z-index: 1;
+		float: left;
+		width: 240px; 
+		height: 210px;
+		margin-right: 20px;
 		div#search-box {
 			width: 240px; 
 			height: 210px;
@@ -496,6 +500,7 @@ div#search-results-container {
 				}
 				button.site-button {
 					margin-top: 30px;
+					padding: 5px;
 					background-color: $periGreen;
 					color: white;
 				}
@@ -503,6 +508,7 @@ div#search-results-container {
 		} //form
 	} //div#search-container
 	div#events-results-container {
+		overflow: hidden;
 		div#search-results {
 			min-height: 300px;
 			padding: 0px 0px 20px;
@@ -583,12 +589,15 @@ div#search-results-container {
 			position: relative;
 			height: auto;
 			padding: 0;
+			width: 100%;
+			margin: 0;
 			div#search-box {
 				float: none;
-				width: 100%;
+				width: 325px;
 				height: 100%;
 				padding: 10px;
 				position: relative;
+				margin: 0 auto;
 				form {
 					height: 100%;
 					& > div {
@@ -604,7 +613,7 @@ div#search-results-container {
 							width: 100%;
 						}
 						button {
-							margin: 0;
+							margin-top: 10px;
 						}
 					}
 				} //form
@@ -613,10 +622,51 @@ div#search-results-container {
 		div#events-results-container {
 			margin-top: 20px;
 			padding: 0;
+			width: 100%;
+			height: auto;
+			overflow: hidden;
+			div#search-results {
+				padding: 20px 0 0;
+				height: auto;
+				div#results-count {
+					margin: 10px 0;
+				} //div#results-count
+				div.event-box {
+					height: auto;
+					width: 100%;
+					box-shadow: none;
+					overflow-y: visible;
+					position: relative;
+					max-height: inherit;
+					max-width: 325px;
+					padding: 20px 0;
+					a {
+						display: block;
+						height: auto;
+						float: none;
+						width: 250px;
+						margin: 0 auto;
+						div#event-banner {
+							width: 250px;
+							height: 250px;
+							margin: 0 auto;
+							float: none !important;
+						}
+					}
+					div#event-information {
+						padding: 0;
+						width: 250px;
+						height: auto;
+						margin: 0 auto;
+						float: none !important;
+					}
+				} //div.event-box
+			} //div#search-results
 		} //div#results-container
 	} // ********** max-width: $break-sm
 	@media screen and (max-width: $break-iphone6plus) {
 		padding: 0;
+		padding-top: 50px;
 		width: 100vw;
 		background-color: white;
 		overflow-y: visible;
@@ -648,35 +698,35 @@ div#search-results-container {
 			margin: 0;
 			margin-top: 5px;
 			div#search-results {
-				div.event-box {
-					height: auto;
-					width: 100%;
-					box-shadow: none;
-					overflow-y: visible;
-					position: relative;
-					max-height: inherit;
-					padding: 10px 0;
-					a {
-						display: block;
-						height: auto;
-						float: none;
-						width: 250px;
-						margin: 0 auto;
-						div#event-banner {
-							width: 250px;
-							height: 250px;
-							margin: 0 auto;
-							float: none !important;
-						}
-					}
-					div#event-information {
-						padding: 0;
-						width: 250px;
-						height: auto;
-						margin: 0 auto;
-						float: none !important;
-					}
-				} //div.event-box
+				// div.event-box {
+				// 	height: auto;
+				// 	width: 100%;
+				// 	box-shadow: none;
+				// 	overflow-y: visible;
+				// 	position: relative;
+				// 	max-height: inherit;
+				// 	padding: 10px 0;
+				// 	a {
+				// 		display: block;
+				// 		height: auto;
+				// 		float: none;
+				// 		width: 250px;
+				// 		margin: 0 auto;
+				// 		div#event-banner {
+				// 			width: 250px;
+				// 			height: 250px;
+				// 			margin: 0 auto;
+				// 			float: none !important;
+				// 		}
+				// 	}
+				// 	div#event-information {
+				// 		padding: 0;
+				// 		width: 250px;
+				// 		height: auto;
+				// 		margin: 0 auto;
+				// 		float: none !important;
+				// 	}
+				// } //div.event-box
 				hr {
 					display: block !important;
 				}
