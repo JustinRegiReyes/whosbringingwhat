@@ -759,22 +759,25 @@ div#search-results-container {
 							height: 22px;
 							font-size: 12px;
 							width: 120px;
-							background-color: white;
-							border: 1px solid silver;
 							padding-bottom: 4px;
 							color: black;
-							&:hover {
-								border: 1px solid $periGreen;
-								color: $periGreen;
+							&.invite {
+								background-color: $cobaltBlue;
+								border: 1px solid $cobaltBlue;
+								color: white;
+								&:hover {
+									background-color: darken($cobaltBlue, 2%);
+								}
 							}
-							// &.invite {
-							// 	background-color: $cobaltBlue;
-							// }
-							// &.edit {
-							// 	background-color: $periGreen;
-							// }
-						}
-					}
+							&.edit {
+								border: 1px solid darken($cloud, 40%);
+								background-color: $cloud;
+								&:hover {
+									background-color: darken($cloud, 2%);
+								}
+							}
+						} //button.site-button
+					} //div.button-wrapper
 				} //div.information
 			} //div.event-box
 			hr {
