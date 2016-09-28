@@ -1,5 +1,5 @@
 <div class="default-container">
-	<div id="new-event-container" class="clearfixs">
+	<div id="new-event-container" class="clearfixs event-form-container">
 		<!-- <h3 class="text-center">Create an event</h3> -->
 		<div class="form-container">
 			<%= form_for @event, url: '/events', method: "post" do |f| %>
@@ -33,7 +33,7 @@
 					</div>
 					<div>
 						<label>Address/Name of Venue</label><br>
-						<%=	f.text_field :title, class: "full", placeholder: "The Batcave"  %>
+						<%=	f.text_field :where, class: "full", placeholder: "The Batcave"  %>
 					</div>
 					<div class="col-xs-8">
 						<label>City</label><br>
@@ -59,7 +59,7 @@
 						</div>
 						<div class="col-sm-6 col-xs-12 end">
 							<label>End</label><br>
-							<input type="text" class="span2 medium" name="event[:date_start]" placeholder='<%= Date.today.strftime("%m/%d/%Y") %>' id="dpt2">
+							<input type="text" class="span2 medium" name="event[:date_end]" placeholder='<%= Date.today.strftime("%m/%d/%Y") %>' id="dpt2">
 							<%=	f.text_field :time_end, class: "timepicker medium", placeholder: "#{Time.now.strftime('%I : %M %p')}"%>
 						</div>
 					</div>
