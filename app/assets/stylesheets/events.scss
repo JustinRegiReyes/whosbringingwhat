@@ -11,6 +11,24 @@ div.event-form-container {
 	@include box-shadow();
 	padding: 20px 10px;
 	background-color: white !important;
+	div#error-explanation {
+		text-align: left;
+		position: relative;
+		i {
+			display: block;
+			margin: 0 auto;
+			width: 20px;
+			font-size: 1.2em;
+		}
+		ul {
+			border: 1px solid darken($cloud, 10%);
+			width: 250px;
+			padding: 15px;
+			padding-left: 30px;
+			color: $ashyRed;
+			margin: 10px auto 0;
+		}
+	}
 	h3 {
 		margin: 0;
 		color: gray;
@@ -72,6 +90,9 @@ div.event-form-container {
 			&.small {
 				width: 22%;
 			}
+			&.smaller {
+				width: 18%;
+			}
 			&.photos {
 				border: none;
 				display: none;
@@ -124,7 +145,46 @@ div.event-form-container {
 			}
 		}
 	} // div.form-container
+	@media screen and(max-width: $break-iphone6plus) {
+		top: 0;
+		div.form-container {
+			textarea {
+				padding: 10px;				
+				&#event_highlights {
+					height: 130px;
+				} //textarea#event_highlights
+				&#event_description {
+					height: 170px;
+				} //textarea#event_description
+			}
+		} //div.form-container
+	} //div.event-form-container @media screen and(max-width: $break-iphone6plus)
 } //div.event-form-container 
+
+div#event-new-container {
+	form#new_event {
+		div#categories-container {
+			div#categories-header {
+				font-size: 1.1em;
+				position: relative;
+				button#categories-add {
+				    width: 55px;
+				    height: 25px;
+				    font-size: .7em;
+				    right: 0;
+				    top: 0;
+				    margin: 0;
+				    position: absolute;
+				    background-color: $cloud;
+				    border: 1px solid darken($cloud, 40%);
+				    &:hover {
+				    	background-color: darken($cloud, 2%);
+				    }
+				} //button#categories-add
+			} //div#categories-header
+		} //div#categories-container
+	} //form#new_event
+} //div#event-new-container
 // ********** END event#new and event#edit **********
 
 // ********** event#edit **********

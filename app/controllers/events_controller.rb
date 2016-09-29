@@ -25,9 +25,18 @@ class EventsController < ApplicationController
   end
 
   def create
-    event = Event.create(event_params)
-    current_user.created_events << event
-    redirect_to "/events/#{event.id}"
+    @event = Event.new(event_params)
+    if @event.save
+      flash[:success] = "Created event"
+      current_user.created_events << @event
+      create_categories(categories_params, @event.id, current_user.id)
+      redirect_to "/events/#{@event.id}"
+    else
+      if categories_params.first[:title].empty? == false
+        @categories = categories_params
+      end
+      render "/events/new"
+    end
   end
 
   def show
@@ -112,14 +121,25 @@ class EventsController < ApplicationController
   private
 
   def update_params
-    updated_params = params.require(:event).permit(:photo, :title, :description, :where, :address, :city, :zipcode, :state, :country, :date_start, :date_end, :time_start, :time_end, :search_key)
+    updated_params = params.require(:event).permit(:photo, :title, :description, :where, :address, :city, :zipcode, :state, :country, :date_start, :date_end, :time_start, :time_end, :search_key, :highlights)
     updated_params[:date_start] = Date.strptime(updated_params[:date_start], '%m/%d/%Y')
     updated_params[:date_end] = Date.strptime(updated_params[:date_end], '%m/%d/%Y')
     return updated_params
   end
 
   def event_params
-      params.require(:event).permit(:photo, :title, :description, :where, :address, :city, :zipcode, :state, :country, :date_start, :date_end, :time_start, :time_end, :search_key)
+      edited_params = params.require(:event).permit(:photo, :title, :description, :where, :address, :city, :zipcode, :state, :country, :date_start, :date_end, :time_start, :time_end, :search_key, :highlights)
+      if edited_params[:date_start].length > 0
+        edited_params[:date_start] = Date.strptime(edited_params[:date_start], '%m/%d/%Y')
+      end
+      if edited_params[:date_end].length > 0
+        edited_params[:date_end] = Date.strptime(edited_params[:date_end], '%m/%d/%Y')
+      end
+      return edited_params
+  end
+
+  def categories_params
+      params.require(:categories)
   end
 
   def specific_guests

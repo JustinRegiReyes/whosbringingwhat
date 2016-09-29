@@ -1,6 +1,25 @@
 <div class="default-container">
-	<div id="new-event-container" class="clearfixs event-form-container">
-		<!-- <h3 class="text-center">Create an event</h3> -->
+	<div id="event-new-container" class="clearfixs event-form-container">
+		<div class="errors-container">
+        	<% if flash[:auth_error] %>
+        		<% flash.each do |key, value| %>
+          		<div class="flash <%= key %>">
+          			<%= value %>
+          		</div>
+  				  <% end %>
+        	<% end %>
+          <% if @event.errors.any? %>
+            <div id="error-explanation">
+              <i class="fa fa-exclamation-circle"></i>
+              <ul>
+              <% @event.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+        	<!-- errors-container -->
 		<div class="form-container">
 			<%= form_for @event, url: '/events', method: "post" do |f| %>
 				<div>
@@ -32,7 +51,7 @@
 	                 	<%= f.file_field :banner, class: "photos medium" %>
 					</div>
 					<div>
-						<label>Address/Name of Venue</label><br>
+						<label>Name of Venue</label><br>
 						<%=	f.text_field :where, class: "full", placeholder: "The Batcave"  %>
 					</div>
 					<div class="col-xs-8">
@@ -43,6 +62,27 @@
 						<label>State</label><br>
 						<%=	f.text_field :state, class: "full", placeholder: "New Jersey"  %>
 					</div>
+					<div>
+						<label>Address</label><br>
+						<%=	f.text_field :address, class: "full", placeholder: "123 Batcave Lane"  %>
+					</div>
+					<div>
+						<label>Zipcode</label><br>
+						<%=	f.text_field :zipcode, class: "full", placeholder: "12345"  %>
+					</div>
+					<div class="start-end-wrapper col-xs-12 clearfixs">
+						<div class="col-sm-6 col-xs-12 start">
+							<label>Start</label><br>
+							<input type="text" class="span2 medium" name="event[date_start]" placeholder='<%= Date.today.strftime("%m/%d/%Y") %>' id="dpt1" value="<%= @event.date_start != nil ? @event.date_start.strftime("%m/%d/%Y") : Date.today.strftime("%m/%d/%Y") %>">
+							<%=	f.text_field :time_start, class: "timepicker large", placeholder: "#{Time.now.strftime('%I : %M %p')}"%>
+						</div>
+						<div class="col-sm-6 col-xs-12 end">
+							<label>End</label><br>
+							<input type="text" class="span2 medium" name="event[date_end]" placeholder='<%= Date.today.strftime("%m/%d/%Y") %>' id="dpt2" value="<%= @event.date_end != nil ? @event.date_end.strftime("%m/%d/%Y") : Date.today.strftime("%m/%d/%Y") %>">
+							<%=	f.text_field :time_end, class: "timepicker large", placeholder: "#{Time.now.strftime('%I : %M %p')}"%>
+						</div>
+					</div>
+						<!-- div.start-end-wrapper -->
 					<div class="col-xs-12">
 						<label>Highlights/Btw's</label><br>
 						<%=	f.text_area :highlights, class: "full textarea highlights", placeholder: "Don't tell anyone the whereabouts of The Batcave. No pets allowed in The Batcave. ESPECIALLY BATS"  %>
@@ -51,17 +91,49 @@
 						<label>Description</label><br>
 						<%= f.text_area :description, class: "full textarea description", placeholder: "Movie Night! This Saturday we're gonna go for sci-fi movies. So everyone bring your best sci-fi movie and we'll take a group vote! Oh, and bring drinks and snacks! We'll order pizza if we end up really hungry. See you guys there!" %>
 					</div>
-					<div class="start-end-wrapper col-xs-12 clearfixs">
-						<div class="col-sm-6 col-xs-12 start">
-							<label>Start</label><br>
-							<input type="text" class="span2 medium" name="event[:date_start]" placeholder='<%= Date.today.strftime("%m/%d/%Y") %>' id="dpt1">
-							<%=	f.text_field :time_start, class: "timepicker medium", placeholder: "#{Time.now.strftime('%I : %M %p')}"%>
+					<div class="col-xs-12">
+						<div id="categories-container">
+							<div id="categories-header">
+								Categories
+								<button id="categories-add" class="site-button" type="button">
+									Add
+									<i class="fa fa-plus-square" aria-hidden="true"></i>
+								</button>
+							</div><br>
+								<!-- div#categories-header -->
+							<% if @categories == nil %>
+								<div class="category-box clearfixs">
+									<div class="category-title col-sm-8 col-xs-12">
+										<label>Title</label><br>
+										<input name="categories[][title]" type="text" placeholder="Utensils" class="full">
+									</div>
+										<!-- div.category-title -->
+									<div class="category-needed col-sm-4 col-xs-12">
+										<label># of items</label><br>
+										<input name="categories[][needed]" type="number" placeholder="4" class="full">
+									</div>
+										<!-- div.category-needed -->
+								</div>
+										<!-- div.category-box -->
+							<% else %>
+								<% @categories.each do |category| %>
+									<div class="category-box clearfixs">
+										<div class="category-title col-sm-8 col-xs-12">
+											<label>Title</label><br>
+											<input name="categories[][title]" type="text" placeholder="Utensils" class="full" value="<%= category[:title] %>">
+										</div>
+											<!-- div.category-title -->
+										<div class="category-needed col-sm-4 col-xs-12">
+											<label># of items</label><br>
+											<input name="categories[][needed]" type="number" placeholder="4" class="full" value="<%= category[:needed] %>">
+										</div>
+											<!-- div.category-needed -->
+									</div>
+											<!-- div.category-box -->
+								<% end %>
+							<% end %>
 						</div>
-						<div class="col-sm-6 col-xs-12 end">
-							<label>End</label><br>
-							<input type="text" class="span2 medium" name="event[:date_end]" placeholder='<%= Date.today.strftime("%m/%d/%Y") %>' id="dpt2">
-							<%=	f.text_field :time_end, class: "timepicker medium", placeholder: "#{Time.now.strftime('%I : %M %p')}"%>
-						</div>
+							<!-- div#categories-container -->
 					</div>
 					<div class="text-center">
 						<%= f.submit id:"new-event-submit", class: "btn btn-default", value: "Create Event" %>
