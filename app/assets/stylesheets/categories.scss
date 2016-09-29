@@ -186,16 +186,29 @@ div#categories-show-container {
 				div#category {
 					box-shadow: none;
 				}
-				button.site-button {
-					width: 98%;
-					position: relative;
-					left: 1px;
-				}
+				a#bring-item {
+					button.site-button {
+						width: 98%;
+						position: relative;
+					}
+				} //a#bring-item
 			} //div#category-container
 		}
 	} //div#information-section
 	@media screen and (max-width: $break-iphone6plus) {
 		padding-top: 0;
+		div#information-section {
+			div#overview-container {
+			} //div#overview-container
+			div#category-container {
+				a#bring-item {
+					button.site-button {
+						width: 95%;
+						position: relative;
+					}
+				} //a#bring-item
+			} //div#category-container
+		}//div#information-section
 	}
 } //div#categories-show-container
 
