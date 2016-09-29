@@ -6,7 +6,7 @@ class Event < ActiveRecord::Base
 	has_many :comments
 	belongs_to :user
 
-	validates :title, :search_key, :date_start, :date_end, :time_start, :time_end, :address, :city, :zipcode, :state, :where, :highlights, :description, presence: true
+	validates :title, :search_key, :date_start, :time_start, :address, :city, :zipcode, :state, :where, :highlights, :description, presence: true
 
 
 
