@@ -1,13 +1,6 @@
-<div class="default-container">
-	<div id="event-new-container" class="clearfixs event-form-container">
+<div id="event-new-container" class="default-container">
+	<div class="clearfixs event-form-container">
 		<div class="errors-container">
-        	<% if flash[:auth_error] %>
-        		<% flash.each do |key, value| %>
-          		<div class="flash <%= key %>">
-          			<%= value %>
-          		</div>
-  				  <% end %>
-        	<% end %>
           <% if @event.errors.any? %>
             <div id="error-explanation">
               <i class="fa fa-exclamation-circle"></i>
@@ -73,12 +66,12 @@
 					<div class="start-end-wrapper col-xs-12 clearfixs">
 						<div class="col-sm-6 col-xs-12 start">
 							<label>Start</label><br>
-							<input type="text" class="span2 medium" name="event[date_start]" placeholder='<%= Date.today.strftime("%m/%d/%Y") %>' id="dpt1" value="<%= @event.date_start != nil ? @event.date_start.strftime("%m/%d/%Y") : Date.today.strftime("%m/%d/%Y") %>">
+							<input type="text" class="span2 large" name="event[date_start]" placeholder='<%= Date.today.strftime("%m/%d/%Y") %>' id="dpt1" value="<%= @event.date_start != nil ? @event.date_start.strftime("%m/%d/%Y") : Date.today.strftime("%m/%d/%Y") %>">
 							<%=	f.text_field :time_start, class: "timepicker large", placeholder: "#{Time.now.strftime('%I : %M %p')}"%>
 						</div>
 						<div class="col-sm-6 col-xs-12 end">
 							<label>End</label><br>
-							<input type="text" class="span2 medium" name="event[date_end]" placeholder='<%= Date.today.strftime("%m/%d/%Y") %>' id="dpt2" value="<%= @event.date_end != nil ? @event.date_end.strftime("%m/%d/%Y") : Date.today.strftime("%m/%d/%Y") %>">
+							<input type="text" class="span2 large" name="event[date_end]" placeholder='<%= Date.today.strftime("%m/%d/%Y") %>' id="dpt2" value="<%= @event.date_end != nil ? @event.date_end.strftime("%m/%d/%Y") : Date.today.strftime("%m/%d/%Y") %>">
 							<%=	f.text_field :time_end, class: "timepicker large", placeholder: "#{Time.now.strftime('%I : %M %p')}"%>
 						</div>
 					</div>
@@ -111,6 +104,11 @@
 									<div class="category-needed col-sm-4 col-xs-12">
 										<label># of items</label><br>
 										<input name="categories[][needed]" type="number" placeholder="4" class="full">
+									</div>
+										<!-- div.category-needed -->
+									<div class="category-description col-xs-12">
+										<label>Description</label><br>
+										<textarea class="full textarea description" placeholder="Forks, plates, cups and anything that's like!" name="categories[][description]"></textarea>
 									</div>
 										<!-- div.category-needed -->
 								</div>
