@@ -12,7 +12,9 @@
 			<div class="event-box clearfixs">
 				<a href="/events/<%= event.id %>"><div class="img" style="background: url('<%= image_path("#{event.banner.url(:medium)}")%>') no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;"></div></a>
 				<div class="information">
-					<a href="#" id="delete-icon"><i class="fa fa-trash" aria-hidden="true"></i></a>
+					<a href="/events/<%= event.id %>" id="delete-icon" data-confirm="Are you sure?" data-method="delete">
+						<i class="fa fa-trash" aria-hidden="true"></i>
+					</a>
 					<div class="event-title"><a class="event-link" href="/events/<%= event.id %>"><%= truncate("#{event.title}",length: 25) %></a></div>
 					<div class="event-date"><%= event.date_start.strftime('%b %-d') %> at <%= event.time_start.strftime('%l:%M%P')%></div>
 					<div class="event-attending"><%= event.attending_guests.count%> attending</div>

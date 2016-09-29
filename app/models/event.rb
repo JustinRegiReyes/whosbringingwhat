@@ -1,9 +1,9 @@
 class Event < ActiveRecord::Base
 	attr_accessor :owner, :date
-	has_many :categories
+	has_many :categories, dependent: :destroy
 
-	has_many :attending_events
-	has_many :comments
+	has_many :attending_events, dependent: :destroy
+	has_many :comments, dependent: :destroy
 	belongs_to :user
 
 	validates :title, :search_key, :date_start, :time_start, :address, :city, :zipcode, :state, :where, :highlights, :description, presence: true

@@ -84,7 +84,15 @@ class EventsController < ApplicationController
   def index
   end
 
-  def delete
+  def destroy
+    event = Event.find_by_id(event_id)
+    categories_delete_items(event.categories)
+    event.categories.delete_all
+    event.comments.delete_all
+    event.attending_events.delete_all
+    event.destroy
+    flash[:success] = "Event deleted"
+    redirect_to "/my_events"
   end
 
   def guests

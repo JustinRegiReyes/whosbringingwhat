@@ -15,4 +15,10 @@ module CategoriesHelper
 		end
 		return created_categories
 	end
+
+	def categories_delete_items(categories)
+		categories.each do |c|
+			c.items.destroy_all
+		end
+	end
 end
