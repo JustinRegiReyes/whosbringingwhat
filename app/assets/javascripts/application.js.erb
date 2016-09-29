@@ -566,7 +566,7 @@ function toggleLabels(labelType) {
 		if($inviteButton.length > 0) {
 			var $modal = $('div#invite-modal');
 			$inviteButton.click(function(e) {
-			var eventId = location.pathname.split("/events/")[1];
+			var eventId = $(this).data("event-id");
 				$modal.modal('toggle');
 				inviteGetFriends(eventId);
 			})
