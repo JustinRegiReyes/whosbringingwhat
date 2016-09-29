@@ -5,7 +5,17 @@
 		height: auto;
 		margin: 0 auto;
 		&.no-notifications {
-			max-width: 300px !important;
+			width: 100%;
+			max-width: 500px;
+			min-height: 50px;
+			padding: 0;
+			position: relative;
+			height: 50px;
+			top: 40px;
+			position: relative;
+			font-size: .9em;
+			text-align: center;
+			background-color: white;
 		}
 		div#notifications-container {
 			width: 100%;
