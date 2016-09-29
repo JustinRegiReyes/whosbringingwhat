@@ -17,7 +17,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find_by_id(params[:category_id])
+    @category = Category.find_by_id(category_id)
     @event = @category.event
   end
 
@@ -26,6 +26,19 @@ class CategoriesController < ApplicationController
   end
 
   def edit
+    @category = Category.find_by_id(category_id)
+    @event = @category.event
+  end
+
+  def update
+    category = Category.find_by_id(category_id)
+    if category.update(category_params)
+      flash[:success] = "Edits saved"
+      redirect_to "/events/#{category.event.id}/categories/#{category.id}"
+    else
+      flash[:error] = "Edits not saved"
+      redirect_to :back
+    end
   end
 
   def index
@@ -38,5 +51,13 @@ class CategoriesController < ApplicationController
 
   def event_id
     params[:event_id]
+  end
+
+  def category_id
+    params[:category_id]
+  end
+
+  def category_params
+    params.require(:category).permit(:title, :needed, :description)
   end
 end

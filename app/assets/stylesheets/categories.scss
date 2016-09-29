@@ -281,5 +281,76 @@ div#categories-in-event-edit {
 } //div#categories-in-event
 // ********** categories#in_event END **********
 
+// ********** categories#show **********
+
+div#categories-edit-container {
+	height: auto;
+	width: 100vw;
+	max-width: 500px;
+	margin: 0 auto;
+	position: relative;
+	@include banner-overlay();
+	button#invite-guests {
+		display: none;
+	}
+	div#edit-container {
+		height: auto;
+		width: 100%;
+		padding: 20px 10px;
+		position: relative;
+		background-color: white;
+		div.category-box {
+			height: auto;
+			width: 100%;
+			position: relative;
+			& > div {
+				label {
+					font-weight: 300;
+				}
+				input, textarea {
+					width: 100%;
+					border: none;
+					border-bottom: 1px solid darken($cloud, 5%);
+					&:focus {
+						outline: none;
+						border: 1px solid $cobaltBlue;
+					}
+				}
+				&.category-description {
+					margin-top: 20px;
+					textarea {
+						border: 1px solid darken($cloud, 5%);
+						min-height: 75px;
+					}
+				}
+			} //& > div
+		} //div.category-box
+		div.submit-wrapper {
+			text-align: center;
+			input.site-button {
+				background-color: $periGreen;
+				color: white;
+			}
+		}
+	} //div#edit-container
+	@media screen and (max-width: $break-iphone6plus) {
+		height: 100vh;
+		background-color: white;
+		div#edit-container {
+			div.category-box {
+				& > div {
+					padding: 20px 10px;
+					&.category-description {
+						margin-top: 0;
+						textarea {
+							min-height: 100px;
+						}
+					} //&.category-description
+				} //& > div 
+			} //div.category-box
+		} //div#edit-container
+	} //div#categories-show-container @media screen and (max-width: $break-iphone6plus)
+} //div#categories-show-container
+
 
 

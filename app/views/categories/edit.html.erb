@@ -1,2 +1,30 @@
-<h1>Categories#edit</h1>
-<p>Find me in app/views/categories/edit.html.erb</p>
+<div id="categories-edit-container" class="default-container">
+	<!-- banner of event -->
+	<%= render "partials/bannercontainer" %>
+	<div id="edit-container">
+		<%= form_for @category, url: "/events/#{@category.event.id}/categories/#{@category.id}", method: "patch" do |f| %>
+			<div class="category-box clearfixs">
+				<div class="category-title col-sm-8 col-xs-12">
+					<label>Title</label><br>
+					<%= f.text_field :title, placeholder: "Utensils" %>
+				</div>
+					<!-- div.category-title -->
+				<div class="category-needed col-sm-4 col-xs-12">
+					<label>Items Requested</label><br>
+					<%= f.number_field :needed, placeholder: "4" %>
+				</div>
+					<!-- div.category-needed -->
+				<div class="category-description col-xs-12">
+					<label>Description</label><br>
+					<%= f.text_area :description, class: "description", placeholder: "Forks, plates, cups and anything that's alike!" %>
+				</div>
+					<!-- div.category-needed -->
+			</div>
+					<!-- div.category-box -->
+			<div class="submit-wrapper">
+				<%= f.submit id:"edit-category-submit", class: "site-button", value: "Save Changes" %>
+			</div>
+		<% end %>
+	</div>
+</div>
+	<!-- div#categories-edit-container -->
