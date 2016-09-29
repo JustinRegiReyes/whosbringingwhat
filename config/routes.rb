@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     patch '/attending_events/:id/maybe', to: 'attending_events#maybe'
 
   # categories routes
+    get '/events/:event_id/categories/edit', to: 'categories#in_event_edit'
     get '/events/:event_id/categories/:category_id', to: 'categories#show'
 
   # items routes

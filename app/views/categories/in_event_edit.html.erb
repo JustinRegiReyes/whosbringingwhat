@@ -1,0 +1,48 @@
+<div id="categories-in-event-edit" class="default-container">
+	<!-- banner of event -->
+	<%= render "partials/bannercontainer" %>
+	<div id="categories-container">
+		<div id="categories-header">
+			Categories
+			<a href="/events/<%= @event.id %>/categories/new">
+				<button id="categories-add-link" class="site-button" type="button">
+					Add <i class="fa fa-plus-square" aria-hidden="true"></i>
+				</button>
+			</a>
+		</div><br>
+			<!-- div#categories-header -->
+		<% if @event.categories.count < 1 %>
+			<div id="categories-empty">
+				No categories created for <%= @event.title %>
+			</div>
+				<!-- div#categories-empty -->
+		<% else %>
+			<% @event.categories.each do |category| %>
+				<div class="category-box clearfixs">
+					<div class="category-title col-sm-8 col-xs-12">
+						<label>Title</label><br>
+						<p><%= category.title %></p>
+					</div>
+					<!-- div.category-title -->
+					<div class="category-needed col-sm-4 col-xs-12">
+						<label>Items Requested</label><br>
+						<p><%= category.needed %></p>
+					</div>
+						<!-- div.category-needed -->
+					<div class="category-description col-xs-12">
+						<label>Description</label><br>
+						<p><%= category.description %></p>
+					</div>
+						<!-- div.category-description -->
+					<a href="/categories/<%= category.id %>/edit">
+						<button class="site-button edit" type="button">Edit</button>
+					</a>
+				</div>
+					<!-- div.category-box -->
+			<% end %>
+				<!-- @event.categories.each -->
+		<% end %>
+	</div>
+	<!-- div#categories-container -->
+</div>
+	<!-- div#event-show-container -->

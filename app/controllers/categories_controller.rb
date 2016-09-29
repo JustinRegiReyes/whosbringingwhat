@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    categoryParams = params.require(:category).permit(:title, :description)
+    categoryParams = params.require(:category).permit(:title, :needed, :description)
     eventId = params[:event_id]
     event = Event.find_by_id(eventId)
     category = Category.create(categoryParams)
@@ -21,6 +21,10 @@ class CategoriesController < ApplicationController
     @event = @category.event
   end
 
+  def in_event_edit
+    @event = Event.find_by_id(event_id)
+  end
+
   def edit
   end
 
@@ -28,5 +32,11 @@ class CategoriesController < ApplicationController
   end
 
   def delete
+  end
+
+  private
+
+  def event_id
+    params[:event_id]
   end
 end

@@ -197,4 +197,89 @@ div#categories-show-container {
 	@media screen and (max-width: $break-iphone6plus) {
 		padding-top: 0;
 	}
-}
+} //div#categories-show-container
+
+// ********** categories#show END **********
+
+// ********** categories#in_event **********
+div#categories-in-event-edit {
+	height: auto;
+	width: 100vw;
+	max-width: 500px;
+	margin: 0 auto;
+	position: relative;
+	@include banner-overlay();
+	button#invite-guests {
+		display: none;
+	} 
+	div#categories-container {
+		padding: 40px 10px;
+		background-color: white;
+		div#categories-header {
+			font-size: 1.75em;
+			font-family: $hind;
+			position: relative;
+			text-align: center;
+			padding: 10px;
+			a {
+				color: black;
+				&:hover {
+					text-decoration: none;
+					color: black;
+				}
+				button#categories-add-link {
+				    width: 60px;
+				    height: 30px;
+				    font-size: .9rem;
+				    margin-left: 10px;
+				    position: absolute;
+				    right: 10px;
+				    top: -30px;
+				    padding: 3px 6px;
+				    background-color: $cloud;
+				    border: 1px solid darken($cloud, 40%);
+				    &:hover {
+				    	background-color: darken($cloud, 2%);
+				    }
+				} //button#categories-add-link
+			}
+		} //div#categories-header
+		div#categories-empty {
+			width: 100%;
+			font-size: .9em;
+			text-align: center;
+		} //div#categories-empty
+		div.category-box {
+			padding: 20px 0;
+			position: relative;
+			border-bottom: 2px dotted $cloud;
+			text-align: center;
+			& > div {
+				text-align: left;
+				label {
+					font-weight: 300;
+				}
+				p {
+					border-bottom: 1px solid darken($cloud, 5%);
+				}
+			} // & > div
+			& > a {
+				&:hover {
+					text-decoration: none;
+					color: white;
+				}
+				button.edit {
+					width: 50px;
+					height: 25px;
+					font-size: .8em;
+					background-color: $cobaltBlue; 
+					color: white;
+				}
+			} // & > a
+		} //div.category-box
+	} //div#categories-container
+} //div#categories-in-event
+// ********** categories#in_event END **********
+
+
+
