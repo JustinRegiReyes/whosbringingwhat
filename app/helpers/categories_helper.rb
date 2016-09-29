@@ -8,7 +8,7 @@ module CategoriesHelper
 				event_id: eventId,
 				user_id: current_user_id,
 				title: category[:title],
-				needed: category[:needed].to_i
+				needed: category[:needed].to_i,
 				description: category[:description]
 				})
 			created_categories.push(c)
