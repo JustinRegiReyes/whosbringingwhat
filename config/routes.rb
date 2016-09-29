@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   # categories routes
     get '/events/:event_id/categories/edit', to: 'categories#in_event_edit'
     patch '/events/:event_id/categories/:category_id', to: 'categories#update'
+    delete '/events/:event_id/categories/:category_id', to: 'categories#delete'
     get '/events/:event_id/categories/:category_id/edit', to: 'categories#edit'
     get '/events/:event_id/categories/:category_id', to: 'categories#show'
 

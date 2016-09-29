@@ -45,6 +45,11 @@ class CategoriesController < ApplicationController
   end
 
   def delete
+    category = Category.find_by_id(category_id)
+    category.items.delete_all
+    category.destroy
+    flash[:success] = "Category deleted"
+    redirect_to "/events/#{event_id}/categories/edit"
   end
 
   private
