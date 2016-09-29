@@ -162,6 +162,8 @@ div.event-form-container {
 } //div.event-form-container 
 
 div#event-new-container {
+	height: auto;
+	padding-bottom: 40px;
 	form#new_event {
 		div#categories-container {
 			div#categories-header {
@@ -182,6 +184,15 @@ div#event-new-container {
 				    }
 				} //button#categories-add
 			} //div#categories-header
+			div.category-box {
+				border-bottom: 2px dotted darken($cloud, 10%);
+				margin-bottom: 20px;
+				div.category-description {
+					textarea.description {
+						height: 80px;
+					} //textarea.description
+				} //div.category-description
+			} //div.category-box
 		} //div#categories-container
 	} //form#new_event
 } //div#event-new-container
