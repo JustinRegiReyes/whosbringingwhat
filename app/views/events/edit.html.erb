@@ -84,6 +84,7 @@
 						<label>Description</label><br>
 						<%= f.text_area :description, class: "full textarea description", placeholder: "Movie Night! This Saturday we're gonna go for sci-fi movies. So everyone bring your best sci-fi movie and we'll take a group vote! Oh, and bring drinks and snacks! We'll order pizza if we end up really hungry. See you guys there!" %>
 					</div>
+					<a class="edit-categories" href="/events/<%= @event.id %>/categories">Edit Categories</a>
 					<div class="text-center">
 						<%= f.submit id:"edit-event-submit", class: "btn btn-default", value: "Save Changes" %>
 					</div>

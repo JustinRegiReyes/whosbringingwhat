@@ -134,6 +134,13 @@ div.event-form-container {
 				}
 			}
 		}// div.file-label
+		a.edit-categories {
+			margin: 0 auto 10px;
+			display: inline-block;
+			&:hover {
+				text-decoration: none;
+			}
+		} //a.edit-categories
 		#new-event-submit, #edit-event-submit {
 			color: white;
 			background-color: $periGreen;
@@ -210,6 +217,7 @@ div#event-new-container {
 // ********** event#edit **********
 	div#event-edit-container {
 		height: auto;
+		padding-bottom: 40px;
 	}
 // ********** event#edit **********
 
