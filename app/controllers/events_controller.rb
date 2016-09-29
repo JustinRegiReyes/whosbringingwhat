@@ -122,8 +122,12 @@ class EventsController < ApplicationController
 
   def update_params
     updated_params = params.require(:event).permit(:photo, :title, :description, :where, :address, :city, :zipcode, :state, :country, :date_start, :date_end, :time_start, :time_end, :search_key, :highlights)
-    updated_params[:date_start] = Date.strptime(updated_params[:date_start], '%m/%d/%Y')
-    updated_params[:date_end] = Date.strptime(updated_params[:date_end], '%m/%d/%Y')
+    if updated_params[:date_start].length > 0
+      updated_params[:date_start] = Date.strptime(updated_params[:date_start], '%m/%d/%Y')
+    end
+    if updated_params[:date_end].length > 0
+      updated_params[:date_end] = Date.strptime(updated_params[:date_end], '%m/%d/%Y')
+    end
     return updated_params
   end
 
