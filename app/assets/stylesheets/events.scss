@@ -134,14 +134,23 @@ div.event-form-container {
 				}
 			}
 		}// div.file-label
-		#new-event-submit {
+		#new-event-submit, #edit-event-submit {
 			color: white;
 			background-color: $periGreen;
 			border-radius: 0;
 			padding: 5px 10px;
 			width: 130px;
+			border: 1px solid $periGreen;
 			&:hover {
 				background-color: lighten($periGreen, 2%);
+			}
+			&:active {
+				border: none;
+				border: 1px solid $periGreen;
+			}
+			&:focus {
+				border: none;
+				border: 1px solid $periGreen;
 			}
 		}
 	} // div.form-container
