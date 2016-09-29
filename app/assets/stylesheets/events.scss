@@ -267,7 +267,7 @@ div#event-show-container {
 			}
 			div#description {
 				min-height: 80px;
-				padding-left: 10px;
+				padding: 10px 20px;
 				height: auto;
 			}
 			// ********** div#information max-width: @break-sm **********
@@ -289,7 +289,7 @@ div#event-show-container {
 				margin-bottom: 10px;
 				padding-left: 10px;
 				@media screen and (max-width: $break-sm) {
-					height: 115px;
+					height: auto;
 				}
 				@media screen and (max-width: $break-iphone6plus) {
 					&:after {
@@ -329,10 +329,6 @@ div#event-show-container {
 			} // div#guests
 			@include categories-container();
 			// ********** div#additional-information max-width: $break-sm **********
-			@media screen and (max-width: $break-sm) {
-				padding-left: 5px;
-				padding-right: 5px;
-			} // max-width: $break-sm
 		} //div#additional-information
 	}
 	div#comment-section {
@@ -352,12 +348,17 @@ div#event-show-container {
 				div.profile-pic {
 					width: 100px;
 					height: 100px;
-					border-radius:  50%;
+					border-radius:  100%;
 					margin: 0 auto;
 					position: relative;
 					background-color: #FFF;
 					border: 1px solid silver;
 					@include vertical-align();
+					img {
+						width: 100%;
+						height: 100%;
+						border-radius: 100%;
+					}
 				}
 			}
 			textarea#comment_post {
@@ -413,14 +414,19 @@ div#event-show-container {
 			position: relative;
 			@include box-shadow(0.4);
 			div.user-avi {
-				min-height: 70px;
-			    min-width: 70px;
-			    border-radius: 50%;
+				height: 70px;
+			    width: 70px;
+			    border-radius: 100%;
 			    position: absolute;
 			    top: -35px;
 			    left: -35px;
 			    background-color: white;
 			    border: 1px solid #bcc;
+			    img {
+			    	width: 100%;
+			    	height: 100%;
+			    	border-radius: 100%;
+			    }
 			}
 			div.comment-made {
 				min-height: 30px;
@@ -468,7 +474,7 @@ div#event-show-container {
 		} // div.comment-container
 	}
 	@media screen and(max-width: $break-iphone6plus) {
-		padding-top: 0;
+		padding-top: 50px;
 		div#information-section {
 			div#information {
 				padding: 0;
@@ -523,8 +529,8 @@ div#event-show-container {
 					margin-bottom: 0 !important;
 				}
 			} //div#additional-information
-		}
-	}
+		} //div#information-section
+	} //div#event-show-container @media screen and(max-width: $break-iphone6plus)
 } // event-show-container
 
 // ********** event#search **********

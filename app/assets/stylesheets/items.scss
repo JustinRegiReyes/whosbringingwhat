@@ -154,6 +154,10 @@ div#items-show-container {
 					width: 100vw;
 					margin: 0;
 					border-bottom: 2px solid $cloud;
+					&.empty {
+						padding-top: 10px;
+						background-color: red;
+					}
 					@include hori-scroll-wrapper();
 					div#items-header {
 						display: none;
@@ -206,9 +210,9 @@ div#items-show-container {
 		}
 	} //div#information-section
 	@media screen and (max-width: $break-iphone6plus) {
-		padding-top: 0;
+		padding-top: 0px;
 	}
-}
+} //div#items-show-container
 
 // ********** items#new **********
 div#new-item-container {

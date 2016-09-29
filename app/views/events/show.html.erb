@@ -26,13 +26,12 @@
 				<%= @event.highlights %>
 			</div>
 			<div id="description" class="info-box">
-				Bacon ipsum dolor amet pastrami turducken shank leberkas spare ribs pork belly tenderloin cow. Jowl swine kielbasa porchetta, andouille short ribs turducken brisket boudin pork loin. Fatback tail frankfurter short ribs kielbasa chicken bresaola chuck. Tongue meatball capicola jerky fatback jowl cupim sausage prosciutto tail turducken pork chop ball tip.
-
-				Tri-tip ground round shank, kevin boudin sausage spare ribs pork belly turkey fatback tenderloin ham meatloaf. Beef picanha landjaeger spare ribs leberkas cow short ribs turducken pig t-bone. Short loin ground round shoulder short ribs meatloaf. Brisket boudin pork chop, jerky kevin turkey frankfurter ribeye tri-tip short ribs sirloin salami meatball venison. Meatloaf tenderloin alcatra, t-bone corned beef ground round landjaeger tongue frankfurter hamburger pig kielbasa cupim filet mignon strip steak. Boudin bresaola cupim, pancetta prosciutto hamburger chuck meatloaf ground round doner.</div>
+				<%= @event.description %>
+			</div>
 		</div>
 			<!-- div#information -->
 		<div id="additional-information" class="col-lg-4 col-md-4 col-sm-4">
-			<div id="guests" class="info-box">
+			<div id="guests" class="info-box clearfixs">
 				<div id="guests-header">Guests</div>
 				<div id="going-guests" class="guests-info col-sm-6 col-xs-3">
 					<div class="guests-num"><%= @event.attending_events.where({going: true}).count %></div>
@@ -54,43 +53,8 @@
 			<div id="mobile-category">
 				Categories
 			</div>
-			<div id="categories-container" class="info-box">
-				<div id="categories-header">
-					Who's Bringing What?
-				</div>
-				<% if @event.categories.count <= 4 %>
-					<% 2.times do %> 
-						<% @event.categories.each do |category| %>
-							<a href="/events/<%= @event.id %>/categories/<%= category.id %>">
-								<div id="" class="<%= category.title.gsub(/\s+/, '') %> category">
-									<span class="cat-count <%= 'enough' unless category.enough_items? === false %> "><%= category.items.count %>/<%= category.needed %></span>
-									<span class="cat-name"> <%= category.title %></span>
-								</div>
-							</a>
-						<% end %>
-					<% end %>
-				<% elsif @event.categories.count <= 2 %>
-					<% 3.times do %> 
-						<% @event.categories.each do |category| %>
-							<a href="/events/<%= @event.id %>/categories/<%= category.id %>">
-								<div id="" class="<%= category.title.gsub(/\s+/, '') %> category">
-									<span class="cat-count <%= 'enough' unless category.enough_items? === false %> "><%= category.items.count %>/<%= category.needed %></span>
-									<span class="cat-name"> <%= category.title %></span>
-								</div>
-							</a>
-						<% end %>
-					<% end %>
-				<% end %>
-				<% @event.categories.each do |category| %>
-					<a href="/events/<%= @event.id %>/categories/<%= category.id %>">
-						<div id="" class="<%= category.title.gsub(/\s+/, '') %> category">
-							<span class="cat-count <%= 'enough' unless category.enough_items? === false %> "><%= category.items.count %>/<%= category.needed %></span>
-							<span class="cat-name"> <%= category.title %></span>
-						</div>
-					</a>
-				<% end %>
-					<!-- categories.each -->
-			</div>
+			<!-- div#categories-container -->
+			<%= render "partials/categoriescontainer" %>
 		</div>
 			<!-- div#additional-information -->
 	</div>
@@ -101,6 +65,7 @@
 				<div class="clearfixs">
 					<div class="profile-pic-container">
 						<div class="profile-pic">
+							<img src="<%= image_path(current_user.avi(:thumb)) %>">
 						</div>
 					</div>
 					<div class="textarea-container">
@@ -118,7 +83,9 @@
 		</div>
 		<% @event.comments.order('id DESC').each do |comment| %>
 			<div class="comment-container">
-				<div class="user-avi"></div>
+				<div class="user-avi">
+					<img src="<%= image_path(current_user.avi(:thumb)) %>">
+				</div>
 				<div class="comment-made">
 					by <span class="username"><%=comment.user.username%></span> on <%= comment.created_at.strftime("%b %d") %>
 				</div>

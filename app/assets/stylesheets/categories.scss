@@ -148,6 +148,9 @@ div#categories-show-container {
 					margin: 0;
 					border-bottom: 2px solid $cloud;
 					@include hori-scroll-wrapper();
+					&.empty {
+						padding-top: 15px;
+					}
 					div#items-header {
 						display: none;
 					}

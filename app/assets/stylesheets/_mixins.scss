@@ -167,21 +167,31 @@
 		} //div#banner-overlay
 		// ********** div#banner-container max-width: $break-sm **********
 		@media screen and(max-width: $break-sm) {
-			div#title-container {
-				font-size: 1.3em;
-				top: -20px;
-				span.event-host {
-					display: block;
-					width: 100%;
-					span.host-name {
-						
+			div#banner-overlay {
+				div#title-container {
+					font-size: 1.5em;
+					top: -10px;
+					span.event-host {
+						display: block;
+						width: 100%;
+						span.host-name {
+							
+						}
 					}
-				}
-			}
+				} //div#title-container
+			} //div#banner-overlay
 		}
 		// ********** div#banner-container max-width: $break-iphone6plus **********
 		@media screen and(max-width: $break-iphone6plus) {
-			height: 225px;
+			height: 250px;
+			div#banner-overlay {
+				div#title-container {
+				}
+				button#invite-guests {
+					bottom: 200px;
+					right: 20px;
+				}
+			} //div#banner-overlay
 		}
 	} // div#banner-container
 } //banner-overlay
@@ -216,6 +226,9 @@
 				&:hover {
 					background-color: #fdfdfd;
 				}
+				&.repeat {
+					display: none;
+				}
 				i {
 					@include vertical-align(absolute);
 					-webkit-transform: translateY(-40%);
@@ -246,7 +259,7 @@
 		@media screen and (max-width: $break-sm) {
 			& > a {
 				div.category {
-					width: 50%;
+					width: 100%;
 					margin: 0 auto;
 					span.cat-name {
 						&:hover {
@@ -291,6 +304,9 @@
 						span.cat-name {
 							color: white;
 						}
+					}
+					&.repeat {
+						display: inline-block;
 					}
 					span.cat-count {
 						width: 100%;
