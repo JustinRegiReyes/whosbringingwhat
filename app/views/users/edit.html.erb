@@ -1,2 +1,50 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div id="user-edit-container" class="default-container">
+	<div class="clearfixs user-form-container">
+		<div class="errors-container">
+          <% if @user.errors.any? %>
+            <div id="error-explanation">
+              <i class="fa fa-exclamation-circle"></i>
+              <ul>
+              <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+        	<!-- errors-container -->
+		<%= form_for @user, url: "/my_profile/edit", method: "patch" do |f| %>
+			<div class="input-container clearfixs">
+				<div class="">
+					<label>Username</label><br>
+					<%=	f.text_field :username, class: "", placeholder: "Moriarty"  %>	
+				</div>
+				<div class="">
+					<label>Email</label><br>
+					<%=	f.email_field :email, class: "", placeholder: "mailbox@domain.com"  %>	
+				</div>
+				<div class="">
+					<label>From</label><br>
+					<%=	f.text_field :from, class: "", placeholder: "Bay Area"  %>	
+				</div>
+				<div class="">
+					<label>Bio</label><br>
+					<%=	f.text_area :bio, class: "bio", placeholder: "Don't tell anyone the whereabouts of The Batcave. No pets allowed in The Batcave. ESPECIALLY BATS"  %>
+				</div>
+				<div class="">
+					<label>Change Password</label><br>
+					<%= password_field_tag "user[new_pass]", nil, class: "", placeholder: "new password"  %>	
+				</div>
+				<div class="">
+					<label>Retype Change</label><br>
+					<%= password_field_tag "user[retype_pass]", nil, class: "", placeholder: "retype password"  %>	
+				</div>
+				<div class="submit-wrapper">
+					<%= f.submit id:"user-edit-submit", class: "site-button", value: "Save Changes" %>
+				</div>
+			</div>
+				<!-- div.input-container -->
+		<% end %>
+	</div>
+</div>
+	<!-- div#user-edit-container -->

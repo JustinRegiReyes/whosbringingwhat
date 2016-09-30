@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :users, except: [:create]
     post "/signup", to: 'users#create'
     get '/home', to: 'users#home'
+    get '/my_profile/edit', to: 'users#edit'
+    patch '/my_profile/edit', to: 'users#update'
 
   # events routes
     get '/events/search', to: 'events#search'

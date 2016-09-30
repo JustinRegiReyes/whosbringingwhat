@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find_by_id(current_user.id)
   end
 
   def index
@@ -40,6 +41,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    user = User.find_by_id(current_user.id)
+    if user_password_change
+      pass_changed = user.update_password(new_pass, retype_pass)
+    end
+    if user.errors.count < 1 && user.update(user_params)
+      flash[:success] = "Edits saved"
+      redirect_to "/my_profile/edit"
+    else
+      @user = user
+      render "/users/edit"
+    end
+  end
+
   private
 
   def newuser_params
@@ -51,4 +66,25 @@ class UsersController < ApplicationController
       params.require(:user)
     end
   end
+
+  def user_id
+    
+  end
+
+  def user_params
+    params.require(:user).permit(:username, :avi, :email, :bio, :from, :crop_x, :crop_y, :crop_h, :crop_w)
+  end
+
+  def user_password_change
+    params[:user][:new_pass].empty? == false || params[:user][:retype_pass].empty? == false
+  end
+
+  def new_pass
+    params[:user][:new_pass]
+  end
+
+  def retype_pass
+    params[:user][:retype_pass]
+  end
+
 end

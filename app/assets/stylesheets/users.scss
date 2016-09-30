@@ -190,3 +190,80 @@ div#user-search-container {
 	} //div#users-results-container
 } //div#user-search-container
 // ********** user#search END **********
+
+// ********** user#edit END **********
+div#user-edit-container {
+	width: 100vw;
+	max-width: 500px;
+	margin: 0 auto;
+	height: auto;
+	position: relative;
+	div.user-form-container {
+		width: 100%;
+		padding: 20px 10px;
+		background-color: white;
+		div#error-explanation {
+			text-align: left;
+			position: relative;
+			i {
+				display: block;
+				margin: 0 auto;
+				width: 20px;
+				font-size: 1.2em;
+			}
+			ul {
+				border: 1px solid darken($cloud, 10%);
+				width: 100%;
+				padding: 15px;
+				padding-left: 30px;
+				color: $ashyRed;
+				margin: 10px auto 0;
+			}
+		} //div#error-explanation
+		div.input-container {
+			width: 100%;
+			max-width: 300px;
+			margin: 0 auto;
+			& > div {
+				width: 100%;
+				padding: 20px 10px;
+				float: none;
+				margin: 0 auto;
+				&.submit-wrapper {
+					input.site-button {
+						background-color: $periGreen;
+						color: white;
+						&:active {
+							border: 1px solid $periGreen;
+						}
+						&:focus {
+							border: 1px solid $periGreen;
+						}
+					}
+				}
+				label {
+					font-weight: 300;
+					font-size: .9em;
+				}
+				input, textarea {
+					width: 100%;
+					border: 1px solid white;
+					border-bottom: 1px solid $cloud;
+					font-size: .95em;
+					&:focus {
+						outline: none;
+						border: 1px solid $cobaltBlue;
+					}
+					&.bio {
+						border: 1px solid $cloud;
+						&:focus {
+							border: 1px solid $cobaltBlue;
+						}
+						padding: 10px;
+					}
+				}
+			} //& > div
+		} //div.input-container
+	} //div.user-form-container
+} //div#user-edit-container
+// ********** user#edit END **********

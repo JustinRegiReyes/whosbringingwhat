@@ -85,10 +85,23 @@ class User < ActiveRecord::Base
 		return where("lower(username) = ?", username.downcase)
     end
 
-     def self.by_email(email)
+    def self.by_email(email)
     	return where("") unless email.present?
 
 		return where("lower(email) = ?", email.downcase)
+    end
+
+    def update_password(newpass, retypenewpass)
+    	if newpass.empty? == true || retypenewpass.empty? == true
+    		errors.add("New Password:", " Both password fields must be filled")
+    	elsif newpass == retypenewpass
+    		self.password = newpass
+    		self.save
+    		return true
+    	else
+    		errors.add("New Password:", " Must match to save password change")
+    		return false
+    	end
     end
 
     private
