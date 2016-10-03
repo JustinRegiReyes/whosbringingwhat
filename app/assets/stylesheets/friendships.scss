@@ -73,5 +73,10 @@ div#my-friend-requests {
 			} //div#button-container
 		} //div.friend-request-box
 	} //div#friend-requests-container
+	@media screen and (max-width: $break-sm) {
+		div#friend-requests-container {
+			width: 100%;
+		} //div#friend-requests-container
+	} //div#my-friend-requests max-width $break-sm
 } //div#my-friend-requests
 // ********** END friendships#my_friend_requests **********

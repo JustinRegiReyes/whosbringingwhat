@@ -860,7 +860,15 @@ div#search-results-container {
 					font-size: 24px;
 					text-align: center;
 				}
-			}
+			} //div.myevents-navigation
+			div.events-empty {
+				width: 100%;
+				max-width: 455px;
+				background-color: white;
+				padding: 10px;
+				text-align: center;
+				margin: 0 auto;
+			} // div.events-empty
 			div.event-box {
 				height: 200px;
 				width: 455px;

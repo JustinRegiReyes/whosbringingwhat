@@ -1,4 +1,4 @@
-<!-- invite modal -->
+invite modal -->
 <%= render "partials/invitemodal" %>
 
 <div id="my-events-container" class="default-container">
@@ -8,25 +8,34 @@
 				My Events
 			</div>
 		</div>
-		<% @events.each do |event| %>
-			<div class="event-box clearfixs">
-				<a href="/events/<%= event.id %>"><div class="img" style="background: url('<%= image_path("#{event.banner.url(:medium)}")%>') no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;"></div></a>
-				<div class="information">
-					<a href="/events/<%= event.id %>" id="delete-icon" data-confirm="Are you sure?" data-method="delete">
-						<i class="fa fa-trash" aria-hidden="true"></i>
-					</a>
-					<div class="event-title"><a class="event-link" href="/events/<%= event.id %>"><%= truncate("#{event.title}",length: 25) %></a></div>
-					<div class="event-date"><%= event.date_start.strftime('%b %-d') %> at <%= event.time_start.strftime('%l:%M%P')%></div>
-					<div class="event-attending"><%= event.attending_guests.count%> attending</div>
-					<div class="event-description"><%= truncate("#{event.description}", length: 140) %></div>
-					<div class="button-wrapper">
-						<button class="site-button invite" data-event-id="<%= event.id %>">Invite</button>
-						<a href="/events/<%= event.id%>/edit"><button class="site-button edit">Edit</button></a>
+		<% if @events.count == 0 %>
+			<div class="events-empty">
+				No events created yet.
+			</div>
+				<!-- div.events-empty -->
+		<% else %>
+			<% @events.each do |event| %>
+				<div class="event-box clearfixs">
+					<a href="/events/<%= event.id %>"><div class="img" style="background: url('<%= image_path("#{event.banner.url(:medium)}")%>') no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;"></div></a>
+					<div class="information">
+						<a href="/events/<%= event.id %>" id="delete-icon" data-confirm="Are you sure?" data-method="delete">
+							<i class="fa fa-trash" aria-hidden="true"></i>
+						</a>
+						<div class="event-title"><a class="event-link" href="/events/<%= event.id %>"><%= truncate("#{event.title}",length: 25) %></a></div>
+						<div class="event-date"><%= event.date_start.strftime('%b %-d') %> at <%= event.time_start.strftime('%l:%M%P')%></div>
+						<div class="event-attending"><%= event.attending_guests.count%> attending</div>
+						<div class="event-description"><%= truncate("#{event.description}", length: 140) %></div>
+						<div class="button-wrapper">
+							<button class="site-button invite" data-event-id="<%= event.id %>">Invite</button>
+							<a href="/events/<%= event.id%>/edit"><button class="site-button edit">Edit</button></a>
+						</div>
 					</div>
 				</div>
-			</div>
-			<hr>
+				<hr>
+			<% end %>
+				<!-- @events.each -->
 		<% end %>
+			<!-- if @events.length == 0 -->
 	</div>
 </div>
-	<!-- div#my-events-container -->
+	<!-- div#my-events-container
