@@ -269,3 +269,231 @@ div#new-item-container {
 		} // div#input-container
 	} //div#form-container
 }
+
+// ********** item#my_items **********
+	div#my-items-container {
+		max-width: 990px;
+		min-height: 200px;
+		height: auto;
+		margin: 0 auto;
+		div#items-container {
+			width: 100%;
+			min-height: 200px;
+			padding: 10px;
+			div.items-header {
+				margin: 10px auto;
+				width: 940px;
+				background-color: white;
+				padding: 10px;
+				@include box-shadow(.3);
+				div.header {
+					font-family: $hind;
+					font-size: 24px;
+					text-align: center;
+				}
+			} //div.items-header
+			div.items-empty {
+				width: 100%;
+				max-width: 455px;
+				background-color: white;
+				padding: 10px;
+				text-align: center;
+				margin: 0 auto;
+			} // div.items-empty
+			div.item-box {
+				height: 330px;
+				width: 455px;
+				padding: 10px;
+				margin: 10px 15px;
+				@include box-shadow(.3);
+				background-color: white;
+				float: left;
+				position: relative;
+				a#delete-icon {
+					position: absolute;
+					right: 10px;
+					top: 0px;
+					color: $ashyRed;
+					z-index: 1;
+					&:hover {
+						text-decoration: none;
+					}
+				}
+				div.information {
+					position: relative;
+				    width: 100%;
+				    height: 220px;
+				    padding: 0px 0 10px;
+					div.item-title {
+						font-size: 1.25em;
+						margin-bottom: 2px;
+						a.item-link {
+							color: black;
+							&:hover {
+								text-decoration: none;
+								color: $cobaltBlue;
+							}
+						}
+					}
+					div.item-date {
+						font-size: .80em;
+						margin-bottom: 2px;
+						color: darken($cloud, 40%);
+					}
+					div.item-category {
+						font-size: .9em;
+					}
+					div.item-description {
+						font-size: .75em;
+						margin-top: 10px;
+						height: 90px;
+					}
+					div.button-wrapper {
+						position: absolute;
+						width: 120px;
+						left: 0;
+						right: 0;
+						margin-left: auto;
+						margin-right: auto;
+						a {
+							text-decoration: none;
+							&:hover {
+								color: inherit;
+							}
+						}
+						button.site-button {
+							height: 22px;
+							font-size: 12px;
+							width: 120px;
+							padding-bottom: 4px;
+							color: black;
+							&.invite {
+								background-color: $cobaltBlue;
+								border: 1px solid $cobaltBlue;
+								color: white;
+								&:hover {
+									background-color: darken($cobaltBlue, 2%);
+								}
+							}
+							&.edit {
+								border: 1px solid darken($cloud, 40%);
+								background-color: $cloud;
+								&:hover {
+									background-color: darken($cloud, 2%);
+								}
+							}
+						} //button.site-button
+					} //div.button-wrapper
+				} //div.information
+				div.event-information {
+					border-top: 2px dotted $cloud;
+					height: 100px;
+					width: 100%;
+					padding: 10px 0;
+					position: relative;
+					div.img {
+						width: 80px;
+						height: 80px;
+						margin-right: 10px;
+						float: left;
+						display: block;
+					}
+					div.information {
+						overflow: hidden;
+						width: auto;
+						padding: 0;
+						height: 100%;
+						padding-left: 1px;
+						div.event-title {
+							font-size: 1.1em;
+							padding-top: 3px;
+							a {
+								color: inherit;
+								&:hover {
+									text-decoration: none;
+								}
+							}
+						}
+						div.event-where {
+							font-size: .9em;
+							margin-bottom: 3px;
+							i {
+								color: $ashyRed;
+								font-size: 12px;
+							}
+						}
+						div.event-attending {
+							font-size: .80em;
+							margin-bottom: 15px;
+							font-style: italic;
+						}
+					} //div.information
+				} //div.event-information
+			} //div.item-box
+			hr {
+				display: none;
+			}
+		} 
+		@media screen and(max-width: $break-md) {
+			div#items-container {
+				div.items-header {
+					width: 455px;
+				}
+				div.item-box {
+					float: none;
+					margin: 10px auto;
+				}
+			}
+		} // @media screen and(max-width: $break-md)
+		@media screen and(max-width: $break-iphone6plus) {
+			div#items-container {
+				background-color: white;
+				width: 100vw;
+				div.items-header {
+					width: 100%;
+					box-shadow: none;
+				}
+				div.item-box {
+					width: 100%;
+					height: auto;
+					box-shadow: none;
+					div.img {
+						width: 250px;
+						height: 250px;
+						margin: 0 auto 10px;
+						display: block;
+						float: none;
+					}
+					div.information {
+						width: 250px;
+						margin: 0 auto;
+						float: none;
+						height: auto;
+						padding-bottom: 65px;
+						div.item-description {
+							margin-bottom: 10px;
+						}
+						div.button-wrapper {
+							width: 100%;
+							button.site-button {
+								width: 100%;
+								border: none;
+								margin: 0;
+								height: 30px;
+								&.invite {
+									margin-bottom: 5px;
+								}
+								&.edit {
+								}
+							}
+						}
+					}
+				} //div.item-box
+				hr {
+					display: block;
+					border-top: 1px solid $asphalt;
+				}
+			}
+		} // @media screen and(max-width: $break-iphone6plus)
+	} //div#my-items-container
+// ********** END item#my_events **********

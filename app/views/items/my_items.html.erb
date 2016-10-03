@@ -1,0 +1,50 @@
+<div id="my-items-container" class="default-container">
+	<div id="items-container" class="clearfixs">
+		<div class="items-header">
+			<div class="header">
+				My Items
+			</div>
+		</div>
+		<% if @items.count == 0 %>
+			<div class="items-empty">
+				No items created yet.
+			</div>
+				<!-- div.items-empty -->
+		<% else %>
+			<% @items.each do |item| %>
+				<% event = item.category.event %>
+				<div class="item-box clearfixs">
+					<div class="information">
+						<a href="/items/<%= item.id %>" id="delete-icon" data-confirm="Are you sure?" data-method="delete">
+							<i class="fa fa-trash" aria-hidden="true"></i>
+						</a>
+						<div class="item-title"><a class="item-link" href="/items/<%= item.id %>"><%= truncate("#{item.title}",length: 25) %></a></div>
+						<div class="item-date"><%= event.date_start.strftime('%b %-d') %> at <%= event.time_start.strftime('%l:%M%P')%></div>
+						<div class="item-category">
+							for <%= item.category.title %>
+						</div>
+						<div class="item-description"><%= truncate("#{item.description}", length: 300) %></div>
+						<div class="button-wrapper">
+							<a href="/items/<%= item.id%>/edit"><button class="site-button edit">Edit</button></a>
+						</div>
+					</div>
+						<!-- div.information -->
+					<div class="event-information clearfixs">
+						<a href="/events/<%= event.id %>"><div class="img" style="background: url('<%= image_path("#{event.banner.url(:medium)}")%>') no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;"></div></a>
+						<div class="information">
+							<div class="event-title"><a class="event-link" href="/events/<%= event.id %>"><%= event.title%></a></div>
+							<div class="event-where"><i class="fa fa-map-marker" aria-hidden="true"></i> <%= event.where%></div>
+							<div class="event-attending"><%= event.attending_guests.count%> attending</div>
+						</div>
+							<!-- div.information -->
+					</div>
+						<!-- div.event-information -->
+				</div>
+				<hr>
+			<% end %>
+				<!-- @items.each -->
+		<% end %>
+			<!-- if @items.length == 0 -->
+	</div>
+</div>
+	<!-- div#my-items-container

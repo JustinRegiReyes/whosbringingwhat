@@ -32,4 +32,8 @@ class ItemsController < ApplicationController
 
   def delete
   end
+
+  def my_items
+    @items = current_user.items
+  end
 end
