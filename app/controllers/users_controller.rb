@@ -55,6 +55,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def avi_crop
+    userId = current_user.id
+    @user = User.find_by_id(userId)
+  end
+
+  def update_avi_crop
+    userId = current_user.id
+    user = User.find_by_id(userId)
+    user.update(avi_crop_params)
+    flash[:success] = "Avi cropped"
+    redirect_to "/my_profile/edit"
+  end
+
   private
 
   def newuser_params
@@ -85,6 +98,10 @@ class UsersController < ApplicationController
 
   def retype_pass
     params[:user][:retype_pass]
+  end
+
+  def avi_crop_params
+    params.require(:user).permit(:avi_crop_x, :avi_crop_y, :avi_crop_w, :avi_crop_h)
   end
 
 end

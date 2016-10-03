@@ -1,0 +1,21 @@
+<div id="crop-container" class="text-center">
+	<% flash.each do |key, value| %>
+	  <%= content_tag :div, value, class: "flash #{key}" %>
+	<% end %>
+	<div id="header">
+		<span>Drag box sides to manipulate height and width.</span><br>
+		<span>Drag box to focus on specific area.</span>
+	</div>
+		<!-- div#header -->
+	<%= form_for(@user, url: "/avi-crop", method: :patch) do |f| %>
+	  <div class="photo-cropbox">
+	  	<%= f.cropbox :avi, width: 300 %>
+	  </div>
+	  <div class="photo-preview">
+	  	<%= f.crop_preview :avi, width: 300 %>
+	  </div>
+	  <div class="submit">
+	  	<%= f.submit 'Crop Photo', class: "site-button" %>
+	  </div>
+	<% end %>
+</div>

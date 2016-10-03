@@ -15,6 +15,14 @@
         	<!-- errors-container -->
 		<%= form_for @user, url: "/my_profile/edit", method: "patch" do |f| %>
 			<div class="input-container clearfixs">
+				<div id="avi-container">
+					<img src="<%= image_path(current_user.avi(:avi)) %>">
+					<a href="/avi-crop" data-no-turbolink="true">
+						<button class="site-button crop" type="button">Crop Avi</button>
+					</a>
+					<button class="site-button replace" type="button">Replace</button>
+				</div>
+					<!-- div#avi-container -->
 				<div class="">
 					<label>Username</label><br>
 					<%=	f.text_field :username, class: "", placeholder: "Moriarty"  %>	
@@ -29,7 +37,7 @@
 				</div>
 				<div class="">
 					<label>Bio</label><br>
-					<%=	f.text_area :bio, class: "bio", placeholder: "Don't tell anyone the whereabouts of The Batcave. No pets allowed in The Batcave. ESPECIALLY BATS"  %>
+					<%=	f.text_area :bio, class: "bio", placeholder: "I like long walks on the beach, hikes, and knit in my spare time."  %>
 				</div>
 				<div class="">
 					<label>Change Password</label><br>

@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
 	end
 
 	def cropping
-		!crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
+		!avi_crop_x.blank? && !avi_crop_y.blank? && !avi_crop_w.blank? && !avi_crop_h.blank?
 	end
 
 	def avi_url

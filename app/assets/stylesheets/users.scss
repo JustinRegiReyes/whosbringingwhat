@@ -224,6 +224,44 @@ div#user-edit-container {
 			width: 100%;
 			max-width: 300px;
 			margin: 0 auto;
+			div#avi-container {
+				img {
+					border-radius: 100%;
+					width: 100px;
+					height: 100px;
+					margin: 0 auto;
+					display: block;
+				}
+				a {
+					&:hover {
+						text-decoration: none;
+						color: inherit;
+					}
+				}
+				button.site-button {
+					width: 100px;
+					height: 25px;
+					font-size: 12px;
+					display: block;
+					margin: 10px auto;
+					padding: 2px;
+					&.crop {
+						background-color: $cobaltBlue;
+						border: 1px solid $cobaltBlue;
+						color: white;
+						&:hover {
+							background-color: darken($cobaltBlue, 2%);
+						}
+					}
+					&.replace {
+						background-color: white;
+						border: 1px solid darken($cloud, 20%);
+						&:hover {
+							background-color: darken(white, 2%);
+						}
+					}
+				}
+			} //div#avi-container
 			& > div {
 				width: 100%;
 				padding: 20px 10px;
@@ -267,3 +305,30 @@ div#user-edit-container {
 	} //div.user-form-container
 } //div#user-edit-container
 // ********** user#edit END **********
+	div#crop-container {
+		background-color: white;
+		max-width: 400px;
+		height: auto;
+		margin: 0 auto;
+		padding: 40px 20px;
+		div#header {
+			text-align: center;
+			padding: 30px;
+			font-size: .8em;
+		} //div#header
+		div.photo-cropbox, div.photo-preview {
+			max-width: 300px;
+			max-height: 400px;
+			margin: 0 auto;
+		} //div#photo-cropbox, div.photo-preview
+		div.submit {
+			margin-top: 20px;
+			input {
+				background-color: $periGreen;
+				color: white;
+			}
+		}
+	}
+// ********** user#avi_crop **********
+
+// ********** user#avi_crop END **********

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   # users routes
     get '/users/search', to: 'users#search'
+    get '/avi-crop', to: 'users#avi_crop'
+    patch '/avi-crop', to: 'users#update_avi_crop'
     resources :users, except: [:create]
     post "/signup", to: 'users#create'
     get '/home', to: 'users#home'
