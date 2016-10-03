@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in?, only: [:show, :home]
+  before_action :logged_in?, only: [:show, :home, :edit]
   def new
     @user = User.new
   end
@@ -71,7 +71,7 @@ class UsersController < ApplicationController
   private
 
   def newuser_params
-    params.require(:user).permit(:username, :password, :avi, :email)
+    params.require(:user).permit(:username, :password, :avi, :email, :from, :bio)
   end
 
   def user_search_params

@@ -43,6 +43,15 @@
               </div>
               <div>
                 <div class="input-icon">
+                 <i class="fa fa-map-marker" aria-hidden="true" class="map-marker"></i>
+                </div>
+               <%= f.text_field :from, placeholder: "From e.g. \"Bay Area\"", class: "form-control", id: "from" %>
+              </div>
+              <div>
+               <%= f.text_area :bio, placeholder: "Bio e.g. \"I like long walks on the beach.\"", class: "form-control", id: "from" %>
+              </div>
+              <div>
+                <div class="input-icon">
                    <i class="fa fa-lock" aria-hidden="true"></i>
                 </div>
             	   <%= f.password_field :password, placeholder: raw("Password e.g. &bull;&bull;&bull;&bull;&bull;&bull;&bull;"), class: "form-control password-confirm pass-first" %>
