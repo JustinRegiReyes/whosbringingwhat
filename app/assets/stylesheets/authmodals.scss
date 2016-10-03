@@ -108,6 +108,11 @@ div.auth-modal {
 			#user_avi {
 				visibility: hidden;
 			}
+			span#filename {
+				font-size: .8em;
+				bottom: 10px;
+				position: relative;
+			} //span#filename
 			label {
 				width: 100px;
 				height: 35px;
