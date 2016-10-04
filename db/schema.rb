@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161003183342) do
+ActiveRecord::Schema.define(version: 20161004190751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,14 @@ ActiveRecord::Schema.define(version: 20161003183342) do
     t.datetime "banner_updated_at"
     t.string   "highlights"
     t.string   "search_key"
+    t.string   "photo_crop_x"
+    t.string   "photo_crop_y"
+    t.string   "photo_crop_w"
+    t.string   "photo_crop_h"
+    t.string   "banner_crop_x"
+    t.string   "banner_crop_y"
+    t.string   "banner_crop_w"
+    t.string   "banner_crop_h"
   end
 
   create_table "friendships", force: :cascade do |t|
