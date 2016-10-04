@@ -25,7 +25,7 @@
 					<% @events.each do |event| %>
 						<div class="event-box clearfixs">
 							<a href="/events/<%= event.id%>">
-								<div id="event-banner" style="background: url('<%= image_path("#{event.banner.url(:medium)}")%>') no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;" ></div>
+								<div id="event-banner" style="background: url('<%= event.photo.url(:medium)%>') no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;" ></div>
 							</a>
 							<div id="event-information">
 								<div id="event-guests">

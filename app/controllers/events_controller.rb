@@ -140,7 +140,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-      edited_params = params.require(:event).permit(:photo, :title, :description, :where, :address, :city, :zipcode, :state, :country, :date_start, :date_end, :time_start, :time_end, :search_key, :highlights)
+      edited_params = params.require(:event).permit(:photo, :banner, :title, :description, :where, :address, :city, :zipcode, :state, :country, :date_start, :date_end, :time_start, :time_end, :search_key, :highlights)
       if edited_params[:date_start].length > 0
         edited_params[:date_start] = Date.strptime(edited_params[:date_start], '%m/%d/%Y')
       end

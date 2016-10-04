@@ -35,7 +35,7 @@ div.event-form-container {
 	}
 	div.form-container {
 		& > form > div {
-			width: 80%;
+			width: 90%;
 			margin: 10px auto;
 			& > div {
 				padding: 0;
@@ -110,9 +110,13 @@ div.event-form-container {
 		}
 		label {
 			font-weight: 300;
+			&.items-requested {
+				font-size: .95em;
+			}
 		}
 		div.file-label {
-			height: 40px;
+			height: 70px;
+			text-align: center;
 			div.button {
 				height: 40px;
 				width: 60%;
@@ -132,6 +136,12 @@ div.event-form-container {
 						color: $periGreen;
 					}
 				}
+			} //div.button
+			span#banner-filename, span#photo-filename {
+				font-size: .9em;
+				max-width: 100%;
+				overflow: hidden;
+				display: inline-block;
 			}
 		}// div.file-label
 		a.edit-categories {
