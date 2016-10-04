@@ -31,6 +31,8 @@ $(document).on('page:load', ready);
 function ready() {
 	passwordConfirm();
 	filename();
+	photoFilename();
+	bannerFilename();
 	timePicker();
 	navHamburger();
 	removeButtonDataTarget();
@@ -63,6 +65,16 @@ function ready() {
 
 // ********** signup functions **********
 
+function filename() {
+	$("#user_avi").on("change", function(e) {
+		var filePath = $(this).val();
+		var split = filePath.split("\\");
+		var filename = split[split.length - 1];
+		$("#filename").empty();
+		$("#filename").append(filename);
+	});
+}
+
 function passwordConfirm() {
 	var $passConfirm = $(".password-confirm");
 	var $passOne = $('.pass-first');
@@ -91,14 +103,32 @@ function passwordConfirm() {
 
 // ********** new_event functions **********
 
-function filename() {
-	$("#user_avi").on("change", function(e) {
-		var filePath = $(this).val();
-		var split = filePath.split("\\");
-		var filename = split[split.length - 1];
-		$("#filename").empty();
-		$("#filename").append(filename);
-	});
+function photoFilename() {
+	var $eventPhotoFile = $("#event_photo");
+	if($eventPhotoFile.length > 0) {
+		console.log('test');
+		$eventPhotoFile.on("change", function(e) {
+			var filePath = $(this).val();
+			var split = filePath.split("\\");
+			var filename = split[split.length - 1];
+			$("#photo-filename").empty();
+			$("#photo-filename").append(filename);
+		});
+	}
+}
+
+function bannerFilename() {
+	var $eventBannerFile = $("#event_banner");
+	if($eventBannerFile.length > 0) {
+		console.log('test');
+		$("#event_banner").on("change", function(e) {
+			var filePath = $(this).val();
+			var split = filePath.split("\\");
+			var filename = split[split.length - 1];
+			$("#banner-filename").empty();
+			$("#banner-filename").append(filename);
+		});
+	}
 }
 
 function timePicker() {
@@ -1002,3 +1032,14 @@ function toggleLabels(labelType) {
 		}
 	}
 // ******************* my_event functions END *********************
+
+// ********** my_event functions **********
+function filename() {
+	$("#user_avi").on("change", function(e) {
+		var filePath = $(this).val();
+		var split = filePath.split("\\");
+		var filename = split[split.length - 1];
+		$("#filename").empty();
+		$("#filename").append(filename);
+	});
+}
