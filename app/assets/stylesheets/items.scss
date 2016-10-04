@@ -219,6 +219,10 @@ div#new-item-container {
 	width: 100vw;
 	max-width: 500px;
 	margin: 10px auto;
+	@include banner-overlay();
+	button#invite-guests {
+		display: none;
+	}
 	div#item-for {
 		font-size: 1.5em;
 		margin: 0px auto 10px;
@@ -242,6 +246,7 @@ div#new-item-container {
 				}
 				textarea, input {
 					border: none;
+					border: 1px solid white;
 					border-bottom: 1px solid $cloud;
 					margin-bottom: 10px;
 					color: $asphalt;
@@ -250,11 +255,16 @@ div#new-item-container {
 					padding-left: 3px;
 					width: 100%;
 					&:focus {
-						color: black;
+						outline: none;
+						border: 1px solid $cobaltBlue;
 					}
-					&.textarea {
-						border: 1px solid $cloud;
-						padding: 10px;
+				}
+				textarea#item_description {
+					height: 100px;
+					border: 1px solid $cloud;
+					padding: 10px;
+					&:focus {
+						border: 1px solid $cobaltBlue;
 					}
 				}
 			} //div.input-box

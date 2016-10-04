@@ -2,23 +2,25 @@ class ItemsController < ApplicationController
   before_action :logged_in?, only: [:new, :bringing]
   def new
     @event = Event.find_by_id(params[:event_id])
+    @category = Category.find_by_id(params[:category_id])
     @item = Item.new
   end
 
   def create
-    itemParams = params.require(:item).permit(:title, :description)
-    category = Category.find_by_id(params[:categories])
-    eventId = params[:event_id]
-    item = Item.create(itemParams)
+    category = Category.find_by_id(category_id)
+    item = Item.create(item_params)
     category.items << item
     current_user.items << item
-    redirect_to "/events/#{eventId}"
+    flash[:success] = "Item signed up"
+    redirect_to "/events/#{event_id}"
   end
 
   def show
   end
 
   def edit
+    @item = Item.find_by_id(item_id)
+    @event = Event.find_by_id(event_id)
   end
 
   def bringingIndex
@@ -35,5 +37,23 @@ class ItemsController < ApplicationController
 
   def my_items
     @items = current_user.items
+  end
+
+  private 
+
+  def item_id
+    params[:id]
+  end
+
+  def event_id
+    params[:event_id]
+  end
+
+  def category_id
+    params[:category_id]
+  end
+
+  def item_params
+    params.require(:item).permit(:title, :description)
   end
 end

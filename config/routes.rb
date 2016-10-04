@@ -40,7 +40,9 @@ Rails.application.routes.draw do
 
   # items routes
     get '/events/:event_id/categories/:category_id/items/new', to: 'items#new'
+    post '/events/:event_id/categories/:category_id/items', to: 'items#create'
     get '/events/:event_id/categories/:category_id/items/:item_id', to: 'items#event_show'
+    get '/events/:event_id/categories/:category_id/items/:id/edit', to: 'items#edit'
     get '/my_items', to: 'items#my_items'
 
   #friendship routes

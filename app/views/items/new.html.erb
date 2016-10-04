@@ -1,12 +1,14 @@
 <% item_example = rando_item  %>
 <div id="new-item-container" class="default-container">
+	<!-- banner container -->
+	<%= render "partials/bannercontainer" %>
 	<div class="clearfixs">
 		<div id="form-container">
 			<div id="item-for">
-				Item for <%= @event.title %>
+				Item for <%= @category.title %>
 			</div>
 				<!-- div#item-for -->
-			<%= form_for @item, url: '/events', method: "post" do |f| %>
+			<%= form_for @item, url: "/events/#{@event.id}/categories/#{@category.id}/items", method: "post" do |f| %>
 				<div id="input-container" class="clearfixs">
 					<div class="input-box col-sm-12">
 						<label>Name</label><br>
@@ -14,7 +16,7 @@
 					</div>
 					<div class="input-box col-sm-12">
 						<label>Description</label><br>
-						<%=	f.text_area :description, class: "full textarea", placeholder: "#{item_example[:description]}"  %>
+						<%=	f.text_area :description, class: "", placeholder: "#{item_example[:description]}"  %>
 					</div>
 					<%= f.submit "Bring", class: "site-button" %>
 				</div>
