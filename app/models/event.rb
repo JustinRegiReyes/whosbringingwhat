@@ -15,16 +15,6 @@ class Event < ActiveRecord::Base
 
 	# paperclip
 
-		# :banner
-			has_attached_file :banner, 
-				styles: { large: "1000X600" , medium: "800x500", thumb: "300x180" },
-				:default_url => 'bannerplaceholder.svg',
-				processors: [:papercrop]
-			crop_attached_file :banner, :aspect => "8:5"
-		  	# validates_attachment :banner, presence: true
-		  	validates_attachment :banner,
-		  		content_type: { content_type: ["image/jpeg", "image/gif", "image/png", "application/pdf"] }
-
   		# :photo
 			has_attached_file :photo, 
 				styles: { large: "600x600" , medium: "300x300", thumb: "100x100" },
@@ -35,8 +25,26 @@ class Event < ActiveRecord::Base
 		  	validates_attachment :photo,
 		  		content_type: { content_type: ["image/jpeg", "image/gif", "image/png", "application/pdf"] }
 
-	def cropping
-		!crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
+	  		after_update :reprocess_photo, :if => :photo_cropping
+
+		# :banner
+			has_attached_file :banner, 
+				styles: { large: "1000X600" , medium: "800x500", thumb: "300x180" },
+				:default_url => 'bannerplaceholder.svg',
+				processors: [:papercrop]
+			crop_attached_file :banner, :aspect => "8:5"
+		  	# validates_attachment :banner, presence: true
+		  	validates_attachment :banner,
+		  		content_type: { content_type: ["image/jpeg", "image/gif", "image/png", "application/pdf"] }
+
+	  		after_update :reprocess_banner, :if => :banner_cropping
+
+	def photo_cropping
+		!photo_crop_x.blank? && !photo_crop_y.blank? && !photo_crop_w.blank? && !photo_crop_h.blank?
+	end
+
+	def banner_cropping
+		!banner_crop_x.blank? && !banner_crop_y.blank? && !banner_crop_w.blank? && !banner_crop_h.blank?
 	end
 
 	def attending_guests
