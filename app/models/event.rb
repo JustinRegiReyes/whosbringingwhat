@@ -17,20 +17,20 @@ class Event < ActiveRecord::Base
 
 		# :banner
 			has_attached_file :banner, 
-				styles: { profile: "600x600" , banner: "200x200>", thumb: "100x100>" },
+				styles: { large: "1000X600" , medium: "800x500", thumb: "300x180" },
 				:default_url => 'bannerplaceholder.svg',
 				processors: [:papercrop]
-			crop_attached_file :banner, :aspect => "4:3"
+			crop_attached_file :banner, :aspect => "8:5"
 		  	# validates_attachment :banner, presence: true
 		  	validates_attachment :banner,
 		  		content_type: { content_type: ["image/jpeg", "image/gif", "image/png", "application/pdf"] }
 
   		# :photo
 			has_attached_file :photo, 
-				styles: { profile: "600x600" , photo: "200x200>", thumb: "100x100>" },
+				styles: { large: "600x600" , medium: "300x300", thumb: "100x100" },
 				:default_url => 'bannerplaceholder.svg',
 				processors: [:papercrop]
-			crop_attached_file :photo, :aspect => "4:3"
+			crop_attached_file :photo, :aspect => "1:1"
 		  	# validates_attachment :photo, presence: true
 		  	validates_attachment :photo,
 		  		content_type: { content_type: ["image/jpeg", "image/gif", "image/png", "application/pdf"] }
