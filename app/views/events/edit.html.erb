@@ -27,14 +27,16 @@
 					<div id="event-pictures" class="clearfixs">
 						<label>Event Picture(s)</label>
 						<div class="picture-container">
+							<label>Photo:</label>
 							<img class="photo" src="<%= @event.photo(:medium) %>">
-							<button class="site-button crop" type="button">Crop</button>
-							<button class="site-button replace" type="button">Edit</button>
+							<a href="/events/<%= @event.id %>/photo/crop" data-no-turbolink="true"><button class="site-button crop" type="button">Crop</button></a>
+							<button class="site-button replace" type="button">Replace</button>
 						</div>
 						<div class="picture-container">
+							<label>Banner:</label>
 							<img class="banner" src="<%= @event.banner(:thumb) %>">
-							<button class="site-button crop" type="button">Crop</button>
-							<button class="site-button replace" type="button">Edit</button>
+							<a href="/events/<%= @event.id %>/banner/crop" data-no-turbolink="true"><button class="site-button crop" type="button">Crop</button></a>
+							<button class="site-button replace" type="button">Replace</button>
 						</div>
 					</div>
 					<div>

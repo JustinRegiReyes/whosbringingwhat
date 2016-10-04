@@ -53,6 +53,28 @@ class EventsController < ApplicationController
     redirect_to "/events/#{event.id}/edit"
   end
 
+  def photo_crop
+    @event = Event.find_by_id(event_id)
+  end
+
+  def update_photo_crop
+    event = Event.find_by_id(event_id)
+    event.update(photo_crop_params)
+    flash[:success] = "Updated event photo"
+    redirect_to "/events/#{event.id}/edit"
+  end
+
+  def banner_crop
+    @event = Event.find_by_id(event_id)
+  end
+
+  def update_banner_crop
+    event = Event.find_by_id(event_id)
+    event.update(banner_crop_params)
+    flash[:success] = "Updated event banner"
+    redirect_to "/events/#{event.id}/edit"
+  end
+
   def created
     @events = current_user.events
   end
@@ -189,5 +211,13 @@ class EventsController < ApplicationController
 
   def attending_event_id
     params[:attending_event_id]
+  end
+
+  def photo_crop_params
+    params.require(:event).permit(:photo_crop_x, :photo_crop_y, :photo_crop_w, :photo_crop_h)
+  end
+
+  def banner_crop_params
+    params.require(:event).permit(:banner_crop_x, :banner_crop_y, :banner_crop_w, :banner_crop_h)
   end
 end

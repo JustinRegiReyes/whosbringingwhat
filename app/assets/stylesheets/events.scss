@@ -65,12 +65,22 @@ div.event-form-container {
 				}
 				div.picture-container {
 					margin: 20px auto;
+					label {
+						padding-left: 40px;
+						margin-bottom: 20px;
+					}
 					img {
 						max-width: 200px;
 						max-height: 150px;
 						display: block;
 						margin: 0 auto;
 					}
+					a {
+						color: inherit;
+						&:hover {
+							text-decoration: none;
+						}	
+					} //a
 					button.site-button {
 						width: 100px;
 						height: 25px;
@@ -94,9 +104,9 @@ div.event-form-container {
 							}
 						}
 					} //button.site-button
-				}
-			}
-		}
+				} //div.picture-container
+			} //div#event-pictures
+		} //& > form > div
 		textarea, input {
 			border: none;
 			border: 1px solid white;
@@ -1073,3 +1083,59 @@ div#search-results-container {
 		} // @media screen and(max-width: $break-iphone6plus)
 	} //div#my-events-container
 // ********** END event#my_events **********
+
+// ********** event#photo_crop **********
+	div#event-photo-crop {
+		background-color: white;
+		max-width: 400px;
+		height: auto;
+		margin: 0 auto;
+		padding: 40px 20px;
+		div#header {
+			text-align: center;
+			padding: 30px;
+			font-size: .8em;
+		} //div#header
+		div.photo-cropbox, div.photo-preview {
+			max-width: 300px;
+			max-height: 400px;
+			margin: 0 auto;
+		} //div#photo-cropbox, div.photo-preview
+		div.submit {
+			margin-top: 20px;
+			input {
+				background-color: $periGreen;
+				color: white;
+			}
+		}
+	} //div#event-photo-crop
+
+// ********** END event#photo_crop **********
+
+// ********** event#banner_crop **********
+	div#event-banner-crop {
+		background-color: white;
+		max-width: 400px;
+		height: auto;
+		margin: 0 auto;
+		padding: 40px 20px;
+		div#header {
+			text-align: center;
+			padding: 30px;
+			font-size: .8em;
+		} //div#header
+		div.photo-cropbox, div.photo-preview {
+			max-width: 300px;
+			max-height: 400px;
+			margin: 0 auto;
+		} //div#photo-cropbox, div.photo-preview
+		div.submit {
+			margin-top: 20px;
+			input {
+				background-color: $periGreen;
+				color: white;
+			}
+		}
+	} //div#event-banner-crop
+
+// ********** END event#banner_crop **********
