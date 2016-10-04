@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
 
 		# :on_hand_photo
 			has_attached_file :avi, 
-				styles: { profile: "600x600" , avi: "200x200>", thumb: "100x100>" },
+				styles: { large: "600x600" , medium: "300x300", small: "200x200", thumb: "100x100>" },
 				:default_url => 'aviplaceholder.png',
 				processors: [:papercrop]
 			crop_attached_file :avi, :aspect => "1:1"

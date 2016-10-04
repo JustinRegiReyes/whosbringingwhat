@@ -58,6 +58,44 @@ div.event-form-container {
 					}
 				}
 			}
+			div#event-pictures {
+				height: auto;
+				label {
+					width: 100%;
+				}
+				div.picture-container {
+					margin: 20px auto;
+					img {
+						max-width: 200px;
+						max-height: 150px;
+						display: block;
+						margin: 0 auto;
+					}
+					button.site-button {
+						width: 100px;
+						height: 25px;
+						font-size: 12px;
+						display: block;
+						margin: 10px auto;
+						padding: 2px;
+						&.crop {
+							background-color: $cobaltBlue;
+							border: 1px solid $cobaltBlue;
+							color: white;
+							&:hover {
+								background-color: darken($cobaltBlue, 2%);
+							}
+						}
+						&.replace {
+							background-color: white;
+							border: 1px solid darken($cloud, 20%);
+							&:hover {
+								background-color: darken(white, 2%);
+							}
+						}
+					} //button.site-button
+				}
+			}
 		}
 		textarea, input {
 			border: none;

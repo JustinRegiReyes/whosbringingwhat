@@ -15,7 +15,7 @@
         	<!-- errors-container -->
 		<div class="form-container">
 			<%= form_for @event, url: "/events/#{@event.id}", method: "patch" do |f| %>
-				<div>
+				<div class="clearfixs">
 					<div>
 						<label>Name of Event</label><br>
 						<%=	f.text_field :title, class: "full", placeholder: "Sci-Fi Saturday"  %>
@@ -24,24 +24,18 @@
 						<label>Search Key</label><br>
 						<%=	f.text_field :search_key, class: "full", placeholder: "movie night"  %>
 					</div>
-					<div>
-						<label for="photo">Upload Picture(s)</label><br><span id="filename"></span>
-						<label for="event_photo" class="col-xs-12 col-sm-6">
-							<div class="file-label">
-								<div class="button">
-									<div><i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Photo</div>
-								</div>
-							</div>
-						</label>
-						<label for="event_banner" class="col-xs-12 col-sm-6">
-							<div class="file-label">
-								<div class="button">
-									<div><i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Banner</div>
-								</div>
-							</div>
-						</label>
-	                 	<%= f.file_field :photo, class: "photos medium" %>
-	                 	<%= f.file_field :banner, class: "photos medium" %>
+					<div id="event-pictures" class="clearfixs">
+						<label>Event Picture(s)</label>
+						<div class="picture-container">
+							<img class="photo" src="<%= @event.photo(:medium) %>">
+							<button class="site-button crop" type="button">Crop</button>
+							<button class="site-button replace" type="button">Edit</button>
+						</div>
+						<div class="picture-container">
+							<img class="banner" src="<%= @event.banner(:thumb) %>">
+							<button class="site-button crop" type="button">Crop</button>
+							<button class="site-button replace" type="button">Edit</button>
+						</div>
 					</div>
 					<div>
 						<label>Name of Venue</label><br>
