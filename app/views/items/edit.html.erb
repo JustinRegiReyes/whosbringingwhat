@@ -1,2 +1,27 @@
-<h1>Items#edit</h1>
-<p>Find me in app/views/items/edit.html.erb</p>
+<% item_example = rando_item  %>
+<div id="edit-item-container" class="default-container">
+	<!-- banner container -->
+	<%= render "partials/bannercontainer" %>
+	<div class="clearfixs">
+		<div id="form-container">
+			<div id="item-for">
+				Item for <%= @item.category.title %>
+			</div>
+				<!-- div#item-for -->
+			<%= form_for @item, url: "/events/#{@event.id}/categories/#{@item.category.id}/items/#{@item.id}", method: "patch" do |f| %>
+				<div id="input-container" class="clearfixs">
+					<div class="input-box col-sm-12">
+						<label>Name</label><br>
+						<%=	f.text_field :title, class: "full", placeholder: "#{item_example[:title]}"  %>
+					</div>
+					<div class="input-box col-sm-12">
+						<label>Description</label><br>
+						<%=	f.text_area :description, class: "", placeholder: "#{item_example[:description]}"  %>
+					</div>
+					<%= f.submit "Save Edits", class: "site-button" %>
+				</div>
+					<!-- div#input-container -->
+			<% end %> 
+		</div>
+	</div>
+</div>

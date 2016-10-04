@@ -507,3 +507,70 @@ div#new-item-container {
 		} // @media screen and(max-width: $break-iphone6plus)
 	} //div#my-items-container
 // ********** END item#my_events **********
+
+// ********** items#edit **********
+div#edit-item-container {
+	width: 100vw;
+	max-width: 500px;
+	margin: 10px auto;
+	@include banner-overlay();
+	button#invite-guests {
+		display: none;
+	}
+	div#item-for {
+		font-size: 1.5em;
+		margin: 0px auto 10px;
+		font-family: $hind;
+		width: 80%;
+	}
+	div#form-container {
+		@include box-shadow(.3);
+		width: 100%;
+		height: auto;
+		background-color: white;
+		padding: 20px 10px;
+		div#input-container {
+			width: 80%;
+			margin: 0 auto;
+			text-align: center;
+			div.input-box {
+				text-align: left;
+				label {
+					font-weight: 200;
+				}
+				textarea, input {
+					border: none;
+					border: 1px solid white;
+					border-bottom: 1px solid $cloud;
+					margin-bottom: 10px;
+					color: $asphalt;
+					padding-top: 3px;
+					padding-bottom: 3px;
+					padding-left: 3px;
+					width: 100%;
+					&:focus {
+						outline: none;
+						border: 1px solid $cobaltBlue;
+					}
+				}
+				textarea#item_description {
+					height: 100px;
+					border: 1px solid $cloud;
+					padding: 10px;
+					&:focus {
+						border: 1px solid $cobaltBlue;
+					}
+				}
+			} //div.input-box
+			.site-button {
+				color: white;
+				background-color: $periGreen;
+				border-radius: 0;
+				&:hover {
+					background-color: lighten($periGreen, 2%);
+				}
+			}
+		} // div#input-container
+	} //div#form-container
+}
+// ********** items#edit END **********

@@ -23,6 +23,13 @@ class ItemsController < ApplicationController
     @event = Event.find_by_id(event_id)
   end
 
+  def update
+    item = Item.find_by_id(item_id)
+    item.update(item_params)
+    flash[:success] = "Item udpdated"
+    redirect_to :back
+  end
+
   def bringingIndex
     @items = current_user.items
   end
