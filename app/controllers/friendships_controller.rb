@@ -1,4 +1,5 @@
 class FriendshipsController < ApplicationController
+	before_action :logged_in?
   	def create
 		@friendship = Friendship.new({friend_id: params[:friend_id]})
 		if @friendship.save
@@ -45,7 +46,10 @@ class FriendshipsController < ApplicationController
 			if params_notification?
 				mark_notification_read(notification_id)
 			elsif params_notification? == false
-				mark_notification_read(current_user.notifications.where({friendship_id: targetFriendship.id, read: false}).first.id)
+				notification_unread = current_user.notifications.where({friendship_id: targetFriendship.id, read: false}).length > 0
+				if notification_unread == true
+					mark_notification_read(current_user.notifications.where({friendship_id: targetFriendship.id, read: false}).first.id)
+				end
 			end
 			respond_to do |format|
 				flash[:success] = "Friend Accepted"
