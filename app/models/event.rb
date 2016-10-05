@@ -56,4 +56,9 @@ class Event < ActiveRecord::Base
 		def reprocess_banner
 			banner.reprocess!
 		end
+
+		# runs paperclips reprocess method for crop
+		def reprocess_photo
+			photo.reprocess!
+		end
 end
