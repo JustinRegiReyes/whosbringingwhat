@@ -14,7 +14,14 @@
 				<% if @category.items.count == 0%>
 					No items registered yet
 				<% elsif @category.items.count <= 2 %>
-					<% 3.times do %> 
+					<% @category.items.each do |item| %>
+						<a href="/events/<%= eventId %>/categories/<%= @category.id%>/items/<%= item.id %>">
+							<div class="item">
+								<span id="<%=item.title%>" class="item-title"><%= item.title %></span>
+							</div>
+						</a>
+					<% end %>
+					<% 2.times do %> 
 						<% @category.items.each do |item| %>
 							<a href="/events/<%= eventId %>/categories/<%= @category.id%>/items/<%= item.id %>">
 								<div class="item additional">
@@ -24,14 +31,27 @@
 						<% end %>
 					<% end %>
 				<% elsif @category.items.count <= 4 %>
-					<% 2.times do %> 
-						<% @category.items.each do |item| %>
-							<a href="/events/<%= eventId %>/categories/<%= @category.id%>/items/<%= item.id %>">
-								<div class="item additional">
-									<span id="<%=item.title%>" class="item-title"><%= item.title %></span>
-								</div>
-							</a>
-						<% end %>
+					<% @category.items.each do |item| %>
+						<a href="/events/<%= eventId %>/categories/<%= @category.id%>/items/<%= item.id %>">
+							<div class="item">
+								<span id="<%=item.title%>" class="item-title"><%= item.title %></span>
+							</div>
+						</a>
+					<% end %>
+					<% @category.items.each do |item| %>
+						<a href="/events/<%= eventId %>/categories/<%= @category.id%>/items/<%= item.id %>">
+							<div class="item additional">
+								<span id="<%=item.title%>" class="item-title"><%= item.title %></span>
+							</div>
+						</a>
+					<% end %>
+				<% elsif @category.items.count >= 5 %>
+					<% @category.items.each do |item| %>
+						<a href="/events/<%= eventId %>/categories/<%= @category.id%>/items/<%= item.id %>">
+							<div class="item">
+								<span id="<%=item.title%>" class="item-title"><%= item.title %></span>
+							</div>
+						</a>
 					<% end %>
 				<% end %>
 			</div>
