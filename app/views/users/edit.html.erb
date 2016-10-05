@@ -16,11 +16,18 @@
 		<%= form_for @user, url: "/my_profile/edit", method: "patch" do |f| %>
 			<div class="input-container clearfixs">
 				<div id="avi-container">
-					<img src="<%= image_path(current_user.avi(:avi)) %>">
-					<a href="/avi-crop" data-no-turbolink="true">
-						<button class="site-button crop" type="button">Crop Avi</button>
-					</a>
-					<button class="site-button replace" type="button">Replace</button>
+					<img src="<%= image_path(current_user.avi(:small)) %>">
+					<% if @user.default_photo? == false %>
+						<a href="/avi-crop" data-no-turbolink="true">
+							<button class="site-button crop" type="button">Crop Avi</button>
+						</a>
+					<% end %>
+					<label for="user_avi" class="site-button replace">
+						Replace
+					</label>
+					<br>
+					<span id="filename"></span>
+						<%= f.file_field :avi, hidden: true %>
 				</div>
 					<!-- div#avi-container -->
 				<div class="">

@@ -68,6 +68,10 @@ class User < ActiveRecord::Base
     	end
     end
 
+    def default_photo?
+    	self.avi.url == "aviplaceholder.png"
+    end
+
     def friendship_pending?(friend)
     	friendship = self.friendships.find_by_friend_id(friend.id)
     	if friendship == nil
