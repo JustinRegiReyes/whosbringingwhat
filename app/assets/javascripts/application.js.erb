@@ -35,7 +35,6 @@ function ready() {
 	bannerFilename();
 	timePicker();
 	navHamburger();
-	removeButtonDataTarget();
 	navHamburgerToggle();
 	ajaxForms();
 	flashMessage();
@@ -201,7 +200,7 @@ function ajaxForms() {
 }
 
 function categorySelector() {
-	$category = $('#categories-container');
+	var $category = $('#categories-container');
 	if($category.length > 0) {
 		if ((typeof category) !== 'undefined') {
 			var categoryObj = JSON.parse(category);
@@ -213,7 +212,7 @@ function categorySelector() {
 }
 
 function itemSelector() {
-	$item = $('#items-container');
+	var $item = $('#items-container');
 	if($item.length > 0) {
 		if ((typeof item) !== 'undefined') {
 			var itemObj = JSON.parse(item);
@@ -531,8 +530,8 @@ function toggleLabels(labelType) {
 	}
 
 	function dismissListener() {
-		$dismissMarked = $('button.dismiss-marked');
-		$dismissAll = $('a.dismiss-all');
+		var $dismissMarked = $('button.dismiss-marked');
+		var $dismissAll = $('a.dismiss-all');
 		if($dismissMarked.length > 0) {
 			$dismissMarked.click(function() {
 				var notificationIds = getCheckedNotificationIds();
@@ -551,7 +550,7 @@ function toggleLabels(labelType) {
 	}
 
 	function getCheckedNotificationIds() {
-		$input = $('input.notification-checkbox');
+		var $input = $('input.notification-checkbox');
 		if($input.length > 0) {
 			var checked = [];
 			$input.each(function() {
@@ -903,7 +902,7 @@ function toggleLabels(labelType) {
 	}
 
 	function submitInvites() {
-		$inviteButton = $("button#invite-submit");
+		var $inviteButton = $("button#invite-submit");
 		if($inviteButton.length > 0) {
 			$inviteButton.click(function() {
 				var invitedFriends = window.invitedFriends;
