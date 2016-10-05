@@ -109,5 +109,8 @@ div#my-invitations {
 		hr {
 			display: none;
 		}
+	@media screen and (max-width: $break-sm) {
+		max-width: 100vw;
+	} //div#my-invitations-container max-width $break-sm
 	} //div#my-invitations-container
 } //div#myinvitations
