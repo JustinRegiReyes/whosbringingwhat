@@ -50,6 +50,7 @@ class EventsController < ApplicationController
   def update
     event = Event.find_by_id(event_id)
     event.update(update_params)
+    flash[:success] = "Changes saved"
     redirect_to "/events/#{event.id}/edit"
   end
 
@@ -151,7 +152,7 @@ class EventsController < ApplicationController
   private
 
   def update_params
-    updated_params = params.require(:event).permit(:photo, :title, :description, :where, :address, :city, :zipcode, :state, :country, :date_start, :date_end, :time_start, :time_end, :search_key, :highlights)
+    updated_params = params.require(:event).permit(:photo, :banner, :title, :description, :where, :address, :city, :zipcode, :state, :country, :date_start, :date_end, :time_start, :time_end, :search_key, :highlights)
     if updated_params[:date_start].length > 0
       updated_params[:date_start] = Date.strptime(updated_params[:date_start], '%m/%d/%Y')
     end

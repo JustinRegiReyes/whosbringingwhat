@@ -112,7 +112,7 @@ function photoFilename() {
 			var split = filePath.split("\\");
 			var filename = split[split.length - 1];
 			$("#photo-filename").empty();
-			$("#photo-filename").append(filename);
+			$("#photo-filename").append("New File: " + filename);
 		});
 	}
 }
@@ -126,7 +126,7 @@ function bannerFilename() {
 			var split = filePath.split("\\");
 			var filename = split[split.length - 1];
 			$("#banner-filename").empty();
-			$("#banner-filename").append(filename);
+			$("#banner-filename").append("New File: " + filename);
 		});
 	}
 }

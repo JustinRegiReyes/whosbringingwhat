@@ -29,14 +29,22 @@
 						<div class="picture-container">
 							<label>Photo:</label>
 							<img class="photo" src="<%= @event.photo(:medium) %>">
-							<a href="/events/<%= @event.id %>/photo/crop" data-no-turbolink="true"><button class="site-button crop" type="button">Crop</button></a>
-							<button class="site-button replace" type="button">Replace</button>
+							<% if @event.default_photo? == false %>
+								<a href="/events/<%= @event.id %>/photo/crop" data-no-turbolink="true"><button class="site-button crop" type="button">Crop</button></a>
+							<% end %>
+							<label class="site-button replace" for="event_photo">Replace</label>
+							<%= f.file_field :photo, hidden: true%>
+							<span id="photo-filename"></span>
 						</div>
 						<div class="picture-container">
 							<label>Banner:</label>
 							<img class="banner" src="<%= @event.banner(:thumb) %>">
-							<a href="/events/<%= @event.id %>/banner/crop" data-no-turbolink="true"><button class="site-button crop" type="button">Crop</button></a>
-							<button class="site-button replace" type="button">Replace</button>
+							<% if @event.default_photo? == false %>
+								<a href="/events/<%= @event.id %>/banner/crop" data-no-turbolink="true"><button class="site-button crop" type="button">Crop</button></a>
+							<% end %>
+							<label class="site-button replace" for="event_banner">Replace</label>
+							<%= f.file_field :banner, hidden: true%>
+							<span id="banner-filename"></span>
 						</div>
 					</div>
 					<div>
