@@ -84,7 +84,7 @@ div#user-search-container {
 				}
 				button.site-button {
 					margin-top: 30px;
-					background-color: $cobaltBlue;
+					background-color: $periGreen;
 					color: white;
 					padding: 5px 16px;
 				}
@@ -109,7 +109,6 @@ div#user-search-container {
 			}
 			div.user-box {
 				height: auto;
-				// width: 100%;
 				background-color: white;
 				margin: 0 auto;
 				border-bottom: 1px solid $cloud;
@@ -209,6 +208,9 @@ div#user-search-container {
 					input {
 						width: 100%;
 					}
+					button.site-button {
+						width: 250px;
+					}
 				}
 			} //div#search-box
 		} //div#search-container
@@ -239,7 +241,9 @@ div#user-search-container {
 	} //div#user-search-container max-width: $break-sm
 	@media screen and(max-width: $break-iphone6plus) {
 		width: 100vw;
+		min-height: 100vh;
 		padding: 50px 0 0 0;
+		background-color: white;
 		div#search-container {
 			width: 100%;
 			div#search-box {
