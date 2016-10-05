@@ -1,5 +1,9 @@
 <div id="my-friend-requests" class="default-container">
 	<div id="friend-requests-container">
+		<div id="friend-request-header">
+			Friend Requests
+		</div>
+			<!-- div#friend-request-container -->
 		<% if @friend_requests.count < 1 %>
 			<div class="no-friend-requests">
 				No pending friend requests
@@ -8,7 +12,7 @@
 		<% else %>
 			<% @friend_requests.each do |fr| %>
 				<div class="friend-request-box clearfixs">
-					<img src="<%= image_path(fr.user.avi(:thumb)) %>">
+					<img src="<%= image_path(fr.user.avi(:small)) %>">
 					<div class="information">
 						<span class="username"><%= fr.user.username %></span>
 						<span class="from"><%= fr.user.from %></span>
