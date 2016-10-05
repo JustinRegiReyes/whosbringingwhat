@@ -7,7 +7,16 @@ class Event < ActiveRecord::Base
 	belongs_to :user
 
 	validates :title, :search_key, :date_start, :time_start, :address, :city, :zipcode, :state, :where, :highlights, :description, presence: true
-
+	validates :title, length: { in: 1..22 }
+	validates :search_key, length: { in: 1..12 }
+	validates :address, length: {in: 1..12}
+	validates :city, length: {in: 1..12}
+	validates :zipcode, length: {in: 1..12}
+	validates :state, length: {in: 1..12}
+	validates :address, length: {in: 1..18}
+	validates :highlights, length: {in: 1..120}
+	validates :description, length: { minimum: 40,
+    too_short: "Give your guests a more detailed description of the event!" }
 
 
 	# renaming has_many :events throgh: :attending_events alias to attendees
