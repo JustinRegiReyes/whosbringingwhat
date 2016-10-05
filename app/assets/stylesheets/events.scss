@@ -1032,6 +1032,7 @@ div#search-results-container {
 			}
 		} // @media screen and(max-width: $break-md)
 		@media screen and(max-width: $break-iphone6plus) {
+			padding-top: 30px;
 			div#events-container {
 				background-color: white;
 				width: 100vw;
@@ -1043,6 +1044,8 @@ div#search-results-container {
 					width: 100%;
 					height: auto;
 					box-shadow: none;
+					padding-bottom: 25px;
+					border-bottom: 1px solid $cloud;
 					div.img {
 						width: 250px;
 						height: 250px;
@@ -1075,10 +1078,6 @@ div#search-results-container {
 						}
 					}
 				} //div.event-box
-				hr {
-					display: block;
-					border-top: 1px solid $asphalt;
-				}
 			}
 		} // @media screen and(max-width: $break-iphone6plus)
 	} //div#my-events-container
