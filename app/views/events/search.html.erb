@@ -25,19 +25,19 @@
 					<% @events.each do |event| %>
 						<div class="event-box clearfixs">
 							<a href="/events/<%= event.id%>">
-								<div id="event-banner" style="background: url('<%= event.photo.url(:medium)%>') no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;" ></div>
+								<div class="event-photo" style="background: url('<%= image_path(event.photo.url(:medium))%>') no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;" ></div>
 							</a>
-							<div id="event-information">
-								<div id="event-guests">
+							<div class="event-information">
+								<div class="event-guests">
 									<i class="fa fa-users" aria-hidden="true"></i> <%= event.attending_events.count %>
 								</div>
-								<div id="event-title"><a href="/events/<%=event.id%>"><%=truncate("#{event.title}", length: 25) %></a></div>
+								<div class="event-title"><a href="/events/<%=event.id%>"><%=truncate("#{event.title}", length: 25) %></a></div>
 								<div class="event-when">
 									<%= event.date_start.strftime('%a %b %-d') %> at <%= event.time_start.strftime('%l:%M%P')%>
 								</div>
-								<div id="event-where"><i class="fa fa-map-marker" aria-hidden="true"></i> <%= event.where %></div>
-								<div id="event-highlights">
-									<%= event.highlights %>
+								<div class="event-where"><i class="fa fa-map-marker" aria-hidden="true"></i> <%= event.where %></div>
+								<div class="event-highlights">
+									<%= truncate("#{event.highlights}", length: 200) %>
 								</div>
 							</div>
 						</div>
