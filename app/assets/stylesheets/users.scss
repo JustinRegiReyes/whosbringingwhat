@@ -224,6 +224,15 @@ div#user-search-container {
 				} //div#results-count
 				div.user-box {
 					width: 100%;
+					div.content {
+						height: 120px;
+						width: auto;
+					    margin-left: 20px;
+					    position: relative;
+					    overflow: hidden;
+					    padding-left: 10px;
+					    float: none;
+					} //div.content
 				} //div.user-box
 			} //div#search-results
 		} //div#users-results-container
@@ -266,6 +275,7 @@ div#user-search-container {
 						div.friendship,
 						button.site-button {
 							right: 20px;
+							top: 10px;
 						}
 					} //div.content
 				} //div.user-box
