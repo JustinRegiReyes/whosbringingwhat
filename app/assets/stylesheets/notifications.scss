@@ -1,6 +1,6 @@
 // ********** notification#my_notifications **********
 	div#my-notifications-container {
-		max-width: 500px;
+		max-width: 600px;
 		min-height: 200px;
 		height: auto;
 		margin: 0 auto;
@@ -12,7 +12,7 @@
 			height: auto;
 			position: relative;
 			div#notifications-header {
-				width: 600px;
+				width: 100%;
 				padding: 10px;
 				padding-left: 10px;
 				margin: 0 auto 30px;
@@ -81,8 +81,8 @@
 			    max-width: 500px;
 			}
 			div.notification-box {
-				height: 115px;
-				width: 600px;
+				height: 150px;
+				width: 100%;
 				padding: 0px;
 				margin: 5px auto;
 				background-color: white;
@@ -92,6 +92,7 @@
 					width: 50px;
 					height: 100%;
 					position: relative;
+					z-index: 100;
 					input {
 						width: 30px;
 						height: 30px;
@@ -105,8 +106,6 @@
 				}
 				div.information {
 					position: relative;
-					float: left;
-					width: 525px;
 					height: 100%;
 					border-bottom: 1px solid darken($cloud, 5%);
 					div.img {
@@ -253,6 +252,7 @@
 						width: auto;
 						margin: 0 auto;
 						float: none;
+						overflow: visible;
 						height: 100%;
 						padding: 30px 0;
 						div.img {
