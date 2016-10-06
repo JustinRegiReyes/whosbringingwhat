@@ -9,11 +9,12 @@ class Event < ActiveRecord::Base
 	validates :title, :search_key, :date_start, :time_start, :address, :city, :zipcode, :state, :where, :highlights, :description, presence: true
 	validates :title, length: { in: 1..22 }
 	validates :search_key, length: { in: 1..12 }
+	validates :where, length: {in: 1..25}
 	validates :address, length: {in: 1..12}
-	validates :city, length: {in: 1..12}
+	validates :city, length: {in: 1..20}
 	validates :zipcode, length: {in: 1..12}
-	validates :state, length: {in: 1..12}
-	validates :address, length: {in: 1..18}
+	validates :state, length: {in: 1..15}
+	validates :address, length: {in: 1..30}
 	validates :highlights, length: {in: 1..120}
 	validates :description, length: { minimum: 40,
     too_short: "Give your guests a more detailed description of the event!" }

@@ -142,7 +142,6 @@ function inputLengthTracker() {
 function photoFilename() {
 	var $eventPhotoFile = $("#event_photo");
 	if($eventPhotoFile.length > 0) {
-		console.log('test');
 		$eventPhotoFile.on("change", function(e) {
 			var filePath = $(this).val();
 			var split = filePath.split("\\");
@@ -156,7 +155,6 @@ function photoFilename() {
 function bannerFilename() {
 	var $eventBannerFile = $("#event_banner");
 	if($eventBannerFile.length > 0) {
-		console.log('test');
 		$("#event_banner").on("change", function(e) {
 			var filePath = $(this).val();
 			var split = filePath.split("\\");

@@ -18,54 +18,59 @@
 				<div class="clearfixs">
 					<div>
 						<label>Name of Event</label><br>
-						<%=	f.text_field :title, class: "full", placeholder: "Sci-Fi Saturday"  %>
+						<%=	f.text_field :title, class: "full input-limit", placeholder: "Sci-Fi Saturday", data: { limit: "22", inputname: "title" }%>
+						<span class="input-limit-tracker" data-inputname="title">0/22</span>
 					</div>
 					<div>
 						<label>Search Key</label><br>
-						<%=	f.text_field :search_key, class: "full", placeholder: "movie night"  %>
+						<%=	f.text_field :search_key, class: "full input-limit", placeholder: "movie night", data: { limit: "12", inputname: "search_key" }%>
+						<span class="input-limit-tracker" data-inputname="search_key">0/12</span>
 					</div>
-					<div id="event-pictures" class="clearfixs">
-						<label>Event Picture(s)</label>
-						<div class="picture-container">
-							<label>Photo:</label>
-							<img class="photo" src="<%= @event.photo(:medium) %>">
-							<% if @event.default_photo? == false %>
-								<a href="/events/<%= @event.id %>/photo/crop" data-no-turbolink="true"><button class="site-button crop" type="button">Crop</button></a>
-							<% end %>
-							<label class="site-button replace" for="event_photo">Replace</label>
-							<%= f.file_field :photo, hidden: true%>
-							<span id="photo-filename"></span>
-						</div>
-						<div class="picture-container">
-							<label>Banner:</label>
-							<img class="banner" src="<%= @event.banner(:thumb) %>">
-							<% if @event.default_photo? == false %>
-								<a href="/events/<%= @event.id %>/banner/crop" data-no-turbolink="true"><button class="site-button crop" type="button">Crop</button></a>
-							<% end %>
-							<label class="site-button replace" for="event_banner">Replace</label>
-							<%= f.file_field :banner, hidden: true%>
-							<span id="banner-filename"></span>
-						</div>
+					<div>
+						<label for="photo">Upload Picture(s)</label><br><span id="filename"></span>
+						<label for="event_photo" class="col-xs-12 col-sm-6">
+							<div class="file-label">
+								<div class="button">
+									<div><i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Photo</div>
+								</div>
+								<span id="photo-filename"></span>
+							</div>
+						</label>
+						<label for="event_banner" class="col-xs-12 col-sm-6">
+							<div class="file-label">
+								<div class="button">
+									<div><i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Banner</div>
+								</div>
+								<span id="banner-filename"></span>
+							</div>
+						</label>
+	                 	<%= f.file_field :photo, class: "photos medium" %>
+	                 	<%= f.file_field :banner, class: "photos medium" %>
 					</div>
 					<div>
 						<label>Name of Venue</label><br>
-						<%=	f.text_field :where, class: "full", placeholder: "The Batcave"  %>
+						<%=	f.text_field :where, class: "full input-limit", placeholder: "The Batcave", data: { limit: "12", inputname: "where" }%>
+						<span class="input-limit-tracker" data-inputname="where">0/12</span>
 					</div>
 					<div class="col-xs-8">
 						<label>City</label><br>
-						<%=	f.text_field :city, class: "full", placeholder: "Gotham"  %>
+						<%=	f.text_field :city, class: "full input-limit", placeholder: "Gotham", data: { limit: "20", inputname: "city" }%>
+						<span class="input-limit-tracker" data-inputname="city">0/20</span>
 					</div>
 					<div class="col-sm-4 col-xs-12">
 						<label>State</label><br>
-						<%=	f.text_field :state, class: "full", placeholder: "New Jersey"  %>
+						<%=	f.text_field :state, class: "full input-limit", placeholder: "New Jersey", data: { limit: "15", inputname: "state" }%>
+						<span class="input-limit-tracker" data-inputname="state">0/15</span>
 					</div>
 					<div>
 						<label>Address</label><br>
-						<%=	f.text_field :address, class: "full", placeholder: "123 Batcave Lane"  %>
+						<%=	f.text_field :address, class: "full input-limit", placeholder: "123 Batcave Lane", data: { limit: "30", inputname: "address" }%>
+						<span class="input-limit-tracker" data-inputname="address">0/30</span>
 					</div>
 					<div>
 						<label>Zipcode</label><br>
-						<%=	f.text_field :zipcode, class: "full", placeholder: "12345"  %>
+						<%=	f.text_field :zipcode, class: "full input-limit", placeholder: "12345", data: { limit: "12", inputname: "zipcode" }%>
+						<span class="input-limit-tracker" data-inputname="zipcode">0/12</span>
 					</div>
 					<div class="start-end-wrapper col-xs-12 clearfixs">
 						<div class="col-sm-6 col-xs-12 start">
@@ -82,7 +87,8 @@
 						<!-- div.start-end-wrapper -->
 					<div class="col-xs-12">
 						<label>Highlights/Btw's</label><br>
-						<%=	f.text_area :highlights, class: "full textarea highlights", placeholder: "Don't tell anyone the whereabouts of The Batcave. No pets allowed in The Batcave. ESPECIALLY BATS"  %>
+						<%=	f.text_area :highlights, class: "full textarea highlights input-limit", placeholder: "Don't tell anyone the whereabouts of The Batcave. No pets allowed in The Batcave. ESPECIALLY BATS", data: { limit: "120", inputname: "highlights" }%>
+						<span class="input-limit-tracker" data-inputname="highlights">0/120</span>
 					</div>
 					<div class="col-xs-12">
 						<label>Description</label><br>
