@@ -335,6 +335,7 @@ div#event-show-container {
 				position: absolute;
 				left: 15px;
 				padding-left: 1px;
+				width: 20px;
 			}
 		}
 		div#information {
@@ -399,15 +400,7 @@ div#event-show-container {
 				height: 170px;
 				margin-bottom: 10px;
 				padding-left: 10px;
-				@media screen and (max-width: $break-sm) {
-					height: auto;
-				}
-				@media screen and (max-width: $break-iphone6plus) {
-					&:after {
-						@include contain-float();
-					}
-					height: auto;
-				}
+				height: auto;
 				div#guests-header {
 					margin: 0;
 					text-align: center;
@@ -498,26 +491,6 @@ div#event-show-container {
 					}
 				}
 			}
-			@media screen and (max-width: $break-sm) {
-				width: 73%;
-			}
-			@media screen and (max-width: $break-iphone6plus) {
-				width: 98%;
-				div.profile-pic-container {
-					width: 100%;
-					height: 130px;
-					div.profile-pic {
-						height: 90px; 
-						width: 90px;
-					}
-				}
-				textarea#comment_post {
-					width: 100%;
-				}
-				div.submit-button-container {
-					text-align: center;
-				}
-			}
 		} // div#add-comment-container
 		div.comment-container {
 			height: auto;
@@ -563,28 +536,18 @@ div#event-show-container {
 					}
 				}
 			}
-			@media screen and (max-width: $break-sm) {
-				width: 73%;
-			}
-			@media screen and (max-width: $break-iphone6) {
-				width: 98%;
-				margin: 150px auto;
-				div.user-avi {
-				    min-height: 90px;
-				    min-width: 90px;
-				    top: -100px;
-				    left: 10px;
-				}
-				div.comment-made {
-					left: 94px;
-    				top: -30px;
-				}
-				div.post-container {
-					padding: 10px 20px;
-				}
-			}
 		} // div.comment-container
 	}
+	@media screen and(max-width: $break-sm) {
+		div#information-section {
+			div#additional-information {
+				padding-right: 5px;
+				div#guests {
+
+				} //div#guests
+			} //div#additional-information
+		} //div#information-section
+	} //div#event-show-container @media screen and(max-width: $break-sm)
 	@media screen and(max-width: $break-iphone6plus) {
 		padding-top: 50px;
 		div#information-section {
@@ -605,6 +568,7 @@ div#event-show-container {
 				div#guests {
 					box-shadow: none;
 					padding: 10px 0;
+
 					div#guests-header {
 						padding-bottom: 10px;
 						height: auto;
@@ -642,6 +606,46 @@ div#event-show-container {
 				}
 			} //div#additional-information
 		} //div#information-section
+		div#comment-section {
+			padding: 50px 0 0;
+			background-color: white;
+			div#add-comment-container {
+				width: 98%;
+				div.profile-pic-container {
+					width: 100%;
+					height: 130px;
+					div.profile-pic {
+						height: 90px; 
+						width: 90px;
+					}
+				}
+				textarea#comment_post {
+					width: 100%;
+				}
+				div.submit-button-container {
+					text-align: center;
+				}
+			} //div#add-comment-container
+			div.comment-container {
+				width: 100%;
+				margin: 0 auto;
+				padding: 130px 0 20px;
+				background-color: white;
+				div.user-avi {
+				    min-height: 90px;
+				    min-width: 90px;
+				    top: 20px;
+				    left: 20px;
+				}
+				div.comment-made {
+				    left: 110px;
+    				top: 80px;
+				}
+				div.post-container {
+					padding: 10px 20px;
+				}
+			} //div.add-comment-container
+		} //div#comment-section
 	} //div#event-show-container @media screen and(max-width: $break-iphone6plus)
 } // event-show-container
 
