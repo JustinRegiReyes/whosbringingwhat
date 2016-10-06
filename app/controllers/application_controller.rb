@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
   include FriendshipsHelper
   include EventsHelper
   include CategoriesHelper
+
+  def catch_route
+      redirect_to "/"
+  end
 end

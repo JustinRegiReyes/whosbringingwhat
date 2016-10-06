@@ -65,4 +65,7 @@ Rails.application.routes.draw do
 	post '/sessions', to: 'sessions#create'
 	delete '/sessions', to: 'sessions#destroy'
 
+  # catch route
+  match "*path", to: "application#catch_route", via: :all
+
 end
