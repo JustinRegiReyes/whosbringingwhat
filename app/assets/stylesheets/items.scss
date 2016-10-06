@@ -475,13 +475,15 @@ div#new-item-container {
 						float: none;
 					}
 					div.information {
-						width: 250px;
+						width: 100%;
+						font-size: 1.15em;
 						margin: 0 auto;
 						float: none;
 						height: auto;
 						padding-bottom: 65px;
 						div.item-description {
 							margin-bottom: 10px;
+							height: 125px;
 						}
 						div.button-wrapper {
 							width: 100%;
