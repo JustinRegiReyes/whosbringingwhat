@@ -30,21 +30,24 @@
 						<%= f.file_field :avi, hidden: true %>
 				</div>
 					<!-- div#avi-container -->
-				<div class="">
+				<div class="input-limit-container">
 					<label>Username</label><br>
-					<%=	f.text_field :username, class: "", placeholder: "Moriarty"  %>	
+					<%=	f.text_field :username, class: " input-limit", placeholder: "Moriarty", data: { limit: "15", inputname: "username" }  %>	
+					<span class="input-limit-tracker" data-inputname="username" data-limit="15">0/15</span>
 				</div>
 				<div class="">
 					<label>Email</label><br>
 					<%=	f.email_field :email, class: "", placeholder: "mailbox@domain.com"  %>	
 				</div>
-				<div class="">
+				<div class="input-limit-container">
 					<label>From</label><br>
-					<%=	f.text_field :from, class: "", placeholder: "Bay Area"  %>	
+					<%=	f.text_field :from, class: " input-limit", placeholder: "Bay Area", data: { limit: "20", inputname: "from" }  %>	
+					<span class="input-limit-tracker" data-inputname="from" data-limit="20">0/20</span>
 				</div>
-				<div class="">
+				<div class="input-limit-container">
 					<label>Bio</label><br>
-					<%=	f.text_area :bio, class: "bio", placeholder: "I like long walks on the beach, hikes, and knit in my spare time."  %>
+					<%=	f.text_area :bio, class: "bio input-limit", placeholder: "I like long walks on the beach, hikes, and knit in my spare time.", data: { limit: "100", inputname: "bio" }  %>
+					<span class="input-limit-tracker" data-inputname="bio" data-limit="100">0/100</span>
 				</div>
 				<div class="">
 					<label>Change Password</label><br>

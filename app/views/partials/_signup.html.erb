@@ -29,11 +29,12 @@
                   <label for="user_avi"><span id="button-avi" class="site-button">Upload Avi</span></label><br><span id="filename"></span>
                   <%= f.file_field :avi %>
               </div>
-              <div>
+              <span id="username-tracker" class="input-limit-tracker" data-inputname="username" data-limit="15">0/15</span>
+              <div class="input-limit-container">
                 <div class="input-icon">
                   <i class="fa fa-user" aria-hidden="true"></i>
                 </div>
-               <%= f.text_field :username, placeholder: "Username e.g. \"jmoriarty\"", class: "form-control", id: "signup-username" %>
+               <%= f.text_field :username, placeholder: "Username e.g. \"jmoriarty\"", class: "form-control input-limit", id: "signup-username", data: { limit: "15", inputname: "username" } %>
               </div>
               <div>
                 <div class="input-icon">
@@ -41,14 +42,16 @@
                 </div>
                <%= f.email_field :email, placeholder: "Email e.g. \"mailbox@domain.com\"", class: "form-control", id: "email-username" %>
               </div>
-              <div>
+               <span id="from-tracker" class="input-limit-tracker" data-inputname="from" data-limit="20">0/20</span>
+              <div class="input-limit-container">
                 <div class="input-icon">
                  <i class="fa fa-map-marker" aria-hidden="true" class="map-marker"></i>
                 </div>
-               <%= f.text_field :from, placeholder: "From e.g. \"Bay Area\"", class: "form-control", id: "from" %>
+               <%= f.text_field :from, placeholder: "From e.g. \"Bay Area\"", class: "form-control input-limit", id: "from", data: { limit: "20", inputname: "from" } %>
               </div>
-              <div>
-               <%= f.text_area :bio, placeholder: "Bio e.g. \"I like long walks on the beach.\"", class: "form-control", id: "from" %>
+              <span id="bio-tracker" class="input-limit-tracker" data-inputname="bio" data-limit="100">0/100</span>
+              <div class="input-limit-container">
+               <%= f.text_area :bio, placeholder: "Bio e.g. \"I like long walks on the beach.\"", class: "form-control input-limit", id: "from", data: { limit: "100", inputname: "bio" } %>
               </div>
               <div>
                 <div class="input-icon">

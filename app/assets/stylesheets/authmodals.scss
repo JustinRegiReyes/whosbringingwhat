@@ -51,7 +51,10 @@ div.auth-modal {
 		}
 		& > div {
 			position: relative;
-			margin: 10px auto;
+			margin: 20px auto 10px;
+			&.input-limit-container {
+				margin: 0 auto 10px;
+			}
 			& > div.input-icon	{
 				position: absolute;
 				left: 1px;

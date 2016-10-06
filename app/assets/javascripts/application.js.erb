@@ -31,6 +31,7 @@ $(document).on('page:load', ready);
 function ready() {
 	passwordConfirm();
 	filename();
+	removeButtonDataTarget();
 	photoFilename();
 	bannerFilename();
 	timePicker();
@@ -57,6 +58,7 @@ function ready() {
 	acceptEventInvitation();
 	myEventsInviteButton();
 	addCategoryInputs();
+	inputLengthTracker();
 	if(window.location.pathname === "/calendar") {
 		calendar();
 	}
@@ -95,6 +97,41 @@ function passwordConfirm() {
 				$passContainer.html(noMatch);
 			}
 		})
+	}
+}
+
+function inputLengthTracker() {
+	var $inputLimit = $('.input-limit');
+	if($inputLimit.length > 0) {
+		$inputLimit.each(function(index, el) {
+			var $input = $(this);
+			var inputname = $input.data('inputname');
+			var inputVal = $input.val();
+			var $inputSpan = $('span[data-inputname="' + inputname + '"]')
+			var valueLength = $input.val().length;
+			var inputLimit = $input.data('limit');
+			$inputSpan.text(valueLength + '/' + inputLimit);
+
+			if(inputVal.length > 0) {
+				$inputSpan.text(valueLength + '/' + inputLimit);
+			}
+		});
+		var periGreen = "#0ABE65";
+		var ashyRed = "#F55757";
+		$inputLimit.on('input', function() {
+			var $input = $(this);
+			var inputname = $input.data('inputname');
+			var $inputSpan = $('span[data-inputname="' + inputname + '"]')
+			var valueLength = $input.val().length;
+			var inputLimit = $input.data('limit');
+			$inputSpan.text(valueLength + '/' + inputLimit);
+
+			if(valueLength > inputLimit) {
+				$inputSpan.css({color: ashyRed});
+			} else if(valueLength <= inputLimit) {
+				$inputSpan.css({color: periGreen});
+			}
+		});
 	}
 }
 
@@ -177,16 +214,18 @@ function navHamburgerToggle() {
 
 function removeButtonDataTarget() {
 	// Fetch an array of all the data
-	var el = $("button.navbar-toggle");
-	var data = el.data(),
-	    i;
-	// Fetch all the key-names
-	var keys = $.map(data , function(value, key) { return key; });
-	// Loop through the keys, remove the attribute if the key contains "lorem".
-	for(i = 0; i < keys.length; i++) {
-	    if (keys[i].indexOf('target') != -1) {
-	        el.removeAttr("data-" + keys[i]);
-	    }
+	if($('nav').length > 0) {
+		var el = $("button.navbar-toggle");
+		var data = el.data(),
+		    i;
+		// Fetch all the key-names
+		var keys = $.map(data , function(value, key) { return key; });
+		// Loop through the keys, remove the attribute if the key contains "lorem".
+		for(i = 0; i < keys.length; i++) {
+		    if (keys[i].indexOf('target') != -1) {
+		        el.removeAttr("data-" + keys[i]);
+		    }
+		}
 	}
 }
 

@@ -322,3 +322,13 @@ div.guests-modal {
 		}
 	} // div.modal-dialog
 }
+
+// ********** modal styles ***********
+	span.input-limit-tracker {
+		color: $periGreen;
+		display: block;
+		position: relative;
+		text-align: right;
+		font-size: .8em;
+	}
+// ********** modal styles END ***********
