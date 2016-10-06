@@ -6,7 +6,7 @@
          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
          <!-- <h1 class="modal-title">Signup</h1> -->
             <div class="errors-container">
-            	<% if flash[:auth_error] %>
+            	<% if flash[:signup_error] %>
             		<% flash.each do |key, value| %>
               		<div class="flash <%= key %>">
               			<%= value %>
