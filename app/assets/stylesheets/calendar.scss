@@ -1,4 +1,5 @@
 div#calendar-container.default-container {
+  height: auto;
 }
 
 #calendar-wrapper {
@@ -8,252 +9,288 @@ div#calendar-container.default-container {
   margin: 0 auto;
   background-color: white;
   padding-top: 40px;
-  overflow-y: auto;
+  overflow: visible;
   @include box-shadow();
   div.clndr {
     padding: 10px;
     padding-bottom: 0;
-  }
-  .clndr-controls {
-    width: 99%;
-    padding: 5px 10px;
-    margin: 0;
-    height: 50px;
-    background-color: $ashyRed;
-    position: relative;
-    color: white;
-    i {
-      font-size: 1.5em;
-    }
-    .clndr-previous-button {
-      width: 20%;
-      float: left;
-      text-align: left;
-      position: relative;
-      height: 100%;
-      i {
-        @include vertical-align();
-      }
-      &:hover {
-        cursor: pointer;
-      }
-    }
-    .month {
-      width: 60%;
-      float: left;
-      text-align: center;
-      font-family: $hind;
-      font-size: 1.5em;
-      @include vertical-align();
-    }
-    .clndr-next-button {
-      width: 20%;
-      float: left;
-      text-align: right;
-      position: relative;
-      height: 100%;
-      i {
-        @include vertical-align();
-      }
-      &:hover {
-        cursor: pointer;
-      }
-    } //.clndr-next-button
-  } //clndr-controls
-  .clndr-grid {
-    width: 99%;
-    display: inline-block;
-    vertical-align: top;
-    padding-left: 10px;
-    .days-of-the-week {
-      background-color: white;
-      color: $asphalt;
-      width: 100%;
-      height: 30px;
-    }
-    .today {
-      border: 1px solid $ashyRed !important;
-    }
-    .days {
-    }
-    .header-day { 
-      height: 20px;
-      color: $asphalt;
-    }
-    .header-day, .day {
-      display: inline-block;
-      width: 14.2857%;
-      margin: 5px 0px !important;
-      float: left;
-      text-align: center;
-      // font-family: Helvetica;
-      // font-weight: 100;
-    }
-    .day {
+    .clndr-controls {
+      width: 99%;
+      padding: 5px 10px;
+      margin: 0;
       height: 50px;
+      background-color: $ashyRed;
       position: relative;
-      // border-bottom: 1px solid white;
+      color: white;
       i {
-        position: absolute;
-        font-size: .40em;
-        left: 0;
-        right: 0;
-        margin-right: auto;
-        margin-left: auto;
-        bottom: 2px;
-        color: lighten(black, 40%);
+        font-size: 1.5em;
       }
-      &.eventDay {
-        // color: $periGreen !important;
-      }
-      &.eventDay:hover {
-        border: none;
-        background-color: $periGreen;
-        color: white;
-        cursor: pointer;
+      .clndr-previous-button {
+        width: 20%;
+        float: left;
+        text-align: left;
+        position: relative;
+        height: 100%;
         i {
-          color: $periGreen;
+          @include vertical-align();
+        }
+        &:hover {
+          cursor: pointer;
         }
       }
-      .event-days-container {
-        display: none;
-        z-index: 1;
-        height: 200px;
-        width: 200px;
-        position: absolute;
-        bottom: -171px;
-        right: -190px;
-        background-color: white;
-        cursor: default;
-        padding: 0 10px;
-        overflow-y: scroll;
-        @include box-shadow();
-        .event-title-container {
-          border-bottom: 1px solid $cloud;
-          padding: 10px 0px;
-          a {
-            font-size: .8em;
-            color: black;
-            &:hover {
-              color: $cobaltBlue;
-              text-decoration: none;
-            }
-          }
-        }
-        i.close {
-            top: 2px;
-            position: absolute;
-            right: 2px;
-            font-weight: 100;
-            color: $ashyRed;
-        }
-      } //.event-days-container
-      span.day-number {
-        height: 20px;
-        display: inline-block;
-        font-family: Helvetica;
-        font-weight: 100;    
+      .month {
+        width: 60%;
+        float: left;
+        text-align: center;
+        font-family: $hind;
+        font-size: 1.5em;
         @include vertical-align();
       }
-      @media screen and (max-width: $break-iphone6plus) {
-        .event-days-container {
-          margin-left: auto;
-          margin-right: auto;
-          width: 60%;
-          height: 200px;
+      .clndr-next-button {
+        width: 20%;
+        float: left;
+        text-align: right;
+        position: relative;
+        height: 100%;
+        i {
+          @include vertical-align();
+        }
+        &:hover {
+          cursor: pointer;
+        }
+      } //.clndr-next-button
+    } //clndr-controls
+    .clndr-grid {
+      width: 99%;
+      display: inline-block;
+      vertical-align: top;
+      padding-left: 10px;
+      .days-of-the-week {
+        background-color: white;
+        color: $asphalt;
+        width: 100%;
+        height: 30px;
+      }
+      .today {
+        border: 1px solid $ashyRed !important;
+      }
+      .days {
+      }
+      .header-day { 
+        height: 20px;
+        color: $asphalt;
+      }
+      .header-day, .day {
+        display: inline-block;
+        width: 14.2857%;
+        margin: 5px 0px !important;
+        float: left;
+        text-align: center;
+        // font-family: Helvetica;
+        // font-weight: 100;
+      }
+      .day {
+        height: 50px;
+        position: relative;
+        // border-bottom: 1px solid white;
+        i {
+          position: absolute;
+          font-size: .40em;
           left: 0;
           right: 0;
-          top: 100px;
-          box-shadow: 0 3px 5px rgba(0, 0, 0, .8);
+          margin-right: auto;
+          margin-left: auto;
+          bottom: 2px;
+          color: lighten(black, 40%);
         }
-      }
-    } // .day
-    .prevMonth, .nextMonth {
-      color: #dfbbbb;
-      background-color: #FFF;
-    }
-  } //clndr-grid
-  .events-wrapper {
-    display: inline-block;
-    min-height: 300px;
-    max-height: 350px;
-    overflow: scroll;
-    width: 99%;
-    padding: 10px;
-    padding-bottom: 0;
-    vertical-align: top;
-    border-top: 1px dashed $asphalt;
-    margin-top: 30px;
-    .events-header {
-      margin: 5px 0;
-      text-align: center;
-      span {
-      }
-    }
-    .events {
-      padding: 5px 30px;
-      width: 82%;
-      margin: 0 auto;
-      min-height: 300px;
-      a {
-        color: black;
-        &:hover {
-          color: black;
-          text-decoration: none;
+        &.eventDay {
+          // color: $periGreen !important;
         }
-      }
-      .event-group {
-        margin-bottom: 5px;
-        .event-item {
-          border-bottom: 1px solid $cloud;
-          padding: 5px;
-          .event-title {
-            padding-left: 30px;
-            font-family: Helvetica;
-            font-weight: 100;
-            .title {
-                color: black;
-              }
-            .host {
+        &.eventDay:hover {
+          border: none;
+          background-color: $periGreen;
+          color: white;
+          cursor: pointer;
+          i.fa-circle {
+            color: $periGreen;
+          }
+          h5 {
+            color: black;
+          }
+        }
+        .event-days-container {
+          display: none;
+          z-index: 1;
+          height: 200px;
+          width: 200px;
+          position: absolute;
+          bottom: -171px;
+          right: -190px;
+          background-color: white;
+          cursor: default;
+          padding: 0 10px;
+          overflow-y: scroll;
+          padding-top: 10px;
+          @include box-shadow();
+          .event-title-container {
+            border-bottom: 1px solid $cloud;
+            padding: 10px 0px;
+            a {
+              font-size: .8em;
               color: black;
-            }
-            &:hover {
-              color: $cobaltBlue;
-              cursor: pointer;
-              .title {
+              &:hover {
                 color: $cobaltBlue;
-              }
-              .host {
-                color: $cobaltBlue;
-              }
-              a {
-                color: $cobaltBlue;
-                @media screen and(max-width: $break-iphone6plus) {
-                  display: block;
-                  width: 100%;
-                }
+                text-decoration: none;
               }
             }
-          } //.event-title
-          @media screen and(max-width: $break-iphone6plus) {
-              .event-title {
-                .title {
-                  display: block;
-                  width: 100%;
-                }
+          }
+          i.close {
+              top: 2px;
+              position: absolute;
+              right: 2px;
+              font-weight: 100;
+              color: $ashyRed;
+              width: 20px;
+              height: 20px;
+              font-size: 1em;
+              color: black;
+              opacity: .5;
+              margin-right: 2px;
+              &:hover {
+                opacity: .8;
               }
           }
-        } //.event-item
-      } // event.group
-      .event-date {
-        margin-bottom: 3px;
-        font-family: 300;
-        font-family: Helvetica;
+        } //.event-days-container
+        span.day-number {
+          height: 100%;
+          width: 100%;
+          padding-top: 15px;
+          display: inline-block;
+          font-family: Helvetica;
+          font-weight: 100;    
+          @include vertical-align();
+        }
+      } // .day
+      .prevMonth, .nextMonth {
+        color: #dfbbbb;
+        background-color: #FFF;
       }
-    }
-  } // events.wrapper
+    } //clndr-grid
+    .events-wrapper {
+      display: inline-block;
+      min-height: 300px;
+      max-height: 350px;
+      overflow: scroll;
+      width: 99%;
+      padding: 10px;
+      padding-bottom: 0;
+      vertical-align: top;
+      border-top: 1px dashed $asphalt;
+      margin-top: 30px;
+      .events-header {
+        margin: 5px 0;
+        text-align: center;
+        span {
+        }
+      }
+      .events {
+        padding: 5px 30px;
+        width: 82%;
+        margin: 0 auto;
+        min-height: 300px;
+        a {
+          color: black;
+          &:hover {
+            color: black;
+            text-decoration: none;
+          }
+        }
+        .event-group {
+          margin-bottom: 5px;
+          .event-item {
+            border-bottom: 1px solid $cloud;
+            padding: 5px;
+            .event-title {
+              padding-left: 30px;
+              font-family: Helvetica;
+              font-weight: 100;
+              .title {
+                  color: black;
+                }
+              .host {
+                color: black;
+              }
+              &:hover {
+                color: $cobaltBlue;
+                cursor: pointer;
+                .title {
+                  color: $cobaltBlue;
+                }
+                .host {
+                  color: $cobaltBlue;
+                }
+                a {
+                  color: $cobaltBlue;
+                  @media screen and(max-width: $break-iphone6plus) {
+                    display: block;
+                    width: 100%;
+                  }
+                }
+              }
+            } //.event-title
+            @media screen and(max-width: $break-iphone6plus) {
+                .event-title {
+                  .title {
+                    display: block;
+                    width: 100%;
+                  }
+                }
+            }
+          } //.event-item
+        } // event.group
+        .event-date {
+          margin-bottom: 3px;
+          font-family: 300;
+          font-family: Helvetica;
+        }
+      }
+    } // events.wrapper
+  }
   @media screen and (max-width: $break-iphone6plus) {
     width: 100vw;
     height: 100%;
-  }
+    padding-top: 15px;
+    div.clndr {
+      padding: 10px 0;
+      div.clndr-controls {
+        width: 100%;
+      }//div.clndr-controls
+      div.clndr-grid {
+        div.days {
+          div.day {
+            .event-days-container {
+              margin-left: auto;
+              margin-right: auto;
+              width: 60%;
+              height: 200px;
+              left: 0;
+              right: 0;
+              top: 200px;
+              box-shadow: 0 3px 5px rgba(0, 0, 0, .8);
+              position: fixed;
+              z-index: 100;
+              i.close {
+
+              }
+              div.event-title-container {
+                a {
+                  color: $cobaltBlue;
+                }
+              } //div.event-title-container
+            } //.event-days-container
+          } //div.day
+        } //div.days
+      }//div.clndr-grid
+    } //div.clndr
+  } //#calendar-wrapper max-width: $break-iphone6plus
 } // #calendar-wrapper
