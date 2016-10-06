@@ -11,8 +11,6 @@ class UsersController < ApplicationController
       login(@user)
       redirect_to "/home"
     else
-      # flash[:notice] = "An account with that username and password has not been found."
-      # redirect_to "/"
       render "/welcome/index"
     end
 
