@@ -674,7 +674,8 @@ div#search-results-container {
 				h4 {
 					margin-bottom: 20px;
 					font-family: "Hind", Helvetica, sans-serif;
-    				font-size: 20px;
+    				font-size: 24px;
+    				padding: 10px;
 				}
 				input {
 					margin: 5px auto;
@@ -699,7 +700,7 @@ div#search-results-container {
 			padding: 0px 0px 20px;
 			div#results-count {
 				text-align: center;
-				width: 500px;
+				width: 100%;
 				background-color: white;
 				margin: 0 auto;
 				padding: 15px;
@@ -715,6 +716,7 @@ div#search-results-container {
 				background-color: white;
 				margin: 10px auto;
 				@include box-shadow();
+				font-size: 1em;
 				div.event-photo {
 					height: 225px;
 					width: 225px;
@@ -727,7 +729,6 @@ div#search-results-container {
 					height: 100%;
 					overflow-y: scroll;
 					position: relative;
-					font-size: 1.15em;
 					div.event-guests {
 						top: 3px;
 						right: 10px;
@@ -837,6 +838,10 @@ div#search-results-container {
 				margin: 0 auto;
 				box-shadow: none;
 				height: auto;
+				h4 {
+					padding: 25px;
+					margin-bottom: 0;
+				}
 				form {
 					input {
 						width: 100%;
@@ -899,17 +904,18 @@ div#search-results-container {
 
 // ********** event#my_events **********
 	div#my-events-container {
-		max-width: 990px;
+		max-width: 1100px;
 		min-height: 200px;
 		height: auto;
 		margin: 0 auto;
 		div#events-container {
-			width: 100%;
+			width: 950px;
 			min-height: 200px;
 			padding: 10px;
+			margin: 0 auto;
 			div.myevents-navigation {
 				margin: 10px auto;
-				width: 940px;
+				width: 100%;
 				background-color: white;
 				padding: 10px;
 				@include box-shadow(.3);
@@ -928,14 +934,15 @@ div#search-results-container {
 				margin: 0 auto;
 			} // div.events-empty
 			div.event-box {
-				height: 200px;
+				height: 225px;
 				width: 455px;
 				padding: 10px;
-				margin: 10px 15px;
+				margin: 10px 5px;
 				@include box-shadow(.3);
 				background-color: white;
 				float: left;
 				position: relative;
+				font-size: 1.10em;
 				a#delete-icon {
 					position: absolute;
 					right: 10px;
@@ -947,19 +954,16 @@ div#search-results-container {
 					}
 				}
 				div.img {
-					width: 180px;
-					height: 180px;
+					width: 200px;
+					height: 200px;
 					margin-right: 10px;
 					float: left;
 				}
 				div.information {
 					position: relative;
-					float: left;
-					width: 245px;
-					height: 180px;
-					font-size: 1.25em;
+					height: 200px;
+					overflow: hidden;
 					div.event-title {
-						font-size: 1.12em;
 						margin-bottom: 2px;
 						a.event-link {
 							color: black;
@@ -976,16 +980,16 @@ div#search-results-container {
 					}
 					div.event-attending {
 						font-size: .80em;
-						margin-bottom: 15px;
+						margin-bottom: 10px;
 						font-style: italic;
 						padding-left: 1px;
 					}
 					div.event-description {
-						font-size: .75em;
+						font-size: .7em;
 					}
 					div.button-wrapper {
 						position: absolute;
-						width: 245px;
+						width: 100%;
 						bottom: -5px;
 						a {
 							text-decoration: none;
@@ -996,7 +1000,7 @@ div#search-results-container {
 						button.site-button {
 							height: 22px;
 							font-size: 12px;
-							width: 120px;
+							width: 110px;
 							padding-bottom: 4px;
 							color: black;
 							&.invite {
@@ -1023,21 +1027,36 @@ div#search-results-container {
 			}
 		} 
 		@media screen and(max-width: $break-md) {
+			width: 600px;
+			margin: 0 auto;
+			padding: 0 20px;
 			div#events-container {
+				width: 100%;
 				div.myevents-navigation {
-					width: 455px;
+					width: 100%;
 				}
 				div.event-box {
 					float: none;
 					margin: 10px auto;
+					width: 100%;
+					div.information {
+						div.button-wrapper {
+							button.site-button {
+								width: 150px;
+							}
+						} //div.button-wrapper
+					} //div.information
 				}
-			}
+			} //div#events-container
 		} // @media screen and(max-width: $break-md)
 		@media screen and(max-width: $break-iphone6plus) {
-			padding-top: 30px;
+			padding: 0;
+			padding-top: 25px;
+			width: 100vw;
 			div#events-container {
 				background-color: white;
 				width: 100vw;
+				padding: 10px 0;
 				div.myevents-navigation {
 					width: 100%;
 					box-shadow: none;
@@ -1046,8 +1065,9 @@ div#search-results-container {
 					width: 100%;
 					height: auto;
 					box-shadow: none;
-					padding-bottom: 25px;
+					padding: 10px 20px;
 					border-bottom: 1px solid $cloud;
+					margin: 10px auto;
 					div.img {
 						width: 250px;
 						height: 250px;
@@ -1056,16 +1076,18 @@ div#search-results-container {
 						float: none;
 					}
 					div.information {
-						width: 250px;
+						width: 100%;
 						margin: 0 auto;
 						float: none;
 						height: auto;
-						padding-bottom: 65px;
+						padding-bottom: 80px;
+						font-size: 1.15em;
 						div.event-description {
 							margin-bottom: 10px;
 						}
 						div.button-wrapper {
 							width: 100%;
+							padding-bottom: 5px;
 							button.site-button {
 								width: 100%;
 								border: none;
