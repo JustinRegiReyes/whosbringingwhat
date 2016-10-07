@@ -492,6 +492,12 @@ div#event-show-container {
 				}
 			}
 		} // div#add-comment-container
+		div#comments-header {
+			font-family: $hind;
+			font-size: 1.50em;
+			padding: 20px 25px 10px;
+			display: none;
+		} //div#comment-header
 		div.comment-container {
 			height: auto;
 			width: 70%;
@@ -626,6 +632,9 @@ div#event-show-container {
 					text-align: center;
 				}
 			} //div#add-comment-container
+			div#comments-header {
+				display: block;
+			} //div#comment-header
 			div.comment-container {
 				width: 100%;
 				margin: 0 auto;

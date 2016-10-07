@@ -81,6 +81,10 @@
 				</div>
 			<% end %>
 		</div>
+		<div id="comments-header">
+			Comments
+		</div>
+			<!-- div#comments-header -->
 		<% @event.comments.order('id DESC').each do |comment| %>
 			<div class="comment-container">
 				<div class="user-avi">
