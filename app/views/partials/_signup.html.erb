@@ -34,30 +34,30 @@
                 <div class="input-icon">
                   <i class="fa fa-user" aria-hidden="true"></i>
                 </div>
-               <%= f.text_field :username, placeholder: "Username e.g. \"jmoriarty\"", class: "form-control input-limit", id: "signup-username", data: { limit: "15", inputname: "username" } %>
+               <%= f.text_field :username, placeholder: "Username e.g. \"jmoriarty\"", class: "input-limit", id: "signup-username", data: { limit: "15", inputname: "username" } %>
               </div>
               <div>
                 <div class="input-icon">
                  <i class="fa fa-envelope" aria-hidden="true"></i>
                 </div>
-               <%= f.email_field :email, placeholder: "Email e.g. \"mailbox@domain.com\"", class: "form-control", id: "email-username" %>
+               <%= f.email_field :email, placeholder: "Email e.g. \"mailbox@domain.com\"", class: "", id: "email-username" %>
               </div>
                <span id="from-tracker" class="input-limit-tracker" data-inputname="from" data-limit="20">0/20</span>
               <div class="input-limit-container">
                 <div class="input-icon">
                  <i class="fa fa-map-marker" aria-hidden="true" class="map-marker"></i>
                 </div>
-               <%= f.text_field :from, placeholder: "From e.g. \"Bay Area\"", class: "form-control input-limit", id: "from", data: { limit: "20", inputname: "from" } %>
+               <%= f.text_field :from, placeholder: "From e.g. \"Bay Area\"", class: "input-limit", id: "from", data: { limit: "20", inputname: "from" } %>
               </div>
               <span id="bio-tracker" class="input-limit-tracker" data-inputname="bio" data-limit="100">0/100</span>
               <div class="input-limit-container">
-               <%= f.text_area :bio, placeholder: "Bio e.g. \"I like long walks on the beach.\"", class: "form-control input-limit", id: "from", data: { limit: "100", inputname: "bio" } %>
+               <%= f.text_area :bio, placeholder: "Bio e.g. \"I like long walks on the beach.\"", class: "input-limit", id: "from", data: { limit: "100", inputname: "bio" } %>
               </div>
               <div>
                 <div class="input-icon">
                    <i class="fa fa-lock" aria-hidden="true"></i>
                 </div>
-            	   <%= f.password_field :password, placeholder: raw("Password e.g. &bull;&bull;&bull;&bull;&bull;&bull;&bull;"), class: "form-control password-confirm pass-first" %>
+            	   <%= f.password_field :password, placeholder: raw("Password e.g. &bull;&bull;&bull;&bull;&bull;&bull;&bull;"), class: "password-confirm pass-first" %>
               </div>
               <div>
                 <div class="input-icon">
@@ -66,7 +66,7 @@
                 <div class="pass-match-container">
                   <i class="fa fa-times-circle pass-nomatch" aria-hidden="true"></i>
                 </div>
-            	   <%= f.password_field :password, placeholder: "Re-enter password", class: "form-control password-confirm pass-second" %>
+            	   <%= f.password_field :password, placeholder: "Re-enter password", class: "password-confirm pass-second" %>
               </div>
               <div class="register-container">
                 <%= f.submit "Submit", class: "submit register"%>

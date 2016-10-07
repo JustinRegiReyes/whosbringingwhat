@@ -60,9 +60,7 @@ div.auth-modal {
 				left: 1px;
 				top: 1px;
 				margin: 0;
-				height: 32px;
-				border-top-left-radius: 4px;
-				border-bottom-left-radius: 4px;
+				height: 33px;
 				width: 35px;
 				background-color: $cloud;
 				border-right: 1px solid #B8B8B8;
@@ -106,6 +104,22 @@ div.auth-modal {
 		}
 		input {
 			padding-left: 50px;
+			width: 100%;
+			height: 35px;
+			border: 1px solid #B8B8B8;
+			&:focus {
+				outline: none;
+				border: 1px solid $cobaltBlue;
+			}
+		}
+		textarea {
+			width: 100%;
+			height: 80px;
+			border: 1px solid #B8B8B8;
+			&:focus {
+				outline: none;
+				border: 1px solid $cobaltBlue;
+			}
 		}
 		div.choose-avi {
 			height: 35px;
@@ -128,10 +142,10 @@ div.auth-modal {
 					height: 100%;
 					padding-top: 8px;
 					display: block;
-					color: $asphalt;
+					color: $cobaltBlue;
 					font-weight: normal;
 					font-size: .85em;
-					border: 1px solid darken($cloud, 10%);
+					border: 1px solid $cobaltBlue;
 					&:hover {
 						cursor: pointer;
 						background-color: $cobaltBlue;
