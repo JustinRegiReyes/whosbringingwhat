@@ -303,6 +303,9 @@ div#event-new-container {
 	div#event-edit-container {
 		height: auto;
 		padding-bottom: 40px;
+		@media screen and (max-width: $break-iphone6plus) {
+			padding-bottom: 0;
+		} // div#event-edit-container
 	}
 // ********** event#edit **********
 
