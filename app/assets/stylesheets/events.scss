@@ -293,6 +293,9 @@ div#event-new-container {
 			} //div.category-box
 		} //div#categories-container
 	} //form#new_event
+	@media screen and (max-width: $break-iphone6plus) {
+		padding-bottom: 0;
+	} // div#event-new-container
 } //div#event-new-container
 // ********** END event#new and event#edit **********
 
