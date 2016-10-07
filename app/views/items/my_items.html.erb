@@ -18,7 +18,7 @@
 						<a href="/items/<%= item.id %>" id="delete-icon" data-confirm="Are you sure?" data-method="delete">
 							<i class="fa fa-trash" aria-hidden="true"></i>
 						</a>
-						<div class="item-title"><a class="item-link" href="/items/<%= item.id %>"><%= truncate("#{item.title}",length: 25) %></a></div>
+						<div class="item-title"><a class="item-link" href="/events/<%= event.id %>/categories/<%=item.category.id %>/items/<%= item.id %>"><%= truncate("#{item.title}",length: 25) %></a></div>
 						<div class="item-date"><%= event.date_start.strftime('%b %-d') %> at <%= event.time_start.strftime('%l:%M%P')%></div>
 						<div class="item-category">
 							for <%= item.category.title %>
