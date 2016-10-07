@@ -23,7 +23,9 @@
 			</div>
 		</div>
 			<!-- div#title-container -->
-		<button id="invite-guests" class="site-button" date-event-id="<%= @event.id %>">Invite</button>
+		<% if own_event?(@event) == true %>
+			<button id="invite-guests" class="site-button" date-event-id="<%= @event.id %>">Invite</button>
+		<% end %>
 	</div>
 		<!-- div#banner-overlay -->
 </div>

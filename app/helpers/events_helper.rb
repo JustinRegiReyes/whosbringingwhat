@@ -21,4 +21,8 @@ module EventsHelper
 			return "background-image: linear-gradient(to top right, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('<%= @event.banner(:large) %>');".html_safe
 		end
 	end
+
+	def own_event?(event)
+		current_user.created_events.where({id: event.id}).length > 0
+	end
 end
