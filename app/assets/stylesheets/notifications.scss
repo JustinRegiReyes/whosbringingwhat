@@ -20,6 +20,10 @@
 				font-size: 1.25em;
 				background-color: white;
 				position: relative;
+				&.empty {
+					margin: 0 auto;
+					padding: 10px 15px 10px;
+				}
 				div#notifications-options {
 					display: inline-block;
 					position: absolute;
@@ -222,6 +226,8 @@
 		@media screen and(max-width: $break-iphone6plus) {
 			margin: 0;
 			width: 100vw;
+			height: 100vh;
+			background-color: white;
 			div#notifications-container {
 				background-color: white;
 				width: 100vw;

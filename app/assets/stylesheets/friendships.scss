@@ -84,5 +84,9 @@ div#my-friend-requests {
 			width: 100%;
 		} //div#friend-requests-container
 	} //div#my-friend-requests max-width $break-sm
+	@media screen and (max-width: $break-iphone6plus) {
+		min-height: 100vh;
+		background-color: white;
+	} //div#my-invitations max-width $break-iphone6plus
 } //div#my-friend-requests
 // ********** END friendships#my_friend_requests **********

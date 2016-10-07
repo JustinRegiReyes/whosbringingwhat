@@ -3,6 +3,13 @@ div#my-invitations {
 		width: 500px;
 		margin: 0 auto;
 		height: auto;
+		background-color: white;
+		div#invitations-header {
+			width: 100%;
+			font-family: $hind;
+			font-size: 1.25em;
+			padding: 20px 25px 10px;
+		} //div#invitations-header
 		div.no-invitations {
 			width: 100%;
 			height: 50px;
@@ -109,8 +116,14 @@ div#my-invitations {
 		hr {
 			display: none;
 		}
-	@media screen and (max-width: $break-sm) {
-		max-width: 100vw;
-	} //div#my-invitations-container max-width $break-sm
 	} //div#my-invitations-container
+	@media screen and (max-width: $break-sm) {
+		div#my-invitations-container {
+			max-width: 100vw;
+		}
+	} //div#my-invitations-container max-width $break-sm
+	@media screen and (max-width: $break-iphone6plus) {
+		min-height: 100vh;
+		background-color: white;
+	} //div#my-invitations max-width $break-iphone6plus
 } //div#myinvitations
