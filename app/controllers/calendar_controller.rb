@@ -4,7 +4,7 @@ class CalendarController < ApplicationController
 
   def events
   	require 'json'
-  	user = User.find_by_id(1)
+  	user = current_user
   	events = user.created_events + user.going_tos
   	bestEve = []
   	events.each do |event|
