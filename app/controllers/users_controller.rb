@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   end
 
   def home
+    @user = current_user
   end
 
   def edit
