@@ -1,6 +1,4 @@
-<div id="calendar-container" class="default-container">
-	<div id="calendar-wrapper" class="cal"></div>
-</div>
+<div id="calendar-wrapper" class="cal"></div>
 
 <script type="text/template" id="full-clndr-template">
 	<div class="clndr-controls">
@@ -48,26 +46,35 @@
 						<div class="event-group">
 	                		<div class="event-date"><%%= eventDate %></div>
 							<div class="event-item">
-		                		<div class="event-title">
-			                			<a href="/events/<%%=event.id%>"><%%= event.title %></a> hosted by <%%= event.user.username %>
-			                			<%% if (event.date_end != undefined) { %>
-			                				<span class="multiday">M</span>
-						            	<%%} %>
-	                			</div>
+								<a href="/events/<%%=event.id%>">
+			                		<div class="event-title">
+				                		<span class="title"><%%= event.title %></span>
+				                		 <span class="hosted">
+				                		 	hosted by <%%= event.owner.username %>
+				                			<%% if (event.date_end != undefined) { %>
+				                				<span class="multiday">M</span>
+							            	<%%} %>
+					            		 </span>
+		                			</div>
+	                			</a>
 	  						</div>
   						<!-- // if the last date does not equal the upcoming date. Close this div.event-group off -->
   						<%% if((a[i + 1] !== undefined) && last !== a[i + 1].date_start) { %>
 							</div>
 						<%% } %>
             		<%% } else { %>
+            			<%% if(i < a.length - 1) { %>
                 			<div class="event-item">
-                				<div class="event-title">
-                					<a href="/events/<%%=event.id%>"><%%= event.title %></a> hosted by <%%= event.user.username %>
-            					</div>
+                				<a href="/events/<%%=event.id%>">
+	                				<div class="event-title">
+	                					<%%= event.title %> hosted by <%%= event.owner.username %>
+	            					</div>
+            					</a>
         					</div>
-    					<!-- // if the last date does not equal the upcoming date. Close this div.event-group off -->
-    					<%% if((a[i + 1] !== undefined) && last !== a[i + 1].date_start) { %>
-    						</div>
+	    					<!-- // if the last date does not equal the upcoming date. Close this div.event-group off -->
+	    					<%% if((a[i + 1] !== undefined) && last !== a[i + 1].date_start) { %>
+	    						</div>
+							<%% } %>
 						<%% } %>
         			<%% } %>
 	            <%% }); %>
@@ -77,9 +84,4 @@
        			</div>
            	<%% } %>
         </div> <!-- // events -->
-</script>
-
-<script type="text/javascript">
-	console.log(<%= @events %>);
-	var eventArray = <%= @events %>;
 </script>
