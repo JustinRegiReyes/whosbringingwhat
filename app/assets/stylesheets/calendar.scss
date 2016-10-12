@@ -1,8 +1,6 @@
 div#calendar-container.default-container {
   height: auto;
-}
-
-#calendar-wrapper {
+  #calendar-wrapper {
   font-size: 16px;
   width: 606px;
   position: relative;
@@ -185,7 +183,7 @@ div#calendar-container.default-container {
       padding: 10px;
       padding-bottom: 0;
       vertical-align: top;
-      border-top: 1px dashed $asphalt;
+      border-top: 2px dashed $asphalt;
       margin-top: 30px;
       .events-header {
         margin: 5px 0;
@@ -208,13 +206,18 @@ div#calendar-container.default-container {
         .event-group {
           margin-bottom: 5px;
           .event-item {
-            border-bottom: 1px solid $cloud;
+            border-bottom: 1px dashed $cloud;
             padding: 5px;
             .event-title {
-              padding-left: 30px;
+              margin-left: 25px;
+              padding-left: 5px;
               font-family: Helvetica;
               font-weight: 100;
+              margin-bottom: 10px;
+              border-left: 1px solid $cloud;
               .title {
+                  width: 100%;
+                  display: inline-block;
                   color: black;
                 }
               .host {
@@ -294,3 +297,5 @@ div#calendar-container.default-container {
     } //div.clndr
   } //#calendar-wrapper max-width: $break-iphone6plus
 } // #calendar-wrapper
+}
+
