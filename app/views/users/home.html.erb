@@ -4,7 +4,7 @@
 	<% end %>
 	<div id="column-1" class="">
 		<div id="user-info" class="clearfixs">
-			<img id="user-avi" src="<%= image_path(@user.avi.url(:small)) %>"/>
+			<img id="user-avi" src="<%= @user.avi.url(:small) %>"/>
 			<div id="info">
 				<span id="from"><i class="fa fa-map-marker" aria-hidden="true"></i><%= @user.from %></span>
 				<span id="email"><i class="fa fa-envelope-o" aria-hidden="true"></i><%= @user.email %></span>
