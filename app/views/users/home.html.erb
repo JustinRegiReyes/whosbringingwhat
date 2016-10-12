@@ -44,7 +44,34 @@
 		</div>
 			<!-- div#notification-updates -->
 		<hr>
-		
+		<div id="search-wrapper">
+			<div class="form-wrapper">
+				<h3 class="text-center">Find an Event</h3>
+				<form class="form" method="get" action="/events/search">
+					<div id="inputs">
+						<div class="input-container">
+							<label>Search Key</label><br>
+							<input type="text" class="" name="event[search_key]" placeholder='Movie Night'>
+						</div>
+							<!-- div.input-container -->
+						<div class="input-container">
+							<label>Host</label><br>
+							<input type="text" class="" name="event[username]" placeholder='Sandwich Sage'>
+						</div>
+							<!-- div.input-container -->
+						<div class="input-container">
+							<label>Date</label><br>
+							<input type="text" class="" name="event[:date_start]" placeholder='<%= Date.today.strftime("%m/%d/%Y") %>' id="dpt1">
+						</div>
+						<button type="submit" class="site-button">
+							Search
+						</button>
+					</div>
+						<!-- div#inputs -->
+				</form>
+			</div>
+		</div>
+			<!-- div#search-wrapper -->
 		<hr class="tablet"></hr>
 	</div>
 		<!-- div#column-1 -->
