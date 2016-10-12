@@ -63,7 +63,6 @@
 							<label>Date</label><br>
 							<input type="text" class="" name="event[:date_start]" placeholder='<%= Date.today.strftime("%m/%d/%Y") %>' id="dpt1">
 						</div>
-						<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
 						<button type="submit" class="site-button">
 							Search
 						</button>
