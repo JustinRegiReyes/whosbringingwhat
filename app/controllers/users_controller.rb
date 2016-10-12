@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def home
-    @user = current_user
+    @user = User.find_by_id(current_user.id)
   end
 
   def edit
