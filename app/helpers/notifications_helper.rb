@@ -94,7 +94,7 @@ module NotificationsHelper
 		friendship = Friendship.find_by_id(friendship_id)
 		if what_kind == "friend_accepted"
 			Notification.create({what_kind: "friend_accepted", user_id: friendship.user_id, friendship_id: friendship.id})
-		elsif "friend_declined"
+		elsif what_kind == "friend_declined"
 			Notification.create({what_kind: "friend_declined", user_id: friendship.user_id, friendship_id: friendship.id})
 		end		
 	end
