@@ -2,7 +2,52 @@
 	<% if flash[:alert] %>
 	  <p class="alert alert-danger text-center"> <%= flash[:alert] %></p>
 	<% end %>
-	
+	<div id="column-1" class="">
+		<div id="user-info" class="clearfixs">
+			<img id="user-avi" src="<%= @user.avi.url(:small) %>"/>
+			<div id="info">
+				<span id="from"><i class="fa fa-map-marker" aria-hidden="true"></i><%= @user.from %></span>
+				<span id="email"><i class="fa fa-envelope-o" aria-hidden="true"></i><%= @user.email %></span>
+				<span id="bio"><%= @user.bio %></span>
+				<span id="friends-count"><span id="friends-label">Friends&nbsp; </span><%= @user.friends.count %></span>
+			</div>
+				<!-- div#info -->
+		</div>
+			<!-- div#user-info -->
+		<hr>
+		<div id="notification-updates">
+			<% if @user.no_updates? %>
+				<div id="no-updates">
+					<i class="fa fa-frown-o" aria-hidden="true"></i> No updates
+				</div>
+					<!-- div#no-updates -->
+			<% else %>
+				<% if @user.undismissed_notifications.count == 0 %>
+					<div id="notifications">
+							<i class="fa fa-inbox" aria-hidden="true"></i> &nbsp;<%= @user.undismissed_notifications %> Notifications
+					</div>
+						<!-- div#notifications -->
+				<% end %>
+				<% if @user.friend_requests.count == 0 %>
+					<div id="friend-requests">
+							<i class="fa fa-user-plus" aria-hidden="true"></i> &nbsp;<%= @user.friend_requests %> Friend Requests
+					</div>
+						<!-- div#friend-requests -->
+				<% end %>
+				<% if @user.unanswered_invitations.count == 0 %>
+					<div id="unanswered-invitations">
+							<i class="fa fa-file-text" aria-hidden="true"></i> &nbsp;<%= @user.unanswered_invitations %> Invitations
+					</div>
+						<!-- div#friend-requests -->
+				<% end %>
+			<% end %>
+		</div>
+			<!-- div#notification-updates -->
+		<hr>
+		
+		<hr class="tablet"></hr>
+	</div>
+		<!-- div#column-1 -->
 	<div id="column-2">
 		<%= render '/partials/calendar' %>
 	</div>
