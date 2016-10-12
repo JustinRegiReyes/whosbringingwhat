@@ -111,6 +111,22 @@ class User < ActiveRecord::Base
     	end
     end
 
+    def friend_requests
+    	return Friendship.where({pending: true, friend_id: self.id})
+    end
+
+    def undismissed_notifications
+    	return self.notifications.where({read: false})
+    end
+
+    def unanswered_invitations
+    	return self.attending_events.where({undecided: true})
+    end
+
+    def no_updates?
+        self.undismissed_notifications.count == 0 && self.friend_requests.count == 0 && self.unanswered_invitations.count == 0
+    end
+
     private
 		# runs paperclips reprocess method for crop
 		def reprocess_avi
