@@ -183,7 +183,8 @@ class EventsController < ApplicationController
     if type == "invited"
       guests =  User.joins(:attending_events).where({attending_events: {event_id: eventId}}).as_json(:only => [:id,:username], methods: [:avi_url])
     else
-      guests =  User.joins(:attending_events).where({attending_events: {event_id: eventId, "#{type}": true}}).as_json(:only => [:id,:username], methods: [:avi_url])
+      attending_events_hash = Hash["event_id", eventId, type, true]
+      guests =  User.joins(:attending_events).where({attending_events: attending_events_hash}).as_json(:only => [:id,:username], methods: [:avi_url])
     end
 
     return guests
