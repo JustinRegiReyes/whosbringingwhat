@@ -48,7 +48,7 @@
         <ul class="dropdown-menu">
           <li id="logged-in-as">
             <div id='nav-current-user' class="clearfixs">
-              <img src="<%= image_path(current_user.avi.url(:thumb)) %>">
+              <img src="<%= current_user.avi.url(:thumb) %>">
               <div class="current-user-username">
                   <%= current_user.username %>
               </div> 

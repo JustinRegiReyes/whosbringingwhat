@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
 		# :on_hand_photo
 			has_attached_file :avi, 
 				styles: { large: "600x600" , medium: "300x300", small: "200x200", thumb: "100x100>" },
-				:default_url => 'aviplaceholder.png',
+				:default_url => :default_url_avi,
 				processors: [:papercrop]
 			crop_attached_file :avi, :aspect => "1:1"
 		  	# validates_attachment :avi, presence: true
@@ -41,6 +41,10 @@ class User < ActiveRecord::Base
 		@user = User.find_by_email(params[:email])
 		@user.try(:authenticate, params[:password])
 	end
+
+    def default_url_avi
+        return ActionController::Base.helpers.image_path('aviplaceholder.png')
+    end
 
 	def default_values
 		# binding.pry
