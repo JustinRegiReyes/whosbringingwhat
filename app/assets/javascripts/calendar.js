@@ -1,16 +1,19 @@
 // Call this from the developer console and you can control both instances
 
 function calendar() {
-    // Assuming you've got the appropriate language files,
-    // clndr will respect whatever moment's language is set to.
-    // moment.locale('ru');
+    var $calendar = $('div#calendar-wrapper');
+    if($calendar.length > 0) {
+        // Assuming you've got the appropriate language files,
+        // clndr will respect whatever moment's language is set to.
+        // moment.locale('ru');
 
-    // Here's some magic to make sure the dates are happening this month.
-    var thisMonth    = moment().format('YYYY-MM');
-    var nextMonth    = moment().add(1, 'month').format('YYYY-MM');
-    var twoMonth    = moment().add(2, 'month').format('YYYY-MM');
+        // Here's some magic to make sure the dates are happening this month.
+        var thisMonth    = moment().format('YYYY-MM');
+        var nextMonth    = moment().add(1, 'month').format('YYYY-MM');
+        var twoMonth    = moment().add(2, 'month').format('YYYY-MM');
 
-    $.get('/calendar/events', undefined, onSuccess);
+        $.get('/calendar/events', undefined, onSuccess);
+    }
 };
 
 function onSuccess(data) {
