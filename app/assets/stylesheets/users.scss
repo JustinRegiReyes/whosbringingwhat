@@ -152,6 +152,12 @@
 							margin: 10px;
 							label {
 								font-weight: 300;
+								i {
+									font-size: 6px;
+									position: relative;
+									@include vertical-align();
+									color: $ashyRed;
+								}
 							}
 							input {
 								width: 100%;
@@ -620,7 +626,7 @@ div#user-search-container {
 		z-index: 1;
 		div#search-box {
 			width: 240px; 
-			height: 210px;
+			height: auto;
 			background-color: white;
 			padding: 10px 0;
 			position: fixed;
@@ -633,6 +639,20 @@ div#user-search-container {
 					margin-bottom: 20px;
 					font-family: "Hind", Helvetica, sans-serif;
     				font-size: 20px;
+				}
+				label {
+					font-weight: 300;
+					font-size: 14px;
+					width: 175px;
+					margin: 5px auto;
+					text-align: left;
+					position: relative;
+					i {
+						font-size: 6px;
+						position: relative;
+						@include vertical-align();
+						color: $ashyRed;
+					}
 				}
 				input {
 					margin: 5px auto;
@@ -666,6 +686,7 @@ div#user-search-container {
 				margin: 0 auto 10px;
 				padding: 15px;
 				font-size: 14px;
+				@include box-shadow();
 				span {
 					color: $asphalt;
 				}

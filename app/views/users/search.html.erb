@@ -3,9 +3,15 @@
 		<div id="search-box">
 			<form class="form" method="get" action="/users/search">
 				<div class="text-center">
-					<h4>Find a friend</h4>
-					<input type="text" class="search-full" name="user[username]" placeholder='Username' value='<%= @user_search_params != nil ? @user_search_params[:username] : ""%>'> 
-					<input type="text" class="search-full" name="user[email]" placeholder='Email' value='<%= @user_search_params != nil ? @user_search_params[:email] : ""%>'> 
+					<h4>Find a Friend</h4>
+					<div>
+						<label>Username</label><br>
+						<input type="text" class="search-full" name="user[username]" placeholder='Flash' value='<%= @user_search_params != nil ? @user_search_params[:username] : ""%>'> 
+					</div>
+					<div>
+						<label>Email</label><br>
+						<input type="email" class="search-full" name="user[email]" placeholder='barryisflash@star.labs' value='<%= @user_search_params != nil ? @user_search_params[:email] : ""%>'> 
+					</div>
 
 					<button type="submit" class="btn btn-default site-button">
 						Search
@@ -61,11 +67,11 @@
 			<% elsif @users.length == 0 %>
 				<div id="results-count">
 					<% if (@user_search_params[:username].length > 0) && (@user_search_params[:email].length > 0) %>
-						<span> No user found with the username name <%= @user_search_params[:username] %>, or email <%= @user_search_params[:email] %> </span>
+						<span> No user found with the username <%= @user_search_params[:username] %>, or email <%= @user_search_params[:email] %> </span>
 					<% elsif @user_search_params[:username].length > 0 %>
-						<span> No user found with the username name <%= @user_search_params[:username] %></span>
+						<span> No user found with the username <%= @user_search_params[:username] %></span>
 					<% elsif @user_search_params[:email].length > 0 %>
-						<span> No user found with the username name <%= @user_search_params[:email] %></span>
+						<span> No user found with the email <%= @user_search_params[:email] %></span>
 					<% else %>
 						<span> Please enter a host username or email </span>
 					<% end %>

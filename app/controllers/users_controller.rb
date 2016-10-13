@@ -34,7 +34,9 @@ class UsersController < ApplicationController
   end
 
   def search
-    if user_search_params
+    if user_search_params[:username].empty? && user_search_params[:email].empty?
+
+    else
       @users = User.by_username(user_search_params[:username]).by_email(user_search_params[:email])
       @user_search_params = user_search_params
     end
