@@ -52,7 +52,7 @@
 						<%=	f.text_field :where, class: "full input-limit", placeholder: "The Batcave", data: { limit: "12", inputname: "where" }%>
 						<span class="input-limit-tracker" data-inputname="where">0/12</span>
 					</div>
-					<div class="col-xs-8">
+					<div class="col-xs-12">
 						<label>City</label><br>
 						<%=	f.text_field :city, class: "full input-limit", placeholder: "Gotham", data: { limit: "20", inputname: "city" }%>
 						<span class="input-limit-tracker" data-inputname="city">0/20</span>
@@ -62,12 +62,12 @@
 						<%=	f.text_field :state, class: "full input-limit", placeholder: "New Jersey", data: { limit: "15", inputname: "state" }%>
 						<span class="input-limit-tracker" data-inputname="state">0/15</span>
 					</div>
-					<div>
+					<div class="col-sm-12 col-xs-12">
 						<label>Address</label><br>
 						<%=	f.text_field :address, class: "full input-limit", placeholder: "123 Batcave Lane", data: { limit: "30", inputname: "address" }%>
 						<span class="input-limit-tracker" data-inputname="address">0/30</span>
 					</div>
-					<div>
+					<div class="col-sm-12 col-xs-12">
 						<label>Zipcode</label><br>
 						<%=	f.text_field :zipcode, class: "full input-limit", placeholder: "12345", data: { limit: "12", inputname: "zipcode" }%>
 						<span class="input-limit-tracker" data-inputname="zipcode">0/12</span>
@@ -94,7 +94,9 @@
 						<label>Description</label><br>
 						<%= f.text_area :description, class: "full textarea description", placeholder: "Movie Night! This Saturday we're gonna go for sci-fi movies. So everyone bring your best sci-fi movie and we'll take a group vote! Oh, and bring drinks and snacks! We'll order pizza if we end up really hungry. See you guys there!" %>
 					</div>
-					<a class="edit-categories" href="/events/<%= @event.id %>/categories/edit">Edit Categories</a>
+					<div class="col-xs-12">
+						<a class="edit-categories" href="/events/<%= @event.id %>/categories/edit">Edit Categories</a>
+					</div>
 					<div class="text-center">
 						<%= f.submit id:"edit-event-submit", class: "btn btn-default", value: "Save Changes" %>
 					</div>
