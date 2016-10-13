@@ -5,7 +5,7 @@
 				<div class="text-center">
 					<h4>Find an Event</h4>
 					<div>
-						<label><i class="fa fa-asterisk" aria-hidden="true"></i> Search Key </label><br>
+						<label>Search Key </label><br>
 						<input type="text" class="search-full" name="event[search_key]" placeholder='Movie Night' value='<%= @search_key != nil ? @search_key : ""%>'> 
 					</div>
 					<div>
@@ -62,7 +62,9 @@
 					<!-- if @events.length > 0 -->
 			<% else %>
 				<div id="results-count">
-					<% if @username.length > 0%>
+					<% if @username == nil %>
+						<span> Search Results</span>
+					<% elsif @username.length > 0%>
 						<span> No user found with the name <%= @username %> </span>
 					<% else %>
 						<span> Please enter a host username </span>
