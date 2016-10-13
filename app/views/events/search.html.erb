@@ -5,7 +5,7 @@
 				<div class="text-center">
 					<h4>Find an Event</h4>
 					<div>
-						<label>Search Key </label><br>
+						<label><i class="fa fa-asterisk" aria-hidden="true"></i> Search Key </label><br>
 						<input type="text" class="search-full" name="event[search_key]" placeholder='Movie Night' value='<%= @search_key != nil ? @search_key : ""%>'> 
 					</div>
 					<div>
@@ -28,9 +28,9 @@
 		<div id="search-results">
 			<% if @events != nil %>
 				<% if @events.length > 0 %>
-					<div id="results-count">
-						<span><%= @events.count %> event(s) found hosted by <%= @username %></span>
-					</div>
+						<div id="results-count">
+							<span><%= @events.count %> event(s) found hosted by <%= @username %></span>
+						</div>
 					<% @events.each do |event| %>
 						<div class="event-box clearfixs">
 							<a href="/events/<%= event.id%>">
@@ -55,9 +55,15 @@
 					<% end %>
 						<!-- @events.each -->
 				<% else %>
-					<div id="results-count">
+					<% if @search_key.present? %>
+						<div id="results-count">
 							<span><%= @events.count %> event(s) found hosted by <%= @username %></span>
-					</div>
+						</div>
+					<% else %>
+						<div id="results-count">
+							<span>Please enter a Search Key</span>
+						</div>
+					<% end %>
 				<% end %>
 					<!-- if @events.length > 0 -->
 			<% else %>

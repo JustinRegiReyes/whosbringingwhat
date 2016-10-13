@@ -89,11 +89,7 @@ class EventsController < ApplicationController
       if username.present? 
         user = User.where("username ILIKE ?", eventQuery[:username]).first
         if(user != nil)
-          if searchKey.empty? && dateStart.empty?
-            @events = user.created_events
-          else
             @events = user.created_events.where("search_key ILIKE ?", searchKey).by_date_start(dateStart)
-          end
         end
       end
       @username = user != nil ? user.username : eventQuery[:username]
