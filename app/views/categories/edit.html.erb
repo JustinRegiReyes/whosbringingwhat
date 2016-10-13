@@ -1,30 +1,31 @@
 <div id="categories-edit-container" class="default-container">
-	<!-- banner of event -->
+	<!-- banner container -->
 	<%= render "partials/bannercontainer" %>
-	<div id="edit-container">
-		<%= form_for @category, url: "/events/#{@category.event.id}/categories/#{@category.id}", method: "patch" do |f| %>
-			<div class="category-box clearfixs">
-				<div class="category-title col-sm-8 col-xs-12">
-					<label>Title</label><br>
-					<%= f.text_field :title, placeholder: "Utensils" %>
-				</div>
-					<!-- div.category-title -->
-				<div class="category-needed col-sm-4 col-xs-12">
-					<label>Items Requested</label><br>
-					<%= f.number_field :needed, placeholder: "4" %>
-				</div>
-					<!-- div.category-needed -->
-				<div class="category-description col-xs-12">
-					<label>Description</label><br>
-					<%= f.text_area :description, class: "description", placeholder: "Forks, plates, cups and anything that's alike!" %>
-				</div>
-					<!-- div.category-needed -->
+	<div class="clearfixs">
+		<div id="form-container">
+			<div id="category-for">
+				Category for <%= @event.title %>
 			</div>
-					<!-- div.category-box -->
-			<div class="submit-wrapper">
-				<%= f.submit id:"edit-category-submit", class: "site-button", value: "Save Changes" %>
-			</div>
-		<% end %>
+				<!-- div#category-for -->
+			<%= form_for @category, url: "/events/#{@event.id}/categories/#{@category.id}", method: "patch" do |f| %>
+				<div id="input-container" class="clearfixs">
+					<div class="input-box col-sm-8 col-xs-12">
+						<label>Name</label><br>
+						<%=	f.text_field :title, class: "full", placeholder: "Utensils"  %>
+					</div>
+					<div class="input-box col-sm-4 col-xs-12">
+						<label class="items-requested">Items Requested</label><br>
+						<%=	f.number_field :needed, class: "", placeholder: "4"%>
+					</div>
+					<div class="input-box col-sm-12 col-xs-12">
+						<label>Description</label><br>
+						<%=	f.text_area :description, class: "", placeholder: "Forks, plates, cups and anything that's like!"  %>
+					</div>
+					<%= f.submit "Save Changes", class: "site-button" %>
+				</div>
+					<!-- div#input-container -->
+			<% end %> 
+		</div>
 	</div>
 </div>
 	<!-- div#categories-edit-container -->

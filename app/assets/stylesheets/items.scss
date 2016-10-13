@@ -219,8 +219,11 @@ div#items-show-container {
 div#new-item-container {
 	width: 100vw;
 	max-width: 500px;
-	margin: 10px auto;
+	margin: 0 auto;
+	padding-top: 28px;
+	background-color: white;
 	@include banner-overlay();
+	@include box-shadow(.3);
 	button#invite-guests {
 		display: none;
 	}
@@ -231,7 +234,6 @@ div#new-item-container {
 		width: 80%;
 	}
 	div#form-container {
-		@include box-shadow(.3);
 		width: 100%;
 		height: auto;
 		background-color: white;
@@ -273,6 +275,7 @@ div#new-item-container {
 				color: white;
 				background-color: $periGreen;
 				border-radius: 0;
+				margin-top: 40px;
 				&:hover {
 					background-color: lighten($periGreen, 2%);
 				}
@@ -530,8 +533,11 @@ div#new-item-container {
 div#edit-item-container {
 	width: 100vw;
 	max-width: 500px;
-	margin: 10px auto;
+	margin: 0 auto;
+	padding-top: 28px;
+	background-color: white;
 	@include banner-overlay();
+	@include box-shadow(.3);
 	button#invite-guests {
 		display: none;
 	}
@@ -542,7 +548,6 @@ div#edit-item-container {
 		width: 80%;
 	}
 	div#form-container {
-		@include box-shadow(.3);
 		width: 100%;
 		height: auto;
 		background-color: white;
@@ -584,11 +589,26 @@ div#edit-item-container {
 				color: white;
 				background-color: $periGreen;
 				border-radius: 0;
+				margin-top: 40px;
 				&:hover {
 					background-color: lighten($periGreen, 2%);
 				}
 			}
 		} // div#input-container
 	} //div#form-container
-}
+	@media screen and (max-width: $break-iphone6plus) {
+		min-height: 100vh;
+		background-color: white;
+		margin: 0;
+		div.clearfixs {
+			div#form-container {
+				box-shadow: none;
+				div#input-container {
+					width: 100%;
+					margin: 0;
+				} //div#input-container
+			} //div#form-container
+		} //div.clearfixs
+	} //div#new-item-container max-width $break-iphone6plus
+} //div#items-edit-container
 // ********** items#edit END **********

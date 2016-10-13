@@ -1,19 +1,24 @@
 class CategoriesController < ApplicationController
-  before_action :logged_in?, only: [:new]
+  before_action :logged_in?
   def new
+    eventId = params[:event_id]
     @category = Category.new
-    eventId = params[:id]
     @event = Event.find_by_id(eventId)
   end
 
   def create
     categoryParams = params.require(:category).permit(:title, :needed, :description)
-    eventId = params[:event_id]
-    event = Event.find_by_id(eventId)
-    category = Category.create(categoryParams)
-    event.categories << category
+    category = Category.new(categoryParams)
+    if category.save
+      eventId = params[:event_id]
+      event = Event.find_by_id(eventId)
+      event.categories << category
+      flash[:success] = "Category created"
+      redirect_to "/events/#{event.id}/categories/edit"
+    else
+      render :new
+    end
 
-    redirect_to "/events/#{event.id}"
   end
 
   def show
@@ -34,10 +39,9 @@ class CategoriesController < ApplicationController
     category = Category.find_by_id(category_id)
     if category.update(category_params)
       flash[:success] = "Edits saved"
-      redirect_to "/events/#{category.event.id}/categories/#{category.id}"
+      redirect_to "/events/#{category.event.id}/categories/edit"
     else
-      flash[:error] = "Edits not saved"
-      redirect_to :back
+      render :edit
     end
   end
 

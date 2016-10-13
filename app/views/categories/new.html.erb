@@ -1,32 +1,31 @@
-<h3>Add a category to "<%= @event.title%>"</h3>
-<div class="container">
-	<% if @event.categories.length === 0%>
-		No categories in this event yet
-	<% else %>
-		<h4>Other categories in this event</h4>
-		<% @event.categories.each do |category| %>
-			<div class="container">
-				<%= category.title %>
+<div id="categories-new-container" class="default-container">
+	<!-- banner container -->
+	<%= render "partials/bannercontainer" %>
+	<div class="clearfixs">
+		<div id="form-container">
+			<div id="category-for">
+				Category for <%= @event.title %>
 			</div>
-		<% end %>
-	<% end %>
+				<!-- div#category-for -->
+			<%= form_for @category, url: "/events/#{@event.id}/categories", method: "post" do |f| %>
+				<div id="input-container" class="clearfixs">
+					<div class="input-box col-sm-8 col-xs-12">
+						<label>Name</label><br>
+						<%=	f.text_field :title, class: "full", placeholder: "Utensils"  %>
+					</div>
+					<div class="input-box col-sm-4 col-xs-12">
+						<label class="items-requested">Items Requested</label><br>
+						<%=	f.number_field :needed, class: "", placeholder: "4"%>
+					</div>
+					<div class="input-box col-sm-12 col-xs-12">
+						<label>Description</label><br>
+						<%=	f.text_area :description, class: "", placeholder: "Forks, plates, cups and anything that's like!"  %>
+					</div>
+					<%= f.submit "Create", class: "site-button" %>
+				</div>
+					<!-- div#input-container -->
+			<% end %> 
+		</div>
+	</div>
 </div>
-
-<div class="form-container">
-		<%= form_for @category, url: 
-		"/categories/#{@event.id}/create", method: "post" do |f| %>
-			<div class="text-center">
-				<label>Name of Category</label><br>
-				<%=	f.text_field :title, placeholder: '"Entrees", "Utensils", etc.' %>
-				<br><br>
-				<label>Description</label><br>
-				<%= f.text_area :description, placeholder: 'Thanksgiving themed courses! Yaaaas!' %>
-				<br>
-			</div>
-			<br>
-			<div class="text-center">
-				<%= f.submit class: "btn btn-default", value: "Create Category" %>
-			</div>
-
-		<% end %>
-</div>
+	<!-- div#cateogies-new-container -->
