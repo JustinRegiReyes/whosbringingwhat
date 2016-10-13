@@ -303,18 +303,21 @@ div#categories-show-container {
 
 // ********** categories#in_event **********
 div#categories-in-event-edit {
+	min-height: 100vh;
 	height: auto;
 	width: 100vw;
 	max-width: 500px;
 	margin: 0 auto;
 	position: relative;
+	background-color: white;
+	padding-top: 28px;
 	@include banner-overlay();
+	@include box-shadow();
 	button#invite-guests {
 		display: none;
 	} 
 	div#categories-container {
 		padding: 40px 10px;
-		background-color: white;
 		div#categories-header {
 			font-size: 1.75em;
 			font-family: $hind;
