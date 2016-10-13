@@ -10,7 +10,6 @@ class Event < ActiveRecord::Base
 	validates :title, length: { in: 1..22 }
 	validates :search_key, length: { in: 1..12 }
 	validates :where, length: {in: 1..25}
-	validates :address, length: {in: 1..12}
 	validates :city, length: {in: 1..20}
 	validates :zipcode, length: {in: 1..12}
 	validates :state, length: {in: 1..15}
