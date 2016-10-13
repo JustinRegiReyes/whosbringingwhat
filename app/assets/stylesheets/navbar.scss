@@ -164,8 +164,15 @@ li.side-divide {
 	& > li {
 		& > ul.dropdown-menu {
 			font-size: 14px;
-			& > li {
-				&#logged-in-as {
+			& > a {
+				color: black;
+				display: block;
+				&:hover {
+					text-decoration: none;
+					background-color: $cloud;
+					color: black;
+				}
+				li#logged-in-as {
 					padding: 10px 26px;
 					height: auto;
 					border-bottom: 1px solid $cloud;
@@ -188,6 +195,8 @@ li.side-divide {
 						}
 					}
 				} //&logged-in-as
+			}
+			& > li {
 			} // & > li
 		} // & > ul.dropdown-menu
 	} // & > li
