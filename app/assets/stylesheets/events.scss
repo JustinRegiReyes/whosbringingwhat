@@ -297,9 +297,9 @@ div#event-new-container {
 		padding-bottom: 0;
 	} // div#event-new-container
 } //div#event-new-container
-// ********** END event#new and event#edit **********
+// ********** END events#new and events#edit **********
 
-// ********** event#edit **********
+// ********** events#edit **********
 	div#event-edit-container {
 		height: auto;
 		padding-bottom: 40px;
@@ -307,9 +307,9 @@ div#event-new-container {
 			padding-bottom: 0;
 		} // div#event-edit-container
 	}
-// ********** event#edit **********
+// ********** events#edit **********
 
-// ********** event#show **********
+// ********** events#show **********
 
 div#event-show-container {
 	position: relative;
@@ -664,7 +664,7 @@ div#event-show-container {
 	} //div#event-show-container @media screen and(max-width: $break-iphone6plus)
 } // event-show-container
 
-// ********** event#search **********
+// ********** events#search **********
 
 div#search-results-container {
 	max-width: 1000px;
@@ -676,10 +676,6 @@ div#search-results-container {
 	div#search-container {
 		position: relative;
 		z-index: 1;
-		float: left;
-		width: 240px; 
-		height: 210px;
-		margin-right: 20px;
 		div#search-box {
 			width: 240px; 
 			height: auto;
@@ -691,17 +687,34 @@ div#search-results-container {
 		form {
 			& > div {
 				h4 {
-					margin-bottom: 20px;
-					font-family: "Hind", Helvetica, sans-serif;
-    				font-size: 24px;
-    				padding: 10px;
+					font-family: $hind;
+    				font-size: 20px;
+    				margin-bottom: 20px;
+				}
+				label {
+					font-weight: 300;
+					font-size: 14px;
+					width: 175px;
+					margin: 5px auto;
+					text-align: left;
+					position: relative;
+					i {
+						font-size: 6px;
+						position: relative;
+						@include vertical-align();
+						color: $ashyRed;
+					}
 				}
 				input {
 					margin: 5px auto;
 					width: 175px;
 					padding-left: 5px;
 					border: none;
-					border-bottom: 1px solid $cloud;
+					border: 1px solid $cloud;
+					&:focus {
+						outline: none;
+						border: 1px solid $cobaltBlue;
+					}
 				}
 				button.site-button {
 					margin-top: 30px;
@@ -713,15 +726,15 @@ div#search-results-container {
 		} //form
 	} //div#search-container
 	div#events-results-container {
-		overflow: hidden;
 		div#search-results {
 			min-height: 300px;
 			padding: 0px 0px 20px;
+			padding-top: 10px;
 			div#results-count {
 				text-align: center;
 				width: 100%;
 				background-color: white;
-				margin: 0 auto;
+				margin: 0 auto 10px;
 				padding: 15px;
 				font-size: 14px;
 				@include box-shadow();
@@ -919,9 +932,9 @@ div#search-results-container {
 	}
 } //div#search-results-container
 
-// ********** END event#search **********
+// ********** END events#search **********
 
-// ********** event#my_events **********
+// ********** events#my_events **********
 	div#my-events-container {
 		max-width: 1100px;
 		min-height: 200px;
@@ -1124,9 +1137,9 @@ div#search-results-container {
 			}
 		} // @media screen and(max-width: $break-iphone6plus)
 	} //div#my-events-container
-// ********** END event#my_events **********
+// ********** END events#my_events **********
 
-// ********** event#photo_crop **********
+// ********** events#photo_crop **********
 	div#event-photo-crop {
 		background-color: white;
 		max-width: 400px;
@@ -1152,9 +1165,9 @@ div#search-results-container {
 		}
 	} //div#event-photo-crop
 
-// ********** END event#photo_crop **********
+// ********** END events#photo_crop **********
 
-// ********** event#banner_crop **********
+// ********** events#banner_crop **********
 	div#event-banner-crop {
 		background-color: white;
 		max-width: 400px;
@@ -1180,4 +1193,4 @@ div#search-results-container {
 		}
 	} //div#event-banner-crop
 
-// ********** END event#banner_crop **********
+// ********** END events#banner_crop **********

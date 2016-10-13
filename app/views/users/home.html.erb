@@ -50,18 +50,18 @@
 				<form class="form" method="get" action="/events/search">
 					<div id="inputs">
 						<div class="input-container">
-							<label>Search Key</label><br>
+							<label><i class="fa fa-asterisk" aria-hidden="true"></i> Search Key</label><br>
 							<input type="text" class="" name="event[search_key]" placeholder='Movie Night'>
 						</div>
 							<!-- div.input-container -->
 						<div class="input-container">
-							<label>Host</label><br>
+							<label><i class="fa fa-asterisk" aria-hidden="true"></i> Host</label><br>
 							<input type="text" class="" name="event[username]" placeholder='Sandwich Sage'>
 						</div>
 							<!-- div.input-container -->
 						<div class="input-container">
 							<label>Date</label><br>
-							<input type="text" class="" name="event[:date_start]" placeholder='<%= Date.today.strftime("%m/%d/%Y") %>' id="dpt1">
+							<input type="text" class="" name="event[date_start]" placeholder='<%= Date.today.strftime("%m/%d/%Y") %>' id="dpt1">
 						</div>
 						<button type="submit" class="site-button">
 							Search

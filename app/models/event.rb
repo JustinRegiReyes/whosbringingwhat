@@ -17,7 +17,7 @@ class Event < ActiveRecord::Base
 	validates :address, length: {in: 1..30}
 	validates :highlights, length: {in: 1..120}
 	validates :description, length: { minimum: 40,
-    too_short: "Give your guests a more detailed description of the event!" }
+    too_short: "- Give your guests a more detailed description of the event!" }
 
 
 	# renaming has_many :events throgh: :attending_events alias to attendees
@@ -67,6 +67,12 @@ class Event < ActiveRecord::Base
 
     def default_banner?
     	self.banner.url == "bannerplaceholder.svg"
+    end
+
+    def self.by_date_start(date)
+    	return where("") unless date.present?
+
+		return where({date_start: date})
     end
 
 	private
