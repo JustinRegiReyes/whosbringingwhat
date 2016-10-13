@@ -789,7 +789,7 @@ div#user-search-container {
 				position: relative;
 				margin: 0 auto;
 				form {
-					input {
+					label, input {
 						width: 100%;
 					}
 					button.site-button {
@@ -834,6 +834,14 @@ div#user-search-container {
 				box-shadow: none;
 				padding: 10px 20px;
 				form {
+					h4 {
+						font-size: 26px;
+						padding: 25px;
+					}
+					label {
+						font-size: 18px;
+						width: 100%;
+					}
 					input {
 						margin-bottom: 15px;
 					}
