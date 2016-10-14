@@ -27,32 +27,50 @@
 						<span class="input-limit-tracker" data-inputname="search_key">0/12</span>
 					</div>
 					<div>
-						<label for="photo">Upload Picture(s)</label><br><span id="filename"></span>
-						<label for="event_photo" class="col-xs-12 col-sm-6">
-							<div class="file-label">
-								<div class="button">
-									<div><i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Photo</div>
+						<label for="photo">Event Picture(s)</label><br><span id="filename"></span>
+						<div class="event-img-container event-photo-container col-xs-12 col-sm-12 edit">
+							<img class="photo" src="<%= @event.photo(:medium) %>">
+							<span id="photo-filename"></span>
+							<% if @event.default_photo? == false %>
+								<a class="crop" href="/events/<%= @event.id%>/photo/crop" data-no-turbolink="true">
+									<button class="site-button" type="button">Crop</button>
+								</a>
+							<% end %>
+							<label for="event_photo" class="edit">
+								<div class="file-label">
+									<div class="button">
+										<div><i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Replace Photo</div>
+									</div>
 								</div>
-								<span id="photo-filename"></span>
-							</div>
-						</label>
-						<label for="event_banner" class="col-xs-12 col-sm-6">
-							<div class="file-label">
-								<div class="button">
-									<div><i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Banner</div>
+							</label>
+						</div>
+							<!-- div.event-photo-container -->
+						<div class="event-img-container event-banner-container col-xs-12 col-sm-12 edit">
+							<img class="banner" src="<%= @event.banner(:thumb) %>">
+							<span id="banner-filename"></span>
+							<% if @event.default_banner? == false %>
+								<a class="crop" href="/events/<%= @event.id%>/banner/crop" data-no-turbolink="true">
+									<button class="site-button" type="button">Crop</button>
+								</a>
+							<% end %>
+							<label for="event_banner" class="edit">
+								<div class="file-label">
+									<div class="button">
+										<div><i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp;&nbsp; Replace Banner</div>
+									</div>
 								</div>
-								<span id="banner-filename"></span>
-							</div>
-						</label>
+							</label>
+						</div>
+							<!-- div.event-banner-container -->
 	                 	<%= f.file_field :photo, class: "photos medium" %>
 	                 	<%= f.file_field :banner, class: "photos medium" %>
 					</div>
-					<div>
+					<div class="col-sm-12 col-xs-12">
 						<label>Name of Venue</label><br>
-						<%=	f.text_field :where, class: "full input-limit", placeholder: "The Batcave", data: { limit: "12", inputname: "where" }%>
-						<span class="input-limit-tracker" data-inputname="where">0/12</span>
+						<%=	f.text_field :where, class: "full input-limit", placeholder: "The Batcave", data: { limit: "25", inputname: "where" }%>
+						<span class="input-limit-tracker" data-inputname="where">0/25</span>
 					</div>
-					<div class="col-xs-12">
+					<div class="col-sm-8 col-xs-12">
 						<label>City</label><br>
 						<%=	f.text_field :city, class: "full input-limit", placeholder: "Gotham", data: { limit: "20", inputname: "city" }%>
 						<span class="input-limit-tracker" data-inputname="city">0/20</span>

@@ -1024,12 +1024,19 @@ div#user-edit-container {
 		background-color: white;
 		max-width: 400px;
 		height: auto;
+		min-height: 100vh;
 		margin: 0 auto;
 		padding: 40px 20px;
 		div#header {
 			text-align: center;
 			padding: 30px;
 			font-size: .8em;
+			span {
+				&.warning {
+					color: $ashyRed;
+					display: none;
+				}
+			}
 		} //div#header
 		div.photo-cropbox, div.photo-preview {
 			max-width: 300px;
@@ -1037,10 +1044,19 @@ div#user-edit-container {
 			margin: 0 auto;
 		} //div#photo-cropbox, div.photo-preview
 		div.submit {
-			margin-top: 20px;
+			margin-top: 40px;
 			input {
 				background-color: $periGreen;
 				color: white;
+			}
+		}
+		@media screen and(max-width: $break-iphone6plus) {
+			div#header {
+				span {
+					&.warning {
+						display: inline;
+					}
+				}
 			}
 		}
 	}

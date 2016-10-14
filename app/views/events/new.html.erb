@@ -28,22 +28,27 @@
 					</div>
 					<div>
 						<label for="photo">Upload Picture(s)</label><br><span id="filename"></span>
-						<label for="event_photo" class="col-xs-12 col-sm-6">
-							<div class="file-label">
-								<div class="button">
-									<div><i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Photo</div>
+						<div class="event-img-container event-photo-container col-xs-12 col-sm-12">
+							<label for="event_photo">
+								<div class="file-label">
+									<div class="button">
+										<div><i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp; Photo</div>
+									</div>
+									<span id="photo-filename"></span>
 								</div>
-								<span id="photo-filename"></span>
-							</div>
-						</label>
-						<label for="event_banner" class="col-xs-12 col-sm-6">
-							<div class="file-label">
-								<div class="button">
-									<div><i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Banner</div>
+							</label>
+						</div>
+							<!-- div.event-photo-container -->
+						<div class="event-img-container event-banner-container col-xs-12 col-sm-12">
+							<label for="event_banner">
+								<div class="file-label">
+									<div class="button">
+										<div><i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp;&nbsp;Banner</div>
+									</div>
+									<span id="banner-filename"></span>
 								</div>
-								<span id="banner-filename"></span>
-							</div>
-						</label>
+							</label>
+						</div>
 	                 	<%= f.file_field :photo, class: "photos medium" %>
 	                 	<%= f.file_field :banner, class: "photos medium" %>
 					</div>

@@ -76,7 +76,7 @@ class User < ActiveRecord::Base
     end
 
     def default_photo?
-    	self.avi.url == "aviplaceholder.png"
+    	self.avi.url.include?('assets')
     end
 
     def friendship_pending?(friend)

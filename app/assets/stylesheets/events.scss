@@ -186,36 +186,105 @@ div.event-form-container {
 				font-size: .95em;
 			}
 		}
-		div.file-label {
-			height: 70px;
-			text-align: center;
-			div.button {
-				height: 40px;
-				width: 60%;
-				margin: 0 auto;
-				border: 1px solid white;
-				position: relative;
-				&:hover {
-					border-bottom: 1px solid $cobaltBlue;
-					cursor: pointer;
-				}
-				& > div {
-					height: 30px;
+		div.event-img-container {
+			margin: 15px auto;
+			height: auto;
+			&.edit {
+				span#banner-filename, 
+				span#photo-filename {
+					font-size: .9em;
+					width: 100%;
+					height: 25px;
+					overflow: hidden;
+					display: block;
 					text-align: center;
-					@include vertical-align();
-					top: 60%;
-					i {
-						color: $cobaltBlue;
+				}
+			}
+			img {
+				width: 125px;
+				display: block;
+				margin: 10px auto; 
+				&.photo {
+					height: 125px;
+				}
+				&.banner {
+					height: 80px;
+				}
+			}
+			a.crop {
+				color: white;
+				&:hover {
+					text-decoration: none;
+				}
+				button.site-button {
+					width: 150px;
+					height: 40px;
+					font-size: 14px;
+					background-color: $cobaltBlue;
+					color: white; 
+					display: block;
+					margin: 0 auto;
+				} //button.site-button
+			} //a.crop
+			label {
+				width: 175px;
+				height: 45px;
+				margin: 0 auto;
+				display: block;
+				&.edit {
+					width: 150px;
+					height: 40px;
+					font-size: 14px;
+					margin: 10px auto;
+					padding: 0 5px;
+					border: 1px solid darken($cloud, 10%);
+					&:hover {
+						border: 1px solid $cobaltBlue;
+					}
+					&:active {
+						@include button-shadow();
+					}
+					div.file-label {
+						div.button {
+							border: none;
+							&:hover {
+								border-bottom: none;
+							}
+						}
 					}
 				}
-			} //div.button
-			span#banner-filename, span#photo-filename {
-				font-size: .9em;
-				max-width: 100%;
-				overflow: hidden;
-				display: inline-block;
-			}
-		}// div.file-label
+				div.file-label {
+					width: 100%;
+					height: 100%;
+					text-align: center;
+					div.button {
+						width: 100%;
+						height: 40px;
+						border: 1px solid white;
+						position: relative;
+						&:hover {
+							border-bottom: 1px solid $cobaltBlue;
+							cursor: pointer;
+						}
+						& > div {
+							height: 30px;
+							text-align: center;
+							@include vertical-align();
+							top: 60%;
+							i {
+								color: $cobaltBlue;
+							}
+						}
+					} //div.button
+					span#banner-filename, span#photo-filename {
+						font-size: .9em;
+						max-width: 100%;
+						overflow: hidden;
+						display: inline-block;
+					}
+				}// div.file-label
+			} //label
+		} //div.event-img-container
 		a.edit-categories {
 			margin: 0 auto 10px;
 			display: inline-block;
@@ -1172,10 +1241,17 @@ div#search-results-container {
 		height: auto;
 		margin: 0 auto;
 		padding: 40px 20px;
+		min-height: 100vh;
 		div#header {
 			text-align: center;
 			padding: 30px;
 			font-size: .8em;
+			span {
+				&.warning {
+					color: $ashyRed;
+					display: none;
+				}
+			}
 		} //div#header
 		div.photo-cropbox, div.photo-preview {
 			max-width: 300px;
@@ -1183,10 +1259,20 @@ div#search-results-container {
 			margin: 0 auto;
 		} //div#photo-cropbox, div.photo-preview
 		div.submit {
-			margin-top: 20px;
+			margin-top: 30px;
 			input {
 				background-color: $periGreen;
 				color: white;
+				font-size: 14px;
+			}
+		}
+		@media screen and(max-width: $break-iphone6plus) {
+			div#header {
+				span {
+					&.warning {
+						display: inline;
+					}
+				}
 			}
 		}
 	} //div#event-photo-crop
@@ -1200,21 +1286,38 @@ div#search-results-container {
 		height: auto;
 		margin: 0 auto;
 		padding: 40px 20px;
+		min-height: 100vh;
 		div#header {
 			text-align: center;
 			padding: 30px;
 			font-size: .8em;
+			span {
+				&.warning {
+					color: red;
+					display: none;
+				}
+			}
 		} //div#header
 		div.photo-cropbox, div.photo-preview {
+			max-height: 300px;
 			max-width: 300px;
-			max-height: 400px;
 			margin: 0 auto;
 		} //div#photo-cropbox, div.photo-preview
 		div.submit {
-			margin-top: 20px;
+			margin-top: 30px;
 			input {
 				background-color: $periGreen;
 				color: white;
+				font-size: 14px;
+			}
+		}
+		@media screen and(max-width: $break-iphone6plus) {
+			div#header {
+				span {
+					&.warning {
+						display: inline;
+					}
+				}
 			}
 		}
 	} //div#event-banner-crop

@@ -27,7 +27,7 @@ class Event < ActiveRecord::Base
   		# :photo
 			has_attached_file :photo, 
 				styles: { large: "600x600" , medium: "300x300", thumb: "100x100" },
-				:default_url => 'bannerplaceholder.svg',
+				:default_url => :default_banner_url,
 				processors: [:papercrop]
 			crop_attached_file :photo, :aspect => "1:1"
 		  	# validates_attachment :photo, presence: true
@@ -39,7 +39,7 @@ class Event < ActiveRecord::Base
 		# :banner
 			has_attached_file :banner, 
 				styles: { large: "1000X600" , medium: "800x500", thumb: "300x180" },
-				:default_url => 'bannerplaceholder.svg',
+				:default_url => :default_banner_url,
 				processors: [:papercrop]
 			crop_attached_file :banner, :aspect => "8:5"
 		  	# validates_attachment :banner, presence: true
@@ -54,6 +54,18 @@ class Event < ActiveRecord::Base
 
 	def banner_cropping
 		!banner_crop_x.blank? && !banner_crop_y.blank? && !banner_crop_w.blank? && !banner_crop_h.blank?
+	end
+
+	def default_banner_url
+        ActionController::Base.helpers.image_path('bannerplaceholder.svg')
+	end
+
+	def default_photo?
+		self.photo.url.include?('assets')
+	end
+
+	def default_banner?
+		self.banner.url.include?('assets')
 	end
 
 	def attending_guests
