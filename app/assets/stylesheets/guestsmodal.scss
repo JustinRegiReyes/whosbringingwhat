@@ -5,14 +5,6 @@ div#guests-modal {
 	& > div.modal-dialog {
 		width: 80%;
 		max-width: 700px;
-		@media screen and (max-width: $break-sm) {
-		    margin: 0 auto;
-    		top: 20px;
-		}
-		@media screen and (max-width: $break-iphone6plus) {
-		    margin: 0 auto;
-		    width: 100%;
-		}
 		& > div.modal-content {
 			border-radius: 0;
 			border: none;
@@ -45,7 +37,7 @@ div#guests-modal {
 					display: none;
 					position: relative;
 					div#attendance-labels-container {
-						height: 125px;
+						height: auto;
 						border-right: 1px solid $cloud;
 						border-bottom: 1px solid $cloud;
 						position: absolute;
@@ -63,84 +55,87 @@ div#guests-modal {
 								border: 1px solid $periGreen;
 								color: white;
 								background-color: $periGreen;
+								height: auto;
 								&:focus {
 									outline: none !important;
 								}
 							}
 							div.dropdown-menu {
 								border-radius: 0;
-							    top: 28px !important;
+							    top: 35px !important;
 								ul {
 									li {
 										outline: none !important;
-										&:focus {
-											outline: none !important;
+										a {
+											&:focus {
+												outline: none !important;
+											}
 										}
 									}
 								}
 							}
-							@media screen and(max-width: $break-iphone6plus) {
-								display: block;
-							}
 						} //div.bootstrap-select
 						div#attending-label {
 							&.label-selected {
-								border-bottom: 1px solid $periGreen;
+								border-right: 2px solid $periGreen;
 							}
 							&:hover {
-								border-bottom: 1px solid $periGreen;
+								border-right: 2px solid $periGreen;
 							}
 						}
 						div#declined-label {
 							&.label-selected {
-								border-bottom: 1px solid $ashyRed;
+								border-right: 2px solid $ashyRed;
 							}
 							&:hover {
-								border-bottom: 1px solid $ashyRed;
+								border-right: 2px solid $ashyRed;
 							}
 						}
 						div#maybe-label {
 							&.label-selected {
-								border-bottom: 1px solid yellow;
+								border-right: 2px solid yellow;
 							}
 							&:hover {
-								border-bottom: 1px solid yellow;
+								border-right: 2px solid yellow;
 							}
 						}
 						div#invited-label {
 							&.label-selected {
-								border-bottom: 1px solid black;
+								border-right: 2px solid black;
 							}
 							&:hover {
-								border-bottom: 1px solid black;
+								border-right: 2px solid black;
 							}
 						}
 						div.attendance-label {
 							margin: 0 auto;
 							padding: 5px;
+							border-right: 2px solid white;
+							font-size: 16px;
+							font-weight: 300;
+							border-top: 1px solid white;
 							border-bottom: 1px solid white;
+							padding-left: 10px;
 							&:hover {
 								cursor: pointer;
 								background-color: $cloud;
 							}
 							&.label-selected {
 								background-color: #f9f9f9;
+								border-bottom: 1px solid darken($cloud, 20%);
+								border-top: 1px solid darken($cloud, 20%);
 							}
-							@media screen and (max-width: $break-iphone6plus) { 
-								display: none;
-							}
-						}
-						@media screen and (max-width: $break-iphone6plus) { 
-							width: 200px;
-							height: 50px;
-							margin: 10px auto;
-							border: none;
 						}
 					} // div#attendance-labels-container
 					div#guests-list {
 						height: 100%;
 						overflow-y: scroll;
 						padding: 20px 20px 0px 100px;
+						div.empty-guests-category {
+							padding-top: 20px;
+							text-align: center;
+							font-size: 14px;
+						}
 						div.guest {
 							float: left;
 							img.guest-img {
@@ -157,27 +152,71 @@ div#guests-modal {
 								margin: 5px auto;
 							}
 						}
-						@media screen and (max-width: $break-sm) {
-							padding: 20px 20px 0px 100px;
-						}
-						@media screen and (max-width: $break-iphone6plus) {
-							width: 240px;
-							margin: 0 auto;
-							padding: 20px 0px 0px;
-						}
 					} // div#guests-list
-					@media screen and (max-width: $break-iphone6plus) {
-						padding-top: 50px;
-					}
 				} //div#guests-list-container
 			} // div.modal-body
-			@media screen and (max-width: $break-iphone6plus) {
+		} //div.modal-content
+	} // div.modal-dialog
+	@media screen and (max-width:  $break-sm) {
+		& > div.modal-dialog {
+			margin: 0 auto;
+    		top: 20px;
+			& > div.modal-content {
+				& > div.modal-body {
+					div#guests-list-container {
+						div#attendance-labels-container {
+							div.bootstrap-select {
+
+							}
+						}
+						div#guests-list {
+							padding: 20px 20px 0px 100px;
+						}
+					}
+				}
+			}
+		}
+	} // div#guests-modal max-width: $break-sm
+	@media screen and (max-width: $break-iphone6plus) {
+		& > div.modal-dialog {
+			top: 0;
+			margin: 0 auto;
+		    width: 100%;
+			& > div.modal-content {
 				height: 100vh !important;
 				top: 0;
+				& > div.modal-body {
+					div#guests-list-container {
+						padding-top: 50px;
+						div#attendance-labels-container {
+							width: 200px;
+							height: 50px;
+							margin: 10px auto;
+							border: none;
+							div.bootstrap-select {
+								display: block;
+							}
+							div.attendance-label {
+								display: none;
+							}
+						}
+						div#guests-list {
+							width: 100%;
+							margin: 0 auto;
+							padding: 30px 0px 0px;
+							div.guest {
+								width: 150px;
+								margin: 15px auto;
+								float: none;
+								img.guest-img {
+									width: 100px;
+									height: 100px;
+								}
+							}
+						}
+					}
+				}
 			}
-		} //div.modal-content
-		@media screen and (max-width: $break-iphone6plus) {
-			top: 0;
 		}
-	} // div.modal-dialog
-}
+	} // div#guests-modal max-width: $break-sm
+} //div#guests-modal

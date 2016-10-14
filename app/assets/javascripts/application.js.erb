@@ -439,6 +439,7 @@ if (url == "aviplaceholder.png") {
 function changeGuestsList(labelType, guests) {
 	var $guestsList = $("div#guests-list");
 	var guests = getAllGuests();
+	var matchedGuests = [];
 
 	$guestsList.empty();
 	$guestsList.css({
@@ -447,15 +448,22 @@ function changeGuestsList(labelType, guests) {
 	// goes through each guest and discerns if they will be appended
 	guests.forEach(function(guest) {
 		// calls guestAviUrl to discern if photo is default or upload
-		var aviUrl = guestAviUrl(guest.avi_url);
 		// guests are appeneded if the attendance_status is the same as labelType
 		// if the labelType is "invited" then all guests are appended
 		if(labelType === guest.attendance_status) {
-			$guestsList.append(guestsListTemplate(aviUrl, guest.username));
+			matchedGuests.push(guest);
 		} else if(labelType === "invited") {
-			$guestsList.append(guestsListTemplate(aviUrl, guest.username));
+			matchedGuests.push(guest);
 		}
 	});
+	if (matchedGuests.length > 0) {
+		matchedGuests.forEach(function(guest) {
+			var aviUrl = guestAviUrl(guest.avi_url);
+			$guestsList.append(guestsListTemplate(aviUrl, guest.username));
+		});
+	} else {
+		$guestsList.append(emptyTemplate());
+	}
 	// shows $guestsList once everything is appended
 	$guestsList.css({
 		visibility: "visible"
@@ -471,6 +479,14 @@ function guestsListTemplate(imgUrl, guestUsername) {
 		"</div>" +
 	"</div>";
 
+	return template;
+}
+
+function emptyTemplate() {
+	var template = 
+	'<div class="empty-guests-category">' +
+		'No guests match this category' + 
+	'</div>';
 	return template;
 }
 
