@@ -504,12 +504,26 @@ div#event-show-container {
 			padding: 20px 25px 10px;
 			display: none;
 		} //div#comment-header
+		div.comments-empty {
+			width: 70%;
+			margin: 0 auto;
+			height: 75px;
+			text-align: center;
+			background-color: white;
+			position: relative;
+			@include box-shadow(0.3);
+			span {
+				height: 25px;
+				display:block;
+				@include vertical-align();
+			}
+		}
 		div.comment-container {
 			height: auto;
 			width: 70%;
 			margin: 90px auto;
 			position: relative;
-			@include box-shadow(0.4);
+			@include box-shadow(0.3);
 			div.user-avi {
 				height: 70px;
 			    width: 70px;
@@ -562,6 +576,8 @@ div#event-show-container {
 	} //div#event-show-container @media screen and(max-width: $break-sm)
 	@media screen and(max-width: $break-iphone6plus) {
 		padding-top: 50px;
+		height: auto;
+		min-height: 100vh;
 		div#information-section {
 			div#information {
 				padding: 0;
@@ -619,7 +635,7 @@ div#event-show-container {
 			} //div#additional-information
 		} //div#information-section
 		div#comment-section {
-			padding: 50px 0 0;
+			padding: 50px 0 25px;
 			background-color: white;
 			div#add-comment-container {
 				width: 98%;
@@ -641,6 +657,9 @@ div#event-show-container {
 			div#comments-header {
 				display: block;
 			} //div#comment-header
+			div.comments-empty{
+				box-shadow: none;
+			} //div.comments-empty
 			div.comment-container {
 				width: 100%;
 				margin: 0 auto;
