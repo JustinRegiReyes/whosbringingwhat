@@ -203,12 +203,15 @@
 		background-color: #FFF;
 		padding: 10px 0;
 		div#categories-header {
-			font-size: 1.25em;
+			font-size: 22px;
 			text-align: center;
 			font-family: $hind;
-			font-weight: bold;
 			margin-bottom: 5px;
 		}
+		div#categories-empty {
+			text-align: center;
+			font-size: 14px;
+		}//div#categories-empty
 		& > a {
 			&:hover {
 				text-decoration: none;
@@ -275,9 +278,12 @@
 			width: 100vw;
 			margin: 0;
 			@include hori-scroll-wrapper();
-			@include box-shadow(0);
+			box-shadow: none;
 			div#categories-header {
 				display: none;
+			}
+			div#categories-empty {
+				padding: 20px 0;
 			}
 			& > a {
 				div.category {

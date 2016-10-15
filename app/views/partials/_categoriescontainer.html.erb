@@ -2,7 +2,12 @@
 	<div id="categories-header">
 		Who's Bringing What?
 	</div>
-	<% if @event.categories.count <= 2 %>
+	<% if @event.categories.count == 0 %>
+		<div id="categories-empty">
+			No categories
+		</div>
+			<!-- div#categories-empty -->
+	<% elsif @event.categories.count <= 2 %>
 		<% @event.categories.each do |category| %>
 			<a href="/events/<%= @event.id %>/categories/<%= category.id %>">
 				<div id="" class="<%= category.title.gsub(/\s+/, '') %> category">
