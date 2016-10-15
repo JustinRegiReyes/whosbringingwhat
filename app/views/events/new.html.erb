@@ -16,17 +16,17 @@
 		<div class="form-container">
 			<%= form_for @event, url: '/events', method: "post" do |f| %>
 				<div>
-					<div>
+					<div class="col-sm-12 col-xs-12">
 						<label>Name of Event</label><br>
 						<%=	f.text_field :title, class: "full input-limit", placeholder: "Sci-Fi Saturday", data: { limit: "22", inputname: "title" }%>
 						<span class="input-limit-tracker event-edit" data-inputname="title">0/22</span>
 					</div>
-					<div>
+					<div class="col-sm-12 col-xs-12">
 						<label>Search Key</label><br>
 						<%=	f.text_field :search_key, class: "full input-limit", placeholder: "movie night", data: { limit: "12", inputname: "search_key" }%>
 						<span class="input-limit-tracker event-edit" data-inputname="search_key">0/12</span>
 					</div>
-					<div>
+					<div class="col-sm-12 col-xs-12">
 						<label for="photo">Upload Picture(s)</label><br><span id="filename"></span>
 						<div class="event-img-container event-photo-container col-xs-12 col-sm-12">
 							<label for="event_photo">
@@ -52,12 +52,12 @@
 	                 	<%= f.file_field :photo, class: "photos medium" %>
 	                 	<%= f.file_field :banner, class: "photos medium" %>
 					</div>
-					<div>
+					<div class="col-sm-12 col-xs-12">
 						<label>Name of Venue</label><br>
 						<%=	f.text_field :where, class: "full input-limit", placeholder: "The Batcave", data: { limit: "12", inputname: "where" }%>
 						<span class="input-limit-tracker event-edit" data-inputname="where">0/12</span>
 					</div>
-					<div class="col-xs-8">
+					<div class="col-sm-8 col-xs-12">
 						<label>City</label><br>
 						<%=	f.text_field :city, class: "full input-limit", placeholder: "Gotham", data: { limit: "20", inputname: "city" }%>
 						<span class="input-limit-tracker event-edit" data-inputname="city">0/20</span>
@@ -67,16 +67,16 @@
 						<%=	f.text_field :state, class: "full input-limit", placeholder: "New Jersey", data: { limit: "15", inputname: "state" }%>
 						<span class="input-limit-tracker event-edit" data-inputname="state">0/15</span>
 					</div>
-					<div>
+					<div class="col-sm-12 col-xs-12">
 						<label>Address</label><br>
 						<%=	f.text_field :address, class: "full input-limit", placeholder: "123 Batcave Lane", data: { limit: "30", inputname: "address" }%>
 						<span class="input-limit-tracker event-edit" data-inputname="address">0/30</span>
 					</div>
-					<div>
+					<div class="col-sm-12 col-xs-12">
 						<label>Zipcode</label><br>
 						<%=	f.text_field :zipcode, class: "full input-limit", placeholder: "12345", data: { limit: "12", inputname: "zipcode" }%>
 						<span class="input-limit-tracker event-edit" data-inputname="zipcode">0/12</span>
-					</div>
+					</div class="col-sm-4 col-xs-12">
 					<div class="start-end-wrapper col-xs-12 clearfixs">
 						<div class="col-sm-6 col-xs-12 start">
 							<label>Start</label><br>
@@ -90,16 +90,16 @@
 						</div>
 					</div>
 						<!-- div.start-end-wrapper -->
-					<div class="col-xs-12">
+					<div class="col-sm-12 col-xs-12">
 						<label>Highlights/Btw's</label><br>
 						<%=	f.text_area :highlights, class: "full textarea highlights input-limit", placeholder: "Don't tell anyone the whereabouts of The Batcave. No pets allowed in The Batcave. ESPECIALLY BATS", data: { limit: "120", inputname: "highlights" }%>
 						<span class="input-limit-tracker event-edit" data-inputname="highlights">0/120</span>
 					</div>
-					<div class="col-xs-12">
+					<div class="col-sm-12 col-xs-12">
 						<label>Description</label><br>
 						<%= f.text_area :description, class: "full textarea description", placeholder: "Movie Night! This Saturday we're gonna go for sci-fi movies. So everyone bring your best sci-fi movie and we'll take a group vote! Oh, and bring drinks and snacks! We'll order pizza if we end up really hungry. See you guys there!" %>
 					</div>
-					<div class="col-xs-12">
+					<div class="col-sm-12 col-xs-12">
 						<div id="categories-container">
 							<div id="categories-header">
 								Categories
@@ -113,7 +113,8 @@
 								<div class="category-box clearfixs">
 									<div class="category-title col-sm-8 col-xs-12">
 										<label>Title</label><br>
-										<input name="categories[][title]" type="text" placeholder="Utensils" class="full">
+										<input name="categories[][title]" type="text" placeholder="Utensils" class="full input-limit" data-inputname="cat_title" data-limit="12">
+										<span class="input-limit-tracker event-edit" data-inputname="cat_title">0/12</span>
 									</div>
 										<!-- div.category-title -->
 									<div class="category-needed col-sm-4 col-xs-12">
@@ -123,7 +124,8 @@
 										<!-- div.category-needed -->
 									<div class="category-description col-xs-12">
 										<label>Description</label><br>
-										<textarea class="full textarea description" placeholder="Forks, plates, cups and anything that's like!" name="categories[][description]"></textarea>
+										<textarea class="full textarea description input-limit" placeholder="Forks, plates, cups and anything that's like!" name="categories[][description]" data-inputname="cat_description" data-limit="300"></textarea>
+										<span class="input-limit-tracker event-edit" data-inputname="cat_description">0/300</span>
 									</div>
 										<!-- div.category-needed -->
 								</div>
@@ -133,7 +135,8 @@
 									<div class="category-box clearfixs">
 										<div class="category-title col-sm-8 col-xs-12">
 											<label>Title</label><br>
-											<input name="categories[][title]" type="text" placeholder="Utensils" class="full" value="<%= category[:title] %>">
+											<input name="categories[][title]" type="text" placeholder="Utensils" class="full input-limit" value="<%= category[:title] %>" data-inputname="cat_title" data-limit="12">
+											<span class="input-limit-tracker event-edit" data-inputname="cat_title">0/12</span>
 										</div>
 											<!-- div.category-title -->
 										<div class="category-needed col-sm-4 col-xs-12">
@@ -143,7 +146,8 @@
 											<!-- div.category-needed -->
 										<div class="category-description col-xs-12">
 											<label>Description</label><br>
-											<textarea class="full textarea description" placeholder="Forks, plates, cups and anything that's like!" name="categories[][description]" ><%= category[:description] %></textarea>
+											<textarea class="full textarea description input-limit" placeholder="Forks, plates, cups and anything that's like!" name="categories[][description]"  data-inputname="cat_description" data-limit="300"><%= category[:description] %></textarea>
+											<span class="input-limit-tracker event-edit" data-inputname="cat_description">0/300</span>
 										</div>
 											<!-- div.category-needed -->
 									</div>

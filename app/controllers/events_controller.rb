@@ -26,11 +26,19 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    if @event.save
-      flash[:success] = "Created event"
-      current_user.created_events << @event
-      create_categories(categories_params, @event.id, current_user.id)
-      redirect_to "/events/#{@event.id}"
+    if @event.valid?
+      if validate_categories(categories_params, @event)
+        @event.save
+        flash[:success] = "Created event"
+        current_user.created_events << @event
+        create_categories(categories_params, @event.id, current_user.id)
+        redirect_to "/events/#{@event.id}"
+      else
+        if categories_params.first[:title].empty? == false
+          @categories = categories_params
+        end
+        render "/events/new"
+      end
     else
       if categories_params.first[:title].empty? == false
         @categories = categories_params

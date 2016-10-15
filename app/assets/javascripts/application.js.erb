@@ -100,6 +100,8 @@ function passwordConfirm() {
 
 function inputLengthTracker() {
 	var $inputLimit = $('.input-limit');
+	var periGreen = "#0ABE65";
+	var ashyRed = "#F55757";
 	if($inputLimit.length > 0) {
 		$inputLimit.each(function(index, el) {
 			var $input = $(this);
@@ -112,10 +114,13 @@ function inputLengthTracker() {
 
 			if(inputVal.length > 0) {
 				$inputSpan.text(valueLength + '/' + inputLimit);
+				if(valueLength > inputLimit) {
+					$inputSpan.css({color: ashyRed});
+				} else if(valueLength <= inputLimit) {
+					$inputSpan.css({color: periGreen});
+				}
 			}
 		});
-		var periGreen = "#0ABE65";
-		var ashyRed = "#F55757";
 		$inputLimit.on('input', function() {
 			var $input = $(this);
 			var inputname = $input.data('inputname');

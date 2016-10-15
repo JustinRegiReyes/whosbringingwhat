@@ -21,4 +21,19 @@ module CategoriesHelper
 			c.items.destroy_all
 		end
 	end
+
+	def validate_categories(categories, event)
+		categories.each do |category|
+			c = Category.new({
+				title: category[:title],
+				needed: category[:needed].to_i,
+				description: category[:description]
+				})
+			if c.valid? == false
+				event.errors.add("Categories:", " Check length of attributes for categories")
+				return false
+			end
+		end
+		return true
+	end
 end

@@ -16,6 +16,9 @@ class CategoriesController < ApplicationController
       flash[:success] = "Category created"
       redirect_to "/events/#{event.id}/categories/edit"
     else
+      eventId = params[:event_id]
+      @category = category
+      @event = Event.find_by_id(eventId)
       render :new
     end
 

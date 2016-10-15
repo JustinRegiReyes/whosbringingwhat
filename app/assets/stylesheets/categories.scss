@@ -25,6 +25,26 @@
 			height: auto;
 			background-color: white;
 			padding: 20px 10px;
+			div#error-explanation {
+				text-align: left;
+				position: relative;
+				width: 300px;
+				margin: 10px auto;
+				i {
+					display: block;
+					margin: 0 auto;
+					width: 20px;
+					font-size: 1.2em;
+				}
+				ul {
+					border: 1px solid darken($cloud, 10%);
+					width: 100%;
+					padding: 15px;
+					padding-left: 30px;
+					color: $ashyRed;
+					margin: 10px auto 0;
+				}
+			} //div#error-explanation
 			div#input-container {
 				width: 90%;
 				margin: 0 auto;
@@ -415,6 +435,26 @@ div#categories-edit-container {
 		height: auto;
 		background-color: white;
 		padding: 20px 10px;
+		div#error-explanation {
+			text-align: left;
+			position: relative;
+			width: 300px;
+			margin: 10px auto;
+			i {
+				display: block;
+				margin: 0 auto;
+				width: 20px;
+				font-size: 1.2em;
+			}
+			ul {
+				border: 1px solid darken($cloud, 10%);
+				width: 100%;
+				padding: 15px;
+				padding-left: 30px;
+				color: $ashyRed;
+				margin: 10px auto 0;
+			}
+		} //div#error-explanation
 		div#input-container {
 			width: 90%;
 			margin: 0 auto;

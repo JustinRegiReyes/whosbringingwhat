@@ -7,11 +7,25 @@
 				Category for <%= @event.title %>
 			</div>
 				<!-- div#category-for -->
-			<%= form_for @category, url: "/events/#{@event.id}/categories/#{@category.id}", method: "patch" do |f| %>
+			<div class="errors-container">
+	          <% if @category.errors.any? %>
+	            <div id="error-explanation">
+	              <i class="fa fa-exclamation-circle"></i>
+	              <ul>
+	              <% @category.errors.full_messages.each do |msg| %>
+	                <li><%= msg %></li>
+	              <% end %>
+	              </ul>
+	            </div>
+	          <% end %>
+	        </div>
+	        	<!-- errors-container -->
+			<%= form_for @category, url: "/events/#{@event.id}/categories", method: "post" do |f| %>
 				<div id="input-container" class="clearfixs">
 					<div class="input-box col-sm-8 col-xs-12">
 						<label>Name</label><br>
-						<%=	f.text_field :title, class: "full", placeholder: "Utensils"  %>
+						<%=	f.text_field :title, class: "full input-limit", placeholder: "Utensils", data: {inputname: "cat_title", limit: "12" } %>
+						<span class="input-limit-tracker event-edit" data-inputname="cat_title">0/12</span>
 					</div>
 					<div class="input-box col-sm-4 col-xs-12">
 						<label class="items-requested">Items Requested</label><br>
@@ -19,12 +33,13 @@
 					</div>
 					<div class="input-box col-sm-12 col-xs-12">
 						<label>Description</label><br>
-						<%=	f.text_area :description, class: "", placeholder: "Forks, plates, cups and anything that's like!"  %>
+						<%=	f.text_area :description, class: " input-limit", placeholder: "Forks, plates, cups and anything that's like!", data: {inputname: "cat_description", limit: "300" } %>
+						<span class="input-limit-tracker event-edit" data-inputname="cat_description">0/300</span>
 					</div>
-					<%= f.submit "Save Changes", class: "site-button" %>
+					<%= f.submit "Create", class: "site-button" %>
 				</div>
 					<!-- div#input-container -->
-			<% end %> 
+			<% end %>
 		</div>
 	</div>
 </div>
