@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in?, only: [:show, :home, :edit]
+  before_action :logged_in?, only: [:show, :home, :edit, :destroy]
   def new
     @user = User.new
   end
@@ -30,7 +30,23 @@ class UsersController < ApplicationController
   def index
   end
 
-  def delete
+  def destroy
+    user = User.find_by_id(user_id)
+    email = params[:email]
+    if user.email == email
+      respond_to do |format|
+        user.destroy
+        logout
+        flash[:success] = "Deleted Profile"
+        format.html { render layout: false }
+        format.json { render :json => {data: "success" }, status: 200 }
+      end
+    else
+      respond_to do |format|
+        format.html { render layout: false }
+        format.json { render :json => {data: "error" }, status: 500 }
+      end
+    end
   end
 
   def search
@@ -81,7 +97,7 @@ class UsersController < ApplicationController
   end
 
   def user_id
-    
+    params[:id]
   end
 
   def user_params

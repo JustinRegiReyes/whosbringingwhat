@@ -60,6 +60,7 @@ function ready() {
 	addCategoryInputs();
 	inputLengthTracker();
 	calendar();
+	deleteProfile();
 }
 
 // ********** signup functions **********
@@ -96,6 +97,38 @@ function passwordConfirm() {
 			}
 		})
 	}
+}
+
+function deleteProfile() {
+	var $deleteProfile = $("button#delete-profile");
+	if ($deleteProfile.length > 0) {
+		$deleteProfile.click(function() {
+			var sureDelete = confirm("Are you sure you want to delete your profile?");
+			if(sureDelete) {
+				var emailPrompt = prompt("Please type your account email to delete your profile");
+				var userId = $deleteProfile.data("user-id");
+				var data = {email: emailPrompt};
+				$.ajax({
+				    url: '/users/' + userId,
+				    type: 'DELETE',
+				    data: data,
+				    dataType: 'json',
+				    success: success,
+				    error: error
+				});
+
+				function success() {
+					window.location.pathname = "/";
+				}
+
+				function error(res) {
+					var $deleteError = $("span#delete-error");
+					$deleteError.empty();
+					$deleteError.append("Incorrect");
+				}
+			}
+		});
+	};
 }
 
 function inputLengthTracker() {

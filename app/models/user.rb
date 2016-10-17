@@ -2,18 +2,18 @@ class User < ActiveRecord::Base
 	before_save :default_values
 	attr_accessor :event_target
 
-	has_many :comments
-	has_many :items
+	has_many :comments, dependent: :destroy
+	has_many :items, dependent: :destroy
 	# renaming has_many :events alias to created_events
-	has_many :created_events, foreign_key: "user_id", class_name: "Event"
-	has_many :attending_events
-	has_many :notifications
+	has_many :created_events, foreign_key: "user_id", class_name: "Event", dependent: :destroy
+	has_many :attending_events, dependent: :destroy
+	has_many :notifications, dependent: :destroy
 
 	# renaming has_many :events throgh: :attending_events alias to going_tos
 	has_many :going_tos, foreign_key: "user_id", through: :attending_events, source: :event
-	has_many :friendships
+	has_many :friendships, dependent: :destroy
 	has_many :friends, -> {where(friendships: {accepted: true})}, :through => :friendships
-	has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+	has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", dependent: :destroy
 	has_many :inverse_friends, -> {where(friendships: {accepted: true})}, :through => :inverse_friendships, :source => :user
 
 	has_secure_password

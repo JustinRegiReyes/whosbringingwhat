@@ -59,10 +59,13 @@
 				</div>
 				<div class="submit-wrapper">
 					<%= f.submit id:"user-edit-submit", class: "site-button", value: "Save Changes" %>
+					<span id="delete-error"></span>
+					<button id="delete-profile" class="site-button" type="button" data-user-id="<%= @user.id %>"><i class="fa fa-exclamation-circle"></i> Delete Account <i class="fa fa-exclamation-circle"></i></button>
 				</div>
 			</div>
 				<!-- div.input-container -->
 		<% end %>
 	</div>
+		<!-- div.user-form-container -->
 </div>
 	<!-- div#user-edit-container -->

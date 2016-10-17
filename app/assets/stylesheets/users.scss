@@ -984,6 +984,7 @@ div#user-edit-container {
 				margin: 0 auto;
 				&.submit-wrapper {
 					input.site-button {
+						border: 1px solid $periGreen;
 						background-color: $periGreen;
 						color: white;
 						&:active {
@@ -991,6 +992,27 @@ div#user-edit-container {
 						}
 						&:focus {
 							border: 1px solid $periGreen;
+						}
+					}
+					span#delete-error {
+						color: $ashyRed;
+						font-size: 14px;
+						margin: 10px auto 5px;
+						width: 100%;
+						padding: 0 10px;
+						display: block;
+					}
+					button#delete-profile {
+						display: block;
+						margin: 15px auto 0;
+						background-color: $ashyRed;
+						color: white;
+						font-size: .95em;
+						width: 100%;
+						i {
+							position: relative;
+							bottom: 1px;
+							font-size: 12px;
 						}
 					}
 				}

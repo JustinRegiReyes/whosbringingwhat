@@ -132,9 +132,14 @@ div#flash-message-container {
     text-align: center;
     display: none; 
     @include box-shadow(.4);
-    div.flash-success {
-    	color: $periGreen;
-    }
+    div {
+	    &.flash-success {
+	    	color: $periGreen;
+	    }
+	    &.flash-error {
+	    	color: $ashyRed;
+	    }
+	}
 }
 // ********** flash message styles END ***********
 
