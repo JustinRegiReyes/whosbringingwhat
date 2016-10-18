@@ -116,19 +116,19 @@ class User < ActiveRecord::Base
     end
 
     def friend_requests
-    	return Friendship.where({pending: true, friend_id: self.id})
+    	return Friendship.where({pending: true, friend_id: self.id}).count
     end
 
     def undismissed_notifications
-    	return self.notifications.where({read: false})
+    	return self.notifications.where({read: false}).count
     end
 
     def unanswered_invitations
-    	return self.attending_events.where({undecided: true})
+    	return self.attending_events.where({undecided: true}).count
     end
 
     def no_updates?
-        self.undismissed_notifications.count == 0 && self.friend_requests.count == 0 && self.unanswered_invitations.count == 0
+        self.undismissed_notifications == 0 && self.friend_requests == 0 && self.unanswered_invitations == 0
     end
 
     private

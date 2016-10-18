@@ -1,21 +1,25 @@
-<div class="welcome-container">
-	<div class="row">
-		<div class="header-container">
-			<div class="icon-container">
-				<div class="icon">
-					<i class="fa fa-list-alt fa-4x"></i>
-				</div>
-				<div class="mask_left"></div>
-    			<div class="mask_right"></div>
+<div id="welcome-container">
+	<div id="header-container">
+		<div class="icon-container">
+			<div class="icon">
+				<i class="fa fa-list-alt"></i>
 			</div>
-			<h1 class="text-center header">The Deets</h1>
-			<h5 class="text-center sub-header">A get-together details solution</h5>
-			<div class="button-container">
-				<button type="button" class="signup site-button" data-toggle="modal" data-target="#signup-modal">Sign Up</button>
-				<button type="button" class="login site-button" data-toggle="modal" data-target="#login-modal">Log In</button><br>
-			</div>
+			<div class="mask_left"></div>
+			<div class="mask_right"></div>
+		</div>
+		<h1 class="text-center header">The Deets</h1>
+		<h5 class="text-center sub-header">A get-together details solution</h5>
+		<!-- render carousel -->
+		<div class="button-container">
+			<button type="button" class="signup site-button" data-toggle="modal" data-target="#signup-modal">Sign Up</button>
+			<button type="button" class="login site-button" data-toggle="modal" data-target="#login-modal">Log In</button><br>
 		</div>
 	</div>
+		<!-- div.header-containner -->
+	<div id="carousel-container">
+		<%= render "partials/homecarousel" %>
+	</div>
+		<!-- div#carousel-container -->
 </div>
 
 <!-- Modals -->

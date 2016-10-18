@@ -2,116 +2,86 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div#stickerContainer {
-	font-family: $sticker;
-	font-size: 180px;
-	position: relative;
-	color: #B83EB8;
-	div {
-		position: absolute;
-		&.one {
-			right: 750px;
-			top: 750px;
-			text-shadow: -4px 6px 3px black;
-		}
-		&.two {
-			right: 1000px;
-			top: 1000px;
-			text-shadow: -4px 6px 3px black;
-		}
-	}
-}
-
-img#sticker {
-	display: block;
-	margin: 200px auto;
-}
-
-
-div.welcome-container {
+div#welcome-container {
 	background-color: white;
 	position: absolute;
 	right: 0;
-	height: 100vh;
+	min-height: 100vh;
+	height: auto;
 	width: 100%;
-	padding: 0 15px;
-	div.row {
-		height: 100%;
+	padding: 0;
+	div#header-container {
+		width: 500px;
+		margin: 50px auto 10px;
 		position: relative;
-	}
-	div.header-container {
-		display: block;
-		top: 40%;
-		transform: translateY(-40%);
-		position: relative;
-		width: 600px;
-		margin: 0 auto;
-		color: white;
-		// @media screen and (min-width: $break-lg) {
-		// 	width: 500px;
-		// }
 		div.icon-container {
 			margin: 0 auto;
-			width: 102px;
-			height: 102px;
+			width: 100px;
+			height: 75px;
 			position: relative;
 			border-radius: 100%;
 			div.icon {
-				width: 101px;
-				height: 101px;
+				width: 100%;
+				height: 100%;
 				background: white;
 				border-radius: 100%;
-			}
-			i {
-				position: absolute;
-				top: 27px;
-    			right: 22px;
-    			color: #4095F8;
+				margin: 0 auto;
+				text-align: center;
+				i {
+	    			color: $cobaltBlue;
+	    			font-size: 60px;
+				}
 			}
 		}
-	}
-	h1.header {
-		font-size: 110px;
-		font-family: $mainHeader;
-		color: $asphalt;
-	}
-	.sub-header {
-		font-size: 1.15em;
-		color: $asphalt;
-	}
-	div.button-container {
-		text-align: center;
-		margin: 50px auto;
-		width: 350px;
-		button.site-button {
-			width: 175px;
-			margin: 5px 0;
-			background-color: $periGreen;
-			color: white;
-			font-size: .9em;
-			&:active {
-				outline: none;
-			}
-			&.signup {
+		h1.header {
+			font-size: 100px;
+			font-family: $mainHeader;
+			color: $asphalt;
+		}
+		.sub-header {
+			font-size: 15px;
+			color: $asphalt;
+		}
+		div.button-container {
+			text-align: center;
+			margin: 20px auto;
+			width: 100%;
+			button.site-button {
+				width: 150px;
+				margin: 5px 0;
 				background-color: $periGreen;
-				border: 1px solid $periGreen;
-				&:hover {
-					background-color: darken($periGreen, 2%);
+				color: white;
+				font-size: 14px;
+				&:active {
+					outline: none;
+				}
+				&.signup {
+					background-color: $periGreen;
+					border: 1px solid $periGreen;
+					&:hover {
+						background-color: darken($periGreen, 2%);
+					}
+				}
+				&.login {
+					background-color: white;
+					color: $periGreen;
+					border: 1px solid $periGreen;
+					&:hover {
+						background-color: darken(white, 2%);
+					}
 				}
 			}
-			&.login {
-				background-color: white;
-				color: $periGreen;
-				border: 1px solid $periGreen;
-				&:hover {
-					background-color: darken(white, 2%);
-				}
-			}
-		}
-	} //button-container
+		} //button-container
+	} //div#header-container
+	div#carousel-container {
+		width: 500px;
+		height: 400px;
+		margin: 0 auto;
+		position: relative;
+	} //div#carousel-container
 	@media screen and (max-width: $break-iphone6plus) {
 		width: 100vw;
-		div.header-container {
+		div#header-container {
 			width: 100%;
 			// font-size: 90px;
 			h1.header {
@@ -123,3 +93,77 @@ div.welcome-container {
 		}
 	}
 } // div.welcome-container
+
+// *********** carousel ***********
+	div#home-carousel {
+		width: 100%;
+		height: 500px;
+		margin: 0 auto;
+		ol.carousel-indicators {
+			li {
+				border-color: black;
+				&.active {
+					background-color: black;
+				}
+			}
+		}
+		div.carousel-inner {
+			height: 100%;
+			position: relative;
+			div#carousel-overlay {
+				position: absolute;
+				top: 0;
+				width: 100%;
+				height: 300px;
+				z-index: 1;
+				// background-image: -webkit-linear-gradient(to right,rgba(0,0,0,.1) 100% ,rgba(0,0,0,.1) 100%);
+				// background-image: -ms-linear-gradient(to right,rgba(0,0,0,.1) 100% ,rgba(0,0,0,.1) 100%);
+				// background-image: linear-gradient(to right,rgba(0,0,0,.1) 100% ,rgba(0,0,0,.1) 100%);
+			}
+			div.item {
+				img {
+					width: 300px;
+					height: 300px;
+					margin: 0 auto;
+				}
+				div.carousel-caption {
+					bottom: -120px;
+					width: 100%;
+					height: 120px;
+					padding-top: 10px;
+					padding-bottom: 0;
+					right: 0;
+					left: 0;
+					text-shadow: none;
+					color: black;
+					div.header {
+						font-size: 18px;
+						margin: 0 auto 5px;
+					} //div.header
+					p {
+						padding: 0 5px;
+					}
+				} //div.carousel-caption
+			}//div.item
+		} //div.carousel-inner
+		a.carousel-control {
+			background-image: none;
+			z-index: 2;
+			height: 300px;
+			&:hover {
+				i {
+					color: black;
+				}
+			}
+			i {
+				position: absolute;
+				// top: 40%;
+				bottom: -10px;
+				color: black;
+				text-shadow: none;
+				z-index: 5;
+				font-size: 20px;
+			}
+		}
+	}
+// *********** carousel END ***********

@@ -6,20 +6,96 @@ div#calendar-container.default-container {
   position: relative;
   margin: 0 auto;
   background-color: white;
-  padding-top: 40px;
   overflow: visible;
   @include box-shadow();
   div.clndr {
-    padding: 10px;
+    padding: 0 0 10px;
     padding-bottom: 0;
     .clndr-controls {
-      width: 99%;
+      width: 100%;
       padding: 5px 10px;
       margin: 0;
-      height: 50px;
+      height: 75px;
       background-color: $ashyRed;
       position: relative;
       color: white;
+      &.january {
+        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.4) 100%, rgba(0, 0, 0, 0.4) 100%), url('/assets/january.png');
+        background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.4) 100%, rgba(0, 0, 0, 0.4) 100%), url('/assets/january.png');
+        background: linear-gradient(top, rgba(0, 0, 0, 0.4) 100%, rgba(0, 0, 0, 0.4) 100%), url('/assets/january.png');
+        background-size: cover;
+      }
+      &.february {
+        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.2) 100%), url('/assets/february.png');
+        background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.2) 100%), url('/assets/february.png');
+        background: linear-gradient(top, rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.2) 100%), url('/assets/february.png');
+        background-size: 100% 200px;
+      }
+      &.march {
+        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.2) 100%), url('/assets/march.png');
+        background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.2) 100%), url('/assets/march.png');
+        background: linear-gradient(top, rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.2) 100%), url('/assets/march.png');
+        background-size: cover;
+        background-position: 25% 60%;
+      }
+      &.april {
+        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.1) 100%, rgba(0, 0, 0, 0.1) 100%), url('/assets/april.png');
+        background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.1) 100%, rgba(0, 0, 0, 0.1) 100%), url('/assets/april.png');
+        background: linear-gradient(top, rgba(0, 0, 0, 0.1) 100%, rgba(0, 0, 0, 0.1) 100%), url('/assets/april.png');
+        background-size: 50% 100px;
+      }
+      &.may {
+        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.1) 100%, rgba(0, 0, 0, 0.1) 100%), url('/assets/may.png');
+        background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.1) 100%, rgba(0, 0, 0, 0.1) 100%), url('/assets/may.png');
+        background: linear-gradient(top, rgba(0, 0, 0, 0.1) 100%, rgba(0, 0, 0, 0.1) 100%), url('/assets/may.png');
+        background-size: cover;
+      }
+      &.june {
+        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.1) 100%, rgba(0, 0, 0, 0.1) 100%), url('/assets/june.png');
+        background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.1) 100%, rgba(0, 0, 0, 0.1) 100%), url('/assets/june.png');
+        background: linear-gradient(top, rgba(0, 0, 0, 0.1) 100%, rgba(0, 0, 0, 0.1) 100%), url('/assets/june.png');
+        background-size: 100% 200px;
+        background-position: 25% 35%;
+      }
+      &.july {
+        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.2) 100%), url('/assets/july.png');
+        background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.2) 100%), url('/assets/july.png');
+        background: linear-gradient(top, rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.2) 100%), url('/assets/july.png');
+        background-size: cover;
+        background-position: 0% 35%;
+      }
+      &.august {
+        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.1) 100%, rgba(0, 0, 0, 0.1) 100%), url('/assets/august.png');
+        background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.1) 100%, rgba(0, 0, 0, 0.1) 100%), url('/assets/august.png');
+        background: linear-gradient(top, rgba(0, 0, 0, 0.1) 100%, rgba(0, 0, 0, 0.1) 100%), url('/assets/august.png');
+        background-size: cover;
+        background-position: 0% 35%;
+      }
+      &.september {
+        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.2) 100%), url('/assets/september.png');
+        background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.2) 100%), url('/assets/september.png');
+        background: linear-gradient(top, rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.2) 100%), url('/assets/september.png');
+        background-size: contain;
+      }
+      &.october {
+        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.2) 100%), url('/assets/october.png');
+        background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.2) 100%), url('/assets/october.png');
+        background: linear-gradient(top, rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.2) 100%), url('/assets/october.png');
+        background-size: contain;
+      }
+      &.november {
+        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.2) 100%), url('/assets/november.png');
+        background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.2) 100%), url('/assets/november.png');
+        background: linear-gradient(top, rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.2) 100%), url('/assets/november.png');
+        background-size: 100% 200px;
+      }
+      &.december {
+        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.2) 100%), url('/assets/december.png');
+        background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.2) 100%), url('/assets/december.png');
+        background: linear-gradient(top, rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.2) 100%), url('/assets/december.png');
+        background-size: cover;
+        background-position: 25% 60%;
+      }
       i {
         font-size: 1.5em;
       }
@@ -29,6 +105,7 @@ div#calendar-container.default-container {
         text-align: left;
         position: relative;
         height: 100%;
+        text-shadow: -1px 1px 1px black;
         i {
           @include vertical-align();
         }
@@ -42,6 +119,7 @@ div#calendar-container.default-container {
         text-align: center;
         font-family: $hind;
         font-size: 1.5em;
+        text-shadow: -1px 1px 1px black;
         @include vertical-align();
       }
       .clndr-next-button {
@@ -50,6 +128,7 @@ div#calendar-container.default-container {
         text-align: right;
         position: relative;
         height: 100%;
+        text-shadow: -1px 1px 1px black;
         i {
           @include vertical-align();
         }
@@ -59,7 +138,7 @@ div#calendar-container.default-container {
       } //.clndr-next-button
     } //clndr-controls
     .clndr-grid {
-      width: 99%;
+      width: 100%;
       display: inline-block;
       vertical-align: top;
       padding-left: 10px;
@@ -179,12 +258,15 @@ div#calendar-container.default-container {
       min-height: 300px;
       max-height: 350px;
       overflow: scroll;
-      width: 99%;
+      width: 100%;
       padding: 10px;
       padding-bottom: 0;
       vertical-align: top;
       border-top: 2px dashed $asphalt;
       margin-top: 30px;
+      background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.6) 100%, rgba(255, 255, 255, 0.6) 100%), url('/assets/cork_texture.jpg') repeat;
+      background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.6) 100%, rgba(255, 255, 255, 0.6) 100%), url('/assets/cork_texture.jpg') repeat;
+      background: linear-gradient(top, rgba(255, 255, 255, 0.6) 100%, rgba(255, 255, 255, 0.6) 100%), url('/assets/cork_texture.jpg') repeat;
       .events-header {
         margin: 5px 0;
         text-align: center;
@@ -214,7 +296,7 @@ div#calendar-container.default-container {
               font-family: Helvetica;
               font-weight: 100;
               margin-bottom: 10px;
-              border-left: 1px solid $cloud;
+              border-left: 1px solid $asphalt;
               .title {
                   width: 100%;
                   display: inline-block;

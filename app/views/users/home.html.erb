@@ -22,19 +22,19 @@
 				</div>
 					<!-- div#no-updates -->
 			<% else %>
-				<% if @user.undismissed_notifications.count == 0 %>
+				<% if @user.undismissed_notifications > 0 %>
 					<div id="notifications">
 							<i class="fa fa-inbox" aria-hidden="true"></i> &nbsp;<%= @user.undismissed_notifications %> Notifications
 					</div>
 						<!-- div#notifications -->
 				<% end %>
-				<% if @user.friend_requests.count == 0 %>
+				<% if @user.friend_requests > 0 %>
 					<div id="friend-requests">
 							<i class="fa fa-user-plus" aria-hidden="true"></i> &nbsp;<%= @user.friend_requests %> Friend Requests
 					</div>
 						<!-- div#friend-requests -->
 				<% end %>
-				<% if @user.unanswered_invitations.count == 0 %>
+				<% if @user.unanswered_invitations > 0 %>
 					<div id="unanswered-invitations">
 							<i class="fa fa-file-text" aria-hidden="true"></i> &nbsp;<%= @user.unanswered_invitations %> Invitations
 					</div>
