@@ -5,7 +5,7 @@ div#invite-modal {
 		max-width: 100vw;
 	}
 	div#invite-modal-content {
-		width: 500px;
+		width: 600px;
 		height: 150px;
 		margin: 0 auto;
 	}
@@ -143,7 +143,7 @@ div#invite-modal {
 			} //div#matched-friends-list
 		}
 		div#selected-list {
-			width: 150px;
+			width: 175px;
 			height: 100%;
 			border-right: 1px solid $cloud;
 			float: left;
@@ -208,8 +208,8 @@ div#invite-modal {
 		div#invite-friends-list {
 			height: 100%;
 			max-height: 100%;
-			padding: 0 35px;
-			width: 350px;
+			padding: 0 10px;
+			width: 425px;
 			float: left;
 			text-align: center;
 			overflow-y: scroll;
@@ -263,6 +263,22 @@ div#invite-modal {
 			} //div.guest
 		} //div#invite-friends-list
 	} //div#invite-list-container
+	@media screen and(max-width: $break-md) {
+		div#invite-modal-content {
+			width: 500px;
+			height: 150px;
+			margin: 0 auto;
+		} // div#invite-modal-content
+		div#invite-list-container {
+			div#selected-list {
+				width: 150px;
+			} // div#selected-list
+			div#invite-friends-list {
+				width: 350px;
+				padding: 0 30px;
+			} //div#invite-friends-list
+		} //div#invite-list-container
+	} // media screen and (max-width: $break-iphone6plus)
 	@media screen and(max-width: $break-iphone6plus) {
 		div.modal-dialog {
 			margin: 0;

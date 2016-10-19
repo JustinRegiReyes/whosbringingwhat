@@ -12,7 +12,7 @@ div#welcome-container {
 	padding: 0;
 	div#header-container {
 		width: 500px;
-		margin: 50px auto 10px;
+		margin: 25px auto 0;
 		position: relative;
 		div.icon-container {
 			margin: 0 auto;
@@ -44,14 +44,15 @@ div#welcome-container {
 		}
 		div.button-container {
 			text-align: center;
-			margin: 20px auto;
+			margin: 10px auto;
 			width: 100%;
 			button.site-button {
 				width: 150px;
 				margin: 5px 0;
+				height: 25px;
 				background-color: $periGreen;
 				color: white;
-				font-size: 14px;
+				font-size: 12px;
 				&:active {
 					outline: none;
 				}
@@ -75,7 +76,7 @@ div#welcome-container {
 	} //div#header-container
 	div#carousel-container {
 		width: 500px;
-		height: 400px;
+		height: 475px;
 		margin: 0 auto;
 		position: relative;
 	} //div#carousel-container
@@ -97,7 +98,7 @@ div#welcome-container {
 // *********** carousel ***********
 	div#home-carousel {
 		width: 100%;
-		height: 500px;
+		height: 100%;
 		margin: 0 auto;
 		ol.carousel-indicators {
 			li {
