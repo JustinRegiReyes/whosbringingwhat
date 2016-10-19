@@ -766,7 +766,7 @@ function toggleLabels(labelType) {
 				display: "block"
 			});
 			$content.css({
-				height: "100px"
+				height: "150px"
 			})
 			$inviteListCon.css({
 				display: "none"
@@ -867,7 +867,7 @@ function toggleLabels(labelType) {
 				var $listedFriend = $(this).parent();
 				var friendId = $listedFriend.data('friend-id');
 				var friendUsername = $listedFriend.data('friend-username');
-				var $targetCheckbox = $("input[type=checkbox][value=" + friendId + "][data-username=" + friendUsername + "]");
+				var $targetCheckbox = $("input[type=checkbox][value=" + friendId + "][data-username='" + friendUsername + "']");
 				// instead of coding logic to remove this li and then uncheck the target checkbox
 				// simply clicking the target checkbox would have the same effect
 				$targetCheckbox.click();

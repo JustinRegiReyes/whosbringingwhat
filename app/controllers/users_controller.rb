@@ -50,10 +50,9 @@ class UsersController < ApplicationController
   end
 
   def search
-    if user_search_params.present? && user_search_params[:username].present? && user_search_params[:email].present?
+    if user_search_params.present? && (user_search_params[:username].present? || user_search_params[:email].present?)
       @users = User.by_username(user_search_params[:username]).by_email(user_search_params[:email])
       @user_search_params = user_search_params
-    else
     end
   end
 
