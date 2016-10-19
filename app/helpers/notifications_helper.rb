@@ -14,7 +14,7 @@ module NotificationsHelper
 		elsif notification.what_kind == "friend_request"
 			notification.friendship.user.username + " wants to be your friend."
 		elsif notification.what_kind == "comment"
-			notification.comment.user.username + " has commented in " + notification.comment.event.title
+			"#{notification.comment.user.username} has commented in #{notification.comment.event.title}<br> <span class='comment-post'>#{truncate(notification.comment.post, length: 160)}</span>".html_safe
 		elsif notification.what_kind == "invitation_request"
 			notification.invited_by.username + " has invited you to " + notification.event.title
 		end
@@ -41,6 +41,8 @@ module NotificationsHelper
 			"<i class='fa fa-user-plus accepted' aria-hidden='true'></i>".html_safe
 		elsif notification.what_kind == "invitation_request"
 			"<i class='fa fa-list-alt' aria-hidden='true'></i>".html_safe
+		elsif notification.what_kind == "comment"
+			"<i class='fa fa-comment' aria-hidden='true'></i>".html_safe
 		end
 	end
 
@@ -54,9 +56,11 @@ module NotificationsHelper
 		if notification.what_kind == "friend_request"
 			notification.friendship.user.avi
 		elsif notification.what_kind == "friend_accepted"
-			notification.friendship.friend.avi(:thumb)
+			notification.friendship.friend.avi(:small)
 		elsif notification.what_kind == "invitation_request"
-			notification.event.photo(:thumb)
+			notification.event.photo(:small)
+		elsif notification.what_kind == "comment"
+			notification.event.photo(:small)
 		end
 	end
 
@@ -67,6 +71,8 @@ module NotificationsHelper
 			
 		elsif notification.what_kind == "invitation_request"
 			"<button data-notification-id='#{notification.id}' data-attending-event-id='#{notification.attending_event_id}' data-notification-action='Accept' data-notification-kind='#{notification.what_kind}' class='notification-action'>Accept</button>".html_safe
+		elsif notification.what_kind == "comment"
+				
 		end
 	end
 
@@ -82,7 +88,13 @@ module NotificationsHelper
 				"<a class='dropdown-item' href='' data-notification-id='#{notification.id}' data-attending-event-id='#{notification.event_id}' data-notification-action='Maybe' data-notification-kind='#{notification.what_kind}'>Maybe</a>",
 				"<a class='dropdown-item' href='' data-notification-id='#{notification.id}' data-attending-event-id='#{notification.attending_event_id}' data-notification-action='Decline' data-notification-kind='#{notification.what_kind}'>Decline</a>"
 			]
+		elsif notification.what_kind == "comment"
+			[""]
 		end
+	end
+
+	def notification_action_wrapper?(notification)
+		notification.what_kind != "friend_accepted" && notification.what_kind != "friend_declined" && notification.what_kind != "comment"
 	end
 
 	def mark_notification_read(id)

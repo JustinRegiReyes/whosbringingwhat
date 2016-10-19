@@ -4,11 +4,9 @@ class CommentsController < ApplicationController
   end
 
   def create
-    comment = Comment.new({post: create_params[:post]})
+    eventId = create_params[:event_id]
+    comment = Comment.new({post: create_params[:post], event_id: eventId, user_id: current_user.id})
     if comment.save
-      event = get_event(create_params[:event_id])
-      current_user.comments << comment
-      event.comments << comment
       respond_to do |format|
         flash[:success] = "Comment added"
         format.html { redirect_to("/events/#{create_params[:event_id]}") }

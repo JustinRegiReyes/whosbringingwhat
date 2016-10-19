@@ -306,16 +306,14 @@ div#calendar-container.default-container {
                 color: black;
               }
               &:hover {
-                color: $cobaltBlue;
+                border-left: 3px solid $ashyRed;
                 cursor: pointer;
                 .title {
-                  color: $cobaltBlue;
                 }
                 .host {
-                  color: $cobaltBlue;
                 }
                 a {
-                  color: $cobaltBlue;
+                  text-decoration: underline;
                   @media screen and(max-width: $break-iphone6plus) {
                     display: block;
                     width: 100%;

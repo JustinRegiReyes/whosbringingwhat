@@ -123,10 +123,18 @@
 						@include vertical-align();
 					} //div.img
 					div.notification-message {
-						float: left;
 						position: relative;
-						font-size: .85em;
+						font-size: 16px;
 						@include vertical-align();
+						overflow: hidden;
+						span.comment-post {
+							height: 70px;
+							display: inline-block;
+							margin-left: 10px;
+							padding: 5px 20px 10px 10px;
+							border-left: 1px solid $cloud;
+							font-size: 14px;
+						}
 					}
 					div.notification-icon {
 						right: 5px;
@@ -141,6 +149,9 @@
 						&.invitation_request {
 							color: $asphalt;
 						} //invitation_request
+						&.comment {
+							color: $sandOrange;
+						}
 					} //div.notification-icon
 					div.notification-action-wrapper {
 						div.action-wrapper {
@@ -261,7 +272,7 @@
 						float: none;
 						overflow: visible;
 						height: 100%;
-						padding: 30px 0;
+						padding: 10px 0;
 						div.img {
 							width: 80px;
 							height: 80px;
@@ -275,26 +286,36 @@
 							overflow: hidden;
 							height: auto;
 							max-height: 100%;
+							padding-right: 20px;
+							span.comment-post {
+								max-height: 70px;
+								overflow-y: scroll;
+								padding: 0px 20px 10px 10px;
+								margin-top: 10px;
+							}
+						}
+						div.notification-icon {
+							top: 0;
 						}
 						div.notification-action-wrapper {
-						div.action-wrapper {
-							button.notification-action {
-							}
-							div.dropdown {
-								position: static;
-								button {
+							div.action-wrapper {
+								button.notification-action {
 								}
-								div.dropdown-menu {
-									min-width: 120px !important;
-									width: 120px !important;
-									&.friend_request,
-									&.invitation_request {
-										left: -60px;
+								div.dropdown {
+									position: static;
+									button {
 									}
-								}
-							} //div.dropdown
-						}
-					} //div.notification-action-wrapper
+									div.dropdown-menu {
+										min-width: 120px !important;
+										width: 120px !important;
+										&.friend_request,
+										&.invitation_request {
+											left: -60px;
+										}
+									}
+								} //div.dropdown
+							}
+						} //div.notification-action-wrapper
 					} //div.information
 				} //div.notification-box
 			}

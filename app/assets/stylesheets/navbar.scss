@@ -1,7 +1,8 @@
 nav.navbar-xs { 
-	min-height:22px; 
+	min-height: 30px; 
+	height: 30px;
 	border-radius: 0;
-	padding: 2px 75px;
+	padding: 5px 75px;
 	background-color: white;
 	@include box-shadow();
 	border: none;
@@ -23,6 +24,7 @@ nav.navbar-xs {
 	}
 
 	& > .navbar-header {
+		height: 100%;
 		& > button.navbar-toggle{
 			&:focus {
 				background-color: white !important;
@@ -36,6 +38,9 @@ nav.navbar-xs {
 		& > .navbar-header {
 
 		}
+	}
+	@media screen and (max-width: $break-sm) {
+		height: auto;
 	}
 }
 
@@ -76,27 +81,27 @@ nav.navbar-xs {
     }
 }
 
-.navbar-xs .navbar-brand { 
-	padding: 2px;
+.navbar-xs a.navbar-brand { 
 	font-family: $mainHeader;
 	color: $asphalt;
 	font-size: 1.25em;
 	line-height: 14px;
-	height: 22px;
 	position: relative;
 	width: 100px;
+	height: 100%;
+	display: block;
 	& > span {
-		position: fixed;
-		height: 22px;
+		height: 100%;
 		width: 100px;
 	    top: 0px;
+	    display: block;
 	    & > span {
-	    	display: inline-block;
+	    	display: block;
+	    	height: 100%;
 	    	&.logo {
 	    		background-color: white;
 	    		width: 100%;
-	    		height: 18px;
-	    		top: 5px;
+	    		height: 100%;
 	    		position: relative;
 			    font-size: .9em;
 			    @media screen and (max-width: $break-sm) {

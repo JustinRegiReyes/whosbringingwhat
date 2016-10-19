@@ -26,7 +26,7 @@ class Event < ActiveRecord::Base
 
   		# :photo
 			has_attached_file :photo, 
-				styles: { large: "600x600" , medium: "300x300", thumb: "100x100" },
+				styles: { large: "600x600" , medium: "300x300", small: "200x200", thumb: "100x100" },
 				:default_url => :default_banner_url,
 				processors: [:papercrop]
 			crop_attached_file :photo, :aspect => "1:1"
