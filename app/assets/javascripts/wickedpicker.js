@@ -220,24 +220,28 @@
                         $(this.close).trigger('click');
                         break;
                     case 37: //Left arrow
-                        if (event.target.className !== this.hoursElem[0].className) {
-                            $(event.target).parent().prevAll('li').not(this.separator.selector).first().children()[1].focus();
-                        } else {
-                            $(event.target).parent().siblings(':last').children()[1].focus();
-                        }
+                        // console.log(event.target.className);
+                        // if (event.target.className == "wickedpicker__controls__control" && event.target.className !== this.hoursElem[0].className) {
+                        //     $(event.target).parent().prevAll('li').not(this.separator.selector).first().children()[1].focus();
+                        // } else {
+                        //     console.log('test');
+                        //     $(event.target).parent().siblings(':last').children()[1].focus();
+                        // }
                         break;
                     case 39: //Right arrow
-                        if (event.target.className !== this.meridiemElem[0].className) {
-                            $(event.target).parent().nextAll('li').not(this.separator.selector).first().children()[1].focus();
-                        } else {
-                            $(event.target).parent().siblings(':first').children()[1].focus();
-                        }
+                        // console.log(event.target.className);
+                        // if (event.target.className == "wickedpicker__controls__control" && event.target.className !== this.meridiemElem[0].className) {
+                        //     $(event.target).parent().nextAll('li').not(this.separator.selector).first().children()[1].focus();
+                        // } else {
+                        //     console.log('test');
+                        //     $(event.target).parent().siblings(':first').children()[1].focus();
+                        // }
                         break;
                     case 38: //Up arrow
-                        $(':focus').prev().trigger('click');
+                        // $(':focus').prev().trigger('click');
                         break;
                     case 40: //Down arrow
-                        $(':focus').next().trigger('click');
+                        // $(':focus').next().trigger('click');
                         break;
                     default:
                         break;

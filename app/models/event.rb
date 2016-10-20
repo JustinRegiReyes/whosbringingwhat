@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
 
 	validates :title, :search_key, :date_start, :time_start, :address, :city, :zipcode, :state, :where, :highlights, :description, presence: true
 	validates :title, length: { in: 1..22 }
-	validates :search_key, length: { in: 1..12 }
+	validates :search_key, length: { in: 1..18 }
 	validates :where, length: {in: 1..25}
 	validates :city, length: {in: 1..20}
 	validates :zipcode, length: {in: 1..12}
