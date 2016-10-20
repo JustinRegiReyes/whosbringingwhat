@@ -88,8 +88,7 @@ class FriendshipsController < ApplicationController
 	end
 
 	def invite_friends
-		# queries users that is not have been invited at all to the event and has an accepted friendship with the current_user
-		friends = User.includes(:friendships).where(friendships: {friend_id: current_user.id, accepted: true} ).uniq
+		friends = (current_user.friends + current_user.inverse_friends).uniq
 		invitableFriends = sort_invitable_friends(friends, event_id)
 		respond_to do |format|
 			format.html { render layout: false }

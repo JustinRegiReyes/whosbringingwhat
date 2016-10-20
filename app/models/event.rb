@@ -72,14 +72,6 @@ class Event < ActiveRecord::Base
 		self.attending_events.where({going: true})
 	end
 
-	def default_photo?
-    	self.photo.url == "bannerplaceholder.svg"
-    end
-
-    def default_banner?
-    	self.banner.url == "bannerplaceholder.svg"
-    end
-
     def self.by_date_start(date)
     	return where("") unless date.present?
 
