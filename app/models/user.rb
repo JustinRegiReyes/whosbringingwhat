@@ -131,6 +131,10 @@ class User < ActiveRecord::Base
         self.undismissed_notifications == 0 && self.friend_requests == 0 && self.unanswered_invitations == 0
     end
 
+    def all_friends
+        (self.friends + self.inverse_friends).uniq
+    end
+
     private
 		# runs paperclips reprocess method for crop
 		def reprocess_avi
