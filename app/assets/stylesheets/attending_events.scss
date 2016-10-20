@@ -24,47 +24,49 @@ div#my-invitations {
 			background-color: white;
 			padding: 10px;
 			border-bottom: 1px solid $cloud;
-			div#event-photo {
-				width: 150px;
-				height: 100%;
+			position: relative;
+			div.event-photo {
+				width: 125px;
+				height: 125px;
 				float: left;
-				margin-right: 10px;
-			} //div#event-photo
-			div#event-information {
+				margin-top: 15px;
+				margin-right: 20px;
+			} //div.event-photo
+			div.event-information {
 				height: 100%;
 				position: relative;
 				padding-top: 10px;
 				float: left;
 				width: 320px;
-				div#event-guests {
+				div.event-guests {
 					position: absolute;
 					right: 5px;
 					top: 5px;
 					font-size: .9em;
-				} //div#event-guests
-				div#event-title {
+				} //div.event-guests
+				div.event-title {
 					font-size: 1.15em;
 					a {
 						&:hover {
 							text-decoration: none;
 						}
 					}
-				} //div#event-title
-				div#event-when {
+				} //div.event-title
+				div.event-when {
 					font-size: .85em;
 					color: darken($cloud, 40%);
-				} //div#event-when
-				div#event-where {
+				} //div.event-when
+				div.event-where {
 					font-size: .85em;
 					i {
 						color: $ashyRed;
 					}
-				} //div#event-where
-				div#event-highlights {
+				} //div.event-where
+				div.event-highlights {
 					font-size: .85em;
 					margin-top: 10px;
 					width: 60%;
-				} //div#event-highlights
+				} //div.event-highlights
 				div.invitation-action-wrapper {
 					position: absolute;
 					width: 82px;
@@ -125,5 +127,44 @@ div#my-invitations {
 	@media screen and (max-width: $break-iphone6plus) {
 		min-height: 100vh;
 		background-color: white;
+		div#my-invitations-container {
+			div.invitation-box {
+				height: auto;
+				padding-bottom: 20px;
+				div.event-photo {
+					margin: 10px auto;
+					width: 200px;
+					height: 200px;
+					float: none;
+				} //div#event-photo
+				div.event-information {
+					width: 100%;
+					div.event-guests {
+						top: 12px;
+					} //div.event-guests
+					div.event-highlights {
+						width: 250px;
+						font-size: 14px;
+					} //div.event-highlights
+					div.invitation-action-wrapper {
+						width: 120px;
+						height: 30px;
+						div.action-wrapper {
+							width: 100%;
+							height: 100%;
+							button.invitation-action {
+								width: 100px;
+							} //button.invitation-action
+							div.dropdown {
+								width: 18px;
+								div.dropdown-menu {
+									left: -101px;
+								}
+							} //div.dropdown
+						} //div.action-wrapper
+					} //div.invitation-action-wrapper
+				} //div.event-information
+			} //div.invitation-box
+		}//div#my-invitations-container
 	} //div#my-invitations max-width $break-iphone6plus
 } //div#myinvitations
