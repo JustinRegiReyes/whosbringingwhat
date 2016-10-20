@@ -16,7 +16,7 @@ module NotificationsHelper
 		elsif notification.what_kind == "comment"
 			"#{notification.comment.user.username} has commented in #{notification.comment.event.title}<br> <span class='comment-post'>#{truncate(notification.comment.post, length: 160)}</span>".html_safe
 		elsif notification.what_kind == "invitation_request"
-			notification.invited_by.username + " has invited you to " + notification.event.title
+			"#{notification.invited_by.username} has invited you to <a href='/events/#{notification.event.id}'>#{notification.event.title}</a>".html_safe
 		end
 	end
 
@@ -40,7 +40,7 @@ module NotificationsHelper
 		elsif notification.what_kind == "friend_accepted"
 			"<i class='fa fa-user-plus accepted' aria-hidden='true'></i>".html_safe
 		elsif notification.what_kind == "invitation_request"
-			"<i class='fa fa-list-alt' aria-hidden='true'></i>".html_safe
+			"<i class='fa fa-file-text' aria-hidden='true'></i>".html_safe
 		elsif notification.what_kind == "comment"
 			"<i class='fa fa-comment' aria-hidden='true'></i>".html_safe
 		end

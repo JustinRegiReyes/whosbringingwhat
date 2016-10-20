@@ -121,6 +121,11 @@
 						border: 1px solid $cloud;
 						float: left;
 						@include vertical-align();
+						a.event-link {
+							display: block;
+							width: 100%;
+							height: 100%;
+						}
 					} //div.img
 					div.notification-message {
 						position: relative;
@@ -141,16 +146,16 @@
 						top: 5px;
 						position: absolute;
 						&.friend_request {
-							color: $cobaltBlue;
+							color: $periGreen;
 						}
 						&.friend_accepted {
 							color: $periGreen;
 						}
 						&.invitation_request {
-							color: $asphalt;
+							color: $sandOrange;
 						} //invitation_request
 						&.comment {
-							color: $sandOrange;
+							color: $asphalt;
 						}
 					} //div.notification-icon
 					div.notification-action-wrapper {

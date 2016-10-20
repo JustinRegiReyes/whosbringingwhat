@@ -34,7 +34,11 @@
 							<input type="checkbox" class="notification-checkbox" id="<%= notification.id %>" value="<%= notification.id %>">
 						</div>
 						<div class="information clearfixs">
-							<div class="img" style="background: url('<%= image_path(notification_image(notification))%>') no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;"></div>
+							<% if notification.event != nil %>
+								<div class="img" style="background: url('<%= image_path(notification_image(notification))%>') no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;"><a href="/events/<%= notification.event.id%>" class="event-link"></a></div>
+							<% else %>
+								<div class="img" style="background: url('<%= image_path(notification_image(notification))%>') no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;"></div>
+							<% end %>
 							<div class="notification-message">
 								<%= the_update(notification) %> 
 							</div>
