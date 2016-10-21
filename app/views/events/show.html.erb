@@ -96,7 +96,7 @@
 			<% @event.comments.order('id DESC').each do |comment| %>
 				<div class="comment-container">
 					<div class="user-avi">
-						<img src="<%= image_path(current_user.avi(:thumb)) %>">
+						<img src="<%= image_path(comment.user.avi(:thumb)) %>">
 					</div>
 					<div class="comment-made">
 						by <span class="username"><%=comment.user.username%></span> on <%= comment.created_at.strftime("%b %d") %>
