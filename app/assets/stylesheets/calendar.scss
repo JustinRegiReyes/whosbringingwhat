@@ -264,9 +264,9 @@ div#calendar-container.default-container {
       vertical-align: top;
       border-top: 2px dashed $asphalt;
       margin-top: 30px;
-      background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.6) 100%, rgba(255, 255, 255, 0.6) 100%), url('/assets/cork_texture.jpg') repeat;
-      background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.6) 100%, rgba(255, 255, 255, 0.6) 100%), url('/assets/cork_texture.jpg') repeat;
-      background: linear-gradient(top, rgba(255, 255, 255, 0.6) 100%, rgba(255, 255, 255, 0.6) 100%), url('/assets/cork_texture.jpg') repeat;
+      background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.80) 100%, rgba(255, 255, 255, 0.80) 100%), url('/assets/cork_texture.jpg') repeat;
+      background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.80) 100%, rgba(255, 255, 255, 0.80) 100%), url('/assets/cork_texture.jpg') repeat;
+      background: linear-gradient(top, rgba(255, 255, 255, 0.80) 100%, rgba(255, 255, 255, 0.80) 100%), url('/assets/cork_texture.jpg') repeat;
       .events-header {
         margin: 5px 0;
         text-align: center;

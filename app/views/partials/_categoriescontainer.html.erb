@@ -10,7 +10,7 @@
 	<% elsif @event.categories.count <= 2 %>
 		<% @event.categories.each do |category| %>
 			<a href="/events/<%= @event.id %>/categories/<%= category.id %>">
-				<div id="" class="<%= category.title.gsub(/\s+/, '') %> category">
+				<div id="" class="<%= category.title.gsub(/\s+/, '') %> category" data-id="<%= category.id %>">
 					<span class="cat-count <%= 'enough' unless category.enough_items? === false %> "><%= category.items.count %>/<%= category.needed %></span>
 					<span class="cat-name"> <%= category.title %></span>
 				</div>
@@ -19,7 +19,7 @@
 		<% 2.times do %> 
 			<% @event.categories.each do |category| %>
 				<a href="/events/<%= @event.id %>/categories/<%= category.id %>">
-					<div id="" class="<%= category.title.gsub(/\s+/, '') %> category repeat">
+					<div id="" class="<%= category.title.gsub(/\s+/, '') %> category repeat" data-id="<%= category.id %>">
 						<span class="cat-count <%= 'enough' unless category.enough_items? === false %> "><%= category.items.count %>/<%= category.needed %></span>
 						<span class="cat-name"> <%= category.title %></span>
 					</div>
@@ -29,7 +29,7 @@
 	<% elsif @event.categories.count <= 5 %>
 		<% @event.categories.each do |category| %>
 			<a href="/events/<%= @event.id %>/categories/<%= category.id %>">
-				<div class="<%= category.title.gsub(/\s+/, '') %> category">
+				<div class="<%= category.title.gsub(/\s+/, '') %> category" data-id="<%= category.id %>">
 					<span class="cat-count <%= 'enough' unless category.enough_items? === false %> "><%= category.items.count %>/<%= category.needed %></span>
 					<span class="cat-name"> <%= category.title %></span>
 				</div>
@@ -37,7 +37,7 @@
 		<% end %>
 		<% @event.categories.each do |category| %>
 			<a href="/events/<%= @event.id %>/categories/<%= category.id %>">
-				<div class="<%= category.title.gsub(/\s+/, '') %> category repeat">
+				<div class="<%= category.title.gsub(/\s+/, '') %> category repeat" data-id="<%= category.id %>">
 					<span class="cat-count <%= 'enough' unless category.enough_items? === false %> "><%= category.items.count %>/<%= category.needed %></span>
 					<span class="cat-name"> <%= category.title %></span>
 				</div>
@@ -46,7 +46,7 @@
 	<% elsif @event.categories.count > 5 %>
 		<% @event.categories.each do |category| %>
 			<a href="/events/<%= @event.id %>/categories/<%= category.id %>">
-				<div class="<%= category.title.gsub(/\s+/, '') %> category">
+				<div class="<%= category.title.gsub(/\s+/, '') %> category" data-id="<%= category.id %>">
 					<span class="cat-count <%= 'enough' unless category.enough_items? === false %> "><%= category.items.count %>/<%= category.needed %></span>
 					<span class="cat-name"> <%= category.title %></span>
 				</div>

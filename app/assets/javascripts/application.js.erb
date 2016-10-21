@@ -275,10 +275,11 @@ function ajaxForms() {
 function categorySelector() {
 	var $category = $('#categories-container');
 	if($category.length > 0) {
-		if ((typeof category) !== 'undefined') {
-			var categoryObj = JSON.parse(category);
-			var $categoryTarget = $('.' + categoryObj.title.replace(/ /g, ''));
-			$categoryTarget.addClass('selected');
+		if(typeof category !== "undefined") {
+			var $categoryTarget = $("div[data-id='" + category.id + "']");
+			$categoryTarget.each(function() {
+				$(this).addClass('selected');
+			});
 			$categoryTarget.prepend('<i class="fa fa-chevron-right" aria-hidden="true"></i>');
 		}
 	}
@@ -287,10 +288,11 @@ function categorySelector() {
 function itemSelector() {
 	var $item = $('#items-container');
 	if($item.length > 0) {
-		if ((typeof item) !== 'undefined') {
-			var itemObj = JSON.parse(item);
-			var $itemTarget = $('.' + itemObj.title.replace(/ /g, ''));
-			$itemTarget.addClass('selected');
+		if(typeof item !== "undefined") {
+			var $itemTarget = $("div[data-item-id='" + item.id + "']");
+			$itemTarget.each(function() {
+				$(this).addClass('selected');
+			});
 			$itemTarget.prepend('<i class="fa fa-chevron-right" aria-hidden="true"></i>');
 		}
 	}

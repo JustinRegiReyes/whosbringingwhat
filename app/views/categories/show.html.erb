@@ -16,7 +16,7 @@
 				<% elsif @category.items.count <= 2 %>
 					<% @category.items.each do |item| %>
 						<a href="/events/<%= eventId %>/categories/<%= @category.id%>/items/<%= item.id %>">
-							<div class="item">
+							<div class="item" data-item-id="<%= item.id %>">
 								<span id="<%=item.title%>" class="item-title"><%= item.title %></span>
 							</div>
 						</a>
@@ -24,7 +24,7 @@
 					<% 2.times do %> 
 						<% @category.items.each do |item| %>
 							<a href="/events/<%= eventId %>/categories/<%= @category.id%>/items/<%= item.id %>">
-								<div class="item additional">
+								<div class="item additional" data-item-id="<%= item.id %>">
 									<span id="<%=item.title%>" class="item-title"><%= item.title %></span>
 								</div>
 							</a>
@@ -33,14 +33,14 @@
 				<% elsif @category.items.count <= 4 %>
 					<% @category.items.each do |item| %>
 						<a href="/events/<%= eventId %>/categories/<%= @category.id%>/items/<%= item.id %>">
-							<div class="item">
+							<div class="item" data-item-id="<%= item.id %>">
 								<span id="<%=item.title%>" class="item-title"><%= item.title %></span>
 							</div>
 						</a>
 					<% end %>
 					<% @category.items.each do |item| %>
 						<a href="/events/<%= eventId %>/categories/<%= @category.id%>/items/<%= item.id %>">
-							<div class="item additional">
+							<div class="item additional" data-item-id="<%= item.id %>">
 								<span id="<%=item.title%>" class="item-title"><%= item.title %></span>
 							</div>
 						</a>
@@ -48,7 +48,7 @@
 				<% elsif @category.items.count >= 5 %>
 					<% @category.items.each do |item| %>
 						<a href="/events/<%= eventId %>/categories/<%= @category.id%>/items/<%= item.id %>">
-							<div class="item">
+							<div class="item" data-item-id="<%= item.id %>">
 								<span id="<%=item.title%>" class="item-title"><%= item.title %></span>
 							</div>
 						</a>
@@ -86,5 +86,5 @@
 	<!-- div#categories-show-container -->
 
 <script type="text/javascript">
-	var category = '<%= raw(@category.to_json) %>';
+	var category = <%= raw(@category.to_json) %>;
 </script>

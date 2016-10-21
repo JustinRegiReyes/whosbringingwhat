@@ -201,6 +201,24 @@ div#items-show-container {
 				width: 100%;
 				div#item {
 					box-shadow: none;
+					div#item-header {
+						font-size: 30px;
+						font-weight: normal;
+						margin-bottom: 20px;
+						span.brought-by {
+							font-size: 14px;
+							font-family: Helvetica;
+							display: block;
+							width: 100%;
+							padding-left: 10px;
+							position: relative;
+							bottom: 5px;
+							font-style: italic;
+						}
+					}
+					div#item-description {
+						max-height: 150px;
+					}
 				}
 				button.site-button {
 					width: 98%;
@@ -292,6 +310,10 @@ div#new-item-container {
 				div#input-container {
 					width: 100%;
 					margin: 0;
+					.site-button {
+						width: 100%;
+						height: 36px;
+					}
 				} //div#input-container
 			} //div#form-container
 		} //div.clearfixs

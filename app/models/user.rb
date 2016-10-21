@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 	has_many :notifications, dependent: :destroy
 
 	# renaming has_many :events throgh: :attending_events alias to going_tos
-	has_many :going_tos, foreign_key: "user_id", through: :attending_events, source: :event
+	has_many :going_tos, -> {where(attending_events: {going: true})}, foreign_key: "user_id", through: :attending_events, source: :event
 	has_many :friendships, dependent: :destroy
 	has_many :friends, -> {where(friendships: {accepted: true})}, :through => :friendships
 	has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", dependent: :destroy

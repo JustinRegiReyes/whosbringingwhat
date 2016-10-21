@@ -14,7 +14,7 @@ module NotificationsHelper
 		elsif notification.what_kind == "friend_request"
 			notification.friendship.user.username + " wants to be your friend."
 		elsif notification.what_kind == "comment"
-			"#{notification.comment.user.username} has commented in #{notification.comment.event.title}<br> <span class='comment-post'>#{truncate(notification.comment.post, length: 160)}</span>".html_safe
+			"#{notification.comment.user.username} has commented in <a href='/events/#{notification.event.id}'> #{notification.comment.event.title}</a><br> <span class='comment-post'>#{truncate(notification.comment.post, length: 160)}</span>".html_safe
 		elsif notification.what_kind == "invitation_request"
 			"#{notification.invited_by.username} has invited you to <a href='/events/#{notification.event.id}'>#{notification.event.title}</a>".html_safe
 		end
@@ -60,7 +60,7 @@ module NotificationsHelper
 		elsif notification.what_kind == "invitation_request"
 			notification.event.photo(:small)
 		elsif notification.what_kind == "comment"
-			notification.event.photo(:small)
+			notification.comment.user.avi(:small)
 		end
 	end
 
