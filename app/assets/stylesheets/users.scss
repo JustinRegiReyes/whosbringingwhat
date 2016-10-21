@@ -694,6 +694,18 @@
 				padding: 10px 0;
 				div#calendar-wrapper {
 					width: 100%;
+					div.clndr {
+						.events-wrapper {
+							.events-header {
+								span {
+									font-size: 16px;
+								}
+							}
+							.events {
+								width: 100%;
+							}
+						}
+					}
 				} //div#calendar-wrapper
 			} //div#column-2
 		} //div#home-container max-width: $break-iphone6plus
