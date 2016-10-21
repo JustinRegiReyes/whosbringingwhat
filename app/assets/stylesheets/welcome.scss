@@ -6,13 +6,15 @@ div#welcome-container {
 	background-color: white;
 	position: absolute;
 	right: 0;
-	min-height: 100vh;
+	height: auto;
 	width: 100%;
 	padding: 0;
 	div#landing-container {
 		width: 1000px;
 		margin: 0 auto;
-		height: 100vh;
+		min-height: 100vh;
+		height: 700px;
+		background-color: white;
 		div#header-container {
 			height: 600px;
 			width: 50%;
