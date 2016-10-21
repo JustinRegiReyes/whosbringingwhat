@@ -52,6 +52,8 @@ div.auth-modal {
 		& > div {
 			position: relative;
 			margin: 20px auto 10px;
+			height: auto;
+			min-height: 35px;
 			&.input-limit-container {
 				margin: 0 auto 10px;
 			}
@@ -64,6 +66,7 @@ div.auth-modal {
 				width: 35px;
 				background-color: $cloud;
 				border-right: 1px solid #B8B8B8;
+				z-index: 5;
 				i {
 					position: absolute;
 					left: 0px;
@@ -107,6 +110,11 @@ div.auth-modal {
 			width: 100%;
 			height: 35px;
 			border: 1px solid #B8B8B8;
+			top: 0;
+			&#user_email {
+				position: absolute;
+				z-index: 0;
+			}
 			&:focus {
 				outline: none;
 				border: 1px solid $cobaltBlue;

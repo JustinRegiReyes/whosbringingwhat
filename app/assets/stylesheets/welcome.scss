@@ -236,6 +236,13 @@ div#welcome-container {
 			    }
 			} //div#carousel-container
 		} //div#landing-container
+	} // $break-iphone6plus
+	@media screen and (max-width: $break-iphone4) {
+		div#landing-container {
+			div#header-container {
+				padding-top: 30px;
+			}
+		} //div#landing-container
 	}
 } // div.welcome-container
 
