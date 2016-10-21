@@ -1,16 +1,16 @@
-<div id="event-banner-crop" class="text-center default-container">
+<div id="crop-container" class="text-center default-container banner">
 	<div id="header">
-		<span class="warning">Cropping feature only works on desktop for now.</span><br>
+		<span class="warning">Cropping feature only works on desktop for now. <br><i class="fa fa-frown-o" aria-hidden="true"></i></span><br>
 		<span>Drag box sides to manipulate height and width.</span><br>
 		<span>Drag box to focus on specific area.</span>
 	</div>
 		<!-- div#header -->
 	<%= form_for(@event, url: "/events/#{@event.id}/banner/crop", method: :patch) do |f| %>
 	  <div class="photo-cropbox">
-	  	<%= f.cropbox :banner, width: 300 %>
+	  	<%= f.cropbox :banner, width: 400 %>
 	  </div>
 	  <div class="photo-preview">
-	  	<%= f.crop_preview :banner, width: 300 %>
+	  	<%= f.crop_preview :banner, width: 400 %>
 	  </div>
 	  <div class="submit">
 	  	<%= f.submit 'Crop Banner', class: "site-button" %>

@@ -1,17 +1,17 @@
 <div id="my-friend-requests" class="default-container">
-	<div id="friend-requests-container">
-		<div id="friend-request-header">
+	<div id="container">
+		<div id="header">
 			Friend Requests
 		</div>
 			<!-- div#friend-request-container -->
 		<% if @friend_requests.count < 1 %>
-			<div class="no-friend-requests">
+			<div class="empty">
 				No pending friend requests
 			</div>
 				<!-- div.no-friend-requests -->
 		<% else %>
 			<% @friend_requests.each do |fr| %>
-				<div class="friend-request-box clearfixs">
+				<div class="friend-box clearfixs">
 					<img src="<%= image_path(fr.user.avi(:small)) %>">
 					<div class="information">
 						<span class="username"><%= fr.user.username %></span>
@@ -21,7 +21,7 @@
 						<!-- div.information -->
 					<div id="button-container">
 						<button id="accept-friend-request" class="site-button accept" data-friendship-id="<%= fr.id %>">Accept</button>
-						<button id="decline-friend-request" class="site-button delete" data-friendship-id="<%= fr.id %>">Decline</button>
+						<button id="decline-friend-request" class="site-button decline" data-friendship-id="<%= fr.id %>">Decline</button>
 					</div>
 						<!-- div#button-container -->
 				</div>

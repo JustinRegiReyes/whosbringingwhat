@@ -61,6 +61,7 @@ function ready() {
 	inputLengthTracker();
 	calendar();
 	deleteProfile();
+	authmodalFocus();
 }
 
 // ********** signup functions **********
@@ -1133,3 +1134,24 @@ function filename() {
 		$("#filename").append(filename);
 	});
 }
+
+// ********** authmodal functions **********
+
+	function authmodalFocus() {
+		var $loginModal = $('div#login-modal');
+		var $signupModal = $('div#signup-modal');
+		if($loginModal.length > 0) {
+			$loginModal.on('shown.bs.modal', function () {
+				var $input = $('input#user_email');
+				$input.focus();
+			});
+		}
+		if($signupModal.length > 0) {
+			$signupModal.on('shown.bs.modal', function () {
+				var $input = $('input#signup-username');
+				$input.focus();
+			});
+		}
+	}
+
+// ******************* authmodal functions END *********************

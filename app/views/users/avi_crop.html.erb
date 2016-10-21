@@ -1,16 +1,16 @@
 <div id="crop-container" class="text-center">
 	<div id="header">
-		<span class="warning">Cropping feature only works on desktop for now.</span><br>
+		<span class="warning">Cropping feature only works on desktop for now <i class="fa fa-frown-o" aria-hidden="true"></i><br></span><br>
 		<span>Drag box sides to manipulate height and width.</span><br>
 		<span>Drag box to focus on specific area.</span>
 	</div>
 		<!-- div#header -->
 	<%= form_for(@user, url: "/avi-crop", method: :patch) do |f| %>
 	  <div class="photo-cropbox">
-	  	<%= f.cropbox :avi, width: 300 %>
+	  	<%= f.cropbox :avi, width: 350 %>
 	  </div>
 	  <div class="photo-preview">
-	  	<%= f.crop_preview :avi, width: 300 %>
+	  	<%= f.crop_preview :avi, width: 350 %>
 	  </div>
 	  <div class="submit">
 	  	<%= f.submit 'Crop Photo', class: "site-button" %>

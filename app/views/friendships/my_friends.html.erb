@@ -1,0 +1,36 @@
+<div id="my-friends" class="default-container friends-container">
+	<div id="container">
+		<div id="header">
+			Friends
+		</div>
+			<!-- div#friend-request-container -->
+		<% if @friends.count < 1 %>
+			<div class="empty">
+				You currently don't have any freinds
+			</div>
+				<!-- div.empty -->
+		<% else %>
+			<% @friends.each do |fr| %>
+				<div class="friend-box clearfixs">
+					<img src="<%= image_path(fr.avi(:small)) %>">
+					<div class="information">
+						<span class="username"><%= fr.username %></span>
+						<span class="from"><%= fr.from %></span>
+						<span class="email"><%= fr.email %></span>
+					</div>
+						<!-- div.information -->
+					<div id="button-container">
+						<a href="/friendships/<%= fr.id %>" data-confirm="Are you sure?" data-method="delete">
+							<button class="site-button delete" type="button">Delete</button>
+						</a>
+					</div>
+						<!-- div#button-container -->
+				</div>
+					<!-- div.friend-box -->
+			<% end %>
+				<!-- @friend_requests.each -->
+		<% end %>
+	</div>
+		<!-- div#friend-request-container -->
+</div>
+	<!-- div#my-friends -->

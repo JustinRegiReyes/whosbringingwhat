@@ -100,6 +100,10 @@ class FriendshipsController < ApplicationController
 		@friend_requests = Friendship.where({pending: true, friend_id: current_user.id})
 	end
 
+	def my_friends
+		@friends = current_user.friends + current_user.inverse_friends
+	end
+
 	private
 
 	def friend_params
