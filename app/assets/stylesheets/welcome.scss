@@ -7,164 +7,238 @@ div#welcome-container {
 	position: absolute;
 	right: 0;
 	min-height: 100vh;
-	height: auto;
 	width: 100%;
 	padding: 0;
-	div#header-container {
-		width: 500px;
-		margin: 25px auto 0;
-		position: relative;
-		div.icon-container {
-			margin: 0 auto;
-			width: 100px;
-			height: 75px;
-			position: relative;
-			border-radius: 100%;
-			div.icon {
-				width: 100%;
-				height: 100%;
-				background: white;
-				border-radius: 100%;
-				margin: 0 auto;
-				text-align: center;
-				i {
-	    			color: $cobaltBlue;
-	    			font-size: 60px;
-				}
-			}
-		}
-		h1.header {
-			font-size: 100px;
-			font-family: $mainHeader;
-			color: $asphalt;
-		}
-		.sub-header {
-			font-size: 15px;
-			color: $asphalt;
-		}
-		div.button-container {
-			text-align: center;
-			margin: 10px auto;
-			width: 100%;
-			button.site-button {
-				width: 150px;
-				margin: 5px 0;
-				height: 25px;
-				background-color: $periGreen;
-				color: white;
-				font-size: 12px;
-				&:active {
-					outline: none;
-				}
-				&.signup {
-					background-color: $periGreen;
-					border: 1px solid $periGreen;
-					&:hover {
-						background-color: darken($periGreen, 2%);
-					}
-				}
-				&.login {
-					background-color: white;
-					color: $periGreen;
-					border: 1px solid $periGreen;
-					&:hover {
-						background-color: darken(white, 2%);
-					}
-				}
-			}
-		} //button-container
-	} //div#header-container
-	div#carousel-container {
-		width: 500px;
-		height: 475px;
+	div#landing-container {
+		width: 1000px;
 		margin: 0 auto;
-		position: relative;
-	} //div#carousel-container
-	@media screen and (max-width: $break-iphone6plus) {
-		width: 100vw;
+		height: 100vh;
 		div#header-container {
-			width: 100%;
-			// font-size: 90px;
+			height: 600px;
+			width: 50%;
+			position: relative;
+			float: left;
+			@include vertical-align();
+			div.icon-container {
+				margin: 20px auto;
+				width: 100px;
+				height: 75px;
+				position: relative;
+				border-radius: 100%;
+				div.icon {
+					width: 100%;
+					height: 100%;
+					background: white;
+					border-radius: 100%;
+					margin: 0 auto;
+					text-align: center;
+					i {
+		    			color: $cobaltBlue;
+		    			font-size: 60px;
+					}
+				}
+			}
 			h1.header {
-				font-size: 95px;
+				font-size: 110px;
+				font-family: $mainHeader;
+				color: $asphalt;
 			}
-			h5.sub-header {
-				font-size: 18px;
+			.sub-header {
+				margin: 20px auto;
+				font-size: 15px;
+				color: $asphalt;
 			}
-		}
+			div.button-container {
+				text-align: center;
+				margin: 120px auto 0px;
+				width: 400px;
+				button.site-button {
+					width: 200px;
+					margin: 10px 0;
+					height: 30px;
+					background-color: $periGreen;
+					color: white;
+					font-size: 14px;
+					&:active {
+						outline: none;
+					}
+					&.signup {
+						background-color: $periGreen;
+						border: 1px solid $periGreen;
+						&:hover {
+							background-color: darken($periGreen, 2%);
+						}
+					}
+					&.login {
+						background-color: white;
+						color: $periGreen;
+						border: 1px solid $periGreen;
+						&:hover {
+							background-color: darken(white, 2%);
+						}
+					}
+					&.about {
+						display: none;
+						background-color: white;
+						color: $asphalt;
+						border: 1px solid $asphalt;
+						&:hover {
+							background-color: darken(white, 2%);
+						}
+					}
+				}
+			} //button-container
+		} //div#header-container
+		div#carousel-container {
+			width: 50%;
+			height: auto;
+			position: relative;
+			float: left;
+			@include vertical-align();
+			div#home-carousel {
+				width: 400px;
+				height: 600px;
+				margin: 0 auto;
+				ol.carousel-indicators {
+					li {
+						border-color: black;
+						&.active {
+							background-color: black;
+						}
+					}
+				}
+				div.carousel-inner {
+					height: 100%;
+					position: relative;
+					div#carousel-overlay {
+						position: absolute;
+						top: 0;
+						width: 100%;
+						height: 400px;
+						z-index: 1;
+						// background-image: -webkit-linear-gradient(to right,rgba(0,0,0,.001) 100% ,rgba(0,0,0,.001) 100%);
+						// background-image: -ms-linear-gradient(to right,rgba(0,0,0,.001) 100% ,rgba(0,0,0,.001) 100%);
+						// background-image: linear-gradient(to right,rgba(0,0,0,.001) 100% ,rgba(0,0,0,.001) 100%);
+					}
+					div.item {
+						div.carousel-img {
+							width: 100%;
+							height: 400px;
+							margin: 0 auto;
+						}
+						div.carousel-caption {
+							bottom: -150px;
+							width: 100%;
+							height: 150px;
+							padding-top: 10px;
+							padding-bottom: 0;
+							right: 0;
+							left: 0;
+							text-shadow: none;
+							color: black;
+							overflow: hidden;
+							div.header {
+								font-size: 20px;
+								margin: 0 auto 5px;
+								font-family: $hind;
+							} //div.header
+							p {
+								padding: 0 5px;
+								font-size: 15px;
+							}
+						} //div.carousel-caption
+					}//div.item
+				} //div.carousel-inner
+				a.carousel-control {
+					background-image: none;
+					z-index: 2;
+					height: 400px;
+					&:hover {
+						i {
+							color: black;
+						}
+					}
+					i {
+						position: absolute;
+						bottom: -30px;
+						color: black;
+						text-shadow: none;
+						z-index: 5;
+						font-size: 20px;
+						&.fa-chevron-right {
+							right: 0;
+						}
+						&.fa-chevron-left {
+							left: 0;
+						}
+					}
+				}
+				ol.carousel-indicators {
+					bottom: 10px;
+				} //ol.carousel-indicators
+			}
+		} //div#carousel-container
+	} //div#landing-container
+	@media screen and (max-width: $break-iphone6plus) {
+		min-height: 100vh;
+		height: auto;
+		div#landing-container {
+			width: 100vw;
+			height: auto;
+			div#header-container {
+				width: 100%;
+				height: 100vh;
+				float: none;
+				top: 0;
+			    -webkit-transform: translateY(0);
+			    -ms-transform: translateY(0);
+			    transform: translateY(0);
+			    padding-top: 100px;
+				div.icon-container {
+					margin: 20px auto;
+					div.icon {
+						i {
+							font-size: 50px;
+						}
+					}
+				} //div.icon-container
+				h1.header {
+					font-size: 70px;
+				}
+				h5.sub-header {
+					font-size: 14px;
+					margin: 10px auto;
+				}
+				div.button-container {
+					width: 150px;
+					margin-top: 60px;
+					button.site-button {
+						height: 30px;
+						font-size: 14px;
+						width: 150px;
+						margin: 5px auto;
+						&.about {
+							margin-top: 20px;
+							display: inline;
+						}
+					}
+				} //div.button-container
+			} // div#header-container
+			div#carousel-container {
+				width: 100%;
+				float: none;
+				top: 0;
+				-webkit-transform: translateY(0);
+			    -ms-transform: translateY(0);
+			    transform: translateY(0);
+			    div#home-carousel {
+			    	width: 100%;
+			    }
+			} //div#carousel-container
+		} //div#landing-container
 	}
 } // div.welcome-container
 
 // *********** carousel ***********
-	div#home-carousel {
-		width: 100%;
-		height: 100%;
-		margin: 0 auto;
-		ol.carousel-indicators {
-			li {
-				border-color: black;
-				&.active {
-					background-color: black;
-				}
-			}
-		}
-		div.carousel-inner {
-			height: 100%;
-			position: relative;
-			div#carousel-overlay {
-				position: absolute;
-				top: 0;
-				width: 100%;
-				height: 300px;
-				z-index: 1;
-				// background-image: -webkit-linear-gradient(to right,rgba(0,0,0,.1) 100% ,rgba(0,0,0,.1) 100%);
-				// background-image: -ms-linear-gradient(to right,rgba(0,0,0,.1) 100% ,rgba(0,0,0,.1) 100%);
-				// background-image: linear-gradient(to right,rgba(0,0,0,.1) 100% ,rgba(0,0,0,.1) 100%);
-			}
-			div.item {
-				img {
-					width: 300px;
-					height: 300px;
-					margin: 0 auto;
-				}
-				div.carousel-caption {
-					bottom: -120px;
-					width: 100%;
-					height: 120px;
-					padding-top: 10px;
-					padding-bottom: 0;
-					right: 0;
-					left: 0;
-					text-shadow: none;
-					color: black;
-					div.header {
-						font-size: 18px;
-						margin: 0 auto 5px;
-					} //div.header
-					p {
-						padding: 0 5px;
-					}
-				} //div.carousel-caption
-			}//div.item
-		} //div.carousel-inner
-		a.carousel-control {
-			background-image: none;
-			z-index: 2;
-			height: 300px;
-			&:hover {
-				i {
-					color: black;
-				}
-			}
-			i {
-				position: absolute;
-				// top: 40%;
-				bottom: -10px;
-				color: black;
-				text-shadow: none;
-				z-index: 5;
-				font-size: 20px;
-			}
-		}
-	}
+	
 // *********** carousel END ***********

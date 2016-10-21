@@ -4,33 +4,58 @@
     <li data-target="#home-carousel" data-slide-to="0" class="active"></li>
     <li data-target="#home-carousel" data-slide-to="1"></li>
     <li data-target="#home-carousel" data-slide-to="2"></li>
+    <li data-target="#home-carousel" data-slide-to="3"></li>
+    <li data-target="#home-carousel" data-slide-to="4"></li>
+    <li data-target="#home-carousel" data-slide-to="5"></li>
   </ol>
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
   	<div id="carousel-overlay"></div>
     <div class="item active">
-      <img src="<%= image_path('bannerplaceholder.svg') %>" alt="First Slide">
+      <div class="carousel-img" style="background-image: url(<%= image_path('eventbirthday.png') %>); background-size: contain; background-position: center center; background-repeat: no-repeat" alt="First Slide"></div>
        <div class="carousel-caption">
-	    <div class="header">Test Header 1</div>
-	    <p>Test Caption a;bjsdsabj dljbsaljdb sajlbdjl sbajbd sljabljdsb ajdb sajlb ajsbdljb asjbdjab d;sab jdbsa; bdsakjbkjasbdkjbs kdjbsajk</p>
+	    <div class="header">Create an Event</div>
+	    <p>Create a page that will display the details for your friends to find. Here, people can find who's going, what to bring, and comments!</p>
 	   </div>
     </div>
     <div class="item">
-      <img src="<%= image_path('bannerplaceholder.svg') %>" alt="Second Slide">
+      <div class="carousel-img" style="background-image: url(<%= image_path('item.png') %>); background-size: contain; background-position: center center; background-repeat: no-repeat" alt="Second Slide"></div>
+       <div class="carousel-caption">
+      <div class="header">Who's Bringing What?</div>
+      <p>Throwing a Birthday Party? FriendsGiving? Camping trip? Create categories for guests to see. Put a request of how many things you need for that category.</p>
+     </div>
+    </div>
+    <div class="item">
+      <div class="carousel-img" style="background-image: url(<%= image_path('homepage.png') %>); background-size: contain; background-position: center center; background-repeat: no-repeat" alt="Third Slide"></div>
+       <div class="carousel-caption">
+      <div class="header">Home Page</div>
+      <p>Receive updates on new invitations and friend requests. Look at your calendar for the month, or search for an event!</p>
+     </div>
+    </div>
+    <div class="item">
+      <div class="carousel-img" style="background-image: url(<%= image_path('eventsearch.png') %>); background-size: contain; background-position: center center; background-repeat: no-repeat" alt="Fourth Slide"></div>
       <div class="carousel-caption">
-        <div class="header">Test Header 2</div>
-	    <p>Test Caption a;bjsdsabj dljbsaljdb sajlbdjl sbajbd sljabljdsb ajdb sajlb</p>
+       	<div class="header">Search Events</div>
+	      <p>To search for an event, you need to know the search key. Want a get together to be a bit more private? Small group of guests? Suprise party? This is for you!</p>
       </div>
     </div>
     <div class="item">
-      <img src="<%= image_path('bannerplaceholder.svg') %>" alt="Third Slide">
+      <div class="carousel-img" style="background-image: url(<%= image_path('notifications.png') %>); background-size: contain; background-position: center center; background-repeat: no-repeat" alt="Fifth Slide"></div>
+       <div class="carousel-caption">
+      <div class="header">Notifications</div>
+      <p>Keep track, dismiss, and respond to invitations and friend requests!</p>
+     </div>
+    </div>
+    <div class="item">
+      <div class="carousel-img" style="background-image: url(<%= image_path('invitewide.png') %>); background-size: contain; background-position: center center; background-repeat: no-repeat" alt="Sixth Slide"></div>
       <div class="carousel-caption">
-       	<div class="header">Test Header 3</div>
-	    <p>Test Caption a;bjsdsabj dljbsaljdb sajlbdjl sbajbd sljabljdsb ajdb sajlb</p>
+        <div class="header">Invite Your Friends</div>
+      <p>The Deets has personal get togethers first in mind. Users that are not your friend can't join your event.</p>
       </div>
     </div>
   </div>
+    <!-- div.carousel-inner -->
 
   <!-- Controls -->
   <a class="left carousel-control" href="#home-carousel" role="button" data-slide="prev">
