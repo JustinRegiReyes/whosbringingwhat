@@ -78,6 +78,10 @@ class Event < ActiveRecord::Base
 		return where({date_start: date})
     end
 
+    def owner?(user)
+		self.user_id == user.id
+	end
+
 	private
 		# runs paperclips reprocess method for crop
 		def reprocess_banner

@@ -104,6 +104,9 @@
 					<div class="post-container">
 						<p><%= comment.post %></p>
 					</div>
+					<% if comment.owner?(current_user) || event_owner?(current_user) %>
+						<a href="/comments/<%= comment.id %>" class="delete" data-confirm="Are you sure?" data-method="delete">Delete</a>
+					<% end %>
 				</div>
 			<% end %>
 		<% end %>

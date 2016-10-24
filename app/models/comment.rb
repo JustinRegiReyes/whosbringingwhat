@@ -16,4 +16,8 @@ class Comment < ActiveRecord::Base
 			end
 		end
 	end
+
+	def owner?(user)
+		self.user_id == user.id
+	end
 end

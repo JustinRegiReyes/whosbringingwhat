@@ -20,7 +20,6 @@ Rails.application.routes.draw do
   # events routes
     get '/events/search', to: 'events#search'
     resources :events
-    post '/events/:id/comments', to: 'comments#create'
     post '/events/:id/guests/invite', to: 'events#send_invites'
     get '/events/:id/guests/:type', to: 'events#guests'
     get '/my_events', to: 'events#my_events'
@@ -28,6 +27,10 @@ Rails.application.routes.draw do
     get '/events/:id/banner/crop', to: 'events#banner_crop'
     patch '/events/:id/photo/crop', to: 'events#update_photo_crop'
     patch '/events/:id/banner/crop', to: 'events#update_banner_crop'
+
+  # comments routes
+    post '/events/:id/comments', to: 'comments#create'
+    delete '/comments/:id', to: 'comments#destroy'
 
   # attending_event routes
     get '/invitations', to: 'attending_events#my_invitations'
