@@ -206,6 +206,10 @@ function bannerFilename() {
 function timePicker() {
 	if($('.timepicker')) {
 		$('.timepicker').wickedpicker();
+		var $closeIcon = $('i#close-wickedpicker');
+		$closeIcon.click(function() {
+			$("div#layout-wrapper").click();
+		})
 	}
 }
 
