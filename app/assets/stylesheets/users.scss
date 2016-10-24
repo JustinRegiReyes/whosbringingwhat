@@ -68,15 +68,19 @@
 							font-weight: 300;
 							right: 5px;
 							text-align: center;
-							color: darken($cloud, 40%);
+							a {
+								color: darken($cloud, 40%);
+								&:hover {
+									text-decoration: none;
+								}
+							}
 							span#friends-label {
 								position: relative;
-								top: -1px;
 								font-weight: bold;
 								font-family: $hind;
 								font-size: 20px;
 								color: black;
-							}
+							} //span#friends-label
 						}
 						& > i {
 							width: 15px;

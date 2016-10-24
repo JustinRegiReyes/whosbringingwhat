@@ -12,7 +12,15 @@
   width: 270px;
   height: 110px;
   font-size: 14px;
-  display: none; }
+  display: none;
+  position: relative;
+  i.fa-times {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    z-index: 1;
+    color: lighten(black, 40%);
+  }}
   .wickedpicker__title {
     background-image: -webkit-linear-gradient(top, #ffffff 0%, #f2f2f2 100%);
     background-image: linear-gradient(to bottom, #ffffff 0%, #f2f2f2 100%);
