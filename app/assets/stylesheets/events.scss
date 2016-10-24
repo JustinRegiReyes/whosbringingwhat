@@ -182,8 +182,14 @@ div.event-form-container {
 		}
 		label {
 			font-weight: 300;
+			position: relative;
 			&.items-requested {
-				font-size: .95em;
+				font-size: 14px;
+			}
+			i.fa-asterisk {
+				font-size: 8px;
+				color: $ashyRed;
+				@include vertical-align();
 			}
 		}
 		div.event-img-container {
@@ -314,6 +320,7 @@ div.event-form-container {
 	} // div.form-container
 	@media screen and(max-width: $break-iphone6plus) {
 		top: 0;
+		padding-bottom: 300px;
 		div.form-container {
 			textarea {
 				padding: 10px;				
@@ -337,7 +344,7 @@ div#event-new-container {
 				font-size: 1.1em;
 				position: relative;
 				button#categories-add {
-				    width: 55px;
+				    width: 60px;
 				    height: 25px;
 				    font-size: .7em;
 				    right: 0;
