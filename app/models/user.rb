@@ -66,7 +66,7 @@ class User < ActiveRecord::Base
     end
 
     def is_friend?(friend)
-    	myFriend = self.friends.find_by_id(friend.id)
+    	myFriend = self.all_friends.find_by_id(friend.id)
     	theirFriend = self.inverse_friends.find_by_id(friend.id)
     	if myFriend == nil && theirFriend == nil
     		return false
