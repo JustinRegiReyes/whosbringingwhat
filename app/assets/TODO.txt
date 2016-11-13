@@ -1,0 +1,3 @@
+ALL MODELS
+
+Upon deletion. Delete all notifications associated with them.
