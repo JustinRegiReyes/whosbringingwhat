@@ -26,4 +26,9 @@ module EventsHelper
 	def own_event?(event)
 		current_user.created_events.where({id: event.id}).length > 0
 	end
+
+	def textarea_newlines(content)
+		content.gsub!(/\r\n?/, "\n");
+		return simple_format(content)
+	end
 end
