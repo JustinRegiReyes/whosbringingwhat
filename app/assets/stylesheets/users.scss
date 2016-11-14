@@ -823,6 +823,9 @@ div#user-search-container {
 					}
 					span.from {
 						font-size: .9em;
+						i {
+							color: $ashyRed;
+						}
 					}
 					span.bio {
 						margin-top: 15px;
