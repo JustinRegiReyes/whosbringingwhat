@@ -67,12 +67,7 @@ class FriendshipsController < ApplicationController
 	end
 
 	def friend_decline
-		if targetFriendship.update_attributes(pending: false)
-			if params_notification?
-				mark_notification_read(notification_id)
-			elsif params_notification? == false
-				mark_notification_read(current_user.notifications.where({friendship_id: targetFriendship.id, read: false}).first.id)
-			end
+		if targetFriendship.destroy
 			respond_to do |format|
 				flash[:success] = "Friend Declined"
 				format.html { render layout: false }

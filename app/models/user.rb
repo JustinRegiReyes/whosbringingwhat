@@ -66,8 +66,8 @@ class User < ActiveRecord::Base
     end
 
     def is_friend?(friend)
-        friend = Friendship.where('user_id= ? OR friend_id= ?', friend.id, friend.id).where(accepted: true)
-    	if friend.count > 0
+        friends = self.all_friends.where('user_id= ? OR friend_id= ?', friend.id, friend.id)
+    	if friends.count > 0
     		return true
 		else
 			return false
@@ -79,7 +79,7 @@ class User < ActiveRecord::Base
     end
 
     def friendship_pending?(friend)
-        friendship = Friendship.where('user_id= ? OR friend_id= ?', friend.id, friend.id).uniq.first
+        friendship = Friendship.where('user_id= ? OR friend_id= ?', friend.id, friend.id).where('user_id= ? OR friend_id= ?', self.id, self.id).first
     	if friendship == nil
     		return false
     	elsif friendship.pending == true
