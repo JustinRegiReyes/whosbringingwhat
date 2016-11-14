@@ -132,7 +132,7 @@ class User < ActiveRecord::Base
     end
 
     def all_friends
-        (self.friends + self.inverse_friends).uniq
+        Friendship.where('user_id= ? OR friend_id= ?', self.id, self.id).where(accepted: true).uniq
     end
 
     private
