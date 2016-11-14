@@ -12,7 +12,12 @@ module NotificationsHelper
 		elsif notification.what_kind == "friend_accepted"
 			notification.friendship.friend.username + " has accepted your friend request!"
 		elsif notification.what_kind == "friend_request"
-			notification.friendship.user.username + " wants to be your friend."
+			"#{notification.friendship.user.username} wants to be your friend." + 
+			"<div class='friend-information'>" + 
+				"<span class='from'><i class='fa fa-map-marker' aria-hidden='true'></i> #{notification.friendship.user.from}</span>" + 
+				"<span class='bio'>#{textarea_newlines(notification.friendship.user.bio)}</span>" +
+				"<span class='email'>#{notification.friendship.user.email}</span>" +
+			"</div>"
 		elsif notification.what_kind == "comment"
 			"#{notification.comment.user.username} has commented in <a href='/events/#{notification.event.id}'> #{notification.comment.event.title}</a><br> <span class='comment-post'>#{truncate(notification.comment.post, length: 160)}</span>".html_safe
 		elsif notification.what_kind == "invitation_request"

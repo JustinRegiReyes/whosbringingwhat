@@ -86,9 +86,10 @@
 			    margin: 0 auto;
 			}
 			div.notification-box {
-				height: 150px;
+				height: auto;
 				width: 100%;
-				padding: 0px;
+				padding: 15px 0;
+				border-bottom: 1px solid darken($cloud, 5%);
 				margin: 5px auto;
 				background-color: white;
 				position: relative;
@@ -101,7 +102,6 @@
 					input {
 						width: 30px;
 						height: 30px;
-						@include vertical-align();
 						margin: 0 auto;
 						display: block;
 						&:hover {
@@ -112,15 +112,15 @@
 				div.information {
 					position: relative;
 					height: 100%;
-					border-bottom: 1px solid darken($cloud, 5%);
+					overflow: hidden;
 					div.img {
 						width: 80px;
 						height: 80px;
-						margin-right: 10px;
+						margin-right: 20px;
 						border-radius: 100%;
 						border: 1px solid $cloud;
 						float: left;
-						@include vertical-align();
+						// @include vertical-align();
 						a.event-link {
 							display: block;
 							width: 100%;
@@ -130,8 +130,9 @@
 					div.notification-message {
 						position: relative;
 						font-size: 16px;
-						@include vertical-align();
+						// @include vertical-align();
 						overflow: hidden;
+						padding-top: 12px;
 						span.comment-post {
 							height: 70px;
 							display: inline-block;
@@ -140,6 +141,30 @@
 							border-left: 1px solid $cloud;
 							font-size: 14px;
 						}
+						div.friend-information {
+							padding-top: 8px;
+							height: auto;
+							span {
+								display: block;
+								&.username {
+
+								}
+								&.from {
+									font-size: .75em;
+									color: darken($cloud, 40%);
+									i {
+										color: $ashyRed;
+									}
+									margin-bottom: 10px;
+								}
+								&.bio {
+									font-size: .75em;
+								}
+								&.email {
+									font-size: .8em;
+								}
+							}
+						} //div.friend-information
 					}
 					div.notification-icon {
 						right: 5px;

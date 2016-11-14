@@ -22,7 +22,7 @@ div#my-friend-requests, div#my-friends {
 			text-align: center;
 		}
 		div.friend-box {
-			height: 100px;
+			height: auto;
 			width: 100%;
 			border-bottom: 1px solid $cloud;
 			padding: 10px 90px 10px 20px;
@@ -37,6 +37,7 @@ div#my-friend-requests, div#my-friends {
 			div.information {
 				float: left;
 				padding-top: 8px;
+				height: auto;
 				span {
 					display: block;
 					&.username {
@@ -45,6 +46,13 @@ div#my-friend-requests, div#my-friends {
 					&.from {
 						font-size: .75em;
 						color: darken($cloud, 40%);
+						i {
+							color: $ashyRed;
+						}
+						margin-bottom: 10px;
+					}
+					&.bio {
+						font-size: .75em;
 					}
 					&.email {
 						font-size: .8em;
