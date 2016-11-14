@@ -66,9 +66,8 @@ class User < ActiveRecord::Base
     end
 
     def is_friend?(friend)
-    	myFriend = self.all_friends.find_by_id(friend.id)
-    	theirFriend = self.inverse_friends.find_by_id(friend.id)
-    	if myFriend == nil && theirFriend == nil
+        friend = Friendship.where('user_id= ? OR friend_id= ?', friend.id, friend.id)
+    	if friend
     		return false
 		else
 			return true
