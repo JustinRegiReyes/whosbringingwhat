@@ -66,11 +66,11 @@ class User < ActiveRecord::Base
     end
 
     def is_friend?(friend)
-        friend = Friendship.where('user_id= ? OR friend_id= ?', friend.id, friend.id)
-    	if friend
-    		return false
+        friend = Friendship.where('user_id= ? OR friend_id= ?', friend.id, friend.id).where(accepted: true)
+    	if friend.count > 0
+    		return true
 		else
-			return true
+			return false
     	end
     end
 
@@ -79,7 +79,7 @@ class User < ActiveRecord::Base
     end
 
     def friendship_pending?(friend)
-    	friendship = self.friendships.find_by_friend_id(friend.id)
+        friendship = Friendship.where('user_id= ? OR friend_id= ?', friend.id, friend.id).uniq.first
     	if friendship == nil
     		return false
     	elsif friendship.pending == true
