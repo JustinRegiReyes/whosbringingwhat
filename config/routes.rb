@@ -59,6 +59,7 @@ Rails.application.routes.draw do
     get '/my_friends', to: 'friendships#my_friends'
     get '/friend_requests', to: 'friendships#my_friend_requests'
     get '/friends/invite/events/:event_id', to: 'friendships#invite_friends'
+    delete '/friendships/:friend_id', to: 'friendships#destroy'
     post '/friendships/:friend_id/friend_request', to: 'friendships#friend_request'
     patch '/friendships/:friendship_id/friend_accept', to: 'friendships#friend_accept'
     patch '/friendships/:friendship_id/friend_decline', to: 'friendships#friend_decline'
