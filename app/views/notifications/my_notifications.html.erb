@@ -39,7 +39,7 @@
 							<% else %>
 								<div class="img" style="background: url('<%= image_path(notification_image(notification))%>') no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;"></div>
 							<% end %>
-							<div class="notification-message">
+							<div class="notification-message contain-float">
 								<%= the_update(notification).html_safe %> 
 							</div>
 								<!-- div.notification-message -->
