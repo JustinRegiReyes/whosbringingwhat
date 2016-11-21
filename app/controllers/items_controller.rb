@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :logged_in?, only: [:new, :bringing]
+  before_action :logged_in?
   def new
     @event = Event.find_by_id(params[:event_id])
     @category = Category.find_by_id(params[:category_id])

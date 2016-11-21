@@ -1,4 +1,7 @@
 class AttendingEventsController < ApplicationController
+  before_action :logged_in?
+
+  
   def accept
   	respond_to do |format|
 	  	ae = AttendingEvent.find_by_id(attending_event_id)

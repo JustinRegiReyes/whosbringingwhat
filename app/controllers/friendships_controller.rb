@@ -1,5 +1,6 @@
 class FriendshipsController < ApplicationController
 	before_action :logged_in?
+	
   	def create
 		@friendship = Friendship.new({friend_id: params[:friend_id]})
 		if @friendship.save

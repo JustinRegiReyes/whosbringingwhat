@@ -1,4 +1,6 @@
 class NotificationsController < ApplicationController
+	before_action :logged_in?
+	
 	def my_notifications
 		@notifications = current_user_notifications
 	end
